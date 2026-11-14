@@ -1,0 +1,9 @@
+# analysis/requirements.txt — Field Shift data pipeline
+#
+# fetch_real_data.py (v1) is pure Python standard library:
+# it needs NOTHING beyond a Python 3.11+ interpreter to run.
+#
+# Planned for Step 2 (not imported by any script in analysis/ yet):
+pandas
+numpy
+scipy

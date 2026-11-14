@@ -1,1 +1,16 @@
-.env 
+.env
+
+# Python
+venv/
+.venv/
+__pycache__/
+
+# Raw downloads must never be committed (PRD data rule: raw files stay on the shared Drive)
+data/raw/
+
+# Binary artifacts / logs
+*.pkl
+*.log
+
+# Team Drive drop folder (unzipped next to repo; never commit)
+field_shift_drive_files/
