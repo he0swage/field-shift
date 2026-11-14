@@ -12,11 +12,12 @@ Draft for review (Aniss/Younes). Citation lines below were checked against each 
   - *Data reference*: "The data was obtained from the POWER Project's Daily 2.x.x version on 2026-11-13." (adjust version/date to the actual fetch)
   - License: CC BY 4.0, no other restrictions (verified via registry.opendata.aws/nasa-power). POWER also requests a notification for published uses (larc-power-project@mail.nasa.gov) — flagged for Aniss if we publish.
 
+
 ## ISRIC SoilGrids (SOC, pH)
 
 - **What it is**: machine-learning global soil property maps from ~230,000 profile observations; our source for soil organic carbon and pH (0–30 cm).
 - **Resolution**: 250 m model estimate with quantified uncertainty (we do not yet pull the uncertainty layers). It is a prediction, not a lab measurement of our plots.
-- **Attribution (verified at https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_04.html)**: license CC BY 4.0; cite as: Poggio, L., de Sousa, L. M., Batjes, N. H., Heuvelink, G. B. M., Kempen, B., Ribeiro, E., and Rossiter, D.: *SoilGrids 2.0: producing soil information for the globe with quantified spatial uncertainty*, SOIL, 7, 217–240, 2021. https://doi.org/10.1005/soil-7-217-2021 (DOI as printed in the FAQ).
+- **Attribution (verified at https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_04.html)**: license CC BY 4.0; cite as: Poggio, L., de Sousa, L. M., Batjes, N. H., Heuvelink, G. B. M., Kempen, B., Ribeiro, E., and Rossiter, D.: *SoilGrids 2.0: producing soil information for the globe with quantified spatial uncertainty*, SOIL, 7, 217–240, 2021. https://doi.org/10.5194/soil-7-217-2021 (DOI as printed in the FAQ).
 
 ## MODIS NDVI (MOD13Q1 via ORNL DAAC subsetting)
 
