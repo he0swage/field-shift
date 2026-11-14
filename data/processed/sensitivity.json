@@ -1,0 +1,116 @@
+{
+  "description": "Sensitivity of headline indicators to the placeholder decisions in domain/thresholds.json. Computed by analysis/sensitivity.py.",
+  "regions": {
+    "setif": {
+      "stress_2010": 0.1074,
+      "stress_2015": 0.1625,
+      "stress_2020": 0.2029,
+      "stress_2015_era5": 0.2715,
+      "season_rain_oct_may": 463.8,
+      "dry_spell_oct_may": 23.2,
+      "season_rain_nov_jun": 419.1,
+      "dry_spell_nov_jun": 22.7,
+      "hot_33": 7.9,
+      "hot_35": 3.1,
+      "hot_37": 0.9,
+      "frost_feb_apr": 14.7,
+      "frost_mar_apr": 4.5,
+      "rain_30yr_era5": 506.2,
+      "rain_2015_era5": 405.5,
+      "trend_era5": {
+        "window": "1995-2024",
+        "ols_slope_mm_per_decade": -70.5,
+        "ols_p": 0.0043,
+        "sen_slope_mm_per_decade": -74.3,
+        "mk_p": 0.0168,
+        "label": "both methods agree",
+        "confidence": "high",
+        "unit": "mm/decade"
+      },
+      "trend_power": {
+        "window": "1995-2024",
+        "ols_slope_mm_per_decade": -46.7,
+        "ols_p": 0.0459,
+        "sen_slope_mm_per_decade": -44.1,
+        "mk_p": 0.0092,
+        "label": "both methods agree",
+        "confidence": "high",
+        "unit": "mm/decade"
+      }
+    },
+    "constantine": {
+      "stress_2010": 0.1048,
+      "stress_2015": 0.1668,
+      "stress_2020": 0.2761,
+      "stress_2015_era5": 0.1847,
+      "season_rain_oct_may": 576.0,
+      "dry_spell_oct_may": 22.3,
+      "season_rain_nov_jun": 517.6,
+      "dry_spell_nov_jun": 21.8,
+      "hot_33": 15.3,
+      "hot_35": 9.7,
+      "hot_37": 5.7,
+      "frost_feb_apr": 2.6,
+      "frost_mar_apr": 0.4,
+      "rain_30yr_era5": 491.2,
+      "rain_2015_era5": 426.7,
+      "trend_era5": {
+        "window": "1995-2024",
+        "ols_slope_mm_per_decade": -41.0,
+        "ols_p": 0.1097,
+        "sen_slope_mm_per_decade": -42.6,
+        "mk_p": 0.1007,
+        "label": "no clear trend",
+        "confidence": "low",
+        "unit": "mm/decade"
+      },
+      "trend_power": {
+        "window": "1995-2024",
+        "ols_slope_mm_per_decade": -47.3,
+        "ols_p": 0.125,
+        "sen_slope_mm_per_decade": -46.4,
+        "mk_p": 0.1435,
+        "label": "no clear trend",
+        "confidence": "low",
+        "unit": "mm/decade"
+      }
+    },
+    "tiaret": {
+      "stress_2010": 0.0253,
+      "stress_2015": 0.1397,
+      "stress_2020": 0.3275,
+      "stress_2015_era5": 0.0119,
+      "season_rain_oct_may": 518.0,
+      "dry_spell_oct_may": 32.4,
+      "season_rain_nov_jun": 479.4,
+      "dry_spell_nov_jun": 30.7,
+      "hot_33": 15.7,
+      "hot_35": 9.2,
+      "hot_37": 4.2,
+      "frost_feb_apr": 4.6,
+      "frost_mar_apr": 1.1,
+      "rain_30yr_era5": 401.7,
+      "rain_2015_era5": 398.5,
+      "trend_era5": {
+        "window": "1995-2024",
+        "ols_slope_mm_per_decade": 12.0,
+        "ols_p": 0.5727,
+        "sen_slope_mm_per_decade": 15.6,
+        "mk_p": 0.6174,
+        "label": "no clear trend",
+        "confidence": "low",
+        "unit": "mm/decade"
+      },
+      "trend_power": {
+        "window": "1995-2024",
+        "ols_slope_mm_per_decade": -21.0,
+        "ols_p": 0.5093,
+        "sen_slope_mm_per_decade": -16.8,
+        "mk_p": 0.5441,
+        "label": "no clear trend",
+        "confidence": "low",
+        "unit": "mm/decade"
+      }
+    }
+  }
+}
