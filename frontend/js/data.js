@@ -5,13 +5,13 @@
 
 /* `est` lists indicators that are placeholders (flagged "estimate" in the UI). */
 const REGIONS = {
-  regionA: { label: 'Region A', name: 'Sétif High Plateaux', lat: 36.15, lon: 5.38, rain: 485,
-    ph: [7.3, 8.4], water: 30, soc: 11.2, frost: 34, erosion: 38, ndvi: 0.44,
-    est: ['water', 'soc', 'frost', 'erosion'] },
-  regionB: { label: 'Region B', name: 'Constantine El Khroub', lat: 36.16, lon: 6.68, rain: 516,
-    ph: [7.2, 8.2], water: 26, soc: 13.6, frost: 25, erosion: 35, ndvi: 0.49,
-    est: ['water', 'soc', 'frost', 'erosion'] },
-  regionC: { label: 'Region C', name: 'Tiaret Western Plateau', lat: 35.34, lon: 1.38, rain: 408,
+  regionA: { label: 'Region A', short: 'Sétif', name: 'Sétif High Plateaux', lat: 36.15, lon: 5.38, rain: 485,
+    ph: [7.3, 8.4], water: 20, soc: 12.52, frost: 34, erosion: 38, ndvi: 0.44,
+    est: ['frost', 'erosion'] },
+  regionB: { label: 'Region B', short: 'Constantine', name: 'Constantine El Khroub', lat: 36.16, lon: 6.68, rain: 516,
+    ph: [7.2, 8.2], water: 28, soc: 17.08, frost: 25, erosion: 35, ndvi: 0.49,
+    est: ['frost', 'erosion'] },
+  regionC: { label: 'Region C', short: 'Tiaret', name: 'Tiaret Western Plateau', lat: 35.34, lon: 1.38, rain: 408,
     ph: [7.2, 8.3], water: 33, soc: 12.38, frost: 28, erosion: 44, ndvi: 0.47,
     est: [] },
 };
@@ -58,21 +58,25 @@ const SAMPLE_CLIMATE = (() => {
   // Semi-arid Mediterranean monthly profile (share of annual rain)
   const shape = [68, 59, 55, 52, 34, 13, 4, 9, 25, 31, 56, 57];
   const shapeSum = shape.reduce((a, b) => a + b, 0);
+  // trend = mm/decade (from the team's NASA POWER analysis), sd = year-to-year noise in mm
   const params = {
-    regionA: { trend: -9.5, hot: 48, frost: 32, extreme: 5, dry: 58, seed: 7 },
-    regionB: { trend: -7.2, hot: 41, frost: 24, extreme: 7, dry: 52, seed: 13 },
-    regionC: { trend: -16.8, hot: 62, frost: 5, extreme: 6, dry: 65, seed: 21 },
+    regionA: { trend: -44.1, sd: 50, hot: 48, frost: 32, extreme: 5, dry: 58, seed: 7 },
+    regionB: { trend: -46.4, sd: 150, hot: 41, frost: 24, extreme: 7, dry: 52, seed: 13 },
+    regionC: { trend: -16.8, sd: 90, hot: 62, frost: 5, extreme: 6, dry: 65, seed: 21 },
   };
   // Small deterministic PRNG so the sample is stable between reloads
   const rng = seed => () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  const years = Array.from({ length: 30 }, (_, i) => 1995 + i), xm = 2009.5;
   const out = {};
   for (const [id, p] of Object.entries(params)) {
-    const mean = REGIONS[id].rain, rand = rng(p.seed), annual = [];
-    for (let y = 1995; y <= 2024; y++) {
-      const trend = p.trend / 10 * (y - 2009.5);
-      const noise = (rand() + rand() + rand() - 1.5) * 0.45 * mean * 0.5;
-      annual.push({ year: y, rain: Math.max(120, Math.round(mean + trend + noise)) });
-    }
+    const mean = REGIONS[id].rain, rand = rng(p.seed);
+    // Noise with zero mean and zero slope, scaled to sd, so the trend is exactly p.trend
+    let noise = years.map(() => rand() + rand() + rand() - 1.5);
+    const nm = noise.reduce((a, b) => a + b) / 30;
+    const ns = years.reduce((s, y, i) => s + (y - xm) * (noise[i] - nm), 0) / years.reduce((s, y) => s + (y - xm) ** 2, 0);
+    noise = noise.map((n, i) => n - nm - ns * (years[i] - xm));
+    const nsd = Math.sqrt(noise.reduce((s, n) => s + n * n, 0) / 30);
+    const annual = years.map((y, i) => ({ year: y, rain: Math.round((mean + p.trend / 10 * (y - xm) + noise[i] / nsd * p.sd) * 10) / 10 }));
     out[id] = {
       source: 'Sample data (placeholder until NASA POWER API is connected)',
       sample: true,

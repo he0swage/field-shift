@@ -98,8 +98,13 @@ function normalize(p) {
   return out;
 }
 
+// Filled by js/map.js from the climate data: { regionA: { decade, sig }, ... }
+const regionTrends = {};
+
 function renderRegionList() {
-  $('#regionList').innerHTML = Object.entries(REGIONS).map(([id, r]) => `
+  $('#regionList').innerHTML = Object.entries(REGIONS).map(([id, r]) => {
+    const t = regionTrends[id];
+    return `
     <div class="region">
       <input type="radio" name="region" id="r-${id}" value="${id}" ${id === state.region ? 'checked' : ''}>
       <label for="r-${id}">
@@ -108,12 +113,28 @@ function renderRegionList() {
         <div class="name">${r.name}</div>
         <div class="meta">${r.lat.toFixed(2)}° N, ${r.lon.toFixed(2)}° E · NASA POWER</div>
         <div class="rain">${r.rain} <small>mm / year</small></div>
+        <dl class="region-facts">
+          <div><dt>Rain trend</dt><dd data-trend="${id}">${t ? `${t.decade > 0 ? '+' : ''}${t.decade.toFixed(1)} mm/decade` : '…'}</dd></div>
+          <div><dt>Water stress</dt><dd>${r.water}%</dd></div>
+          <div><dt><abbr title="Soil organic carbon">SOC</abbr></dt><dd>${r.soc} g/kg</dd></div>
+        </dl>
       </label>
-    </div>`).join('');
-  $$('#regionList input').forEach(i => i.addEventListener('change', () => {
-    state.region = i.value; save(); renderRegion(); renderFit();
-    toast(`Region set to ${region().name}`);
-  }));
+    </div>`;
+  }).join('');
+  $$('#regionList input').forEach(i => i.addEventListener('change', () => selectRegion(i.value)));
+}
+
+// Single entry point for changing region (cards and map both use it)
+function selectRegion(id) {
+  if (!REGIONS[id] || id === state.region) return;
+  const prev = state.region;
+  const apply = rid => {
+    state.region = rid; save(); renderRegion(); renderFit();
+    const input = $('#r-' + rid); if (input) input.checked = true;
+    if (typeof renderMap === 'function') renderMap();
+  };
+  apply(id);
+  toast(`Region set to ${region().name}.`, () => apply(prev));
 }
 
 function metric(icon, label, value, pct, color, note, estimated) {

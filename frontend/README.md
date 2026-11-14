@@ -8,7 +8,8 @@ frontend/
 ├── css/
 │   ├── styles.css      design tokens + shared components (steps 1-4)
 │   ├── climate.css     step 5 — climate & rainfall
-│   └── ranking.css     step 6 — best rotations (+ print/PDF layout)
+│   ├── ranking.css     step 6 — best rotations (+ print/PDF layout)
+│   └── map.css         step 1 — region map + rainfall-trend overlay
 └── js/
     ├── data.js         regions, crops, SAMPLE_CLIMATE, SAMPLE_RANKING
     ├── api.js          data access — connect the backend here
@@ -16,6 +17,7 @@ frontend/
     ├── app.js          steps 1-4 + navigation
     ├── climate.js      step 5
     ├── ranking.js      step 6
+    ├── map.js          step 1 map (trends computed from the climate API data)
     └── main.js         boot (loaded last)
 ```
 

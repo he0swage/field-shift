@@ -3,3 +3,4 @@
 
 renderRegionList(); renderRegion(); renderRotation(); renderCrops(); renderFit(); renderPriorities();
 go((location.hash.match(/step-(\d)/) || [])[1] || 1, { focus: false });
+initMap();

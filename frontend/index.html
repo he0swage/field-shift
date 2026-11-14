@@ -7,12 +7,14 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/climate.css">
   <link rel="stylesheet" href="css/ranking.css">
+  <link rel="stylesheet" href="css/map.css">
   <script src="js/data.js" defer></script>
   <script src="js/api.js" defer></script>
   <script src="js/charts.js" defer></script>
   <script src="js/app.js" defer></script>
   <script src="js/climate.js" defer></script>
   <script src="js/ranking.js" defer></script>
+  <script src="js/map.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -50,7 +52,25 @@
     <div class="step-head">
       <div class="eyebrow">Step 1 of 6</div>
       <h2 id="t1">Where is your farm?</h2>
-      <p class="lead">Choose your region. We load its climate, soil and vegetation history automatically.</p>
+      <p class="lead">Click a region on the map or a card below. We load its climate, soil and vegetation history automatically.</p>
+    </div>
+
+    <div class="card map-card">
+      <div class="head-row" style="margin-bottom:0">
+        <div>
+          <h3>Candidate regions &amp; rainfall trend</h3>
+          <p class="sub" style="margin-bottom:0">NASA POWER 1995–2024. A bigger circle means rain is falling faster.</p>
+        </div>
+        <label class="toggle"><input type="checkbox" id="overlayToggle" checked> Show rainfall-trend overlay</label>
+      </div>
+      <div class="map-wrap" id="regionMap"></div>
+      <div class="map-legend" aria-hidden="true">
+        <span class="lg"><i class="lg-dot on"></i>Selected region</span>
+        <span class="lg"><i class="lg-dot"></i>Other region</span>
+        <span class="lg"><i class="lg-ring"></i>Clear drying trend</span>
+        <span class="lg"><i class="lg-ring dashed"></i>Trend not significant</span>
+      </div>
+      <p class="map-note">Schematic map of northern Algeria, not to scale. Marker positions use real coordinates.</p>
     </div>
 
     <fieldset style="border:0;padding:0;margin:0">
