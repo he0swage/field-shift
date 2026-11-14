@@ -1,7 +1,6 @@
 /* Field Shift — design system
    Palette: forest green (primary) · water blue · soil brown · wheat gold
    All text/background pairs meet WCAG AA (≥ 4.5:1). */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
   --bg: #f4f7f3;
@@ -24,6 +23,7 @@
   --danger: #b42318; --danger-soft: #fdeceb;
   --ok: #1e6b4e;     --ok-soft: #e0efe6;
 
+  --series-1: #1d669a; --series-2: #c2562b; --grid: #e3e9e4;
   --focus: #2563eb;
   --radius: 16px;
   --shadow: 0 1px 2px rgba(21,33,27,.06), 0 10px 30px rgba(21,33,27,.07);
@@ -35,6 +35,7 @@
     --water: #7cbbe8; --water-soft: #17303f; --soil: #d9a57c; --soil-soft: #3a2a1e;
     --wheat: #e9bd62; --wheat-soft: #3a2f17; --wheat-bar: #e9bd62;
     --warn: #f2b65a; --warn-soft: #3a2a12; --danger: #ff8a80; --danger-soft: #3d1a17; --ok: #4fbf8e; --ok-soft: #1d3a2d;
+    --series-1: #4f95c9; --series-2: #c8653a; --grid: #2a3830;
     --focus: #93b4ff;
   }
 }
@@ -215,6 +216,7 @@ input[type="range"] { width: 100%; height: 32px; accent-color: var(--primary); c
 .step-nav { display: flex; justify-content: space-between; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
 .step-nav .right { display: flex; gap: 14px; flex-wrap: wrap; margin-left: auto; }
 abbr[title] { text-decoration: underline dotted; cursor: help; }
+
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1000px) {

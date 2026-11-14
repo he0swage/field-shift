@@ -1,0 +1,5 @@
+{
+  // "Go Live" (Live Server) serves the compiled React app.
+  // Run `npm run build` in frontend/ after changes, or use `npm run dev` for live reload.
+  "liveServer.settings.root": "/frontend/dist"
+}
