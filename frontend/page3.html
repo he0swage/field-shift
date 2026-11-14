@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Field Shift — Priorities</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Step 3 · What matters most</div>
+        <h1 class="page-title">Your 3 farm priorities</h1>
+        <p class="lead">Move the sliders to show what you want to protect most over the next 3 years. Weights are always rescaled to 100.</p>
+      </div>
+      <div class="lang" role="group" aria-label="Language">
+        <button class="on" data-lang="en">EN</button><button data-lang="fr">FR</button><button data-lang="ar">العربية</button>
+      </div>
+    </div>
+
+    <div class="grid grid-2">
+      <section class="card">
+        <div class="row" style="justify-content:space-between">
+          <h2>Priorities</h2>
+          <button class="btn btn-ghost btn-sm" id="balance">⚖️ Balance to 100</button>
+        </div>
+
+        <div class="prio">
+          <div class="ico" style="background:var(--sky-soft)">💧</div>
+          <div><h3>Save water</h3><p>Keep crops that need less rain and survive dry spells.</p>
+            <input type="range" min="0" max="100" id="water" aria-label="Save water"></div>
+          <div class="val" id="waterV"></div>
+        </div>
+        <div class="prio">
+          <div class="ico" style="background:var(--olive-soft)">🌱</div>
+          <div><h3>Protect soil</h3><p>Build soil organic matter and natural nitrogen with cover and legume crops.</p>
+            <input type="range" min="0" max="100" id="soil" aria-label="Protect soil"></div>
+          <div class="val" id="soilV"></div>
+        </div>
+        <div class="prio">
+          <div class="ico" style="background:var(--accent-soft)">🌾</div>
+          <div><h3>Yield &amp; harvest stability</h3><p>Aim for steady grain or seed output using <abbr title="Normalized Difference Vegetation Index (MODIS)">NDVI</abbr> history.</p>
+            <input type="range" min="0" max="100" id="yield" aria-label="Yield and harvest stability"></div>
+          <div class="val" id="yieldV"></div>
+        </div>
+      </section>
+
+      <section class="card tinted">
+        <h2>Weight mix</h2>
+        <p class="sub">How the ranking engine will score each rotation.</p>
+        <div class="stack" id="stack" style="height:28px"></div>
+        <div class="legend" id="legend"></div>
+
+        <div id="profile" style="margin-top:22px"></div>
+
+        <button class="btn btn-ghost btn-sm" id="reset" style="margin-top:16px">↺ Use regional preset</button>
+      </section>
+    </div>
+
+    <div class="footer-nav">
+      <a class="btn btn-ghost" href="page2.html">← Back to rotation</a>
+      <a class="btn btn-primary" href="#" id="analyse">🔍 Analyse &amp; rank rotations</a>
+    </div>
+  </main>
+</div>
+
+<script src="app.js"></script>
+<script>
+  renderSidebar(3);
+  const keys = ['water', 'soil', 'yield'];
+  const colors = { water: 'var(--sky)', soil: 'var(--olive)', yield: 'var(--accent)' };
+  const names = { water: 'Save water', soil: 'Protect soil', yield: 'Yield stability' };
+  let p = Store.get('priorities', { water: 28, soil: 23, yield: 49 });
+
+  // Changing one slider redistributes the remainder across the others proportionally
+  function setOne(key, value) {
+    value = Math.max(0, Math.min(100, value));
+    const others = keys.filter(k => k !== key);
+    const rest = others.reduce((s, k) => s + p[k], 0);
+    const remain = 100 - value;
+    others.forEach((k, i) => {
+      p[k] = rest === 0 ? remain / 2 : p[k] / rest * remain;
+    });
+    p[key] = value;
+    round();
+  }
+  function round() {
+    keys.forEach(k => p[k] = Math.round(p[k]));
+    const diff = 100 - keys.reduce((s, k) => s + p[k], 0);
+    const max = keys.reduce((a, b) => p[a] >= p[b] ? a : b);
+    p[max] += diff;
+  }
+
+  function profileText() {
+    const top = keys.reduce((a, b) => p[a] >= p[b] ? a : b);
+    const msg = {
+      water: 'Drought-first: favours barley, chickpea and lentil; penalises high-rainfall crops.',
+      soil: 'Soil-builder: favours legumes and vetch cover; penalises cereal-on-cereal sequences.',
+      yield: 'Output-first: favours durum wheat and rapeseed where NDVI history is steady.',
+    }[top];
+    return `<div class="metric"><div class="k">Your profile</div><div class="v" style="font-size:20px">${names[top]}</div><div class="note" style="font-size:13px;margin-top:4px">${msg}</div></div>`;
+  }
+
+  function render() {
+    keys.forEach(k => {
+      document.getElementById(k).value = p[k];
+      document.getElementById(k + 'V').textContent = p[k];
+    });
+    document.getElementById('stack').innerHTML = keys.map(k => `<div style="width:${p[k]}%;background:${colors[k]}"></div>`).join('');
+    document.getElementById('legend').innerHTML = keys.map(k => `<span><i style="background:${colors[k]}"></i>${names[k]} ${p[k]}%</span>`).join('');
+    document.getElementById('profile').innerHTML = profileText();
+    Store.set('priorities', p);
+  }
+
+  keys.forEach(k => document.getElementById(k).addEventListener('input', e => { setOne(k, +e.target.value); render(); }));
+  document.getElementById('balance').addEventListener('click', () => { p = { water: 33, soil: 33, yield: 34 }; render(); });
+  document.getElementById('reset').addEventListener('click', () => {
+    const r = currentRegion();
+    const water = r.water, soil = Math.max(5, 30 - r.soc), y = Math.round(r.ndvi * 100), sum = water + soil + y;
+    p = { water: water / sum * 100, soil: soil / sum * 100, yield: y / sum * 100 }; round(); render();
+  });
+  document.getElementById('analyse').addEventListener('click', e => { e.preventDefault(); alert('Ranking engine not connected yet — priorities saved: ' + JSON.stringify(p)); });
+  round(); render();
+</script>
+</body>
+</html>
