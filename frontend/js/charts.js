@@ -12,7 +12,7 @@ const Charts = (() => {
     return n;
   };
   // Round axis max so 4 ticks land on round numbers (e.g. 0/150/300/450/600)
-  const niceMax = v => { const raw = v / 4, p = 10 ** Math.floor(Math.log10(raw)); const step = [1, 2, 2.5, 5, 10].map(k => k * p).find(st => st >= raw); return step * 4; };
+  const niceMax = v => { const raw = v / 4, p = 10 ** Math.floor(Math.log10(raw)); const step = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10].map(k => k * p).find(st => st >= raw); return step * 4; };
 
   function frame(container, height) {
     container.innerHTML = '';

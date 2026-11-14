@@ -36,6 +36,27 @@ const FieldShiftAPI = {
     }
     return SAMPLE_CLIMATE[regionId];
   },
+
+  // POST {apiBase}/ranking  body: { region, rotation, allowed, priorities, scenario }
+  async getRanking(inputs) {
+    if (FIELDSHIFT_CONFIG.apiBase) {
+      try {
+        const ctrl = new AbortController();
+        const t = setTimeout(() => ctrl.abort(), FIELDSHIFT_CONFIG.timeoutMs);
+        const res = await fetch(FIELDSHIFT_CONFIG.apiBase + '/ranking', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(inputs), signal: ctrl.signal,
+        });
+        clearTimeout(t);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return { ...(await res.json()), sample: false };
+      } catch (err) {
+        console.warn('Ranking API failed, using sample results:', err);
+        return { ...SAMPLE_RANKING, fallbackReason: 'The ranking service did not respond.' };
+      }
+    }
+    return SAMPLE_RANKING;
+  },
 };
 
 /* ------------------------------------------------------------------ *

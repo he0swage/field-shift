@@ -1,0 +1,134 @@
+/* Field Shift — step 6: recommended rotations */
+:root {
+  --gold: #b7791f;   --gold-soft: #fbf0d9;
+  --silver: #6b7a86; --silver-soft: #edf1f4;
+  --bronze: #a0522d; --bronze-soft: #f7e8de;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --gold: #e9bd62; --gold-soft: #3a2f17; --silver: #b4c2cc; --silver-soft: #253039; --bronze: #e0976b; --bronze-soft: #3a261b;
+  }
+}
+
+.rank-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 24px; }
+.mc-badge { background: var(--primary-soft); color: var(--primary); padding: 10px 16px; border-radius: 12px; font-size: 15px; }
+.rank-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.compare-panel { margin-bottom: 24px; }
+table.compare th small { font-weight: 500; color: var(--ink-soft); }
+table.compare td.better { color: var(--ok); font-weight: 700; }
+table.compare td.worse { color: var(--danger); font-weight: 700; }
+
+.rank-list { display: grid; gap: 22px; }
+
+/* ---------- Rank card ---------- */
+.rank-card {
+  --m: var(--line); --m-soft: var(--surface-2);
+  background: var(--surface); border: 1px solid var(--line); border-left: 6px solid var(--m);
+  border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow);
+}
+.medal-gold { --m: var(--gold); --m-soft: var(--gold-soft); }
+.medal-silver { --m: var(--silver); --m-soft: var(--silver-soft); }
+.medal-bronze { --m: var(--bronze); --m-soft: var(--bronze-soft); }
+.rank-card.is-best { border-width: 2px 2px 2px 6px; border-color: var(--m); box-shadow: 0 0 0 4px var(--m-soft), var(--shadow); }
+
+.rank-head { display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: start; }
+.rank-no {
+  width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 26px; font-weight: 800; background: var(--m-soft); color: var(--m); border: 3px solid var(--m);
+}
+.medal-plain .rank-no { color: var(--ink-soft); border-color: var(--line); }
+.best-label { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--m); margin-bottom: 4px; }
+.rank-title h3 { font-size: 24px; font-weight: 800; }
+.rank-title .arrow { color: var(--ink-soft); font-weight: 500; margin: 0 4px; }
+
+.tags { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; padding: 5px 12px; border-radius: 999px; }
+.tone-good { background: var(--ok-soft); color: var(--ok); }
+.tone-info { background: var(--water-soft); color: var(--water); }
+.tone-gold { background: var(--wheat-soft); color: var(--wheat); }
+.tone-warn { background: var(--warn-soft); color: var(--warn); }
+
+.rank-scores { display: flex; gap: 18px; align-items: center; }
+.ring {
+  --v: 0; width: 96px; height: 96px; border-radius: 50%; flex: none;
+  background: conic-gradient(var(--primary) calc(var(--v) * 1%), var(--line) 0);
+  display: grid; place-items: center;
+}
+.ring-inner { width: 76px; height: 76px; border-radius: 50%; background: var(--surface); display: grid; place-items: center; align-content: center; line-height: 1; }
+.ring-inner b { font-size: 28px; font-weight: 800; }
+.ring-inner span { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+.mini-scores { display: grid; gap: 12px; width: 210px; }
+.mini-head { display: flex; justify-content: space-between; font-size: 14px; color: var(--ink-soft); }
+.mini-head b { color: var(--ink); }
+.mini-head abbr { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--line); font-size: 11px; text-decoration: none; margin-left: 2px; }
+.mini-score .bar { margin-top: 6px; height: 8px; }
+.mini-score .bar > i { background: var(--primary); }
+
+/* ---------- Years ---------- */
+.years { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; counter-reset: none; }
+.year { background: var(--surface-2); border-radius: 14px; padding: 18px; position: relative; }
+.year:not(:last-child)::after { content: "→"; position: absolute; right: -14px; top: 18px; color: var(--ink-soft); font-size: 18px; }
+.year-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.year-no { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--primary); }
+.credit { font-size: 12px; font-weight: 700; color: var(--ok); background: var(--ok-soft); padding: 3px 9px; border-radius: 99px; }
+.year-crop { font-size: 20px; font-weight: 800; margin: 6px 0 10px; }
+.year dl { margin: 0; display: grid; gap: 6px; font-size: 15px; }
+.year dl > div { display: flex; justify-content: space-between; gap: 10px; }
+.year dt { color: var(--ink-soft); }
+.year dd { margin: 0; font-weight: 600; text-align: right; }
+.nbar { height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.nbar > i { display: block; height: 100%; background: var(--soil); border-radius: inherit; }
+
+/* ---------- Stats + risks ---------- */
+.rank-stats { list-style: none; margin: 20px 0 0; padding: 16px 0 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.rank-stats li { display: flex; flex-direction: column; gap: 2px; }
+.rank-stats span { font-size: 14px; color: var(--ink-soft); }
+.rank-stats b { font-size: 20px; }
+.rank-stats em { font-style: normal; font-size: 13px; color: var(--ok); font-weight: 600; }
+.note-inline { margin-top: 14px; font-size: 15px; color: var(--warn); background: var(--warn-soft); padding: 10px 14px; border-radius: 10px; }
+
+.risks { margin-top: 18px; border: 1px solid var(--line); border-radius: 12px; }
+.risks summary { cursor: pointer; padding: 14px 18px; font-weight: 700; min-height: 48px; list-style-position: inside; }
+.risks summary:hover { background: var(--surface-2); border-radius: 12px; }
+.risks ul { margin: 0; padding: 0 18px 16px 38px; font-size: 15px; display: grid; gap: 6px; }
+
+/* ---------- Avoid ---------- */
+.avoid-section { margin-top: 40px; }
+.avoid-section > h3 { font-size: 26px; font-weight: 800; }
+.avoid-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+.avoid-card { background: var(--danger-soft); border: 1px solid transparent; border-radius: 14px; padding: 20px; color: var(--ink); }
+.avoid-card h4 { font-size: 18px; color: var(--danger); }
+.avoid-card h4::before { content: "⛔ "; }
+.avoid-score { font-size: 14px; margin: 6px 0 10px; color: var(--ink-soft); }
+.avoid-card ul { margin: 0; padding-left: 20px; font-size: 15px; display: grid; gap: 4px; }
+.avoid-card.is-usual { border: 2px solid var(--danger); }
+.usual-flag { display: inline-block; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; background: var(--danger); color: #fff; padding: 3px 10px; border-radius: 99px; margin-bottom: 8px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .rank-head { grid-template-columns: auto 1fr; }
+  .rank-scores { grid-column: 1 / -1; }
+  .rank-stats { grid-template-columns: repeat(2, 1fr); }
+  .avoid-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .rank-card { padding: 20px; }
+  .years { grid-template-columns: 1fr; }
+  .year:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -18px; }
+  .rank-scores { flex-direction: column; align-items: stretch; }
+  .ring { align-self: center; }
+  .mini-scores { width: 100%; }
+}
+
+/* ---------- Print / PDF: only the results ---------- */
+@media print {
+  body { background: #fff; font-size: 12pt; }
+  .header .status, .menu, .skip, .step-nav, .rank-actions, .toast, .note-inline .btn { display: none !important; }
+  section[data-panel]:not([data-panel="6"]) { display: none !important; }
+  section[data-panel="6"] { display: block !important; }
+  .main { padding: 0; }
+  .rank-card, .avoid-card { box-shadow: none; break-inside: avoid; }
+  .compare-panel[hidden] { display: none; }
+}
+#rankingStatus .alert { margin: 0 0 20px; }

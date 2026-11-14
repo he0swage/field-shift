@@ -4,25 +4,38 @@ Open `index.html` in a browser (no build step).
 
 ```
 frontend/
-├── index.html        single page, 5 steps under one menu
-├── css/styles.css    design tokens + components
+├── index.html          single page, 6 steps under one menu
+├── css/
+│   ├── styles.css      design tokens + shared components (steps 1-4)
+│   ├── climate.css     step 5 — climate & rainfall
+│   └── ranking.css     step 6 — best rotations (+ print/PDF layout)
 └── js/
-    ├── data.js       regions, crops, SAMPLE_CLIMATE (placeholder)
-    ├── api.js        data access — connect the backend here
-    ├── charts.js     SVG charts (yearly line, monthly bars)
-    └── app.js        UI logic
+    ├── data.js         regions, crops, SAMPLE_CLIMATE, SAMPLE_RANKING
+    ├── api.js          data access — connect the backend here
+    ├── charts.js       SVG charts (yearly line, monthly bars)
+    ├── app.js          steps 1-4 + navigation
+    ├── climate.js      step 5
+    ├── ranking.js      step 6
+    └── main.js         boot (loaded last)
 ```
 
-## Connecting the climate API
+Until the backend is connected, steps 5 and 6 use fixed sample data and show a
+visible "Sample data" / "Sample results" notice.
+
+## Connecting the API
 
 Set `apiBase` in `js/api.js` (or define `window.FIELDSHIFT_CONFIG = { apiBase: '...' }`
-before the scripts). The app calls:
+before the scripts). If `apiBase` is empty or a request fails, the page falls back to
+the sample data and says so.
+
+Region ids: `regionA` Sétif (36.15N, 5.38E), `regionB` Constantine El Khroub
+(36.16N, 6.68E), `regionC` Tiaret (35.34N, 1.38E).
+
+### Climate — step 5
 
 ```
 GET {apiBase}/climate?region=regionA&lat=36.15&lon=5.38
 ```
-
-Expected JSON:
 
 ```json
 {
@@ -37,8 +50,19 @@ Expected JSON:
 - `monthly`: average rainfall per month, Jan to Dec, in mm
 - `indicators`: average days per year; `longestDrySpell` is in consecutive days
 
-If `apiBase` is empty or the request fails, the page shows the sample data
-with a visible "Sample data" notice.
+### Ranking — step 6
 
-Region ids: `regionA` Sétif (36.15N, 5.38E), `regionB` Constantine El Khroub
-(36.16N, 6.68E), `regionC` Tiaret (35.34N, 1.38E).
+```
+POST {apiBase}/ranking
+body: { "region": "regionC", "rotation": ["durum","barley","durum"], "allowed": ["durum", "..."],
+        "priorities": { "water": 34, "soil": 18, "yield": 48 }, "scenario": { "rain": -20, "temp": 2 } }
+```
+
+Must return the same shape as `SAMPLE_RANKING` in `js/data.js`:
+
+- `monteCarlo`: `{ runs, rank1StaysFirstPct }`
+- `usual`: metrics of the farmer's current rotation `{ waterNeed, ndviStability, fertilizer, income, soilNEnd }`
+- `rotations[]`: `rank`, `crops` (3 names), `tags` (ids from `TAGS` in `js/data.js`),
+  `scores { final, ml, knn }`, `years[3] { crop, soilN, health, fertilizer, kg, nCredit? }`,
+  `waterNeed`, `ndviStability`, `fertilizer`, `fertilizerSaved`, `income`, `risks { cropName: text }`
+- `avoid[]`: `{ crops, score, reasons[] }`

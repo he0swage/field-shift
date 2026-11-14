@@ -5,10 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Field Shift — Crop Rotation Advisor</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/climate.css">
+  <link rel="stylesheet" href="css/ranking.css">
   <script src="js/data.js" defer></script>
   <script src="js/api.js" defer></script>
   <script src="js/charts.js" defer></script>
   <script src="js/app.js" defer></script>
+  <script src="js/climate.js" defer></script>
+  <script src="js/ranking.js" defer></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -34,6 +39,7 @@
     <li><button data-step="3"><span class="num">3</span><span class="label">Priorities</span></button></li>
     <li><button data-step="4"><span class="num">4</span><span class="label">Review</span></button></li>
     <li><button data-step="5"><span class="num">5</span><span class="label">Climate &amp; rainfall</span></button></li>
+    <li><button data-step="6"><span class="num">6</span><span class="label">Best rotations</span></button></li>
   </ol>
 </nav>
 
@@ -42,7 +48,7 @@
   <!-- ===================== STEP 1 · REGION ===================== -->
   <section data-panel="1" aria-labelledby="t1">
     <div class="step-head">
-      <div class="eyebrow">Step 1 of 5</div>
+      <div class="eyebrow">Step 1 of 6</div>
       <h2 id="t1">Where is your farm?</h2>
       <p class="lead">Choose your region. We load its climate, soil and vegetation history automatically.</p>
     </div>
@@ -75,7 +81,7 @@
   <!-- ===================== STEP 2 · ROTATION & CROPS ===================== -->
   <section data-panel="2" aria-labelledby="t2" hidden>
     <div class="step-head">
-      <div class="eyebrow">Step 2 of 5</div>
+      <div class="eyebrow">Step 2 of 6</div>
       <h2 id="t2">Your rotation &amp; allowed crops</h2>
       <p class="lead">Tell us what you plant today and which crops you are willing to grow.</p>
     </div>
@@ -159,7 +165,7 @@
   <!-- ===================== STEP 3 · PRIORITIES ===================== -->
   <section data-panel="3" aria-labelledby="t3" hidden>
     <div class="step-head">
-      <div class="eyebrow">Step 3 of 5</div>
+      <div class="eyebrow">Step 3 of 6</div>
       <h2 id="t3">What matters most on your farm?</h2>
       <p class="lead">Move the sliders. The three priorities always add up to 100 — raising one lowers the others.</p>
     </div>
@@ -208,7 +214,7 @@
   <!-- ===================== STEP 4 · REVIEW ===================== -->
   <section data-panel="4" aria-labelledby="t4" hidden>
     <div class="step-head">
-      <div class="eyebrow">Step 4 of 5</div>
+      <div class="eyebrow">Step 4 of 6</div>
       <h2 id="t4">Check your answers</h2>
       <p class="lead">Review everything before we rank rotations for your farm. Use “Edit” to change any section.</p>
     </div>
@@ -224,7 +230,7 @@
   <!-- ===================== STEP 5 · CLIMATE & RAINFALL ===================== -->
   <section data-panel="5" aria-labelledby="t5" hidden>
     <div class="step-head">
-      <div class="eyebrow">Step 5 of 5 · Results</div>
+      <div class="eyebrow">Step 5 of 6 · Results</div>
       <h2 id="t5">Rainfall on your land</h2>
       <p class="lead">How rain and heat have changed since 1995 at <b id="climateRegion"></b>, and what a drier, hotter future could mean. Data: NASA POWER 1995–2024.</p>
     </div>
@@ -290,7 +296,47 @@
 
     <div class="step-nav">
       <button class="btn btn-secondary" data-go="4">← Back to review</button>
-      <div class="right"><button class="btn btn-secondary" data-go="1">Change region</button></div>
+      <div class="right"><button class="btn btn-primary" data-go="6">Next: best rotations →</button></div>
+    </div>
+  </section>
+
+  <!-- ===================== STEP 6 · BEST ROTATIONS ===================== -->
+  <section data-panel="6" aria-labelledby="t6" hidden>
+    <div class="step-head">
+      <div class="eyebrow">Step 6 of 6 · Results</div>
+      <h2 id="t6">Recommended 3-year rotations</h2>
+      <p class="lead">Scored from your 3 priorities, local climate stress, satellite <abbr title="Normalized Difference Vegetation Index">NDVI</abbr> vigour, environmental match and the 3-year soil nitrogen path.</p>
+    </div>
+
+    <div id="rankingStatus" aria-live="polite"></div>
+
+    <div id="rankingBody">
+      <div class="rank-toolbar">
+        <div class="mc-badge" id="mcBadge"></div>
+        <div class="rank-actions">
+          <button class="btn btn-secondary" id="compareBtn" aria-expanded="false" aria-controls="comparePanel">⚖️ <span>Compare usual vs rank 1</span></button>
+          <button class="btn btn-primary" id="printBtn">🖨️ Print or save as PDF</button>
+        </div>
+      </div>
+
+      <div class="card compare-panel" id="comparePanel" hidden>
+        <h3>Your usual rotation vs rank 1</h3>
+        <p class="sub">What changes on your farm if you switch to the top recommendation.</p>
+        <div id="compareBody"></div>
+      </div>
+
+      <div class="rank-list" id="rankList"></div>
+
+      <section class="avoid-section" aria-labelledby="avoidTitle">
+        <h3 id="avoidTitle">Rotations to avoid this season</h3>
+        <p class="lead" style="font-size:17px;margin-top:6px">These failed the agronomic rules filter.</p>
+        <div class="avoid-grid" id="avoidList"></div>
+      </section>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn btn-secondary" data-go="5">← Back to climate</button>
+      <div class="right"><button class="btn btn-secondary" data-go="1">Start over with another region</button></div>
     </div>
   </section>
 </main>

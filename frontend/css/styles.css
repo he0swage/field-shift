@@ -219,51 +219,6 @@ input[type="range"] { width: 100%; height: 32px; accent-color: var(--primary); c
 abbr[title] { text-decoration: underline dotted; cursor: help; }
 
 
-/* ---------- Climate step ---------- */
-.head-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
-.scenario { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 8px; }
-.scen-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
-.scen-head label { font-weight: 700; font-size: 18px; }
-.scen-head output { font-size: 28px; font-weight: 800; }
-.scale { display: flex; justify-content: space-between; font-size: 14px; color: var(--ink-soft); }
-.climate-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.climate-cards .metric { background: var(--surface); border: 1px solid var(--line); }
-.delta { display: block; font-size: 14px; font-weight: 700; color: var(--ink-soft); }
-.badge { display: inline-block; font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 99px; }
-.badge.sig { background: var(--primary-soft); color: var(--primary); }
-.badge.weak { background: var(--warn-soft); color: var(--warn); }
-.badge.none { background: var(--surface-2); color: var(--ink-soft); border: 1px solid var(--line); }
-
-.chart { position: relative; margin-top: 8px; }
-.chart svg { display: block; overflow: visible; touch-action: pan-y; }
-.chart .gridline { stroke: var(--grid); stroke-width: 1; }
-.chart .baseline { stroke: var(--ink-soft); stroke-width: 1; }
-.chart .tick { fill: var(--ink-soft); font-size: 13px; }
-.chart .line { fill: none; stroke-width: 2; stroke-linejoin: round; }
-.chart .line.s1 { stroke: var(--series-1); }
-.chart .trend { stroke: var(--ink-soft); stroke-width: 2; stroke-dasharray: 6 5; fill: none; }
-.chart .direct-label { fill: var(--ink-soft); font-size: 13px; font-weight: 700; }
-.chart .crosshair { stroke: var(--ink-soft); stroke-width: 1; }
-.chart .dot { stroke: var(--surface); stroke-width: 2; }
-.chart .dot.s1, .chart .bar.s1 { fill: var(--series-1); }
-.chart .bar.s2 { fill: var(--series-2); }
-.chart .hit { fill: transparent; cursor: pointer; }
-.chart .hit.on { fill: var(--ink); fill-opacity: .05; }
-.chart-tip { position: absolute; pointer-events: none; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 14px; box-shadow: var(--shadow); white-space: nowrap; z-index: 5; }
-.chart-tip .muted { color: var(--ink-soft); }
-.sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 8px; vertical-align: -1px; }
-.sw.s1 { background: var(--series-1); } .sw.s2 { background: var(--series-2); }
-.sw.trend-sw { height: 0; border-top: 2px dashed var(--ink-soft); border-radius: 0; width: 18px; vertical-align: 4px; }
-.legend-row { display: flex; gap: 22px; flex-wrap: wrap; font-size: 15px; color: var(--ink-soft); margin-top: 8px; }
-.table-wrap { overflow-x: auto; margin-top: 16px; }
-.table-wrap table { border-collapse: collapse; width: 100%; font-size: 15px; font-variant-numeric: tabular-nums; }
-.table-wrap th, .table-wrap td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: right; }
-.table-wrap th:first-child { text-align: left; }
-.table-wrap thead th { color: var(--ink-soft); font-weight: 600; }
-[aria-busy="true"] { opacity: .5; }
-@media (max-width: 1000px) { .climate-cards { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 680px) { .scenario, .climate-cards { grid-template-columns: 1fr; } }
-
 /* ---------- Responsive ---------- */
 @media (max-width: 1000px) {
   .grid-2, .summary { grid-template-columns: 1fr; }
@@ -285,4 +240,3 @@ abbr[title] { text-decoration: underline dotted; cursor: help; }
   .prio output { grid-column: 2; text-align: left; font-size: 30px; }
   .step-nav .btn { flex: 1; }
 }
-#climateStatus .alert { margin: 0 0 20px; }
