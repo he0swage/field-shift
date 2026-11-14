@@ -1,7 +1,6 @@
 /* Field Shift — design system
    Palette: forest green (primary) · water blue · soil brown · wheat gold
    All text/background pairs meet WCAG AA (≥ 4.5:1). */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
   --bg: #f4f7f3;

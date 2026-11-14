@@ -1,0 +1,19 @@
+/* Field Shift — step 5: climate & rainfall */
+.head-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+.scenario { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 8px; }
+.scen-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+.scen-head label { font-weight: 700; font-size: 18px; }
+.scen-head output { font-size: 28px; font-weight: 800; }
+.scale { display: flex; justify-content: space-between; font-size: 14px; color: var(--ink-soft); }
+.climate-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.climate-cards .metric { background: var(--surface); border: 1px solid var(--line); }
+.delta { display: block; font-size: 14px; font-weight: 700; color: var(--ink-soft); }
+.badge { display: inline-block; font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 99px; }
+.badge.sig { background: var(--primary-soft); color: var(--primary); }
+.badge.weak { background: var(--warn-soft); color: var(--warn); }
+.badge.none { background: var(--surface-2); color: var(--ink-soft); border: 1px solid var(--line); }
+
+[aria-busy="true"] { opacity: .5; }
+@media (max-width: 1000px) { .climate-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 680px) { .scenario, .climate-cards { grid-template-columns: 1fr; } }
+

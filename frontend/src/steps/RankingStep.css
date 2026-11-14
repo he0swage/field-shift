@@ -125,10 +125,7 @@ table.compare td.worse { color: var(--danger); font-weight: 700; }
 @media print {
   body { background: #fff; font-size: 12pt; }
   .header .status, .menu, .skip, .step-nav, .rank-actions, .toast, .note-inline .btn { display: none !important; }
-  section[data-panel]:not([data-panel="6"]) { display: none !important; }
-  section[data-panel="6"] { display: block !important; }
   .main { padding: 0; }
   .rank-card, .avoid-card { box-shadow: none; break-inside: avoid; }
   .compare-panel[hidden] { display: none; }
 }
-#rankingStatus .alert { margin: 0 0 20px; }
