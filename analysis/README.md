@@ -14,6 +14,7 @@ indicator files for the engine, API and frontend.
 | `run_all.py` | One-command regeneration: build → sensitivity → independent verify → tests, PASS/FAIL summary. |
 | `verify_independent.py` | Independent re-implementation (plain NumPy, no shared code) of the headline metrics; exits 1 on any mismatch beyond stored-rounding tolerance. |
 | `sensitivity.py` | Regenerates `data/processed/sensitivity.json` (decision-variant table, see `docs/sensitivity.md`). |
+| `forecast_sarima.py` | OPTIONAL experimental SARIMA rainfall forecast (24 months ahead by default, 95% intervals) → `forecast.json`; clearly labeled "model projection, high uncertainty"; core indicators untouched. |
 | `make_charts.py` | PNG charts (rainfall + trend line, monthly bars, hot/frost per year) into `analysis/charts/`. |
 | `tests/` | pytest suite: known-answer tests (dry spells, hot/frost counts, OLS/Mann-Kendall/Sen, SOC-pH conversion, PRD 6.2 priorities), no -999 sentinel in outputs, schema checks against `docs/data_contract.md`, byte-identical rebuild determinism. |
 | `requirements.txt` | pandas>=2.0, numpy>=1.26, scipy>=1.11, pytest>=8.0 (v1 `fetch_real_data.py` still needs nothing). |
@@ -37,7 +38,7 @@ python analysis\run_all.py
 3. **verify** — independently recomputes 11 headline values per region with completely separate code (`verify_independent.py`, no pandas, no imports from `build_indicators.py`) and prints a comparison table + paper-style hand-check data per region
 4. **tests** — the pytest suite
 
-Flags: `--stamp "2026-11-14 step3"` labels the run in `data_quality.md`; `--regions setif` limits regions; `--skip-tests` skips stage 4.
+Flags: `--stamp "2026-11-14 step3"` labels the run in `data_quality.md`; `--regions setif` limits regions; `--skip-tests` skips stage 4; `--forecast` adds the **experimental** SARIMA rainfall forecast layer (`data/processed/<region>/forecast.json`, statsmodels) after the core stages pass — core indicators are untouched and a forecast failure does not invalidate them.
 
 ### v2 offline pipeline (what run_all calls)
 
