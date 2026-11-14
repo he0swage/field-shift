@@ -10,3 +10,5 @@ numpy>=1.26,<3
 scipy>=1.11,<2
 matplotlib>=3.8,<4
 pytest>=8.0
+# optional, only for the experimental SARIMA forecast layer (analysis/forecast_sarima.py):
+statsmodels>=0.14,<1
