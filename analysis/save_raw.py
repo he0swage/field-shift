@@ -57,6 +57,14 @@ def save(code: str, name: str, payload: dict) -> None:
     print(f"    saved {out.relative_to(ROOT)} ({out.stat().st_size} bytes)")
 
 
+def already_saved(code: str, name: str) -> bool:
+    out = RAW / code / name
+    if out.exists() and out.stat().st_size > 0:
+        print(f"    skip (exists) {out.relative_to(ROOT)}")
+        return True
+    return False
+
+
 def fetch_region(code: str, lat: float, lon: float) -> None:
     print(f"[{code}] NASA POWER daily 1995-2024...", flush=True)
     params = urllib.parse.urlencode({
@@ -64,7 +72,8 @@ def fetch_region(code: str, lat: float, lon: float) -> None:
         "community": "AG", "longitude": lon, "latitude": lat,
         "start": "19950101", "end": "20241231", "format": "JSON",
     })
-    save(code, "power_daily.json", get_json(f"https://power.larc.nasa.gov/api/temporal/daily/point?{params}"))
+    if not already_saved(code, "power_daily.json"):
+        save(code, "power_daily.json", get_json(f"https://power.larc.nasa.gov/api/temporal/daily/point?{params}"))
 
     print(f"[{code}] ISRIC SoilGrids...", flush=True)
     soil_params = urllib.parse.urlencode([
@@ -73,12 +82,14 @@ def fetch_region(code: str, lat: float, lon: float) -> None:
         ("depth", "0-5cm"), ("depth", "5-15cm"), ("depth", "15-30cm"),
         ("value", "mean"),
     ])
-    save(code, "soilgrids.json", get_json(f"https://rest.isric.org/soilgrids/v2.0/properties/query?{soil_params}"))
+    if not already_saved(code, "soilgrids.json"):
+        save(code, "soilgrids.json", get_json(f"https://rest.isric.org/soilgrids/v2.0/properties/query?{soil_params}"))
 
     print(f"[{code}] ORNL MODIS MOD13Q1 dates + subsets 2020-2024...", flush=True)
     try:
         dates = get_json(f"https://modis.ornl.gov/rst/api/v1/MOD13Q1/dates?latitude={lat}&longitude={lon}")
-        save(code, "modis_dates.json", dates)
+        if not already_saved(code, "modis_dates.json"):
+            save(code, "modis_dates.json", dates)
         all_dates = [d["modis_date"] for d in dates.get("dates", [])]
         for yr in range(2020, 2025):
             spring = [d for d in all_dates if d.startswith(f"A{yr}") and 65 <= int(d[5:8]) <= 145]
@@ -89,8 +100,9 @@ def fetch_region(code: str, lat: float, lon: float) -> None:
                 "startDate": spring[0], "endDate": spring[-1],
                 "kmAboveBelow": 2, "kmLeftRight": 2,
             })
-            save(code, f"modis_subset_{yr}.json",
-                 get_json(f"https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?{sub_params}"))
+            if not already_saved(code, f"modis_subset_{yr}.json"):
+                save(code, f"modis_subset_{yr}.json",
+                     get_json(f"https://modis.ornl.gov/rst/api/v1/MOD13Q1/subset?{sub_params}"))
     except Exception as exc:
         print(f"    MODIS FAILED for {code}: {type(exc).__name__}: {str(exc)[:140]}")
 
@@ -101,8 +113,9 @@ def fetch_region(code: str, lat: float, lon: float) -> None:
         "daily": "precipitation_sum,temperature_2m_max,temperature_2m_min",
         "timezone": "GMT",
     })
-    save(code, "openmeteo_daily.json",
-         get_json(f"https://archive-api.open-meteo.com/v1/archive?{om_params}"))
+    if not already_saved(code, "openmeteo_daily.json"):
+        save(code, "openmeteo_daily.json",
+             get_json(f"https://archive-api.open-meteo.com/v1/archive?{om_params}"))
 
 
 def main() -> None:
