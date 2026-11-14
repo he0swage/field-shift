@@ -1,0 +1,62 @@
+{
+  "rainfall": {
+    "en": "The region received about 603.8 mm of rain per year on average over 2015-2024. Data sources disagree or data is limited, so treat this as a rough indication only.",
+    "fr": "",
+    "ar": "",
+    "_confidence": "low"
+  },
+  "rainfall_trend": {
+    "en": "Rainfall shows no clear long-term trend over 1995-2024. Data sources disagree or data is limited, so treat this as a rough indication only.",
+    "fr": "",
+    "ar": "",
+    "_confidence": "low"
+  },
+  "water_stress": {
+    "en": "Recent years (2015-2024) were about 17% drier than the 1995-2014 average of the same region. Definition is still being confirmed by the team.",
+    "fr": "",
+    "ar": "",
+    "_confidence": "pending Alaa"
+  },
+  "hot_days": {
+    "en": "During grain filling (April to June), the crop endures about 9.7 hot days (above 35.0 degrees C) per year. Data sources agree only roughly, so treat this as a good estimate.",
+    "fr": "",
+    "ar": "",
+    "_confidence": "medium"
+  },
+  "frost_days": {
+    "en": "Spring frost (March to April) still reaches the crop on about 0.4 nights per year. Data sources disagree or data is limited, so treat this as a rough indication only.",
+    "fr": "",
+    "ar": "",
+    "_confidence": "low"
+  },
+  "extreme_rain_days": {
+    "en": "Expect about 5.0 days per year with intense rain over 20.0 mm. Data sources disagree or data is limited, so treat this as a rough indication only.",
+    "fr": "",
+    "ar": "",
+    "_confidence": "low"
+  },
+  "longest_dry_spell_days": {
+    "en": "The longest stretch without effective rain within the growing season lasts about 22.7 days on average. Data sources disagree or data is limited, so treat this as a rough indication only.",
+    "fr": "",
+    "ar": "",
+    "_confidence": "low"
+  },
+  "soil": {
+    "en": "Soil organic matter is medium (17.08 g/kg in the top 30 cm), pH around 7.5. SoilGrids is a model estimate, not a lab measurement. Data sources agree only roughly, so treat this as a good estimate.",
+    "fr": "",
+    "ar": "",
+    "_confidence": "medium"
+  },
+  "ndvi": {
+    "en": "Satellite greenness (NDVI) from the nearby 5x5 km pixel averaged over 2020-2024 suggests a yield baseline of 0.578 (0-1 scale). This is a rough proxy: no crop mask, no pixel quality filter, only 5 years. Data sources disagree or data is limited, so treat this as a rough indication only.",
+    "fr": "",
+    "ar": "",
+    "_confidence": "low"
+  },
+  "rainfall_source_disagreement": {
+    "en": "Careful: two independent rainfall datasets disagree here (NASA POWER says 684.4 mm/yr over 1995-2024, ERA5 says 491.2 mm/yr), so the exact amount is uncertain even though the drought pattern is consistent. Data sources disagree or data is limited, so treat this as a rough indication only.",
+    "fr": "",
+    "ar": "",
+    "_confidence": "low"
+  }
+}

@@ -467,6 +467,8 @@ def build_region(code: str, raw_dir: Path, out_dir: Path, thr: dict, stamp: str 
 
     (out_dir / "indicators.json").write_text(json.dumps(indicators, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
+    (out_dir / "climate_text.json").write_text(json.dumps(climate_text(indicators, t), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
     (out_dir / "soil.json").write_text(json.dumps({
         "region": code, "lat": REGIONS_LAT[code], "lon": REGIONS_LON[code], **soil,
         "soc_class_rule": "low < 10, medium 10-20, high > 20 g/kg (domain/thresholds.json, pending Younes)",
@@ -559,6 +561,7 @@ def main() -> None:
     args = ap.parse_args()
 
     thr = load_thresholds()
+    built = []
     for code in args.regions.split(","):
         reg = next((cfg for cfg in REGIONS.values() if cfg["code"] == code), None)
         if reg is None:
@@ -567,16 +570,114 @@ def main() -> None:
         out_dir = PROCESSED / code
         print(f"[{code}] building from {raw_dir} ...", flush=True)
         ind = build_region(code, raw_dir, out_dir, thr, args.stamp)
+        built.append(ind)
         p = ind["suggested_priorities"]
         print(f"   rain={ind['rainfall_mm']['value']} stress={ind['water_stress']['value']} "
               f"hot={ind['hot_days']['value']} frost={ind['frost_days']['value']} "
               f"priorities={p['save_water']}/{p['protect_soil']}/{p['yield_']}", flush=True)
+
+    # regions summary for the map (Nazim): one small file, marker colors/labels
+    summary = {
+        "description": "One row per region for the map view. Written by analysis/build_indicators.py.",
+        "note": "region ids/coordinates come from domain/regions.csv (see docs/decision_sheet.md #9/#10).",
+        "regions": [{
+            "id": ind["region"],
+            "name": ind["label"],
+            "lat": ind["lat"],
+            "lon": ind["lon"],
+            "rainfall_trend_mm_per_decade": ind["rainfall_trend"]["sen_slope_mm_per_decade"],
+            "trend_label": ind["rainfall_trend"]["label"],
+            "trend_confidence": ind["rainfall_trend"]["confidence"],
+        } for ind in built],
+    }
+    (PROCESSED / "regions_summary.json").write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"wrote {PROCESSED / 'regions_summary.json'}")
 
 
 # legacy lookup tables used by build_region (kept simple, sourced from REGIONS)
 REGIONS_NAME = {cfg["code"]: cfg["name"] for cfg in REGIONS.values()}
 REGIONS_LAT = {cfg["code"]: cfg["lat"] for cfg in REGIONS.values()}
 REGIONS_LON = {cfg["code"]: cfg["lon"] for cfg in REGIONS.values()}
+
+
+# ----------------------------------------------------------------- plain-language text (deterministic templates)
+
+_CONF_PHRASE = {
+    "high": "Data sources agree well, so this number is fairly reliable.",
+    "medium": "Data sources agree only roughly, so treat this as a good estimate.",
+    "low": "Data sources disagree or data is limited, so treat this as a rough indication only.",
+    "pending Alaa": "Definition is still being confirmed by the team.",
+}
+
+
+def climate_text(ind: dict, t: dict) -> dict:
+    """One short English sentence per indicator, built deterministically from the numbers.
+
+    en/fr/ar keys exist for every entry; only en is filled in this step (fr/ar = Should).
+    """
+    def with_conf(en: str, conf: str | None) -> dict:
+        phrase = _CONF_PHRASE.get(conf, "") if conf else ""
+        return {"en": (en + " " + phrase).strip(), "fr": "", "ar": "", "_confidence": conf}
+
+    rain = ind["rainfall_mm"]
+    trend = ind["rainfall_trend"]
+    hot = ind["hot_days"]
+    frost = ind["frost_days"]
+    ext = ind["extreme_rain_days"]
+    spell = ind["longest_dry_spell_days"]
+    stress = ind["water_stress"]
+    soc = ind["organic_carbon"]
+    ph = ind["ph"]
+    ndvi = ind["ndvi"]
+
+    trend_sentence = (
+        f"Rainfall has declined by about {abs(trend['sen_slope_mm_per_decade']):.0f} mm per decade over 1995-2024 "
+        f"(two independent trend tests agree)." if trend["label"] == "both methods agree"
+        else "Rainfall shows no clear long-term trend over 1995-2024.")
+
+    text = {
+        "rainfall": with_conf(
+            f"The region received about {rain['value']} mm of rain per year on average over "
+            f"{rain['window'].split(', mean')[0]}.", rain["confidence"]),
+        "rainfall_trend": with_conf(trend_sentence, trend["confidence"]),
+        "water_stress": with_conf(
+            f"Recent years ({stress['window'].split(' vs ')[1]}) were about "
+            f"{stress['value'] * 100:.0f}% drier than the 1995-2014 average of the same region.",
+            "pending Alaa"),
+        "hot_days": with_conf(
+            f"During grain filling (April to June), the crop endures about {hot['value']} hot days "
+            f"(above {t['hot']} degrees C) per year.", hot["confidence"]),
+        "frost_days": with_conf(
+            f"Spring frost (March to April) still reaches the crop on about {frost['value']} nights per year.",
+            frost["confidence"]),
+        "extreme_rain_days": with_conf(
+            f"Expect about {ext['value']} days per year with intense rain over {t['extreme']} mm.",
+            ext["confidence"]),
+        "longest_dry_spell_days": with_conf(
+            f"The longest stretch without effective rain within the growing season lasts about "
+            f"{spell['value']} days on average.", spell["confidence"]),
+        "soil": with_conf(
+            f"Soil organic matter is {soc['class']} ({soc['g_per_kg']} g/kg in the top 30 cm), "
+            f"pH around {ph['value']}. SoilGrids is a model estimate, not a lab measurement.",
+            soc["confidence"]),
+        "ndvi": with_conf(
+            f"Satellite greenness (NDVI) from the nearby 5x5 km pixel averaged over 2020-2024 suggests a "
+            f"yield baseline of {ndvi['yield_baseline']} (0-1 scale). This is a rough proxy: no crop mask, "
+            f"no pixel quality filter, only 5 years.", "low"),
+    }
+
+    # source-disagreement sentence, always present, wording depends on the confidence rule
+    r30 = ind["rainfall_30yr_mean_mm"]
+    if rain["confidence"] == "low":
+        text["rainfall_source_disagreement"] = with_conf(
+            f"Careful: two independent rainfall datasets disagree here (NASA POWER says "
+            f"{r30['value']} mm/yr over 1995-2024, ERA5 says {r30['crosscheck_value']} mm/yr), so the exact "
+            f"amount is uncertain even though the drought pattern is consistent.", "low")
+    else:
+        text["rainfall_source_disagreement"] = with_conf(
+            f"NASA POWER and ERA5 differ by under 25 percent on rainfall over 1995-2024 "
+            f"({r30['value']} vs {r30['crosscheck_value']} mm/yr).", rain["confidence"])
+    return text
 
 if __name__ == "__main__":
     main()

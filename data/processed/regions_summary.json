@@ -1,0 +1,33 @@
+{
+  "description": "One row per region for the map view. Written by analysis/build_indicators.py.",
+  "note": "region ids/coordinates come from domain/regions.csv (see docs/decision_sheet.md #9/#10).",
+  "regions": [
+    {
+      "id": "setif",
+      "name": "Sétif High Plateaux",
+      "lat": 36.15,
+      "lon": 5.38,
+      "rainfall_trend_mm_per_decade": -44.1,
+      "trend_label": "both methods agree",
+      "trend_confidence": "high"
+    },
+    {
+      "id": "constantine",
+      "name": "Constantine / El Khroub Plains",
+      "lat": 36.26,
+      "lon": 6.68,
+      "rainfall_trend_mm_per_decade": -46.4,
+      "trend_label": "no clear trend",
+      "trend_confidence": "low"
+    },
+    {
+      "id": "tiaret",
+      "name": "Tiaret Western High Plateaux",
+      "lat": 35.34,
+      "lon": 1.38,
+      "rainfall_trend_mm_per_decade": -16.8,
+      "trend_label": "no clear trend",
+      "trend_confidence": "low"
+    }
+  ]
+}

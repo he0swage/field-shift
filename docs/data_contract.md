@@ -12,6 +12,8 @@ The API and frontend read exactly these files; changes are announced before anyo
 | `data/processed/<region>/indicators.json` | `analysis/build_indicators.py` | small | headline indicators for the API/UI |
 | `data/processed/<region>/soil.json` | `analysis/build_indicators.py` | small | SoilGrids SOC + pH |
 | `data/processed/<region>/data_quality.md` | `analysis/build_indicators.py` | small | missing data, gaps, source disagreements, caveats |
+| `data/processed/<region>/climate_text.json` | `analysis/build_indicators.py` | small | **NEW in step 3 — announced 2026-11-14**: one plain-language sentence per indicator for the UI (`en`/`fr`/`ar` keys; `en` filled, `fr`/`ar` empty for now) plus a `_confidence` field per entry. Deterministic templates built from the same numbers as `indicators.json`. |
+| `data/processed/regions_summary.json` | `analysis/build_indicators.py` | small | **NEW in step 3 — announced 2026-11-14**: one row per region (`id`, `name`, `lat`, `lon`, `rainfall_trend_mm_per_decade` = Sen slope, `trend_label`, `trend_confidence`) for map markers. |
 | `domain/thresholds.json` | Achref, values pending Younes | small | every threshold/window the pipeline and engine share |
 | `domain/regions.csv` | Achref | small | region ids, codes, pipeline coordinates + coordinate-conflict flags |
 

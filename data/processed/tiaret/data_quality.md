@@ -1,6 +1,6 @@
 # Data quality — tiaret
 
-Generated offline by `analysis/build_indicators.py` from `data/raw/tiaret/`. Run stamp: 2026-11-14 step2.
+Generated offline by `analysis/build_indicators.py` from `data/raw/tiaret/`. Run stamp: 2026-11-14 step3.
 
 ## Missing data (NASA POWER, 1995-2024)
 
