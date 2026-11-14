@@ -37,17 +37,24 @@ def power_stats(doc: dict) -> dict:
     frost: dict[int, int] = {}
     dry: dict[int, int] = {}
     daily: dict[int, list[float]] = {}
+    season_rain: dict[int, float] = {}
+    hot_apr_jun: dict[int, int] = {}
     for d in sorted(prec.keys()):
         pr, tx, tn = prec.get(d, -999.0), tmax.get(d, -999.0), tmin.get(d, -999.0)
         if pr <= -900 or tx <= -900 or tn <= -900:
             continue
         yr = int(d[:4])
+        mo = int(d[4:6])
         rain_by_year[yr] = rain_by_year.get(yr, 0.0) + pr
         daily.setdefault(yr, []).append(pr)
         if tx > 35.0:
             hot[yr] = hot.get(yr, 0) + 1
+            if 4 <= mo <= 6:
+                hot_apr_jun[yr] = hot_apr_jun.get(yr, 0) + 1
         if tn < 0.0:
             frost[yr] = frost.get(yr, 0) + 1
+        season = yr - 1 if mo <= 5 else yr  # Sep..May season, labelled by its September year
+        season_rain[season] = season_rain.get(season, 0.0) + pr
     years = sorted(rain_by_year)
     for y in years:
         cur = best = 0
@@ -55,6 +62,7 @@ def power_stats(doc: dict) -> dict:
             cur = cur + 1 if pr < 1.0 else 0
             best = max(best, cur)
         dry[y] = best
+    complete_seasons = [s for s in sorted(season_rain) if 1995 <= s <= 2023]
     return {
         "source": "NASA POWER daily (PRECTOTCORR/T2M_MAX/T2M_MIN)",
         "years_count": len(years),
@@ -62,6 +70,8 @@ def power_stats(doc: dict) -> dict:
         "hot_days_mean": round(statistics.mean(hot.get(y, 0) for y in years), 1),
         "frost_days_mean": round(statistics.mean(frost.get(y, 0) for y in years), 1),
         "longest_dry_spell_days_mean": round(statistics.mean(dry[y] for y in years), 1),
+        "rain_sep_may_mm_mean": round(statistics.mean(season_rain[s] for s in complete_seasons), 1),
+        "hot_days_apr_jun_mean": round(statistics.mean(hot_apr_jun.get(y, 0) for y in years), 1),
     }
 
 
@@ -74,9 +84,12 @@ def openmeteo_stats(doc: dict) -> dict:
     frost: dict[int, int] = {}
     dry: dict[int, int] = {}
     daily: dict[int, list[float]] = {}
+    season_rain: dict[int, float] = {}
+    hot_apr_jun: dict[int, int] = {}
     n_missing = 0
     for i, ds in enumerate(dates):
         yr = int(ds[:4])
+        mo = int(ds[5:7])
         pr, tx, tn = pr_list[i], tx_list[i], tn_list[i]
         if pr is None or tx is None or tn is None:
             n_missing += 1
@@ -85,8 +98,12 @@ def openmeteo_stats(doc: dict) -> dict:
         daily.setdefault(yr, []).append(pr)
         if tx > 35.0:
             hot[yr] = hot.get(yr, 0) + 1
+            if 4 <= mo <= 6:
+                hot_apr_jun[yr] = hot_apr_jun.get(yr, 0) + 1
         if tn < 0.0:
             frost[yr] = frost.get(yr, 0) + 1
+        season = yr - 1 if mo <= 5 else yr  # Sep..May season, labelled by its September year
+        season_rain[season] = season_rain.get(season, 0.0) + pr
     years = sorted(rain_by_year)
     for y in years:
         cur = best = 0
@@ -94,6 +111,7 @@ def openmeteo_stats(doc: dict) -> dict:
             cur = cur + 1 if pr < 1.0 else 0
             best = max(best, cur)
         dry[y] = best
+    complete_seasons = [s for s in sorted(season_rain) if 1995 <= s <= 2023]
     return {
         "source": "Open-Meteo archive ERA5 daily (precipitation_sum/t2m_max/t2m_min)",
         "years_count": len(years),
@@ -102,6 +120,8 @@ def openmeteo_stats(doc: dict) -> dict:
         "hot_days_mean": round(statistics.mean(hot.get(y, 0) for y in years), 1),
         "frost_days_mean": round(statistics.mean(frost.get(y, 0) for y in years), 1),
         "longest_dry_spell_days_mean": round(statistics.mean(dry[y] for y in years), 1),
+        "rain_sep_may_mm_mean": round(statistics.mean(season_rain[s] for s in complete_seasons), 1),
+        "hot_days_apr_jun_mean": round(statistics.mean(hot_apr_jun.get(y, 0) for y in years), 1),
     }
 
 
@@ -119,13 +139,17 @@ def main() -> None:
             "delta_rain_mm": round(om["rain_30yr_mean_mm"] - power["rain_30yr_mean_mm"], 1),
             "delta_hot_days": round(om["hot_days_mean"] - power["hot_days_mean"], 1),
             "delta_frost_days": round(om["frost_days_mean"] - power["frost_days_mean"], 1),
+            "delta_rain_sep_may_mm": round(om["rain_sep_may_mm_mean"] - power["rain_sep_may_mm_mean"], 1),
+            "delta_hot_days_apr_jun": round(om["hot_days_apr_jun_mean"] - power["hot_days_apr_jun_mean"], 1),
         }
         dest = OUT / code / "crosscheck_openmeteo.json"
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_text(json.dumps(out, indent=2) + "\n")
         print(f"[{code}] POWER {power['rain_30yr_mean_mm']} mm vs ERA5 {om['rain_30yr_mean_mm']} mm "
               f"(delta {out['delta_rain_mm']:+d}); hot {power['hot_days_mean']}/{om['hot_days_mean']}; "
-              f"frost {power['frost_days_mean']}/{om['frost_days_mean']}")
+              f"frost {power['frost_days_mean']}/{om['frost_days_mean']}; "
+              f"Sep-May {power['rain_sep_may_mm_mean']}/{om['rain_sep_may_mm_mean']}; "
+              f"Apr-Jun hot {power['hot_days_apr_jun_mean']}/{om['hot_days_apr_jun_mean']}")
 
 
 if __name__ == "__main__":
