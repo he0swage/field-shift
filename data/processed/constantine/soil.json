@@ -2,13 +2,16 @@
   "region": "constantine",
   "lat": 36.26,
   "lon": 6.68,
-  "fetched_at": "2026-11-14T12:30:22Z",
-  "source": "ISRIC SoilGrids v2.0 live (0-30cm depth-weighted 5:10:15)",
+  "source": "ISRIC SoilGrids v2.0 (offline from data/raw)",
+  "method": "0-30 cm depth-weighted 5:10:15, dg/kg divided by 10 (pH x10 divided by 10)",
   "soc_g_per_kg": 17.08,
   "ph": 7.5,
   "soc_layers_dg_per_kg": {
     "0-5cm": 327,
     "5-15cm": 160,
     "15-30cm": 126
-  }
+  },
+  "confidence": "medium",
+  "confidence_note": "SoilGrids is a 250 m model estimate; PRD section 6.4: soil is at best medium",
+  "soc_class_rule": "low < 10, medium 10-20, high > 20 g/kg (domain/thresholds.json, pending Younes)"
 }
