@@ -60,6 +60,7 @@ def region_payload(code):
         out[f"frost_{label}"] = round(float(((lf["tmin"] < 0.0) & lf["tmin"].notna()).groupby(lf.index.year).sum().mean()), 1)
 
     # (e) source: ERA5 annual rain + trend
+    out["rain_30yr_power"] = round(sum(ap[y] for y in range(1995, 2025)) / 30, 1)
     out["rain_30yr_era5"] = round(sum(ae[y] for y in range(1995, 2025)) / 30, 1)
     out["rain_2015_era5"] = round(sum(ae[y] for y in range(2015, 2025)) / 10, 1)
     yrs = list(range(1995, 2025))
@@ -79,8 +80,7 @@ def main():
         print(f"        hot 33/35/37 = {r['hot_33']}/{r['hot_35']}/{r['hot_37']}  "
               f"frost feb-apr/mar-apr = {r['frost_feb_apr']}/{r['frost_mar_apr']}")
         tp, te = r["trend_power"], r["trend_era5"]
-        print(f"        rain30yr POWER={round(sum(ap[y] for y in range(1995, 2025)) / 30, 1)} "
-              f"ERA5={r['rain_30yr_era5']} | trend POWER: {tp['label']} "
+        print(f"        rain30yr POWER={r['rain_30yr_power']} ERA5={r['rain_30yr_era5']} | trend POWER: {tp['label']} "
               f"({tp['ols_p']}/{tp['mk_p']}) | ERA5: {te['label']} ({te['ols_p']}/{te['mk_p']})")
 
     doc = {

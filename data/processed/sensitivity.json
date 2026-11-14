@@ -15,6 +15,7 @@
       "hot_37": 0.9,
       "frost_feb_apr": 14.7,
       "frost_mar_apr": 4.5,
+      "rain_30yr_power": 574.9,
       "rain_30yr_era5": 506.2,
       "rain_2015_era5": 405.5,
       "trend_era5": {
@@ -52,6 +53,7 @@
       "hot_37": 5.7,
       "frost_feb_apr": 2.6,
       "frost_mar_apr": 0.4,
+      "rain_30yr_power": 684.4,
       "rain_30yr_era5": 491.2,
       "rain_2015_era5": 426.7,
       "trend_era5": {
@@ -89,6 +91,7 @@
       "hot_37": 4.2,
       "frost_feb_apr": 4.6,
       "frost_mar_apr": 1.1,
+      "rain_30yr_power": 575.3,
       "rain_30yr_era5": 401.7,
       "rain_2015_era5": 398.5,
       "trend_era5": {
