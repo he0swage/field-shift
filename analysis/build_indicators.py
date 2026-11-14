@@ -243,22 +243,30 @@ def rel_diff_confidence(power: float, era5: float, missing_share: float, unit_ma
 
 # ----------------------------------------------------------------- soil & NDVI
 
-def soil_from_raw(raw_dir: Path) -> dict:
+def soil_from_raw(raw_dir: Path, thresholds: dict | None = None) -> dict:
     doc = json.loads((raw_dir / "soilgrids.json").read_text())
     layers = {l["name"]: {d["label"]: d["values"]["mean"] for d in l["depths"]}
               for l in doc["properties"]["layers"]}
     weights = {"0-5cm": 5, "5-15cm": 10, "15-30cm": 15}
     soc = sum(weights[k] * layers["soc"][k] for k in weights) / 30.0 / 10.0
     ph = sum(weights[k] * layers["phh2o"][k] for k in weights) / 30.0 / 10.0
+    soc_class_rule = soc_class_rule_str(thresholds)
     return {
         "source": "ISRIC SoilGrids v2.0 (offline from data/raw)",
         "method": "0-30 cm depth-weighted 5:10:15, dg/kg divided by 10 (pH x10 divided by 10)",
         "soc_g_per_kg": round(soc, 2),
+        "soc_class": soc_class(soc, thresholds),
         "ph": round(ph, 2),
         "soc_layers_dg_per_kg": layers["soc"],
         "confidence": "medium",
         "confidence_note": "SoilGrids is a 250 m model estimate; PRD section 6.4: soil is at best medium",
+        "soc_class_rule": soc_class_rule,
     }
+
+
+def soc_class_rule_str(thresholds: dict | None = None) -> str:
+    t = (thresholds or {}).get("soc_classes", {"low_max": 10.0, "high_min": 20.0})
+    return f"low < {t['low_max']}, medium {t['low_max']}-{t['high_min']}, high > {t['high_min']} g/kg (pending Younes)"
 
 
 def ndvi_from_raw(raw_dir: Path) -> dict:
@@ -391,7 +399,7 @@ def build_region(code: str, raw_dir: Path, out_dir: Path, thr: dict, stamp: str 
 
     trend = trend_block([y for y in years if y in annual], [annual[y] for y in years if y in annual])
 
-    soil = soil_from_raw(raw_dir)
+    soil = soil_from_raw(raw_dir, thr)
     cls = soc_class(soil["soc_g_per_kg"], thr)
     ndvi = ndvi_from_raw(raw_dir)
     prio = suggested_priorities(ws, cls)

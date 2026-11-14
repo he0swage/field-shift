@@ -5,6 +5,7 @@
   "source": "ISRIC SoilGrids v2.0 (offline from data/raw)",
   "method": "0-30 cm depth-weighted 5:10:15, dg/kg divided by 10 (pH x10 divided by 10)",
   "soc_g_per_kg": 12.52,
+  "soc_class": "medium",
   "ph": 7.77,
   "soc_layers_dg_per_kg": {
     "0-5cm": 213,
