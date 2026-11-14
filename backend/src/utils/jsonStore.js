@@ -1,19 +1,35 @@
-import { readFileSync, writeFileSync } from 'fs';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+const fs = require("node:fs");
+const path = require("node:path");
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname  = dirname(__filename);
+const dataPath = path.resolve(__dirname, "../../../data/regional/all_indicators.json");
 
-const DATA_PATH = join(__dirname, '../data/crops.data.json');
-
-// Equivalent to: await Model.find()
-export function readJsonFile() {
-  const raw = readFileSync(DATA_PATH, 'utf-8');
-  return JSON.parse(raw);
+function readRegionsFile() {
+  const fileContents = fs.readFileSync(dataPath, "utf8");
+  return JSON.parse(fileContents);
 }
 
-// Equivalent to: await doc.save()
-export function writeJsonFile(data) {
-  writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), 'utf-8');
+function listRegions() {
+  return Object.values(readRegionsFile());
 }
+
+function findRegionByCode(regionCode) {
+  if (!regionCode) return null;
+  const normalizedCode = String(regionCode).trim().toLowerCase();
+
+  // Support région démo demandée dans le sujet (ex: FR-OCC)
+  if (normalizedCode === "fr-occ" || normalizedCode.includes("occitanie") || normalizedCode.includes("demo")) {
+    return {
+      code: regionCode,
+      label: "Occitanie — démo",
+      region: "FR-OCC",
+      isDemo: true,
+    };
+  }
+
+  return listRegions().find((region) =>
+    region.code.toLowerCase() === normalizedCode ||
+    region.region.toLowerCase() === normalizedCode
+  );
+}
+
+module.exports = { findRegionByCode, listRegions };
