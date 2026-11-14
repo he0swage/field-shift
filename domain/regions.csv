@@ -1,0 +1,4 @@
+region_id,code,name,lat,lon,coord_source,note
+regionA,setif,Sétif High Plateaux,36.15,5.38,"analysis/fetch_real_data.py v1 REGIONS (pipeline v1 and v2)","regions.json (Younes) uses 36.19/5.41; frontend/src/data/regions.js uses 36.15/5.38 (same here)"
+regionB,constantine,Constantine / El Khroub Plains,36.26,6.68,"analysis/fetch_real_data.py v1 REGIONS (pipeline v1 and v2)","CONFLICT: regions.json (Younes) uses 36.36/6.61 and the frontend uses 36.16/6.68 - three different points for this region; pipeline ran 36.26/6.68"
+regionC,tiaret,Tiaret Western High Plateaux,35.34,1.38,"analysis/fetch_real_data.py v1 REGIONS (pipeline v1 and v2)","regions.json (Younes) uses 35.37/1.32; frontend/src/data/regions.js uses 35.34/1.38 (same here)"

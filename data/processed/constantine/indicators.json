@@ -1,0 +1,120 @@
+{
+  "region": "constantine",
+  "code": "constantine",
+  "label": "Constantine / El Khroub Plains",
+  "lat": 36.26,
+  "lon": 6.68,
+  "sources": {
+    "climate": "NASA POWER daily 1995-2024 PRECTOTCORR/T2M_MAX/T2M_MIN (offline from data/raw)",
+    "crosscheck": "Open-Meteo ERA5 archive daily 1995-2024 (offline from data/raw)",
+    "soil": "ISRIC SoilGrids v2.0 (offline from data/raw)",
+    "ndvi": "MODIS MOD13Q1 250 m via ORNL DAAC REST (offline from data/raw)"
+  },
+  "thresholds_used": {
+    "file": "domain/thresholds.json",
+    "sha256_16": "358ce410e8e56d5b"
+  },
+  "rainfall_mm": {
+    "value": 603.8,
+    "unit": "mm/yr",
+    "window": "2015-2024",
+    "crosscheck_value": 426.7,
+    "confidence": "low"
+  },
+  "rainfall_30yr_mean_mm": {
+    "value": 684.4,
+    "unit": "mm/yr",
+    "window": "1995-2024",
+    "crosscheck_value": 491.2,
+    "confidence": "low"
+  },
+  "water_stress": {
+    "value": 0.1668,
+    "window": "ref 1995-2014 vs 2015-2024",
+    "confidence": "pending Alaa",
+    "note": "pending Alaa (recent-window choice) - see logs/step1_report.md finding c"
+  },
+  "water_stress_5yr": {
+    "value": 0.2761,
+    "window": "ref 1995-2014 vs 2020-2024",
+    "confidence": "sensitivity check only",
+    "note": "v1's 2020-2024 version kept for comparison"
+  },
+  "rainfall_trend": {
+    "window": "1995-2024",
+    "ols_slope_mm_per_decade": -47.3,
+    "ols_p": 0.125,
+    "sen_slope_mm_per_decade": -46.4,
+    "mk_p": 0.1435,
+    "label": "no clear trend",
+    "confidence": "low",
+    "unit": "mm/decade"
+  },
+  "hot_days": {
+    "value": 9.7,
+    "unit": "days/yr",
+    "window": "grain-filling window months [4, 5, 6], mean 1995-2024",
+    "crosscheck_value": 8.0,
+    "confidence": "medium"
+  },
+  "frost_days": {
+    "value": 0.4,
+    "unit": "days/yr",
+    "window": "late-frost window months [3, 4], mean 1995-2024",
+    "crosscheck_value": 0.7,
+    "confidence": "low"
+  },
+  "extreme_rain_days": {
+    "value": 5.0,
+    "unit": "days/yr",
+    "window": "calendar year, mean 1995-2024",
+    "crosscheck_value": null,
+    "confidence": "low"
+  },
+  "longest_dry_spell_days": {
+    "value": 22.7,
+    "unit": "days",
+    "window": "growing season months [10, 11, 12, 1, 2, 3, 4, 5], mean 1995-2024",
+    "crosscheck_value": null,
+    "confidence": "low"
+  },
+  "organic_carbon": {
+    "g_per_kg": 17.08,
+    "class": "medium",
+    "unit": "g/kg, 0-30 cm depth-weighted 5:10:15",
+    "confidence": "medium"
+  },
+  "ph": {
+    "value": 7.5,
+    "unit": "pH (H2O), 0-30 cm depth-weighted 5:10:15",
+    "confidence": "medium"
+  },
+  "ndvi": {
+    "available": true,
+    "source": "MODIS MOD13Q1 250 m via ORNL DAAC REST (offline from data/raw)",
+    "window": "2020-2024",
+    "patch": "5x5 km",
+    "mean_spring_peak_ndvi": 0.539,
+    "spring_peaks_by_year": {
+      "2020": 0.609,
+      "2021": 0.526,
+      "2022": 0.559,
+      "2023": 0.442,
+      "2024": 0.559
+    },
+    "yield_baseline": 0.578,
+    "normalization": "clamp((mean_spring_peak_ndvi - 0.25) / 0.50, 0, 1)",
+    "caveat": "no cropland mask (ESA WorldCover class 40 not applied), no pixel QA filter, 5 years only",
+    "confidence": "low"
+  },
+  "suggested_priorities": {
+    "save_water": 37,
+    "protect_soil": 33,
+    "yield_": 30,
+    "rule": "PRD v3 section 6.2",
+    "basis": {
+      "water_stress_used": 0.1668,
+      "soc_class": "medium"
+    }
+  }
+}

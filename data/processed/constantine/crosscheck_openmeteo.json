@@ -1,0 +1,31 @@
+{
+  "region": "constantine",
+  "generated_at": "2026-11-14T13:28:22Z",
+  "note": "Cross-check only; pipeline v1 (fetch_real_data.py) does not consume this file.",
+  "power": {
+    "source": "NASA POWER daily (PRECTOTCORR/T2M_MAX/T2M_MIN)",
+    "years_count": 30,
+    "rain_30yr_mean_mm": 684.4,
+    "hot_days_mean": 52.9,
+    "frost_days_mean": 5.7,
+    "longest_dry_spell_days_mean": 40.0,
+    "rain_sep_may_mm_mean": 688.5,
+    "hot_days_apr_jun_mean": 9.7
+  },
+  "openmeteo": {
+    "source": "Open-Meteo archive ERA5 daily (precipitation_sum/t2m_max/t2m_min)",
+    "years_count": 30,
+    "days_missing_all_vars": 0,
+    "rain_30yr_mean_mm": 491.2,
+    "hot_days_mean": 43.6,
+    "frost_days_mean": 10.3,
+    "longest_dry_spell_days_mean": 39.3,
+    "rain_sep_may_mm_mean": 493.9,
+    "hot_days_apr_jun_mean": 8.0
+  },
+  "delta_rain_mm": -193.2,
+  "delta_hot_days": -9.3,
+  "delta_frost_days": 4.6,
+  "delta_rain_sep_may_mm": -194.6,
+  "delta_hot_days_apr_jun": -1.7
+}

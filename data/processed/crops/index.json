@@ -1,0 +1,20 @@
+{
+  "description": "Algerian cool-season crop/agronomy reference table converted verbatim from domain/crops_algeria.csv (originally field_shift_drive_files/data_regional/). One JSON per crop plus this index; values are the team's, all pending local review.",
+  "source": "domain/crops_algeria.csv",
+  "n_crops": 13,
+  "ids": [
+    "wheat",
+    "soft_wheat",
+    "barley",
+    "oats",
+    "triticale",
+    "chickpea",
+    "lentil",
+    "faba",
+    "vetch",
+    "canola",
+    "safflower",
+    "sunflower",
+    "fallow"
+  ]
+}

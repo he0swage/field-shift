@@ -1,0 +1,109 @@
+{
+  "_meta": {
+    "project": "Field Shift",
+    "purpose": "Single source of truth for every threshold and window used by analysis/build_indicators.py. The engine must read this file, not re-hardcode values.",
+    "note": "PRD v3 section 7 says Younes owns thresholds (hot day, frost day, extreme rain day, dry day, reference rainfall) and provides them in this file. Every value not fixed by the PRD is marked placeholder - pending Younes.",
+    "K_WATER_K_SOIL": "Intentionally absent: the engine's stress-adjustment constants are Alaa's business (PRD v3 section 6.1, open question 3), not a data threshold."
+  },
+  "agricultural_year": {
+    "definition": "September (year Y) to August (year Y+1)",
+    "months_sept_to_aug": true,
+    "status": "placeholder - pending Younes"
+  },
+  "growing_season": {
+    "definition": "October (year Y-1) to May (year Y), used for growing-season rain and the in-season longest dry spell",
+    "months": [10, 11, 12, 1, 2, 3, 4, 5],
+    "status": "placeholder - pending Younes"
+  },
+  "grain_filling_window": {
+    "definition": "April to June, used for hot days",
+    "months": [4, 5, 6],
+    "status": "placeholder - pending Younes"
+  },
+  "late_frost_window": {
+    "definition": "March to April, used for frost days",
+    "months": [3, 4],
+    "status": "placeholder - pending Younes"
+  },
+  "hot_day_max_temp_c": {
+    "value": 35.0,
+    "unit": "degC",
+    "definition": "day counts as hot when Tmax > value",
+    "status": "placeholder - pending Younes"
+  },
+  "frost_day_min_temp_c": {
+    "value": 0.0,
+    "unit": "degC",
+    "definition": "day counts as frost when Tmin < value",
+    "status": "placeholder - pending Younes"
+  },
+  "extreme_rain_day_mm": {
+    "value": 20.0,
+    "unit": "mm/day",
+    "definition": "day counts as extreme rain when PRECTOTCORR > value",
+    "status": "placeholder - pending Younes"
+  },
+  "dry_day_mm": {
+    "value": 1.0,
+    "unit": "mm/day",
+    "definition": "day counts as dry when daily rain < value; dry spell = consecutive dry days, broken by wet days AND by missing days (never merged across missing days)",
+    "status": "placeholder - pending Younes"
+  },
+  "reference_rainfall": {
+    "method": "region's own mean annual rainfall over 1995-2014 (calendar years, POWER)",
+    "source": "PRD v3 glossary defines water stress vs 'the reference rainfall' but does not fix the reference; the 1995-2014 method follows v1 and must be confirmed by Younes/Alaa",
+    "status": "placeholder - pending Younes"
+  },
+  "water_stress": {
+    "formula": "max(0, 1 - recent_mean_annual_rain / reference_mean_annual_rain)",
+    "recent_window_years": [2015, 2024],
+    "recent_5yr_sensitivity_window_years": [2020, 2024],
+    "status": "pending Alaa (recent-window choice) - see logs/step1_report.md finding c"
+  },
+  "trend": {
+    "period_years": [1995, 2024],
+    "series": "annual rainfall (calendar year, POWER)",
+    "method_a": "OLS via scipy.stats.linregress (t-distribution p-value)",
+    "method_b": "Mann-Kendall + Sen's slope",
+    "p_cutoff": 0.05,
+    "agreement_label": "both methods agree only if both p < 0.05 and slopes have the same sign; otherwise 'no clear trend'",
+    "unit": "mm/decade",
+    "status": "PRD v3 section 6.4 (both methods required); implementation pending Alaa sign-off"
+  },
+  "soc_classes_g_per_kg": {
+    "low": "below 10",
+    "medium": "10 to 20",
+    "high": "above 20",
+    "unit": "g/kg (0-30 cm, depth-weighted 5:10:15, dg/kg divided by 10)",
+    "status": "placeholder - pending Younes (v1 used 10/12/15, frontend used 12/16; this file follows the guide's Low<10 and adds 10-20/20+ bands)"
+  },
+  "suggested_priorities": {
+    "rule_source": "PRD v3 section 6.2",
+    "water_need": "min(1, water_stress / 0.3)",
+    "soil_need": "1 if SOC low, 0.5 if medium, 0.1 if high",
+    "yield_need": "max(0.2, 1 - max(water_need, soil_need))",
+    "rescale": "to sum 100, integers, largest-remainder deterministic rounding",
+    "output_keys": ["save_water", "protect_soil", "yield_"],
+    "status": "PRD v3 section 6.2 (example rule, 'thresholds set by Younes and Achref')"
+  },
+  "ndvi": {
+    "product": "MOD13Q1 250 m 16-day (ORNL DAAC REST)",
+    "window_years": [2020, 2024],
+    "spring_peak_doy": [65, 145],
+    "patch": "5x5 km",
+    "normalization": "yield_baseline = clamp((mean_spring_peak_ndvi - 0.25) / 0.50, 0, 1)",
+    "cropland_mask": false,
+    "pixel_qa_filter": false,
+    "confidence": "low",
+    "caveat": "no cropland mask, 5x5 km patch, 5 years only; do not present a coefficient of variation as reliable",
+    "status": "PRD v3 section 6 (Nice item); mask + QA pending Earthdata access"
+  },
+  "confidence_rules": {
+    "rain_hot_frost": "compare POWER vs Open-Meteo (ERA5) 30-year means: relative difference <= 10% = high, <= 25% = medium, otherwise low; downgrade one level when more than 5% of the relevant days are missing",
+    "trend": "both p < 0.05 = high; exactly one < 0.05 = medium; none = low ('no clear trend')",
+    "soil": "at best medium (SoilGrids is a 250 m model estimate, PRD section 6.4)",
+    "ndvi": "low (no cropland mask, no QA filter, 5 years)",
+    "missing_day_definition": "POWER value <= -999 (i.e. -999) or any Open-Meteo null",
+    "status": "rule proposed by Achref in Step 2; pending team review"
+  }
+}
