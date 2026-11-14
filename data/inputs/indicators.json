@@ -1,0 +1,60 @@
+{
+  "region": "regionA",
+  "code": "setif",
+  "label": "S\u00e9tif High Plateaux (36.15\u00b0N, 5.38\u00b0E)",
+  "fetched_at": "2026-11-14T12:30:22Z",
+  "sources": {
+    "climate": "NASA POWER API (daily 1995-2024, PRECTOTCORR/T2M_MAX/T2M_MIN)",
+    "soil": "ISRIC SoilGrids v2.0 live (0-30cm depth-weighted 5:10:15)",
+    "ndvi": "Regional baseline (ORNL MODIS REST unavailable: The read operation timed out)"
+  },
+  "rainfall_mm": 484.5,
+  "rainfall_30yr_mean_mm": 574.9,
+  "rainfall_reference_mm": 607.8,
+  "soil_organic_carbon_g_per_kg": 12.52,
+  "soc_threshold_g_per_kg": 15.0,
+  "ph": 7.77,
+  "water_stress": 0.2029,
+  "frost_risk": 0.86,
+  "organic_carbon": {
+    "g_per_kg": 12.52,
+    "class": "Moderate (12-15 g/kg)",
+    "deficit_score": 0.165
+  },
+  "erosion_risk": 0.48,
+  "yield_baseline": 0.44,
+  "mean_spring_peak_ndvi": null,
+  "suggested_priorities": {
+    "save_water": 34,
+    "protect_soil": 29,
+    "yield": 37
+  },
+  "confidence": {
+    "indicators": "both methods agree",
+    "ols_p": 0.0367,
+    "mk_p": 0.0092
+  },
+  "climate_baseline": {
+    "rainfall_mm": 484.5,
+    "rainfall_30yr_mean_mm": 574.9,
+    "rainfall_trend_decade_mm": -44.1,
+    "hot_days": 23.7,
+    "frost_days": 34.6,
+    "extreme_rain_days": 3.6,
+    "longest_dry_spell_days": 40.6,
+    "monthly_rain_mm": [
+      70.0,
+      50.9,
+      55.9,
+      58.6,
+      58.4,
+      25.2,
+      7.6,
+      20.6,
+      57.9,
+      44.4,
+      59.7,
+      65.6
+    ]
+  }
+}

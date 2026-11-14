@@ -1,0 +1,60 @@
+{
+  "region": "regionB",
+  "code": "constantine",
+  "label": "Constantine / El Khroub Plains (36.26\u00b0N, 6.68\u00b0E)",
+  "fetched_at": "2026-11-14T12:30:22Z",
+  "sources": {
+    "climate": "NASA POWER API (daily 1995-2024, PRECTOTCORR/T2M_MAX/T2M_MIN)",
+    "soil": "ISRIC SoilGrids v2.0 live (0-30cm depth-weighted 5:10:15)",
+    "ndvi": "Regional baseline (ORNL MODIS REST unavailable: The read operation timed out)"
+  },
+  "rainfall_mm": 524.7,
+  "rainfall_30yr_mean_mm": 684.4,
+  "rainfall_reference_mm": 724.7,
+  "soil_organic_carbon_g_per_kg": 17.08,
+  "soc_threshold_g_per_kg": 15.0,
+  "ph": 7.5,
+  "water_stress": 0.2761,
+  "frost_risk": 0.14,
+  "organic_carbon": {
+    "g_per_kg": 17.08,
+    "class": "Adequate / High (>15 g/kg)",
+    "deficit_score": 0.0
+  },
+  "erosion_risk": 0.28,
+  "yield_baseline": 0.66,
+  "mean_spring_peak_ndvi": null,
+  "suggested_priorities": {
+    "save_water": 35,
+    "protect_soil": 23,
+    "yield": 42
+  },
+  "confidence": {
+    "indicators": "no clear trend",
+    "ols_p": 0.1138,
+    "mk_p": 0.1435
+  },
+  "climate_baseline": {
+    "rainfall_mm": 524.7,
+    "rainfall_30yr_mean_mm": 684.4,
+    "rainfall_trend_decade_mm": -46.4,
+    "hot_days": 52.9,
+    "frost_days": 5.7,
+    "extreme_rain_days": 5,
+    "longest_dry_spell_days": 40.0,
+    "monthly_rain_mm": [
+      90.4,
+      67.5,
+      66.3,
+      62.7,
+      56.8,
+      23.7,
+      7.4,
+      25.0,
+      55.4,
+      57.6,
+      86.0,
+      85.6
+    ]
+  }
+}

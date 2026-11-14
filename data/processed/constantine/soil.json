@@ -1,0 +1,14 @@
+{
+  "region": "constantine",
+  "lat": 36.26,
+  "lon": 6.68,
+  "fetched_at": "2026-11-14T12:30:22Z",
+  "source": "ISRIC SoilGrids v2.0 live (0-30cm depth-weighted 5:10:15)",
+  "soc_g_per_kg": 17.08,
+  "ph": 7.5,
+  "soc_layers_dg_per_kg": {
+    "0-5cm": 327,
+    "5-15cm": 160,
+    "15-30cm": 126
+  }
+}

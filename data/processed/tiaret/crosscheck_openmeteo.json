@@ -1,0 +1,31 @@
+{
+  "region": "tiaret",
+  "generated_at": "2026-11-14T13:28:22Z",
+  "note": "Cross-check only; pipeline v1 (fetch_real_data.py) does not consume this file.",
+  "power": {
+    "source": "NASA POWER daily (PRECTOTCORR/T2M_MAX/T2M_MIN)",
+    "years_count": 30,
+    "rain_30yr_mean_mm": 575.3,
+    "hot_days_mean": 50.4,
+    "frost_days_mean": 11.1,
+    "longest_dry_spell_days_mean": 59.1,
+    "rain_sep_may_mm_mean": 580.7,
+    "hot_days_apr_jun_mean": 9.2
+  },
+  "openmeteo": {
+    "source": "Open-Meteo archive ERA5 daily (precipitation_sum/t2m_max/t2m_min)",
+    "years_count": 30,
+    "days_missing_all_vars": 0,
+    "rain_30yr_mean_mm": 401.7,
+    "hot_days_mean": 25.1,
+    "frost_days_mean": 14.8,
+    "longest_dry_spell_days_mean": 46.4,
+    "rain_sep_may_mm_mean": 405.8,
+    "hot_days_apr_jun_mean": 3.3
+  },
+  "delta_rain_mm": -173.6,
+  "delta_hot_days": -25.3,
+  "delta_frost_days": 3.7,
+  "delta_rain_sep_may_mm": -174.9,
+  "delta_hot_days_apr_jun": -5.9
+}

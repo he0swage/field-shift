@@ -1,0 +1,60 @@
+{
+  "region": "regionC",
+  "code": "tiaret",
+  "label": "Tiaret Western High Plateaux (35.34\u00b0N, 1.38\u00b0E)",
+  "fetched_at": "2026-11-14T12:30:22Z",
+  "sources": {
+    "climate": "NASA POWER API (daily 1995-2024, PRECTOTCORR/T2M_MAX/T2M_MIN)",
+    "soil": "ISRIC SoilGrids v2.0 live (0-30cm depth-weighted 5:10:15)",
+    "ndvi": "Regional baseline (ORNL MODIS REST unavailable: The read operation timed out)"
+  },
+  "rainfall_mm": 405.8,
+  "rainfall_30yr_mean_mm": 575.3,
+  "rainfall_reference_mm": 603.4,
+  "soil_organic_carbon_g_per_kg": 12.38,
+  "soc_threshold_g_per_kg": 15.0,
+  "ph": 7.57,
+  "water_stress": 0.3275,
+  "frost_risk": 0.28,
+  "organic_carbon": {
+    "g_per_kg": 12.38,
+    "class": "Moderate (12-15 g/kg)",
+    "deficit_score": 0.175
+  },
+  "erosion_risk": 0.44,
+  "yield_baseline": 0.51,
+  "mean_spring_peak_ndvi": null,
+  "suggested_priorities": {
+    "save_water": 36,
+    "protect_soil": 27,
+    "yield": 37
+  },
+  "confidence": {
+    "indicators": "no clear trend",
+    "ols_p": 0.5038,
+    "mk_p": 0.5441
+  },
+  "climate_baseline": {
+    "rainfall_mm": 405.8,
+    "rainfall_30yr_mean_mm": 575.3,
+    "rainfall_trend_decade_mm": -16.8,
+    "hot_days": 50.4,
+    "frost_days": 11.1,
+    "extreme_rain_days": 4.8,
+    "longest_dry_spell_days": 59.1,
+    "monthly_rain_mm": [
+      85.1,
+      74.0,
+      68.4,
+      64.4,
+      42.0,
+      15.7,
+      4.4,
+      11.1,
+      30.8,
+      38.6,
+      69.6,
+      71.2
+    ]
+  }
+}
