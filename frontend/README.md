@@ -12,6 +12,11 @@ npm run preview    # serve the build locally
 
 Requires Node 18+.
 
+**VS Code "Go Live" shows a blank page on `frontend/index.html`** — that file is the
+Vite source entry; browsers can't run `.jsx` directly. Either use `npm run dev`
+(recommended, live reload), or run `npm run build` and click Go Live: the repo's
+`.vscode/settings.json` points Live Server at `frontend/dist`.
+
 ## Structure
 
 ```
