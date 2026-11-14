@@ -146,7 +146,7 @@ def main() -> None:
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_text(json.dumps(out, indent=2) + "\n")
         print(f"[{code}] POWER {power['rain_30yr_mean_mm']} mm vs ERA5 {om['rain_30yr_mean_mm']} mm "
-              f"(delta {out['delta_rain_mm']:+d}); hot {power['hot_days_mean']}/{om['hot_days_mean']}; "
+              f"(delta {out['delta_rain_mm']:+.1f}); hot {power['hot_days_mean']}/{om['hot_days_mean']}; "
               f"frost {power['frost_days_mean']}/{om['frost_days_mean']}; "
               f"Sep-May {power['rain_sep_may_mm_mean']}/{om['rain_sep_may_mm_mean']}; "
               f"Apr-Jun hot {power['hot_days_apr_jun_mean']}/{om['hot_days_apr_jun_mean']}")
@@ -154,3 +154,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
