@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Field Shift — Crop Rotation Advisor</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/data.js" defer></script>
+  <script src="js/api.js" defer></script>
+  <script src="js/charts.js" defer></script>
   <script src="js/app.js" defer></script>
 </head>
 <body>
@@ -30,6 +33,7 @@
     <li><button data-step="2"><span class="num">2</span><span class="label">Rotation &amp; crops</span></button></li>
     <li><button data-step="3"><span class="num">3</span><span class="label">Priorities</span></button></li>
     <li><button data-step="4"><span class="num">4</span><span class="label">Review</span></button></li>
+    <li><button data-step="5"><span class="num">5</span><span class="label">Climate &amp; rainfall</span></button></li>
   </ol>
 </nav>
 
@@ -38,7 +42,7 @@
   <!-- ===================== STEP 1 · REGION ===================== -->
   <section data-panel="1" aria-labelledby="t1">
     <div class="step-head">
-      <div class="eyebrow">Step 1 of 4</div>
+      <div class="eyebrow">Step 1 of 5</div>
       <h2 id="t1">Where is your farm?</h2>
       <p class="lead">Choose your region. We load its climate, soil and vegetation history automatically.</p>
     </div>
@@ -71,7 +75,7 @@
   <!-- ===================== STEP 2 · ROTATION & CROPS ===================== -->
   <section data-panel="2" aria-labelledby="t2" hidden>
     <div class="step-head">
-      <div class="eyebrow">Step 2 of 4</div>
+      <div class="eyebrow">Step 2 of 5</div>
       <h2 id="t2">Your rotation &amp; allowed crops</h2>
       <p class="lead">Tell us what you plant today and which crops you are willing to grow.</p>
     </div>
@@ -155,7 +159,7 @@
   <!-- ===================== STEP 3 · PRIORITIES ===================== -->
   <section data-panel="3" aria-labelledby="t3" hidden>
     <div class="step-head">
-      <div class="eyebrow">Step 3 of 4</div>
+      <div class="eyebrow">Step 3 of 5</div>
       <h2 id="t3">What matters most on your farm?</h2>
       <p class="lead">Move the sliders. The three priorities always add up to 100 — raising one lowers the others.</p>
     </div>
@@ -204,7 +208,7 @@
   <!-- ===================== STEP 4 · REVIEW ===================== -->
   <section data-panel="4" aria-labelledby="t4" hidden>
     <div class="step-head">
-      <div class="eyebrow">Step 4 of 4</div>
+      <div class="eyebrow">Step 4 of 5</div>
       <h2 id="t4">Check your answers</h2>
       <p class="lead">Review everything before we rank rotations for your farm. Use “Edit” to change any section.</p>
     </div>
@@ -213,7 +217,80 @@
 
     <div class="step-nav">
       <button class="btn btn-secondary" data-go="3">← Back</button>
-      <div class="right"><button class="btn btn-primary" id="analyse">🔍 Analyse &amp; rank rotations</button></div>
+      <div class="right"><button class="btn btn-primary" id="analyse">🔍 See climate &amp; rainfall →</button></div>
+    </div>
+  </section>
+
+  <!-- ===================== STEP 5 · CLIMATE & RAINFALL ===================== -->
+  <section data-panel="5" aria-labelledby="t5" hidden>
+    <div class="step-head">
+      <div class="eyebrow">Step 5 of 5 · Results</div>
+      <h2 id="t5">Rainfall on your land</h2>
+      <p class="lead">How rain and heat have changed since 1995 at <b id="climateRegion"></b>, and what a drier, hotter future could mean. Data: NASA POWER 1995–2024.</p>
+    </div>
+
+    <div id="climateStatus" aria-live="polite"></div>
+
+    <div id="climateBody" class="grid">
+      <!-- What-if scenario -->
+      <div class="card tinted">
+        <div class="head-row">
+          <div>
+            <h3>What-if scenario</h3>
+            <p class="sub" style="margin-bottom:0">Test a different future. Everything below updates as you move the sliders.</p>
+          </div>
+          <button class="btn btn-secondary" id="resetScenario">↺ Today’s climate</button>
+        </div>
+        <div class="scenario">
+          <div>
+            <div class="scen-head"><label for="rainS">🌧️ Rainfall change</label><output id="rainV" for="rainS"></output></div>
+            <input type="range" id="rainS" min="-50" max="30" step="5">
+            <div class="scale"><span>−50% drier</span><span>0</span><span>+30% wetter</span></div>
+          </div>
+          <div>
+            <div class="scen-head"><label for="tempS">🌡️ Temperature change</label><output id="tempV" for="tempS"></output></div>
+            <input type="range" id="tempS" min="0" max="4" step="0.5">
+            <div class="scale"><span>today</span><span>+2 °C</span><span>+4 °C</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Indicators -->
+      <div class="climate-cards" id="climateCards"></div>
+
+      <!-- Annual rainfall history -->
+      <div class="card">
+        <h3>Yearly rainfall, 1995–2024</h3>
+        <p class="sub" id="annualCaption"></p>
+        <div id="annualChart"></div>
+        <div class="legend-row" aria-hidden="true">
+          <span><i class="sw s1"></i>Yearly rainfall</span>
+          <span><i class="sw trend-sw"></i>Trend</span>
+        </div>
+      </div>
+
+      <!-- Monthly baseline vs scenario -->
+      <div class="card">
+        <div class="head-row">
+          <div>
+            <h3>Monthly rainfall: today vs scenario</h3>
+            <p class="sub" style="margin-bottom:0">Average rain each month (mm). Hover or tap a month for exact values.</p>
+          </div>
+          <button class="btn btn-secondary" id="tableToggle" aria-expanded="false" aria-controls="monthlyTable">Show as table</button>
+        </div>
+        <div class="legend-row">
+          <span><i class="sw s1"></i>Today (baseline)</span>
+          <span><i class="sw s2"></i>Scenario</span>
+        </div>
+        <div id="monthlyChart"></div>
+        <div id="monthlyTable" class="table-wrap" hidden></div>
+        <div class="alert ok" id="monthlyInsight"></div>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn btn-secondary" data-go="4">← Back to review</button>
+      <div class="right"><button class="btn btn-secondary" data-go="1">Change region</button></div>
     </div>
   </section>
 </main>

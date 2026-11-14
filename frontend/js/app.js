@@ -1,49 +1,7 @@
 // Field Shift — single-page app logic
 'use strict';
 
-/* ------------------------------------------------------------------ *
- * Data
- * `est` lists indicators that are placeholders (not yet from the
- * data pipeline); they are flagged "estimate" in the UI.
- * ------------------------------------------------------------------ */
-const REGIONS = {
-  regionA: { label: 'Region A', name: 'Sétif High Plateaux', lat: 36.15, lon: 5.38, rain: 485,
-    ph: [7.3, 8.4], water: 30, soc: 11.2, frost: 34, erosion: 38, ndvi: 0.44,
-    est: ['water', 'soc', 'frost', 'erosion'] },
-  regionB: { label: 'Region B', name: 'Constantine El Khroub', lat: 36.16, lon: 6.68, rain: 516,
-    ph: [7.2, 8.2], water: 26, soc: 13.6, frost: 25, erosion: 35, ndvi: 0.49,
-    est: ['water', 'soc', 'frost', 'erosion'] },
-  regionC: { label: 'Region C', name: 'Tiaret Western Plateau', lat: 35.34, lon: 1.38, rain: 408,
-    ph: [7.2, 8.3], water: 33, soc: 12.38, frost: 28, erosion: 44, ndvi: 0.47,
-    est: [] },
-};
-
-const BASE_CROPS = [
-  { id: 'durum', name: 'Durum wheat', family: 'cereal' },
-  { id: 'soft', name: 'Soft wheat', family: 'cereal' },
-  { id: 'barley', name: 'Barley', family: 'cereal' },
-  { id: 'oats', name: 'Forage oats', family: 'cereal' },
-  { id: 'triticale', name: 'Triticale', family: 'cereal' },
-  { id: 'chickpea', name: 'Chickpea', family: 'legume' },
-  { id: 'lentil', name: 'Lentil', family: 'legume' },
-  { id: 'faba', name: 'Faba bean', family: 'legume' },
-  { id: 'vetch', name: 'Common vetch', family: 'legume' },
-  { id: 'rapeseed', name: 'Rapeseed', family: 'oilseed' },
-  { id: 'safflower', name: 'Safflower', family: 'oilseed' },
-  { id: 'sunflower', name: 'Sunflower', family: 'oilseed' },
-  { id: 'fallow', name: 'Worked fallow', family: 'fallow' },
-];
-const FAMILY_LABEL = { cereal: 'Cereals', legume: 'Legumes', oilseed: 'Oilseeds', fallow: 'Fallow', other: 'Other' };
-
-const PRESETS = { // family, rainMin, rainMax, pHmin, pHmax, price, yield, frost, heat
-  'Field pea': ['legume', 350, 650, 6.0, 8.0, 9500, 18, true, false],
-  'Coriander': ['other', 300, 500, 6.5, 8.0, 25000, 8, false, true],
-  'Fenugreek': ['legume', 300, 550, 6.5, 8.2, 22000, 10, false, true],
-  'Garlic': ['other', 400, 700, 6.0, 7.8, 15000, 80, true, false],
-  'Sorghum': ['cereal', 400, 800, 5.5, 8.5, 4500, 30, false, true],
-  'Maize (rainfed)': ['cereal', 500, 900, 5.8, 7.8, 4500, 35, false, false],
-  'Rice': ['cereal', 1000, 2000, 5.0, 7.0, 6000, 50, false, true],
-};
+// Data (REGIONS, BASE_CROPS, CROP_PRESETS, MONTHS) lives in js/data.js
 
 const PRIO = {
   water: { name: 'Save water', color: 'var(--water)' },
@@ -85,7 +43,7 @@ const socClass = v => v < 12 ? 'Low (< 12 g/kg)' : v <= 16 ? 'Moderate (12–16 
  * ------------------------------------------------------------------ */
 let current = 1;
 function go(step, { focus = true } = {}) {
-  step = Math.min(4, Math.max(1, +step || 1));
+  step = Math.min(5, Math.max(1, +step || 1));
   current = step;
   $$('[data-panel]').forEach(p => { p.hidden = +p.dataset.panel !== step; });
   $$('.menu button').forEach(b => {
@@ -95,6 +53,7 @@ function go(step, { focus = true } = {}) {
     b.querySelector('.num').textContent = n < step ? '✓' : n;
   });
   if (step === 4) renderSummary();
+  if (step === 5) loadClimate();
   history.replaceState(null, '', '#step-' + step);
   if (focus) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -252,9 +211,9 @@ const F = { name: $('#cName'), fam: $('#cFam'), rMin: $('#rMin'), rMax: $('#rMax
   price: $('#price'), yld: $('#yld'), frost: $('#frost'), heat: $('#heat') };
 
 $('#presets').innerHTML = '<span>Quick fill:</span>' +
-  Object.keys(PRESETS).map(n => `<button type="button" class="preset">${n}</button>`).join('');
+  Object.keys(CROP_PRESETS).map(n => `<button type="button" class="preset">${n}</button>`).join('');
 $$('.preset').forEach(b => b.addEventListener('click', () => {
-  const [fam, rmin, rmax, pmin, pmax, price, yld, frost, heat] = PRESETS[b.textContent];
+  const [fam, rmin, rmax, pmin, pmax, price, yld, frost, heat] = CROP_PRESETS[b.textContent];
   Object.assign(F.name, { value: b.textContent }); F.fam.value = fam;
   F.rMin.value = rmin; F.rMax.value = rmax; F.pMin.value = pmin; F.pMax.value = pmax;
   F.price.value = price; F.yld.value = yld; F.frost.checked = frost; F.heat.checked = heat;
@@ -378,10 +337,117 @@ function renderSummary() {
 }
 $('#analyse').addEventListener('click', () => {
   const problems = cropProblems();
-  $('#reviewMsg').innerHTML = problems.length
-    ? `<div class="alert warn"><span class="ic">⚠️</span><div><b>Fix before analysing:</b> ${problems.join(', ')}. <button class="btn btn-link" data-go="2">Go to step 2</button></div></div>`
-    : `<div class="alert ok"><span class="ic">✓</span><div><b>Your inputs are complete.</b> The ranking engine is not connected yet — your answers are saved in this browser.</div></div>`;
+  if (!problems.length) { go(5); return; }
+  $('#reviewMsg').innerHTML = `<div class="alert warn"><span class="ic">⚠️</span><div><b>Fix before analysing:</b> ${problems.join(', ')}. <button class="btn btn-link" data-go="2">Go to step 2</button></div></div>`;
 });
+
+/* ------------------------------------------------------------------ *
+ * Step 5 — Climate & rainfall on your land
+ * ------------------------------------------------------------------ */
+const scenario = Store.get('scenario', { rain: -20, temp: 2 });
+const climateCache = {};
+let climate = null;
+
+async function loadClimate() {
+  const id = state.region;
+  $('#climateRegion').textContent = `${region().name} · ${region().lat.toFixed(2)}° N, ${region().lon.toFixed(2)}° E`;
+  if (!climateCache[id]) {
+    $('#climateBody').setAttribute('aria-busy', 'true');
+    $('#climateStatus').innerHTML = `<div class="alert"><span class="ic">⏳</span><div>Loading 30 years of rainfall for ${region().name}…</div></div>`;
+    climateCache[id] = await FieldShiftAPI.getClimate(id);
+  }
+  climate = climateCache[id];
+  $('#climateBody').removeAttribute('aria-busy');
+  $('#climateStatus').innerHTML = climate.sample
+    ? `<div class="alert warn"><span class="ic">ℹ️</span><div><b>Sample data.</b> ${climate.fallbackReason || ''} These charts use placeholder values until the NASA POWER feed is connected.</div></div>`
+    : '';
+  renderClimate();
+}
+
+function trendBadge(pOls, pMk) {
+  if (pOls < 0.05 && pMk < 0.05) return '<span class="badge sig">● Clear trend · both tests agree</span>';
+  if (pOls < 0.1 || pMk < 0.1) return '<span class="badge weak">◐ Weak trend</span>';
+  return '<span class="badge none">○ No clear trend</span>';
+}
+
+function renderClimate() {
+  if (!climate) return;
+  const r = scenario.rain / 100, dT = scenario.temp;
+  $('#rainV').textContent = (scenario.rain > 0 ? '+' : '') + scenario.rain + '%';
+  $('#tempV').textContent = (dT > 0 ? '+' : '') + dT.toFixed(1) + ' °C';
+  $('#rainS').value = scenario.rain; $('#tempS').value = dT;
+  $('#rainS').setAttribute('aria-valuetext', `${scenario.rain} percent rainfall change`);
+  $('#tempS').setAttribute('aria-valuetext', `${dT} degrees warmer`);
+
+  // History statistics
+  const years = climate.annual.map(d => d.year), rains = climate.annual.map(d => d.rain);
+  const ols = Stats.ols(years, rains), mk = Stats.mannKendall(rains);
+  const mean = Math.round(rains.reduce((a, b) => a + b) / rains.length);
+
+  // Simple what-if model (transparent rules, shown to the user)
+  const et = 4 * dT;                                        // +4 % crop water demand per °C
+  const ind = climate.indicators;
+  const scen = {
+    rain: Math.round(mean * (1 + r)),
+    hot: Math.round(ind.hotDays + 9 * dT),
+    frost: Math.max(0, Math.round(ind.frostDays - 1.5 * dT)),
+    extreme: Math.max(0, Math.round(ind.extremeRainDays * (1 + r * 0.5) + 0.5 * dT)),
+    dry: Math.round(ind.longestDrySpell * (1 - r * 0.6) + 3 * dT),
+  };
+  const delta = (now, base, unit) => {
+    const d = now - base;
+    return d === 0 ? '<span class="delta">no change</span>' : `<span class="delta">${d > 0 ? '▲ +' : '▼ '}${d}${unit} vs today</span>`;
+  };
+
+  $('#climateCards').innerHTML = [
+    ['🌧️', 'Yearly rainfall', `${scen.rain} mm`, delta(scen.rain, mean, ' mm'),
+      `${ols.slope * 10 >= 0 ? '+' : ''}${(ols.slope * 10).toFixed(1)} mm per decade since ${years[0]}. ${ols.slope < 0 ? 'Less rain means low-thirst crops are safer.' : 'Rain is stable or rising.'}`,
+      trendBadge(ols.p, mk.p)],
+    ['☀️', 'Hot days (> 35 °C)', `${scen.hot} days/yr`, delta(scen.hot, ind.hotDays, ' days'), 'Heat during grain filling can shrivel late cereal harvests.'],
+    ['❄️', 'Frost days (< 0 °C)', `${scen.frost} days/yr`, delta(scen.frost, ind.frostDays, ' days'), 'Spring frost can damage early flowers on peas, lentils and faba beans.'],
+    ['⛈️', 'Heavy rain (> 20 mm/day)', `${scen.extreme} days/yr`, delta(scen.extreme, ind.extremeRainDays, ' days'), 'Downpours wash away bare topsoil if no stubble or cover remains.'],
+    ['🏜️', 'Longest dry spell', `${scen.dry} days`, delta(scen.dry, ind.longestDrySpell, ' days'), 'Long dry gaps favour deep-rooted or early-maturing crops.'],
+    ['💨', 'Crop water demand', `${et >= 0 ? '+' : ''}${et}%`, '<span class="delta">evapotranspiration</span>', 'Warmer air pulls more water out of plants and topsoil.'],
+  ].map(([ic, k, v, d, note, badge]) => `
+    <div class="metric">
+      <div class="k"><span aria-hidden="true">${ic}</span>${k}</div>
+      <div class="v">${v}</div>${d}
+      ${badge ? `<div style="margin-top:8px">${badge}</div>` : ''}
+      <div class="note" style="margin-top:8px">${note}</div>
+    </div>`).join('');
+
+  // Charts
+  Charts.annualLine($('#annualChart'), climate.annual, ols,
+    `Yearly rainfall ${years[0]}–${years.at(-1)}, average ${mean} mm, trend ${(ols.slope * 10).toFixed(1)} mm per decade`);
+  $('#annualCaption').innerHTML = `Average <b>${mean} mm/yr</b> · trend <b>${(ols.slope * 10).toFixed(1)} mm/decade</b> · OLS p = ${ols.p.toFixed(3)}, Mann–Kendall p = ${mk.p.toFixed(3)}`;
+
+  const base = climate.monthly, sc = base.map(v => Math.round(v * (1 + r)));
+  Charts.monthlyBars($('#monthlyChart'), MONTHS, base, sc,
+    `Monthly rainfall, baseline versus scenario ${scenario.rain}% rain and +${dT} °C`);
+  $('#monthlyTable').innerHTML = `<table><thead><tr><th scope="col">Month</th><th scope="col">Baseline (mm)</th><th scope="col">Scenario (mm)</th><th scope="col">Change</th></tr></thead><tbody>
+    ${MONTHS.map((m, i) => `<tr><th scope="row">${m}</th><td>${base[i]}</td><td>${sc[i]}</td><td>${sc[i] - base[i] >= 0 ? '+' : ''}${sc[i] - base[i]}</td></tr>`).join('')}
+    </tbody></table>`;
+
+  // Plain-language reading of the monthly chart
+  const wet = MONTHS.filter((_, i) => sc[i] >= 40);
+  const sowing = sc[9] + sc[10]; // Oct + Nov
+  $('#monthlyInsight').innerHTML = `<span class="ic">🧭</span><div>In this scenario, <b>${wet.length} months</b> get 40 mm or more (${wet.join(', ') || 'none'}). Autumn sowing rain (Oct + Nov) is <b>${sowing} mm</b>${sowing < 70 ? ' — sow on stored moisture and prefer early, drought-tolerant varieties.' : ', enough for normal autumn sowing.'}</div>`;
+}
+
+$('#rainS').addEventListener('input', e => { scenario.rain = +e.target.value; Store.set('scenario', scenario); renderClimate(); });
+$('#tempS').addEventListener('input', e => { scenario.temp = +e.target.value; Store.set('scenario', scenario); renderClimate(); });
+$('#resetScenario').addEventListener('click', () => {
+  const prev = { ...scenario };
+  Object.assign(scenario, { rain: 0, temp: 0 }); Store.set('scenario', scenario); renderClimate();
+  toast('Scenario reset to today’s climate.', () => { Object.assign(scenario, prev); Store.set('scenario', scenario); renderClimate(); });
+});
+$('#tableToggle').addEventListener('click', e => {
+  const t = $('#monthlyTable'), show = t.hidden;
+  t.hidden = !show; e.currentTarget.setAttribute('aria-expanded', show);
+  e.currentTarget.textContent = show ? 'Hide table' : 'Show as table';
+});
+let resizeTimer;
+window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (current === 5) renderClimate(); }, 150); });
 
 /* ------------------------------------------------------------------ *
  * Init
