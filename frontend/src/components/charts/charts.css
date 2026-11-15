@@ -28,9 +28,9 @@
 .chart .bar { transition: y .45s var(--ease), height .45s var(--ease); }
 .chart .tick { font-family: var(--font); }
 /* Soil-N chart: recommended (green, circles) vs usual (ochre, diamond) — validated pair */
-.chart .line.n-rec { stroke: #2e7340; stroke-width: 2.5; }
-.chart .dot.n-rec { fill: #2e7340; }
-.chart .dot.n-usual { fill: #b07a1c; stroke: var(--surface); stroke-width: 2; }
-.sw.n-rec-sw { background: #2e7340; border-radius: 50%; }
-.sw.n-usual-sw { background: #b07a1c; transform: rotate(45deg) scale(.85); border-radius: 2px; }
+.chart .line.n-rec { stroke: #7f9a45; stroke-width: 2.5; }
+.chart .dot.n-rec { fill: #7f9a45; }
+.chart .dot.n-usual { fill: #b5523b; stroke: var(--surface); stroke-width: 2; }
+.sw.n-rec-sw { background: #7f9a45; border-radius: 50%; }
+.sw.n-usual-sw { background: #b5523b; transform: rotate(45deg) scale(.85); border-radius: 2px; }
 

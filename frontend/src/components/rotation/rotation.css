@@ -1,12 +1,12 @@
 /* Rotation card */
 .rot-card { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 28px; box-shadow: var(--shadow-sm); }
 .rot-card + .rot-card { margin-top: 24px; }
-.rot-card.is-best { border: 2px solid var(--gold); box-shadow: 0 0 0 6px rgba(214, 162, 58, .12), var(--shadow); padding-top: 40px; background: linear-gradient(180deg, #fffaf0 0%, var(--surface) 140px); }
+.rot-card.is-best { border: 2px solid var(--gold); box-shadow: 0 0 0 6px rgba(196, 154, 108, .12), var(--shadow); padding-top: 40px; background: linear-gradient(180deg, #fbf3e4 0%, var(--surface) 140px); }
 .best-ribbon { position: absolute; top: -16px; inset-inline-start: 24px; background: var(--gold); color: var(--forest-900); font-weight: 800; font-size: 14px; padding: 6px 16px; border-radius: 999px; box-shadow: var(--shadow); }
 .rot-head { display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center; }
 @media (max-width: 640px) { .rot-head { grid-template-columns: auto 1fr; } .rot-scores { grid-column: 1 / -1; flex-direction: row; } }
 .rank-no { width: 60px; height: 60px; border-radius: 18px; display: grid; place-items: center; font-family: var(--font-display); font-size: 26px; font-weight: 700; background: var(--forest-soft); color: var(--forest); }
-.is-best .rank-no { background: var(--forest); color: #f3d48f; }
+.is-best .rank-no { background: var(--forest); color: var(--accent-light); }
 .rot-title h3 { font-size: 24px; font-family: var(--font-display); font-weight: 600; }
 .rot-title .arrow { color: var(--ink-soft); font-weight: 400; }
 .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 10px 0 0; }

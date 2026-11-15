@@ -78,14 +78,14 @@ export default function Globe({ regions, selectedId, focusTick, onSelect, labelF
 
       // atmosphere glow
       const glow = ctx.createRadialGradient(c, c, R * 0.95, c, c, R * 1.16);
-      glow.addColorStop(0, 'rgba(120, 190, 230, .45)');
-      glow.addColorStop(1, 'rgba(120, 190, 230, 0)');
+      glow.addColorStop(0, 'rgba(148, 178, 196, .45)');
+      glow.addColorStop(1, 'rgba(148, 178, 196, 0)');
       ctx.fillStyle = glow;
       ctx.beginPath(); ctx.arc(c, c, R * 1.16, 0, 2 * Math.PI); ctx.fill();
 
       // ocean
       const ocean = ctx.createRadialGradient(c - R * 0.35, c - R * 0.4, R * 0.1, c, c, R);
-      ocean.addColorStop(0, '#3d86b8'); ocean.addColorStop(0.6, '#1d5a86'); ocean.addColorStop(1, '#0c3150');
+      ocean.addColorStop(0, '#8fb0c4'); ocean.addColorStop(0.6, '#5e8aa3'); ocean.addColorStop(1, '#2f5468');
       ctx.beginPath(); path(SPHERE); ctx.fillStyle = ocean; ctx.fill();
 
       // graticule
@@ -93,7 +93,7 @@ export default function Globe({ regions, selectedId, focusTick, onSelect, labelF
 
       // land + borders
       const land = ctx.createLinearGradient(c - R, c - R, c + R, c + R);
-      land.addColorStop(0, '#a7c584'); land.addColorStop(0.5, '#7fa564'); land.addColorStop(1, '#a28a5e');
+      land.addColorStop(0, '#c5cf96'); land.addColorStop(0.5, '#9cad60'); land.addColorStop(1, '#c49a6c');
       ctx.beginPath(); path(LAND); ctx.fillStyle = land; ctx.fill();
       ctx.beginPath(); path(BORDERS); ctx.strokeStyle = 'rgba(40, 60, 30, .35)'; ctx.lineWidth = 0.6; ctx.stroke();
 
@@ -113,11 +113,11 @@ export default function Globe({ regions, selectedId, focusTick, onSelect, labelF
         const sel = r.id === st.selectedId, hov = r.id === st.hovered;
         if (sel) {
           ctx.beginPath(); ctx.arc(x, y, 14 + pulse * 14, 0, 2 * Math.PI);
-          ctx.fillStyle = `rgba(214, 162, 58, ${0.35 - pulse * 0.3})`; ctx.fill();
+          ctx.fillStyle = `rgba(196, 154, 108, ${0.35 - pulse * 0.3})`; ctx.fill();
         }
         ctx.beginPath(); ctx.arc(x, y, sel ? 9 : hov ? 8 : 6, 0, 2 * Math.PI);
-        ctx.fillStyle = sel ? '#d6a23a' : '#fffdf8'; ctx.fill();
-        ctx.lineWidth = 3; ctx.strokeStyle = sel ? '#0d2a1f' : '#1d5a40'; ctx.stroke();
+        ctx.fillStyle = sel ? '#c49a6c' : '#fffcf3'; ctx.fill();
+        ctx.lineWidth = 3; ctx.strokeStyle = sel ? '#3a4132' : '#595f34'; ctx.stroke();
         if (sel || hov) label(ctx, x, y, st.labels[r.id], sel, size);
       });
     };
@@ -236,8 +236,8 @@ function label(ctx, x, y, text, strong, size) {
   if (lx + w > size - 6) lx = x - 16 - w;
   if (ly < 6) ly = y + 14;
   ctx.beginPath(); ctx.roundRect(lx, ly, w, h, 15);
-  ctx.fillStyle = strong ? 'rgba(13, 42, 31, .92)' : 'rgba(255, 253, 248, .95)'; ctx.fill();
-  ctx.fillStyle = strong ? '#fff' : '#1d2a22';
+  ctx.fillStyle = strong ? 'rgba(58, 65, 50, .92)' : 'rgba(255, 252, 243, .95)'; ctx.fill();
+  ctx.fillStyle = strong ? '#fff' : '#3a4132';
   ctx.textBaseline = 'middle';
   ctx.fillText(text, lx + 11, ly + h / 2 + 1);
 }

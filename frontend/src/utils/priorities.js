@@ -3,7 +3,7 @@
 export const PRIO = {
   water: { icon: '💧', color: 'var(--water)' },
   soil: { icon: '🌱', color: 'var(--earth)' },
-  yield: { icon: '🌾', color: 'var(--gold)' },
+  yield: { icon: '🌾', color: '#7f9a45' },
 };
 export const KEYS = Object.keys(PRIO);
 export const DEFAULT_PRIORITIES = { water: 42, soil: 33, yield: 25 };

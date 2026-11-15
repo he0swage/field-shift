@@ -45,7 +45,7 @@
 .custom-result { margin-top: 16px; }
 
 /* Analyse */
-.analyse-card { margin-top: 28px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; background: linear-gradient(135deg, var(--surface) 0%, #f3f6ec 100%); border-color: #cfdcc8; }
+.analyse-card { margin-top: 28px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; background: linear-gradient(135deg, var(--surface) 0%, #f1ecd9 100%); border-color: #d8c3ae; }
 @media (max-width: 900px) { .analyse-card { grid-template-columns: 1fr; } }
 .basis { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .basis li { padding: 6px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; font-weight: 600; }

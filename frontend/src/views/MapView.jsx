@@ -15,10 +15,10 @@ import './MapView.css';
 
 // Trend classes (mm/decade) — diverging: drying (warm) ← stable (gray) → wetter (blue)
 const CLASSES = [
-  { id: 'strong', test: d => d <= -30, color: '#a8352a' },
-  { id: 'dry', test: d => d > -30 && d <= -5, color: '#d0803a' },
-  { id: 'stable', test: d => d > -5 && d < 5, color: '#8a8f88' },
-  { id: 'wet', test: d => d >= 5, color: '#1d669a' },
+  { id: 'strong', test: d => d <= -30, color: '#b5523b' },
+  { id: 'dry', test: d => d > -30 && d <= -5, color: '#c49a6c' },
+  { id: 'stable', test: d => d > -5 && d < 5, color: '#9a9384' },
+  { id: 'wet', test: d => d >= 5, color: '#3a7fae' },
 ];
 const classOf = d => CLASSES.find(c => c.test(d)) || CLASSES[2];
 
