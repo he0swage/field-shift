@@ -89,7 +89,7 @@ export default function Header() {
 
   return (
     <header className="site-header">
-      <div className="wrap header-row">
+      <div className="header-row">
         <a className="brand" href="#/home" onClick={e => { e.preventDefault(); go('home', { top: true }); }}>
           <span className="brand-mark" aria-hidden="true">🌾</span>
           <span className="brand-name">Precision Crop <span>Rotation Advisor</span></span>
