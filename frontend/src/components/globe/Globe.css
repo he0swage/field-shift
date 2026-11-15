@@ -11,9 +11,3 @@
 .globe-speed button { min-width: 40px; }
 .globe-hint { color: rgba(255, 255, 255, .72); font-size: 14px; text-align: center; }
 
-/* Small locator illustration for region cards */
-.thumb { width: 84px; height: 84px; flex: none; filter: drop-shadow(0 4px 10px rgba(58, 65, 50, .25)); }
-.thumb .t-ocean { fill: #5e8aa3; }
-.thumb .t-land { fill: #b7c48a; stroke: rgba(30, 50, 25, .35); stroke-width: .4; }
-.thumb .t-dot { fill: #c49a6c; stroke: #3a4132; stroke-width: 2.5; }
-.thumb .t-ring { fill: none; stroke: #c49a6c; stroke-width: 2; opacity: .7; }
