@@ -1,4 +1,5 @@
 // Navigation bar (logo, links, language selector) + data status banner.
+import { useEffect, useRef, useState } from 'react';
 import { useI18n, LANGS } from '../../i18n/I18nContext';
 import { useNav, JOURNEY } from '../../state/NavContext';
 import { IS_LIVE } from '../../api/client';
@@ -23,8 +24,58 @@ export function DataBanner() {
   );
 }
 
-export default function Header() {
+/** Language button: opens a small menu (English / Français / العربية). */
+function LangMenu() {
   const { t, lang, setLang } = useI18n();
+  const [open, setOpen] = useState(false);
+  const wrap = useRef(null);
+  const items = useRef([]);
+  const current = LANGS.find(l => l.id === lang);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    items.current[LANGS.findIndex(l => l.id === lang)]?.focus();
+    const away = e => { if (!wrap.current?.contains(e.target)) setOpen(false); };
+    document.addEventListener('pointerdown', away);
+    return () => document.removeEventListener('pointerdown', away);
+  }, [open, lang]);
+
+  const onKey = (e, i) => {
+    if (e.key === 'Escape') { setOpen(false); wrap.current?.querySelector('button')?.focus(); }
+    const d = { ArrowDown: 1, ArrowUp: -1 }[e.key];
+    if (d) { e.preventDefault(); items.current[(i + d + LANGS.length) % LANGS.length]?.focus(); }
+  };
+  const choose = id => { setLang(id); setOpen(false); wrap.current?.querySelector('button')?.focus(); };
+
+  return (
+    <div className="lang-menu" ref={wrap}>
+      <button type="button" className="lang-btn" aria-haspopup="menu" aria-expanded={open}
+        aria-label={`${t('nav.language')}: ${current.name}`} onClick={() => setOpen(o => !o)}
+        onKeyDown={e => { if (e.key === 'ArrowDown') { e.preventDefault(); setOpen(true); } }}>
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z" />
+        </svg>
+        <span lang={current.id}>{current.label}</span>
+        <span className="caret" aria-hidden="true">▾</span>
+      </button>
+      {open && (
+        <ul className="lang-list" role="menu" aria-label={t('nav.language')}>
+          {LANGS.map((l, i) => (
+            <li key={l.id} role="none">
+              <button type="button" role="menuitemradio" aria-checked={l.id === lang} lang={l.id}
+                ref={el => { items.current[i] = el; }} onClick={() => choose(l.id)} onKeyDown={e => onKey(e, i)}>
+                <span>{l.name}</span>{l.id === lang && <span aria-hidden="true">✓</span>}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export default function Header() {
+  const { t } = useI18n();
   const { view, go, lastJourney } = useNav();
   const inJourney = JOURNEY.includes(view);
 
@@ -57,13 +108,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="lang" role="group" aria-label={t('nav.language')}>
-          {LANGS.map(l => (
-            <button key={l.id} type="button" lang={l.id} aria-pressed={lang === l.id} title={l.name} onClick={() => setLang(l.id)}>
-              {l.label}
-            </button>
-          ))}
-        </div>
+        <LangMenu />
       </div>
       <DataBanner />
     </header>
