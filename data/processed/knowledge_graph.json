@@ -1,0 +1,2572 @@
+{
+  "version": "1.0",
+  "generated": "2026-11-15T12:19:21Z",
+  "node_count": 57,
+  "edge_count": 149,
+  "nodes": [
+    {
+      "id": "region:constantine",
+      "type": "region",
+      "label": "Constantine / El Khroub Plains",
+      "summary": "Constantine / El Khroub Plains: rainfall 603.8 mm/yr",
+      "aliases": [
+        "constantine",
+        "regiona",
+        "قسنطينه",
+        "قسنطينة"
+      ],
+      "attrs": {
+        "rainfall_mm": 603.8,
+        "rainfall_30yr_mean_mm": 684.4,
+        "water_stress": 0.1668,
+        "water_stress_5yr": 0.2761,
+        "ph": 7.5,
+        "data_quality_confidence": "rainfall=low; hot_days=medium; frost_days=low",
+        "rule_trace": {
+          "water_stress": "Flagged because the mean annual rainfall of 2015-2024 (603.8 mm) is 16.7% below this region's own 1995-2014 reference mean (rule: deficit / 0.30, capped at 1.0 — PRD v3 section 6.2 rescaling). Definition still pending Alaa.",
+          "organic_carbon": "Soil flagged as medium because top-30-cm organic carbon is 17.08 g/kg and the rule is low < 10, medium 10-20, high > 20 g/kg (low < 10.0, medium 10.0-20.0, high > 20.0 g/kg (pending Younes), pending Younes).",
+          "soil_water_capacity": "AWC 140.1 mm/m is flagged as an estimate because it comes from the Saxton & Rawls (2006) pedotransfer applied to SoilGrids model texture (250 m pixel), not from lab measurement; field capacity 34.8 vol%, wilting point 20.8 vol%.",
+          "rainfall_trend": "Trend flagged 'no clear trend' because OLS p=0.125 and Mann-Kendall p=0.1435 (both must be < 0.05 and same sign); Sen slope -46.4 mm/decade; the moving block bootstrap 95% CI is [-117.7, 20.5] mm/decade (includes 0, so it is not significant at 95%).",
+          "hot_days": "Counted only inside the grain-filling window (months [4, 5, 6]) when daily max temperature exceeds 35.0 degrees C (threshold pending Younes); value is the 1995-2024 mean of yearly counts = 9.7 days/yr.",
+          "frost_days": "Counted only inside the late-frost window (months [3, 4]) when daily min temperature is below 0.0 degrees C; value is the 1995-2024 mean of yearly counts = 0.4 nights/yr.",
+          "extreme_rain_days": "Counted per calendar year whenever daily rain exceeds 20.0 mm; value is the 1995-2024 mean.",
+          "longest_dry_spell_days": "A dry day is rain < 1.0 mm (strict), and spells are never merged across missing days; only the growing season (months [10, 11, 12, 1, 2, 3, 4, 5]) is searched.",
+          "historical_drought": "20.0% of the years in 1995-2024 were severe droughts (annual rain <= 539.0 mm, i.e. z <= -1.0): [2000, 2001, 2016, 2021, 2022, 2024]. Boundary pending Younes.",
+          "suggested_priorities": "Weights follow PRD v3 section 6.2: water need = min(1, stress/0.3) using stress 0.1668; soil need = 1.0/0.5/0.1 for low/medium/high SOC (class medium); yield gets the remainder, floor 0.2; the three needs are rescaled to sum 100 with largest-remainder rounding (got 37/33/30).",
+          "ph": "pH 7.5 is the 0-30 cm depth-weighted SoilGrids pH(H2O) estimate; reported without a level flag because no pH banding rule has been agreed yet.",
+          "ndvi": "Yield baseline is a rough proxy: mean spring peak NDVI of a 5x5 km MODIS patch (2020-2024), normalized 0.25-0.75 to [0,1]; no cropland mask, no pixel QA filter, 5 years only."
+        }
+      }
+    },
+    {
+      "id": "trend:constantine",
+      "type": "trend",
+      "label": "Rainfall trend — Constantine / El Khroub Plains",
+      "summary": "-46.4 mm/decade over 1995-2024, not significant, MBB 95% CI [-117.7, 20.5]",
+      "aliases": [
+        "constantine"
+      ],
+      "attrs": {
+        "slope_mm_per_decade": -46.4,
+        "theilslopes_slope_per_year": -4.6438,
+        "mbb_ci_low_95": -117.7,
+        "mbb_ci_high_95": 20.5,
+        "statistically_significant_95": false,
+        "window": "1995-2024",
+        "confidence": "low",
+        "ols_slope_mm_per_decade": -47.3,
+        "ols_p": 0.125,
+        "mk_p": 0.1435,
+        "mbb_note": "detrended moving block bootstrap (overlapping 3-year residual blocks) preserves short-term autocorrelation, so its interval is typically wider than the analytical one when annual rainfall is autocorrelated; per-decade keys, per-year twins with _per_year suffix"
+      }
+    },
+    {
+      "id": "soil:constantine",
+      "type": "soil",
+      "label": "Soil profile — Constantine / El Khroub Plains",
+      "summary": "AWC 140.1 mm/m, SOC 17.08 g/kg, pH 7.5",
+      "aliases": [
+        "constantine"
+      ],
+      "attrs": {
+        "awc_mm_per_m": 140.1,
+        "awc_is_estimate": true,
+        "awc_method": "Saxton & Rawls (2006) Soil Sci Soc Am J 70:1569-1578 Table 1 Eqs 1-2 pedotransfer from ISRIC SoilGrids sand/silt/clay + SOC (OM = SOC x 1.724)",
+        "soc_g_per_kg": 17.08,
+        "ph": 7.5,
+        "soc_class": "medium",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "drought:constantine",
+      "type": "drought",
+      "label": "Historical drought — Constantine / El Khroub Plains",
+      "summary": "20.0% drought frequency, 6 severe years (2000, 2001, 2016, 2021...)",
+      "aliases": [
+        "constantine"
+      ],
+      "attrs": {
+        "window": "1995-2024",
+        "mean_mm": 684.4,
+        "std_mm": 145.5,
+        "severe_boundary_mm": 539.0,
+        "drought_frequency_pct": 20.0,
+        "severe_drought_years": [
+          2000,
+          2001,
+          2016,
+          2021,
+          2022,
+          2024
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "data_quality:constantine",
+      "type": "data_quality",
+      "label": "Data quality — Constantine / El Khroub Plains",
+      "summary": "rainfall=low; hot_days=medium; frost_days=low",
+      "aliases": [
+        "constantine"
+      ],
+      "attrs": {
+        "run_stamp": "2026-11-15 gap-patch",
+        "confidence_summary": {
+          "rainfall": "low",
+          "hot_days": "medium",
+          "frost_days": "low",
+          "rainfall_trend": "low",
+          "water_stress": "pending Alaa",
+          "soil": "medium",
+          "ndvi": "low"
+        },
+        "spatial_caveat": "Two different kinds of uncertainty must not be conflated. (1) STATISTICAL CONFIDENCE - e.g. the moving block bootstrap 95% CI on the rainfall trend, or the POWER-vs-ERA5 agreement rule - says how certain we are about the value AT the queried cell itself, given measurement noise, missing data and autocorrelation. It says NOTHING about how representative that single cell is. (2) GRID-CELL REPRESENTATIVENESS - a NASA POWER value is one ~55 km model cell, ERA5 one ~11 km cell, SoilGrids and MODIS one 250 m pixel; none of them represents the whole region or a specific field, and soil texture or SOC can vary within a few meters on the ground. A trend can therefore be statistically solid (small CI) while still only describing one coarse cell - regional conclusions inherit the coarser scale, and the soil point values must be verified on farm before use.",
+        "source_disagreement": {
+          "rule": "POWER vs ERA5 relative difference <= 10% high, <= 25% medium, else low; downgraded one level when > 5% of the relevant POWER days are missing",
+          "annual_rain": {
+            "power_mm_per_yr": 684.4,
+            "era5_mm_per_yr": 491.2,
+            "confidence": "low"
+          },
+          "hot_days": {
+            "power_days_per_yr": 9.7,
+            "era5_days_per_yr": 8.0,
+            "confidence": "medium"
+          },
+          "frost_days": {
+            "power_days_per_yr": 0.4,
+            "era5_days_per_yr": 0.7,
+            "confidence": "low"
+          }
+        }
+      }
+    },
+    {
+      "id": "crop:barley",
+      "type": "crop",
+      "label": "Barley",
+      "summary": "water need 40%, drought tolerance 80%",
+      "aliases": [
+        "barley",
+        "barley"
+      ],
+      "attrs": {
+        "family": "cereal",
+        "water_need": 0.4,
+        "drought_tolerance": 0.8,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -25,
+        "rain_opt_mm": [
+          250.0,
+          550.0
+        ],
+        "resilience_score": 0.72
+      }
+    },
+    {
+      "id": "crop:canola",
+      "type": "crop",
+      "label": "Canola / Mustard",
+      "summary": "water need 60%, drought tolerance 55%",
+      "aliases": [
+        "canola",
+        "canola"
+      ],
+      "attrs": {
+        "family": "oilseed",
+        "water_need": 0.6,
+        "drought_tolerance": 0.55,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -20,
+        "rain_opt_mm": [
+          380.0,
+          750.0
+        ],
+        "resilience_score": 0.49
+      }
+    },
+    {
+      "id": "crop:chickpea",
+      "type": "crop",
+      "label": "Chickpea",
+      "summary": "water need 45%, drought tolerance 75%, N-fixing (+25 kg N/ha)",
+      "aliases": [
+        "chickpea",
+        "chickpea"
+      ],
+      "attrs": {
+        "family": "legume",
+        "water_need": 0.45,
+        "drought_tolerance": 0.75,
+        "nitrogen_fixing": true,
+        "n_impact_kg_ha": 25,
+        "rain_opt_mm": [
+          300.0,
+          600.0
+        ],
+        "resilience_score": 0.67
+      }
+    },
+    {
+      "id": "crop:coriander",
+      "type": "crop",
+      "label": "Coriander",
+      "summary": "water need 34%, drought tolerance 55%",
+      "aliases": [
+        "coriander",
+        "coriander"
+      ],
+      "attrs": {
+        "family": "forage_broadleaf",
+        "water_need": 0.34,
+        "drought_tolerance": 0.55,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -12,
+        "rain_opt_mm": [
+          300.0,
+          550.0
+        ],
+        "resilience_score": 0.594
+      }
+    },
+    {
+      "id": "crop:faba",
+      "type": "crop",
+      "label": "Faba Bean",
+      "summary": "water need 65%, drought tolerance 40%, N-fixing (+35 kg N/ha)",
+      "aliases": [
+        "faba",
+        "faba"
+      ],
+      "attrs": {
+        "family": "legume",
+        "water_need": 0.65,
+        "drought_tolerance": 0.4,
+        "nitrogen_fixing": true,
+        "n_impact_kg_ha": 35,
+        "rain_opt_mm": [
+          420.0,
+          800.0
+        ],
+        "resilience_score": 0.38
+      }
+    },
+    {
+      "id": "crop:fallow",
+      "type": "crop",
+      "label": "Worked / Chem Fallow",
+      "summary": "water need 5%, drought tolerance 95%",
+      "aliases": [
+        "fallow",
+        "fallow"
+      ],
+      "attrs": {
+        "family": "fallow",
+        "water_need": 0.05,
+        "drought_tolerance": 0.95,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": 10,
+        "rain_opt_mm": [
+          100.0,
+          900.0
+        ],
+        "resilience_score": 0.95
+      }
+    },
+    {
+      "id": "crop:field_pea",
+      "type": "crop",
+      "label": "Field Pea",
+      "summary": "water need 42%, drought tolerance 45%, N-fixing (+24 kg N/ha)",
+      "aliases": [
+        "field_pea",
+        "field pea"
+      ],
+      "attrs": {
+        "family": "legume",
+        "water_need": 0.42,
+        "drought_tolerance": 0.45,
+        "nitrogen_fixing": true,
+        "n_impact_kg_ha": 24,
+        "rain_opt_mm": [
+          350.0,
+          650.0
+        ],
+        "resilience_score": 0.502
+      }
+    },
+    {
+      "id": "crop:lentil",
+      "type": "crop",
+      "label": "Lentil",
+      "summary": "water need 40%, drought tolerance 70%, N-fixing (+20 kg N/ha)",
+      "aliases": [
+        "lentil",
+        "lentil"
+      ],
+      "attrs": {
+        "family": "legume",
+        "water_need": 0.4,
+        "drought_tolerance": 0.7,
+        "nitrogen_fixing": true,
+        "n_impact_kg_ha": 20,
+        "rain_opt_mm": [
+          280.0,
+          550.0
+        ],
+        "resilience_score": 0.66
+      }
+    },
+    {
+      "id": "crop:lupin",
+      "type": "crop",
+      "label": "Lupin",
+      "summary": "water need 40%, drought tolerance 55%, N-fixing (+28 kg N/ha)",
+      "aliases": [
+        "lupin",
+        "lupin"
+      ],
+      "attrs": {
+        "family": "legume",
+        "water_need": 0.4,
+        "drought_tolerance": 0.55,
+        "nitrogen_fixing": true,
+        "n_impact_kg_ha": 28,
+        "rain_opt_mm": [
+          350.0,
+          700.0
+        ],
+        "resilience_score": 0.57
+      }
+    },
+    {
+      "id": "crop:oats",
+      "type": "crop",
+      "label": "Forage Oats",
+      "summary": "water need 50%, drought tolerance 65%",
+      "aliases": [
+        "oats",
+        "oats"
+      ],
+      "attrs": {
+        "family": "cereal",
+        "water_need": 0.5,
+        "drought_tolerance": 0.65,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -20,
+        "rain_opt_mm": [
+          320.0,
+          650.0
+        ],
+        "resilience_score": 0.59
+      }
+    },
+    {
+      "id": "crop:onion",
+      "type": "crop",
+      "label": "Onion / Garlic",
+      "summary": "water need 60%, drought tolerance 30%",
+      "aliases": [
+        "onion",
+        "onion"
+      ],
+      "attrs": {
+        "family": "vegetable_root",
+        "water_need": 0.6,
+        "drought_tolerance": 0.3,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -30,
+        "rain_opt_mm": [
+          350.0,
+          700.0
+        ],
+        "resilience_score": 0.34
+      }
+    },
+    {
+      "id": "crop:potato",
+      "type": "crop",
+      "label": "Potato",
+      "summary": "water need 78%, drought tolerance 25%",
+      "aliases": [
+        "potato",
+        "potato"
+      ],
+      "attrs": {
+        "family": "vegetable_root",
+        "water_need": 0.78,
+        "drought_tolerance": 0.25,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -45,
+        "rain_opt_mm": [
+          500.0,
+          900.0
+        ],
+        "resilience_score": 0.238
+      }
+    },
+    {
+      "id": "crop:safflower",
+      "type": "crop",
+      "label": "Safflower",
+      "summary": "water need 35%, drought tolerance 90%",
+      "aliases": [
+        "safflower",
+        "safflower"
+      ],
+      "attrs": {
+        "family": "oilseed",
+        "water_need": 0.35,
+        "drought_tolerance": 0.9,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -15,
+        "rain_opt_mm": [
+          240.0,
+          550.0
+        ],
+        "resilience_score": 0.8
+      }
+    },
+    {
+      "id": "crop:soft_wheat",
+      "type": "crop",
+      "label": "Soft Bread Wheat",
+      "summary": "water need 70%, drought tolerance 50%",
+      "aliases": [
+        "soft_wheat",
+        "soft wheat"
+      ],
+      "attrs": {
+        "family": "cereal",
+        "water_need": 0.7,
+        "drought_tolerance": 0.5,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -38,
+        "rain_opt_mm": [
+          400.0,
+          750.0
+        ],
+        "resilience_score": 0.42
+      }
+    },
+    {
+      "id": "crop:sulla",
+      "type": "crop",
+      "label": "Sulla (Spanish Sainfoin)",
+      "summary": "water need 38%, drought tolerance 65%, N-fixing (+30 kg N/ha)",
+      "aliases": [
+        "sulla",
+        "sulla"
+      ],
+      "attrs": {
+        "family": "legume",
+        "water_need": 0.38,
+        "drought_tolerance": 0.65,
+        "nitrogen_fixing": true,
+        "n_impact_kg_ha": 30,
+        "rain_opt_mm": [
+          350.0,
+          700.0
+        ],
+        "resilience_score": 0.638
+      }
+    },
+    {
+      "id": "crop:sunflower",
+      "type": "crop",
+      "label": "Sunflower",
+      "summary": "water need 58%, drought tolerance 68%",
+      "aliases": [
+        "sunflower",
+        "sunflower"
+      ],
+      "attrs": {
+        "family": "oilseed",
+        "water_need": 0.58,
+        "drought_tolerance": 0.68,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -22,
+        "rain_opt_mm": [
+          380.0,
+          750.0
+        ],
+        "resilience_score": 0.576
+      }
+    },
+    {
+      "id": "crop:triticale",
+      "type": "crop",
+      "label": "Triticale",
+      "summary": "water need 48%, drought tolerance 78%",
+      "aliases": [
+        "triticale",
+        "triticale"
+      ],
+      "attrs": {
+        "family": "cereal",
+        "water_need": 0.48,
+        "drought_tolerance": 0.78,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -26,
+        "rain_opt_mm": [
+          280.0,
+          600.0
+        ],
+        "resilience_score": 0.676
+      }
+    },
+    {
+      "id": "crop:vetch",
+      "type": "crop",
+      "label": "Common Vetch",
+      "summary": "water need 42%, drought tolerance 75%, N-fixing (+28 kg N/ha)",
+      "aliases": [
+        "vetch",
+        "vetch"
+      ],
+      "attrs": {
+        "family": "legume",
+        "water_need": 0.42,
+        "drought_tolerance": 0.75,
+        "nitrogen_fixing": true,
+        "n_impact_kg_ha": 28,
+        "rain_opt_mm": [
+          280.0,
+          600.0
+        ],
+        "resilience_score": 0.682
+      }
+    },
+    {
+      "id": "crop:wheat",
+      "type": "crop",
+      "label": "Wheat (Durum / Winter)",
+      "summary": "water need 65%, drought tolerance 55%",
+      "aliases": [
+        "wheat",
+        "wheat"
+      ],
+      "attrs": {
+        "family": "cereal",
+        "water_need": 0.65,
+        "drought_tolerance": 0.55,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -35,
+        "rain_opt_mm": [
+          350.0,
+          650.0
+        ],
+        "resilience_score": 0.47
+      }
+    },
+    {
+      "id": "region:custom_35.4_1.3",
+      "type": "region",
+      "label": "Tiaret Western High Plateaux",
+      "summary": "Tiaret Western High Plateaux: rainfall 519.1 mm/yr",
+      "aliases": [
+        "custom_35.4_1.3"
+      ],
+      "attrs": {
+        "rainfall_mm": 519.1,
+        "rainfall_30yr_mean_mm": 575.3,
+        "water_stress": 0.1397,
+        "water_stress_5yr": 0.3275,
+        "ph": 7.57,
+        "data_quality_confidence": "",
+        "rule_trace": {}
+      }
+    },
+    {
+      "id": "trend:custom_35.4_1.3",
+      "type": "trend",
+      "label": "Rainfall trend — Tiaret Western High Plateaux",
+      "summary": "-16.8 mm/decade over 1995-2024, significance not tested",
+      "aliases": [
+        "custom_35.4_1.3"
+      ],
+      "attrs": {
+        "slope_mm_per_decade": -16.8,
+        "theilslopes_slope_per_year": null,
+        "mbb_ci_low_95": null,
+        "mbb_ci_high_95": null,
+        "statistically_significant_95": null,
+        "window": "1995-2024",
+        "confidence": "low",
+        "ols_slope_mm_per_decade": -21.0,
+        "ols_p": 0.5093,
+        "mk_p": 0.5441,
+        "mbb_note": null
+      }
+    },
+    {
+      "id": "soil:custom_35.4_1.3",
+      "type": "soil",
+      "label": "Soil profile — Tiaret Western High Plateaux",
+      "summary": "AWC None mm/m, SOC 12.38 g/kg, pH 7.57",
+      "aliases": [
+        "custom_35.4_1.3"
+      ],
+      "attrs": {
+        "awc_mm_per_m": null,
+        "awc_is_estimate": false,
+        "awc_method": null,
+        "soc_g_per_kg": 12.38,
+        "ph": 7.57,
+        "soc_class": "medium",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "region:kansas",
+      "type": "region",
+      "label": "Central Kansas Plains, USA",
+      "summary": "Central Kansas Plains, USA: rainfall 692.0 mm/yr",
+      "aliases": [
+        "kansas",
+        "regionb",
+        "usa",
+        "salina"
+      ],
+      "attrs": {
+        "rainfall_mm": 692.0,
+        "rainfall_30yr_mean_mm": 715.1,
+        "water_stress": 0.18,
+        "water_stress_5yr": 0.29,
+        "ph": null,
+        "data_quality_confidence": "",
+        "rule_trace": {}
+      }
+    },
+    {
+      "id": "trend:kansas",
+      "type": "trend",
+      "label": "Rainfall trend — Central Kansas Plains, USA",
+      "summary": "-36.4 mm/decade over window, significance not tested",
+      "aliases": [
+        "kansas"
+      ],
+      "attrs": {
+        "slope_mm_per_decade": -36.4,
+        "theilslopes_slope_per_year": null,
+        "mbb_ci_low_95": null,
+        "mbb_ci_high_95": null,
+        "statistically_significant_95": null,
+        "window": null,
+        "confidence": "medium",
+        "ols_slope_mm_per_decade": null,
+        "ols_p": 0.142,
+        "mk_p": 0.168,
+        "mbb_note": null
+      }
+    },
+    {
+      "id": "crop:alfalfa",
+      "type": "crop",
+      "label": "Alfalfa (Lucerne)",
+      "summary": "water need 62%, drought tolerance 60%, N-fixing (+45 kg N/ha)",
+      "aliases": [
+        "alfalfa",
+        "alfalfa"
+      ],
+      "attrs": {
+        "family": "legume",
+        "water_need": 0.62,
+        "drought_tolerance": 0.6,
+        "nitrogen_fixing": true,
+        "n_impact_kg_ha": 45,
+        "rain_opt_mm": [
+          450.0,
+          900.0
+        ],
+        "resilience_score": 0.512
+      }
+    },
+    {
+      "id": "crop:corn",
+      "type": "crop",
+      "label": "Corn (Grain Maize)",
+      "summary": "water need 72%, drought tolerance 52%",
+      "aliases": [
+        "corn",
+        "corn"
+      ],
+      "attrs": {
+        "family": "cereal",
+        "water_need": 0.72,
+        "drought_tolerance": 0.52,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -42,
+        "rain_opt_mm": [
+          480.0,
+          950.0
+        ],
+        "resilience_score": 0.424
+      }
+    },
+    {
+      "id": "crop:cotton",
+      "type": "crop",
+      "label": "Cotton",
+      "summary": "water need 62%, drought tolerance 45%",
+      "aliases": [
+        "cotton",
+        "cotton"
+      ],
+      "attrs": {
+        "family": "forage_broadleaf",
+        "water_need": 0.62,
+        "drought_tolerance": 0.45,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -40,
+        "rain_opt_mm": [
+          450.0,
+          900.0
+        ],
+        "resilience_score": 0.422
+      }
+    },
+    {
+      "id": "crop:flax",
+      "type": "crop",
+      "label": "Flax (Linseed)",
+      "summary": "water need 40%, drought tolerance 45%",
+      "aliases": [
+        "flax",
+        "flax"
+      ],
+      "attrs": {
+        "family": "oilseed",
+        "water_need": 0.4,
+        "drought_tolerance": 0.45,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -15,
+        "rain_opt_mm": [
+          350.0,
+          650.0
+        ],
+        "resilience_score": 0.51
+      }
+    },
+    {
+      "id": "crop:hairy_vetch",
+      "type": "crop",
+      "label": "Hairy Vetch (Cover Crop)",
+      "summary": "water need 36%, drought tolerance 60%, N-fixing (+35 kg N/ha)",
+      "aliases": [
+        "hairy_vetch",
+        "hairy vetch"
+      ],
+      "attrs": {
+        "family": "legume",
+        "water_need": 0.36,
+        "drought_tolerance": 0.6,
+        "nitrogen_fixing": true,
+        "n_impact_kg_ha": 35,
+        "rain_opt_mm": [
+          350.0,
+          800.0
+        ],
+        "resilience_score": 0.616
+      }
+    },
+    {
+      "id": "crop:proso_millet",
+      "type": "crop",
+      "label": "Proso Millet",
+      "summary": "water need 30%, drought tolerance 80%",
+      "aliases": [
+        "proso_millet",
+        "proso millet"
+      ],
+      "attrs": {
+        "family": "cereal",
+        "water_need": 0.3,
+        "drought_tolerance": 0.8,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -18,
+        "rain_opt_mm": [
+          250.0,
+          600.0
+        ],
+        "resilience_score": 0.76
+      }
+    },
+    {
+      "id": "crop:sorghum",
+      "type": "crop",
+      "label": "Grain Sorghum (Milo)",
+      "summary": "water need 44%, drought tolerance 86%",
+      "aliases": [
+        "sorghum",
+        "sorghum"
+      ],
+      "attrs": {
+        "family": "cereal",
+        "water_need": 0.44,
+        "drought_tolerance": 0.86,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -24,
+        "rain_opt_mm": [
+          350.0,
+          800.0
+        ],
+        "resilience_score": 0.74
+      }
+    },
+    {
+      "id": "crop:soybean",
+      "type": "crop",
+      "label": "Soybean",
+      "summary": "water need 55%, drought tolerance 66%, N-fixing (+30 kg N/ha)",
+      "aliases": [
+        "soybean",
+        "soybean"
+      ],
+      "attrs": {
+        "family": "legume",
+        "water_need": 0.55,
+        "drought_tolerance": 0.66,
+        "nitrogen_fixing": true,
+        "n_impact_kg_ha": 30,
+        "rain_opt_mm": [
+          450.0,
+          900.0
+        ],
+        "resilience_score": 0.576
+      }
+    },
+    {
+      "id": "region:punjab",
+      "type": "region",
+      "label": "Punjab Plains, India",
+      "summary": "Punjab Plains, India: rainfall 709.2 mm/yr",
+      "aliases": [
+        "punjab",
+        "regionc",
+        "india",
+        "ludhiana"
+      ],
+      "attrs": {
+        "rainfall_mm": 709.2,
+        "rainfall_30yr_mean_mm": 733.5,
+        "water_stress": 0.22,
+        "water_stress_5yr": 0.24,
+        "ph": null,
+        "data_quality_confidence": "",
+        "rule_trace": {}
+      }
+    },
+    {
+      "id": "trend:punjab",
+      "type": "trend",
+      "label": "Rainfall trend — Punjab Plains, India",
+      "summary": "-38.2 mm/decade over window, significance not tested",
+      "aliases": [
+        "punjab"
+      ],
+      "attrs": {
+        "slope_mm_per_decade": -38.2,
+        "theilslopes_slope_per_year": null,
+        "mbb_ci_low_95": null,
+        "mbb_ci_high_95": null,
+        "statistically_significant_95": null,
+        "window": null,
+        "confidence": "medium",
+        "ols_slope_mm_per_decade": null,
+        "ols_p": 0.084,
+        "mk_p": 0.092,
+        "mbb_note": null
+      }
+    },
+    {
+      "id": "crop:berseem",
+      "type": "crop",
+      "label": "Berseem (Egyptian Clover)",
+      "summary": "water need 60%, drought tolerance 35%, N-fixing (+32 kg N/ha)",
+      "aliases": [
+        "berseem",
+        "berseem"
+      ],
+      "attrs": {
+        "family": "legume",
+        "water_need": 0.6,
+        "drought_tolerance": 0.35,
+        "nitrogen_fixing": true,
+        "n_impact_kg_ha": 32,
+        "rain_opt_mm": [
+          450.0,
+          900.0
+        ],
+        "resilience_score": 0.37
+      }
+    },
+    {
+      "id": "crop:groundnut",
+      "type": "crop",
+      "label": "Groundnut (Peanut)",
+      "summary": "water need 52%, drought tolerance 55%, N-fixing (+20 kg N/ha)",
+      "aliases": [
+        "groundnut",
+        "groundnut"
+      ],
+      "attrs": {
+        "family": "legume",
+        "water_need": 0.52,
+        "drought_tolerance": 0.55,
+        "nitrogen_fixing": true,
+        "n_impact_kg_ha": 20,
+        "rain_opt_mm": [
+          500.0,
+          1000.0
+        ],
+        "resilience_score": 0.522
+      }
+    },
+    {
+      "id": "crop:maize",
+      "type": "crop",
+      "label": "Maize (Kharif / Spring)",
+      "summary": "water need 56%, drought tolerance 64%",
+      "aliases": [
+        "maize",
+        "maize"
+      ],
+      "attrs": {
+        "family": "cereal",
+        "water_need": 0.56,
+        "drought_tolerance": 0.64,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -30,
+        "rain_opt_mm": [
+          420.0,
+          950.0
+        ],
+        "resilience_score": 0.56
+      }
+    },
+    {
+      "id": "crop:mung_bean",
+      "type": "crop",
+      "label": "Mung Bean (Moong)",
+      "summary": "water need 36%, drought tolerance 82%, N-fixing (+28 kg N/ha)",
+      "aliases": [
+        "mung_bean",
+        "mung bean"
+      ],
+      "attrs": {
+        "family": "legume",
+        "water_need": 0.36,
+        "drought_tolerance": 0.82,
+        "nitrogen_fixing": true,
+        "n_impact_kg_ha": 28,
+        "rain_opt_mm": [
+          300.0,
+          850.0
+        ],
+        "resilience_score": 0.748
+      }
+    },
+    {
+      "id": "crop:pearl_millet",
+      "type": "crop",
+      "label": "Pearl Millet (Bajra)",
+      "summary": "water need 28%, drought tolerance 85%",
+      "aliases": [
+        "pearl_millet",
+        "pearl millet"
+      ],
+      "attrs": {
+        "family": "cereal",
+        "water_need": 0.28,
+        "drought_tolerance": 0.85,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -20,
+        "rain_opt_mm": [
+          250.0,
+          650.0
+        ],
+        "resilience_score": 0.798
+      }
+    },
+    {
+      "id": "crop:pigeon_pea",
+      "type": "crop",
+      "label": "Pigeon Pea (Arhar)",
+      "summary": "water need 40%, drought tolerance 75%, N-fixing (+30 kg N/ha)",
+      "aliases": [
+        "pigeon_pea",
+        "pigeon pea"
+      ],
+      "attrs": {
+        "family": "legume",
+        "water_need": 0.4,
+        "drought_tolerance": 0.75,
+        "nitrogen_fixing": true,
+        "n_impact_kg_ha": 30,
+        "rain_opt_mm": [
+          500.0,
+          1000.0
+        ],
+        "resilience_score": 0.69
+      }
+    },
+    {
+      "id": "crop:rice",
+      "type": "crop",
+      "label": "Paddy Rice",
+      "summary": "water need 90%, drought tolerance 25%",
+      "aliases": [
+        "rice",
+        "rice"
+      ],
+      "attrs": {
+        "family": "cereal",
+        "water_need": 0.9,
+        "drought_tolerance": 0.25,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -40,
+        "rain_opt_mm": [
+          550.0,
+          1800.0
+        ],
+        "resilience_score": 0.19
+      }
+    },
+    {
+      "id": "crop:sesame",
+      "type": "crop",
+      "label": "Sesame",
+      "summary": "water need 30%, drought tolerance 80%",
+      "aliases": [
+        "sesame",
+        "sesame"
+      ],
+      "attrs": {
+        "family": "oilseed",
+        "water_need": 0.3,
+        "drought_tolerance": 0.8,
+        "nitrogen_fixing": false,
+        "n_impact_kg_ha": -12,
+        "rain_opt_mm": [
+          300.0,
+          650.0
+        ],
+        "resilience_score": 0.76
+      }
+    },
+    {
+      "id": "region:setif",
+      "type": "region",
+      "label": "Sétif High Plateaux",
+      "summary": "Sétif High Plateaux: rainfall 509.0 mm/yr",
+      "aliases": [
+        "setif",
+        "sétif",
+        "regiona",
+        "سطيف"
+      ],
+      "attrs": {
+        "rainfall_mm": 509.0,
+        "rainfall_30yr_mean_mm": 574.9,
+        "water_stress": 0.1625,
+        "water_stress_5yr": 0.2029,
+        "ph": 7.77,
+        "data_quality_confidence": "rainfall=medium; hot_days=low; frost_days=low",
+        "rule_trace": {
+          "water_stress": "Flagged because the mean annual rainfall of 2015-2024 (509.0 mm) is 16.2% below this region's own 1995-2014 reference mean (rule: deficit / 0.30, capped at 1.0 — PRD v3 section 6.2 rescaling). Definition still pending Alaa.",
+          "organic_carbon": "Soil flagged as medium because top-30-cm organic carbon is 12.52 g/kg and the rule is low < 10, medium 10-20, high > 20 g/kg (low < 10.0, medium 10.0-20.0, high > 20.0 g/kg (pending Younes), pending Younes).",
+          "soil_water_capacity": "AWC 140.6 mm/m is flagged as an estimate because it comes from the Saxton & Rawls (2006) pedotransfer applied to SoilGrids model texture (250 m pixel), not from lab measurement; field capacity 30.1 vol%, wilting point 16.0 vol%.",
+          "rainfall_trend": "Trend flagged 'both methods agree' because OLS p=0.0459 and Mann-Kendall p=0.0092 (both must be < 0.05 and same sign); Sen slope -44.1 mm/decade; the moving block bootstrap 95% CI is [-74.1, -11.8] mm/decade (0, so it is significant at 95%).",
+          "hot_days": "Counted only inside the grain-filling window (months [4, 5, 6]) when daily max temperature exceeds 35.0 degrees C (threshold pending Younes); value is the 1995-2024 mean of yearly counts = 3.1 days/yr.",
+          "frost_days": "Counted only inside the late-frost window (months [3, 4]) when daily min temperature is below 0.0 degrees C; value is the 1995-2024 mean of yearly counts = 4.5 nights/yr.",
+          "extreme_rain_days": "Counted per calendar year whenever daily rain exceeds 20.0 mm; value is the 1995-2024 mean.",
+          "longest_dry_spell_days": "A dry day is rain < 1.0 mm (strict), and spells are never merged across missing days; only the growing season (months [10, 11, 12, 1, 2, 3, 4, 5]) is searched.",
+          "historical_drought": "10.0% of the years in 1995-2024 were severe droughts (annual rain <= 462.9 mm, i.e. z <= -1.0): [2000, 2001, 2024]. Boundary pending Younes.",
+          "suggested_priorities": "Weights follow PRD v3 section 6.2: water need = min(1, stress/0.3) using stress 0.1625; soil need = 1.0/0.5/0.1 for low/medium/high SOC (class medium); yield gets the remainder, floor 0.2; the three needs are rescaled to sum 100 with largest-remainder rounding (got 36/33/31).",
+          "ph": "pH 7.77 is the 0-30 cm depth-weighted SoilGrids pH(H2O) estimate; reported without a level flag because no pH banding rule has been agreed yet.",
+          "ndvi": "Yield baseline is a rough proxy: mean spring peak NDVI of a 5x5 km MODIS patch (2020-2024), normalized 0.25-0.75 to [0,1]; no cropland mask, no pixel QA filter, 5 years only."
+        }
+      }
+    },
+    {
+      "id": "trend:setif",
+      "type": "trend",
+      "label": "Rainfall trend — Sétif High Plateaux",
+      "summary": "-44.1 mm/decade over 1995-2024, significant, MBB 95% CI [-74.1, -11.8]",
+      "aliases": [
+        "setif"
+      ],
+      "attrs": {
+        "slope_mm_per_decade": -44.1,
+        "theilslopes_slope_per_year": -4.4138,
+        "mbb_ci_low_95": -74.1,
+        "mbb_ci_high_95": -11.8,
+        "statistically_significant_95": true,
+        "window": "1995-2024",
+        "confidence": "high",
+        "ols_slope_mm_per_decade": -46.7,
+        "ols_p": 0.0459,
+        "mk_p": 0.0092,
+        "mbb_note": "detrended moving block bootstrap (overlapping 3-year residual blocks) preserves short-term autocorrelation, so its interval is typically wider than the analytical one when annual rainfall is autocorrelated; per-decade keys, per-year twins with _per_year suffix"
+      }
+    },
+    {
+      "id": "soil:setif",
+      "type": "soil",
+      "label": "Soil profile — Sétif High Plateaux",
+      "summary": "AWC 140.6 mm/m, SOC 12.52 g/kg, pH 7.77",
+      "aliases": [
+        "setif"
+      ],
+      "attrs": {
+        "awc_mm_per_m": 140.6,
+        "awc_is_estimate": true,
+        "awc_method": "Saxton & Rawls (2006) Soil Sci Soc Am J 70:1569-1578 Table 1 Eqs 1-2 pedotransfer from ISRIC SoilGrids sand/silt/clay + SOC (OM = SOC x 1.724)",
+        "soc_g_per_kg": 12.52,
+        "ph": 7.77,
+        "soc_class": "medium",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "drought:setif",
+      "type": "drought",
+      "label": "Historical drought — Sétif High Plateaux",
+      "summary": "10.0% drought frequency, 3 severe years (2000, 2001, 2024...)",
+      "aliases": [
+        "setif"
+      ],
+      "attrs": {
+        "window": "1995-2024",
+        "mean_mm": 574.9,
+        "std_mm": 112.0,
+        "severe_boundary_mm": 462.9,
+        "drought_frequency_pct": 10.0,
+        "severe_drought_years": [
+          2000,
+          2001,
+          2024
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "data_quality:setif",
+      "type": "data_quality",
+      "label": "Data quality — Sétif High Plateaux",
+      "summary": "rainfall=medium; hot_days=low; frost_days=low",
+      "aliases": [
+        "setif"
+      ],
+      "attrs": {
+        "run_stamp": "2026-11-15 gap-patch",
+        "confidence_summary": {
+          "rainfall": "medium",
+          "hot_days": "low",
+          "frost_days": "low",
+          "rainfall_trend": "high",
+          "water_stress": "pending Alaa",
+          "soil": "medium",
+          "ndvi": "low"
+        },
+        "spatial_caveat": "Two different kinds of uncertainty must not be conflated. (1) STATISTICAL CONFIDENCE - e.g. the moving block bootstrap 95% CI on the rainfall trend, or the POWER-vs-ERA5 agreement rule - says how certain we are about the value AT the queried cell itself, given measurement noise, missing data and autocorrelation. It says NOTHING about how representative that single cell is. (2) GRID-CELL REPRESENTATIVENESS - a NASA POWER value is one ~55 km model cell, ERA5 one ~11 km cell, SoilGrids and MODIS one 250 m pixel; none of them represents the whole region or a specific field, and soil texture or SOC can vary within a few meters on the ground. A trend can therefore be statistically solid (small CI) while still only describing one coarse cell - regional conclusions inherit the coarser scale, and the soil point values must be verified on farm before use.",
+        "source_disagreement": {
+          "rule": "POWER vs ERA5 relative difference <= 10% high, <= 25% medium, else low; downgraded one level when > 5% of the relevant POWER days are missing",
+          "annual_rain": {
+            "power_mm_per_yr": 574.9,
+            "era5_mm_per_yr": 506.2,
+            "confidence": "medium"
+          },
+          "hot_days": {
+            "power_days_per_yr": 3.1,
+            "era5_days_per_yr": 1.9,
+            "confidence": "low"
+          },
+          "frost_days": {
+            "power_days_per_yr": 4.5,
+            "era5_days_per_yr": 3.1,
+            "confidence": "low"
+          }
+        }
+      }
+    },
+    {
+      "id": "region:tiaret",
+      "type": "region",
+      "label": "Tiaret Western High Plateaux",
+      "summary": "Tiaret Western High Plateaux: rainfall 519.1 mm/yr",
+      "aliases": [
+        "tiaret",
+        "regiona",
+        "تيارت"
+      ],
+      "attrs": {
+        "rainfall_mm": 519.1,
+        "rainfall_30yr_mean_mm": 575.3,
+        "water_stress": 0.1397,
+        "water_stress_5yr": 0.3275,
+        "ph": 7.57,
+        "data_quality_confidence": "rainfall=low; hot_days=low; frost_days=medium",
+        "rule_trace": {
+          "water_stress": "Flagged because the mean annual rainfall of 2015-2024 (519.1 mm) is 14.0% below this region's own 1995-2014 reference mean (rule: deficit / 0.30, capped at 1.0 — PRD v3 section 6.2 rescaling). Definition still pending Alaa.",
+          "organic_carbon": "Soil flagged as medium because top-30-cm organic carbon is 12.38 g/kg and the rule is low < 10, medium 10-20, high > 20 g/kg (low < 10.0, medium 10.0-20.0, high > 20.0 g/kg (pending Younes), pending Younes).",
+          "soil_water_capacity": "AWC 140.6 mm/m is flagged as an estimate because it comes from the Saxton & Rawls (2006) pedotransfer applied to SoilGrids model texture (250 m pixel), not from lab measurement; field capacity 33.0 vol%, wilting point 18.9 vol%.",
+          "rainfall_trend": "Trend flagged 'no clear trend' because OLS p=0.5093 and Mann-Kendall p=0.5441 (both must be < 0.05 and same sign); Sen slope -16.8 mm/decade; the moving block bootstrap 95% CI is [-95.2, 61.7] mm/decade (includes 0, so it is not significant at 95%).",
+          "hot_days": "Counted only inside the grain-filling window (months [4, 5, 6]) when daily max temperature exceeds 35.0 degrees C (threshold pending Younes); value is the 1995-2024 mean of yearly counts = 9.2 days/yr.",
+          "frost_days": "Counted only inside the late-frost window (months [3, 4]) when daily min temperature is below 0.0 degrees C; value is the 1995-2024 mean of yearly counts = 1.1 nights/yr.",
+          "extreme_rain_days": "Counted per calendar year whenever daily rain exceeds 20.0 mm; value is the 1995-2024 mean.",
+          "longest_dry_spell_days": "A dry day is rain < 1.0 mm (strict), and spells are never merged across missing days; only the growing season (months [10, 11, 12, 1, 2, 3, 4, 5]) is searched.",
+          "historical_drought": "23.3% of the years in 1995-2024 were severe droughts (annual rain <= 427.6 mm, i.e. z <= -1.0): [1998, 2000, 2002, 2005, 2020, 2023, 2024]. Boundary pending Younes.",
+          "suggested_priorities": "Weights follow PRD v3 section 6.2: water need = min(1, stress/0.3) using stress 0.1397; soil need = 1.0/0.5/0.1 for low/medium/high SOC (class medium); yield gets the remainder, floor 0.2; the three needs are rescaled to sum 100 with largest-remainder rounding (got 32/34/34).",
+          "ph": "pH 7.57 is the 0-30 cm depth-weighted SoilGrids pH(H2O) estimate; reported without a level flag because no pH banding rule has been agreed yet.",
+          "ndvi": "Yield baseline is a rough proxy: mean spring peak NDVI of a 5x5 km MODIS patch (2020-2024), normalized 0.25-0.75 to [0,1]; no cropland mask, no pixel QA filter, 5 years only."
+        }
+      }
+    },
+    {
+      "id": "trend:tiaret",
+      "type": "trend",
+      "label": "Rainfall trend — Tiaret Western High Plateaux",
+      "summary": "-16.8 mm/decade over 1995-2024, not significant, MBB 95% CI [-95.2, 61.7]",
+      "aliases": [
+        "tiaret"
+      ],
+      "attrs": {
+        "slope_mm_per_decade": -16.8,
+        "theilslopes_slope_per_year": -1.6812,
+        "mbb_ci_low_95": -95.2,
+        "mbb_ci_high_95": 61.7,
+        "statistically_significant_95": false,
+        "window": "1995-2024",
+        "confidence": "low",
+        "ols_slope_mm_per_decade": -21.0,
+        "ols_p": 0.5093,
+        "mk_p": 0.5441,
+        "mbb_note": "detrended moving block bootstrap (overlapping 3-year residual blocks) preserves short-term autocorrelation, so its interval is typically wider than the analytical one when annual rainfall is autocorrelated; per-decade keys, per-year twins with _per_year suffix"
+      }
+    },
+    {
+      "id": "soil:tiaret",
+      "type": "soil",
+      "label": "Soil profile — Tiaret Western High Plateaux",
+      "summary": "AWC 140.6 mm/m, SOC 12.38 g/kg, pH 7.57",
+      "aliases": [
+        "tiaret"
+      ],
+      "attrs": {
+        "awc_mm_per_m": 140.6,
+        "awc_is_estimate": true,
+        "awc_method": "Saxton & Rawls (2006) Soil Sci Soc Am J 70:1569-1578 Table 1 Eqs 1-2 pedotransfer from ISRIC SoilGrids sand/silt/clay + SOC (OM = SOC x 1.724)",
+        "soc_g_per_kg": 12.38,
+        "ph": 7.57,
+        "soc_class": "medium",
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "drought:tiaret",
+      "type": "drought",
+      "label": "Historical drought — Tiaret Western High Plateaux",
+      "summary": "23.3% drought frequency, 7 severe years (1998, 2000, 2002, 2005...)",
+      "aliases": [
+        "tiaret"
+      ],
+      "attrs": {
+        "window": "1995-2024",
+        "mean_mm": 575.3,
+        "std_mm": 147.6,
+        "severe_boundary_mm": 427.6,
+        "drought_frequency_pct": 23.3,
+        "severe_drought_years": [
+          1998,
+          2000,
+          2002,
+          2005,
+          2020,
+          2023,
+          2024
+        ],
+        "confidence": "medium"
+      }
+    },
+    {
+      "id": "data_quality:tiaret",
+      "type": "data_quality",
+      "label": "Data quality — Tiaret Western High Plateaux",
+      "summary": "rainfall=low; hot_days=low; frost_days=medium",
+      "aliases": [
+        "tiaret"
+      ],
+      "attrs": {
+        "run_stamp": "2026-11-15 gap-patch",
+        "confidence_summary": {
+          "rainfall": "low",
+          "hot_days": "low",
+          "frost_days": "medium",
+          "rainfall_trend": "low",
+          "water_stress": "pending Alaa",
+          "soil": "medium",
+          "ndvi": "low"
+        },
+        "spatial_caveat": "Two different kinds of uncertainty must not be conflated. (1) STATISTICAL CONFIDENCE - e.g. the moving block bootstrap 95% CI on the rainfall trend, or the POWER-vs-ERA5 agreement rule - says how certain we are about the value AT the queried cell itself, given measurement noise, missing data and autocorrelation. It says NOTHING about how representative that single cell is. (2) GRID-CELL REPRESENTATIVENESS - a NASA POWER value is one ~55 km model cell, ERA5 one ~11 km cell, SoilGrids and MODIS one 250 m pixel; none of them represents the whole region or a specific field, and soil texture or SOC can vary within a few meters on the ground. A trend can therefore be statistically solid (small CI) while still only describing one coarse cell - regional conclusions inherit the coarser scale, and the soil point values must be verified on farm before use.",
+        "source_disagreement": {
+          "rule": "POWER vs ERA5 relative difference <= 10% high, <= 25% medium, else low; downgraded one level when > 5% of the relevant POWER days are missing",
+          "annual_rain": {
+            "power_mm_per_yr": 575.3,
+            "era5_mm_per_yr": 401.7,
+            "confidence": "low"
+          },
+          "hot_days": {
+            "power_days_per_yr": 9.2,
+            "era5_days_per_yr": 3.3,
+            "confidence": "low"
+          },
+          "frost_days": {
+            "power_days_per_yr": 1.1,
+            "era5_days_per_yr": 1.4,
+            "confidence": "medium"
+          }
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "src": "region:constantine",
+      "rel": "has_climate_trend",
+      "dst": "trend:constantine",
+      "attrs": {}
+    },
+    {
+      "src": "region:constantine",
+      "rel": "has_soil",
+      "dst": "soil:constantine",
+      "attrs": {}
+    },
+    {
+      "src": "region:constantine",
+      "rel": "experiences",
+      "dst": "drought:constantine",
+      "attrs": {}
+    },
+    {
+      "src": "region:constantine",
+      "rel": "documented_by",
+      "dst": "data_quality:constantine",
+      "attrs": {}
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:barley",
+      "attrs": {
+        "suitability_pct": 56.2,
+        "yield_potential": 23.0
+      }
+    },
+    {
+      "src": "trend:constantine",
+      "rel": "favors_crop",
+      "dst": "crop:barley",
+      "attrs": {
+        "reason": "Drying trend -46.4 mm/decade favors drought-tolerant crops: barley tolerates 80% drought with only 40% water need."
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:canola",
+      "attrs": {
+        "suitability_pct": 54.1,
+        "yield_potential": 18.0
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:chickpea",
+      "attrs": {
+        "suitability_pct": 67.1,
+        "yield_potential": 14.0
+      }
+    },
+    {
+      "src": "trend:constantine",
+      "rel": "favors_crop",
+      "dst": "crop:chickpea",
+      "attrs": {
+        "reason": "Drying trend -46.4 mm/decade favors drought-tolerant crops: chickpea tolerates 75% drought with only 45% water need."
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:coriander",
+      "attrs": {
+        "suitability_pct": 52.8,
+        "yield_potential": 7.0
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:faba",
+      "attrs": {
+        "suitability_pct": 58.6,
+        "yield_potential": 16.0
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:fallow",
+      "attrs": {
+        "suitability_pct": 50.7,
+        "yield_potential": 0.0
+      }
+    },
+    {
+      "src": "trend:constantine",
+      "rel": "favors_crop",
+      "dst": "crop:fallow",
+      "attrs": {
+        "reason": "Drying trend -46.4 mm/decade favors drought-tolerant crops: fallow tolerates 95% drought with only 5% water need."
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:field_pea",
+      "attrs": {
+        "suitability_pct": 63.6,
+        "yield_potential": 14.0
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:lentil",
+      "attrs": {
+        "suitability_pct": 67.2,
+        "yield_potential": 12.0
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:lupin",
+      "attrs": {
+        "suitability_pct": 62.4,
+        "yield_potential": 12.0
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:oats",
+      "attrs": {
+        "suitability_pct": 52.2,
+        "yield_potential": 21.0
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:onion",
+      "attrs": {
+        "suitability_pct": 42.0,
+        "yield_potential": 250.0
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:potato",
+      "attrs": {
+        "suitability_pct": 37.7,
+        "yield_potential": 220.0
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:safflower",
+      "attrs": {
+        "suitability_pct": 59.2,
+        "yield_potential": 14.0
+      }
+    },
+    {
+      "src": "trend:constantine",
+      "rel": "favors_crop",
+      "dst": "crop:safflower",
+      "attrs": {
+        "reason": "Drying trend -46.4 mm/decade favors drought-tolerant crops: safflower tolerates 90% drought with only 35% water need."
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:soft_wheat",
+      "attrs": {
+        "suitability_pct": 49.3,
+        "yield_potential": 25.0
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:sulla",
+      "attrs": {
+        "suitability_pct": 64.1,
+        "yield_potential": 40.0
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:sunflower",
+      "attrs": {
+        "suitability_pct": 52.2,
+        "yield_potential": 16.0
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:triticale",
+      "attrs": {
+        "suitability_pct": 56.5,
+        "yield_potential": 25.0
+      }
+    },
+    {
+      "src": "trend:constantine",
+      "rel": "favors_crop",
+      "dst": "crop:triticale",
+      "attrs": {
+        "reason": "Drying trend -46.4 mm/decade favors drought-tolerant crops: triticale tolerates 78% drought with only 48% water need."
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:vetch",
+      "attrs": {
+        "suitability_pct": 67.2,
+        "yield_potential": 19.0
+      }
+    },
+    {
+      "src": "trend:constantine",
+      "rel": "favors_crop",
+      "dst": "crop:vetch",
+      "attrs": {
+        "reason": "Drying trend -46.4 mm/decade favors drought-tolerant crops: vetch tolerates 75% drought with only 42% water need."
+      }
+    },
+    {
+      "src": "region:constantine",
+      "rel": "grows",
+      "dst": "crop:wheat",
+      "attrs": {
+        "suitability_pct": 52.8,
+        "yield_potential": 26.0
+      }
+    },
+    {
+      "src": "region:custom_35.4_1.3",
+      "rel": "has_climate_trend",
+      "dst": "trend:custom_35.4_1.3",
+      "attrs": {}
+    },
+    {
+      "src": "region:custom_35.4_1.3",
+      "rel": "has_soil",
+      "dst": "soil:custom_35.4_1.3",
+      "attrs": {}
+    },
+    {
+      "src": "region:kansas",
+      "rel": "has_climate_trend",
+      "dst": "trend:kansas",
+      "attrs": {}
+    },
+    {
+      "src": "region:kansas",
+      "rel": "grows",
+      "dst": "crop:alfalfa",
+      "attrs": {
+        "suitability_pct": 61.9,
+        "yield_potential": 40.0
+      }
+    },
+    {
+      "src": "region:kansas",
+      "rel": "grows",
+      "dst": "crop:canola",
+      "attrs": {
+        "suitability_pct": 54.0,
+        "yield_potential": 19.5
+      }
+    },
+    {
+      "src": "region:kansas",
+      "rel": "grows",
+      "dst": "crop:corn",
+      "attrs": {
+        "suitability_pct": 53.6,
+        "yield_potential": 78.0
+      }
+    },
+    {
+      "src": "region:kansas",
+      "rel": "grows",
+      "dst": "crop:cotton",
+      "attrs": {
+        "suitability_pct": 46.7,
+        "yield_potential": 9.0
+      }
+    },
+    {
+      "src": "region:kansas",
+      "rel": "grows",
+      "dst": "crop:fallow",
+      "attrs": {
+        "suitability_pct": 50.7,
+        "yield_potential": 0.0
+      }
+    },
+    {
+      "src": "trend:kansas",
+      "rel": "favors_crop",
+      "dst": "crop:fallow",
+      "attrs": {
+        "reason": "Drying trend -36.4 mm/decade favors drought-tolerant crops: fallow tolerates 95% drought with only 5% water need."
+      }
+    },
+    {
+      "src": "region:kansas",
+      "rel": "grows",
+      "dst": "crop:field_pea",
+      "attrs": {
+        "suitability_pct": 63.7,
+        "yield_potential": 22.0
+      }
+    },
+    {
+      "src": "region:kansas",
+      "rel": "grows",
+      "dst": "crop:flax",
+      "attrs": {
+        "suitability_pct": 46.2,
+        "yield_potential": 9.4
+      }
+    },
+    {
+      "src": "region:kansas",
+      "rel": "grows",
+      "dst": "crop:hairy_vetch",
+      "attrs": {
+        "suitability_pct": 63.6,
+        "yield_potential": 35.0
+      }
+    },
+    {
+      "src": "region:kansas",
+      "rel": "grows",
+      "dst": "crop:oats",
+      "attrs": {
+        "suitability_pct": 52.2,
+        "yield_potential": 23.0
+      }
+    },
+    {
+      "src": "region:kansas",
+      "rel": "grows",
+      "dst": "crop:proso_millet",
+      "attrs": {
+        "suitability_pct": 53.4,
+        "yield_potential": 18.8
+      }
+    },
+    {
+      "src": "trend:kansas",
+      "rel": "favors_crop",
+      "dst": "crop:proso_millet",
+      "attrs": {
+        "reason": "Drying trend -36.4 mm/decade favors drought-tolerant crops: proso_millet tolerates 80% drought with only 30% water need."
+      }
+    },
+    {
+      "src": "region:kansas",
+      "rel": "grows",
+      "dst": "crop:sorghum",
+      "attrs": {
+        "suitability_pct": 60.9,
+        "yield_potential": 49.0
+      }
+    },
+    {
+      "src": "trend:kansas",
+      "rel": "favors_crop",
+      "dst": "crop:sorghum",
+      "attrs": {
+        "reason": "Drying trend -36.4 mm/decade favors drought-tolerant crops: sorghum tolerates 86% drought with only 44% water need."
+      }
+    },
+    {
+      "src": "region:kansas",
+      "rel": "grows",
+      "dst": "crop:soybean",
+      "attrs": {
+        "suitability_pct": 67.8,
+        "yield_potential": 26.9
+      }
+    },
+    {
+      "src": "region:kansas",
+      "rel": "grows",
+      "dst": "crop:sunflower",
+      "attrs": {
+        "suitability_pct": 52.1,
+        "yield_potential": 16.8
+      }
+    },
+    {
+      "src": "region:kansas",
+      "rel": "grows",
+      "dst": "crop:wheat",
+      "attrs": {
+        "suitability_pct": 52.8,
+        "yield_potential": 31.6
+      }
+    },
+    {
+      "src": "region:punjab",
+      "rel": "has_climate_trend",
+      "dst": "trend:punjab",
+      "attrs": {}
+    },
+    {
+      "src": "region:punjab",
+      "rel": "grows",
+      "dst": "crop:barley",
+      "attrs": {
+        "suitability_pct": 56.1,
+        "yield_potential": 38.0
+      }
+    },
+    {
+      "src": "trend:punjab",
+      "rel": "favors_crop",
+      "dst": "crop:barley",
+      "attrs": {
+        "reason": "Drying trend -38.2 mm/decade favors drought-tolerant crops: barley tolerates 80% drought with only 40% water need."
+      }
+    },
+    {
+      "src": "region:punjab",
+      "rel": "grows",
+      "dst": "crop:berseem",
+      "attrs": {
+        "suitability_pct": 60.3,
+        "yield_potential": 70.0
+      }
+    },
+    {
+      "src": "region:punjab",
+      "rel": "grows",
+      "dst": "crop:canola",
+      "attrs": {
+        "suitability_pct": 54.0,
+        "yield_potential": 16.2
+      }
+    },
+    {
+      "src": "region:punjab",
+      "rel": "grows",
+      "dst": "crop:chickpea",
+      "attrs": {
+        "suitability_pct": 67.0,
+        "yield_potential": 13.5
+      }
+    },
+    {
+      "src": "trend:punjab",
+      "rel": "favors_crop",
+      "dst": "crop:chickpea",
+      "attrs": {
+        "reason": "Drying trend -38.2 mm/decade favors drought-tolerant crops: chickpea tolerates 75% drought with only 45% water need."
+      }
+    },
+    {
+      "src": "region:punjab",
+      "rel": "grows",
+      "dst": "crop:cotton",
+      "attrs": {
+        "suitability_pct": 46.7,
+        "yield_potential": 20.0
+      }
+    },
+    {
+      "src": "region:punjab",
+      "rel": "grows",
+      "dst": "crop:groundnut",
+      "attrs": {
+        "suitability_pct": 62.1,
+        "yield_potential": 20.0
+      }
+    },
+    {
+      "src": "region:punjab",
+      "rel": "grows",
+      "dst": "crop:lentil",
+      "attrs": {
+        "suitability_pct": 67.2,
+        "yield_potential": 11.8
+      }
+    },
+    {
+      "src": "region:punjab",
+      "rel": "grows",
+      "dst": "crop:maize",
+      "attrs": {
+        "suitability_pct": 57.6,
+        "yield_potential": 38.5
+      }
+    },
+    {
+      "src": "region:punjab",
+      "rel": "grows",
+      "dst": "crop:mung_bean",
+      "attrs": {
+        "suitability_pct": 72.6,
+        "yield_potential": 10.5
+      }
+    },
+    {
+      "src": "trend:punjab",
+      "rel": "favors_crop",
+      "dst": "crop:mung_bean",
+      "attrs": {
+        "reason": "Drying trend -38.2 mm/decade favors drought-tolerant crops: mung_bean tolerates 82% drought with only 36% water need."
+      }
+    },
+    {
+      "src": "region:punjab",
+      "rel": "grows",
+      "dst": "crop:pearl_millet",
+      "attrs": {
+        "suitability_pct": 57.3,
+        "yield_potential": 18.0
+      }
+    },
+    {
+      "src": "trend:punjab",
+      "rel": "favors_crop",
+      "dst": "crop:pearl_millet",
+      "attrs": {
+        "reason": "Drying trend -38.2 mm/decade favors drought-tolerant crops: pearl_millet tolerates 85% drought with only 28% water need."
+      }
+    },
+    {
+      "src": "region:punjab",
+      "rel": "grows",
+      "dst": "crop:pigeon_pea",
+      "attrs": {
+        "suitability_pct": 66.9,
+        "yield_potential": 14.0
+      }
+    },
+    {
+      "src": "trend:punjab",
+      "rel": "favors_crop",
+      "dst": "crop:pigeon_pea",
+      "attrs": {
+        "reason": "Drying trend -38.2 mm/decade favors drought-tolerant crops: pigeon_pea tolerates 75% drought with only 40% water need."
+      }
+    },
+    {
+      "src": "region:punjab",
+      "rel": "grows",
+      "dst": "crop:potato",
+      "attrs": {
+        "suitability_pct": 37.7,
+        "yield_potential": 250.0
+      }
+    },
+    {
+      "src": "region:punjab",
+      "rel": "grows",
+      "dst": "crop:rice",
+      "attrs": {
+        "suitability_pct": 44.8,
+        "yield_potential": 65.0
+      }
+    },
+    {
+      "src": "region:punjab",
+      "rel": "grows",
+      "dst": "crop:sesame",
+      "attrs": {
+        "suitability_pct": 49.3,
+        "yield_potential": 4.5
+      }
+    },
+    {
+      "src": "trend:punjab",
+      "rel": "favors_crop",
+      "dst": "crop:sesame",
+      "attrs": {
+        "reason": "Drying trend -38.2 mm/decade favors drought-tolerant crops: sesame tolerates 80% drought with only 30% water need."
+      }
+    },
+    {
+      "src": "region:punjab",
+      "rel": "grows",
+      "dst": "crop:wheat",
+      "attrs": {
+        "suitability_pct": 52.8,
+        "yield_potential": 50.2
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "has_climate_trend",
+      "dst": "trend:setif",
+      "attrs": {}
+    },
+    {
+      "src": "region:setif",
+      "rel": "has_soil",
+      "dst": "soil:setif",
+      "attrs": {}
+    },
+    {
+      "src": "region:setif",
+      "rel": "experiences",
+      "dst": "drought:setif",
+      "attrs": {}
+    },
+    {
+      "src": "region:setif",
+      "rel": "documented_by",
+      "dst": "data_quality:setif",
+      "attrs": {}
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:barley",
+      "attrs": {
+        "suitability_pct": 56.1,
+        "yield_potential": 23.0
+      }
+    },
+    {
+      "src": "trend:setif",
+      "rel": "favors_crop",
+      "dst": "crop:barley",
+      "attrs": {
+        "reason": "Drying trend -44.1 mm/decade favors drought-tolerant crops: barley tolerates 80% drought with only 40% water need."
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:canola",
+      "attrs": {
+        "suitability_pct": 54.0,
+        "yield_potential": 18.0
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:chickpea",
+      "attrs": {
+        "suitability_pct": 67.0,
+        "yield_potential": 14.0
+      }
+    },
+    {
+      "src": "trend:setif",
+      "rel": "favors_crop",
+      "dst": "crop:chickpea",
+      "attrs": {
+        "reason": "Drying trend -44.1 mm/decade favors drought-tolerant crops: chickpea tolerates 75% drought with only 45% water need."
+      }
+    },
+    {
+      "src": "soil:setif",
+      "rel": "favors_crop",
+      "dst": "crop:chickpea",
+      "attrs": {
+        "reason": "SOC 12.52 g/kg is below the 15 g/kg threshold; chickpea biologically fixes ~+25 kg N/ha and restores fertility."
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:coriander",
+      "attrs": {
+        "suitability_pct": 52.8,
+        "yield_potential": 7.0
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:faba",
+      "attrs": {
+        "suitability_pct": 58.6,
+        "yield_potential": 16.0
+      }
+    },
+    {
+      "src": "soil:setif",
+      "rel": "favors_crop",
+      "dst": "crop:faba",
+      "attrs": {
+        "reason": "SOC 12.52 g/kg is below the 15 g/kg threshold; faba biologically fixes ~+35 kg N/ha and restores fertility."
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:fallow",
+      "attrs": {
+        "suitability_pct": 50.7,
+        "yield_potential": 0.0
+      }
+    },
+    {
+      "src": "trend:setif",
+      "rel": "favors_crop",
+      "dst": "crop:fallow",
+      "attrs": {
+        "reason": "Drying trend -44.1 mm/decade favors drought-tolerant crops: fallow tolerates 95% drought with only 5% water need."
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:field_pea",
+      "attrs": {
+        "suitability_pct": 63.7,
+        "yield_potential": 14.0
+      }
+    },
+    {
+      "src": "soil:setif",
+      "rel": "favors_crop",
+      "dst": "crop:field_pea",
+      "attrs": {
+        "reason": "SOC 12.52 g/kg is below the 15 g/kg threshold; field_pea biologically fixes ~+24 kg N/ha and restores fertility."
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:lentil",
+      "attrs": {
+        "suitability_pct": 67.2,
+        "yield_potential": 12.0
+      }
+    },
+    {
+      "src": "soil:setif",
+      "rel": "favors_crop",
+      "dst": "crop:lentil",
+      "attrs": {
+        "reason": "SOC 12.52 g/kg is below the 15 g/kg threshold; lentil biologically fixes ~+20 kg N/ha and restores fertility."
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:lupin",
+      "attrs": {
+        "suitability_pct": 62.4,
+        "yield_potential": 12.0
+      }
+    },
+    {
+      "src": "soil:setif",
+      "rel": "favors_crop",
+      "dst": "crop:lupin",
+      "attrs": {
+        "reason": "SOC 12.52 g/kg is below the 15 g/kg threshold; lupin biologically fixes ~+28 kg N/ha and restores fertility."
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:oats",
+      "attrs": {
+        "suitability_pct": 52.2,
+        "yield_potential": 21.0
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:onion",
+      "attrs": {
+        "suitability_pct": 42.0,
+        "yield_potential": 250.0
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:potato",
+      "attrs": {
+        "suitability_pct": 37.7,
+        "yield_potential": 220.0
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:safflower",
+      "attrs": {
+        "suitability_pct": 59.2,
+        "yield_potential": 14.0
+      }
+    },
+    {
+      "src": "trend:setif",
+      "rel": "favors_crop",
+      "dst": "crop:safflower",
+      "attrs": {
+        "reason": "Drying trend -44.1 mm/decade favors drought-tolerant crops: safflower tolerates 90% drought with only 35% water need."
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:soft_wheat",
+      "attrs": {
+        "suitability_pct": 49.3,
+        "yield_potential": 25.0
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:sulla",
+      "attrs": {
+        "suitability_pct": 64.1,
+        "yield_potential": 40.0
+      }
+    },
+    {
+      "src": "soil:setif",
+      "rel": "favors_crop",
+      "dst": "crop:sulla",
+      "attrs": {
+        "reason": "SOC 12.52 g/kg is below the 15 g/kg threshold; sulla biologically fixes ~+30 kg N/ha and restores fertility."
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:sunflower",
+      "attrs": {
+        "suitability_pct": 52.2,
+        "yield_potential": 16.0
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:triticale",
+      "attrs": {
+        "suitability_pct": 56.4,
+        "yield_potential": 25.0
+      }
+    },
+    {
+      "src": "trend:setif",
+      "rel": "favors_crop",
+      "dst": "crop:triticale",
+      "attrs": {
+        "reason": "Drying trend -44.1 mm/decade favors drought-tolerant crops: triticale tolerates 78% drought with only 48% water need."
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:vetch",
+      "attrs": {
+        "suitability_pct": 67.2,
+        "yield_potential": 19.0
+      }
+    },
+    {
+      "src": "trend:setif",
+      "rel": "favors_crop",
+      "dst": "crop:vetch",
+      "attrs": {
+        "reason": "Drying trend -44.1 mm/decade favors drought-tolerant crops: vetch tolerates 75% drought with only 42% water need."
+      }
+    },
+    {
+      "src": "soil:setif",
+      "rel": "favors_crop",
+      "dst": "crop:vetch",
+      "attrs": {
+        "reason": "SOC 12.52 g/kg is below the 15 g/kg threshold; vetch biologically fixes ~+28 kg N/ha and restores fertility."
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "grows",
+      "dst": "crop:wheat",
+      "attrs": {
+        "suitability_pct": 52.8,
+        "yield_potential": 26.0
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "has_climate_trend",
+      "dst": "trend:tiaret",
+      "attrs": {}
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "has_soil",
+      "dst": "soil:tiaret",
+      "attrs": {}
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "experiences",
+      "dst": "drought:tiaret",
+      "attrs": {}
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "documented_by",
+      "dst": "data_quality:tiaret",
+      "attrs": {}
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:barley",
+      "attrs": {
+        "suitability_pct": 55.8,
+        "yield_potential": 23.0
+      }
+    },
+    {
+      "src": "trend:tiaret",
+      "rel": "favors_crop",
+      "dst": "crop:barley",
+      "attrs": {
+        "reason": "Drying trend -16.8 mm/decade favors drought-tolerant crops: barley tolerates 80% drought with only 40% water need."
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:canola",
+      "attrs": {
+        "suitability_pct": 53.9,
+        "yield_potential": 18.0
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:chickpea",
+      "attrs": {
+        "suitability_pct": 66.6,
+        "yield_potential": 14.0
+      }
+    },
+    {
+      "src": "trend:tiaret",
+      "rel": "favors_crop",
+      "dst": "crop:chickpea",
+      "attrs": {
+        "reason": "Drying trend -16.8 mm/decade favors drought-tolerant crops: chickpea tolerates 75% drought with only 45% water need."
+      }
+    },
+    {
+      "src": "soil:tiaret",
+      "rel": "favors_crop",
+      "dst": "crop:chickpea",
+      "attrs": {
+        "reason": "SOC 12.38 g/kg is below the 15 g/kg threshold; chickpea biologically fixes ~+25 kg N/ha and restores fertility."
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:coriander",
+      "attrs": {
+        "suitability_pct": 53.2,
+        "yield_potential": 7.0
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:faba",
+      "attrs": {
+        "suitability_pct": 58.7,
+        "yield_potential": 16.0
+      }
+    },
+    {
+      "src": "soil:tiaret",
+      "rel": "favors_crop",
+      "dst": "crop:faba",
+      "attrs": {
+        "reason": "SOC 12.38 g/kg is below the 15 g/kg threshold; faba biologically fixes ~+35 kg N/ha and restores fertility."
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:fallow",
+      "attrs": {
+        "suitability_pct": 50.7,
+        "yield_potential": 0.0
+      }
+    },
+    {
+      "src": "trend:tiaret",
+      "rel": "favors_crop",
+      "dst": "crop:fallow",
+      "attrs": {
+        "reason": "Drying trend -16.8 mm/decade favors drought-tolerant crops: fallow tolerates 95% drought with only 5% water need."
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:field_pea",
+      "attrs": {
+        "suitability_pct": 64.1,
+        "yield_potential": 14.0
+      }
+    },
+    {
+      "src": "soil:tiaret",
+      "rel": "favors_crop",
+      "dst": "crop:field_pea",
+      "attrs": {
+        "reason": "SOC 12.38 g/kg is below the 15 g/kg threshold; field_pea biologically fixes ~+24 kg N/ha and restores fertility."
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:lentil",
+      "attrs": {
+        "suitability_pct": 67.0,
+        "yield_potential": 12.0
+      }
+    },
+    {
+      "src": "soil:tiaret",
+      "rel": "favors_crop",
+      "dst": "crop:lentil",
+      "attrs": {
+        "reason": "SOC 12.38 g/kg is below the 15 g/kg threshold; lentil biologically fixes ~+20 kg N/ha and restores fertility."
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:lupin",
+      "attrs": {
+        "suitability_pct": 62.6,
+        "yield_potential": 12.0
+      }
+    },
+    {
+      "src": "soil:tiaret",
+      "rel": "favors_crop",
+      "dst": "crop:lupin",
+      "attrs": {
+        "reason": "SOC 12.38 g/kg is below the 15 g/kg threshold; lupin biologically fixes ~+28 kg N/ha and restores fertility."
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:oats",
+      "attrs": {
+        "suitability_pct": 52.1,
+        "yield_potential": 21.0
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:onion",
+      "attrs": {
+        "suitability_pct": 42.4,
+        "yield_potential": 250.0
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:potato",
+      "attrs": {
+        "suitability_pct": 37.9,
+        "yield_potential": 220.0
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:safflower",
+      "attrs": {
+        "suitability_pct": 58.6,
+        "yield_potential": 14.0
+      }
+    },
+    {
+      "src": "trend:tiaret",
+      "rel": "favors_crop",
+      "dst": "crop:safflower",
+      "attrs": {
+        "reason": "Drying trend -16.8 mm/decade favors drought-tolerant crops: safflower tolerates 90% drought with only 35% water need."
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:soft_wheat",
+      "attrs": {
+        "suitability_pct": 49.1,
+        "yield_potential": 25.0
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:sulla",
+      "attrs": {
+        "suitability_pct": 64.2,
+        "yield_potential": 40.0
+      }
+    },
+    {
+      "src": "soil:tiaret",
+      "rel": "favors_crop",
+      "dst": "crop:sulla",
+      "attrs": {
+        "reason": "SOC 12.38 g/kg is below the 15 g/kg threshold; sulla biologically fixes ~+30 kg N/ha and restores fertility."
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:sunflower",
+      "attrs": {
+        "suitability_pct": 51.7,
+        "yield_potential": 16.0
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:triticale",
+      "attrs": {
+        "suitability_pct": 56.0,
+        "yield_potential": 25.0
+      }
+    },
+    {
+      "src": "trend:tiaret",
+      "rel": "favors_crop",
+      "dst": "crop:triticale",
+      "attrs": {
+        "reason": "Drying trend -16.8 mm/decade favors drought-tolerant crops: triticale tolerates 78% drought with only 48% water need."
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:vetch",
+      "attrs": {
+        "suitability_pct": 67.0,
+        "yield_potential": 19.0
+      }
+    },
+    {
+      "src": "trend:tiaret",
+      "rel": "favors_crop",
+      "dst": "crop:vetch",
+      "attrs": {
+        "reason": "Drying trend -16.8 mm/decade favors drought-tolerant crops: vetch tolerates 75% drought with only 42% water need."
+      }
+    },
+    {
+      "src": "soil:tiaret",
+      "rel": "favors_crop",
+      "dst": "crop:vetch",
+      "attrs": {
+        "reason": "SOC 12.38 g/kg is below the 15 g/kg threshold; vetch biologically fixes ~+28 kg N/ha and restores fertility."
+      }
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "grows",
+      "dst": "crop:wheat",
+      "attrs": {
+        "suitability_pct": 52.6,
+        "yield_potential": 26.0
+      }
+    },
+    {
+      "src": "region:setif",
+      "rel": "agro_zone_peer",
+      "dst": "region:tiaret",
+      "attrs": {}
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "agro_zone_peer",
+      "dst": "region:setif",
+      "attrs": {}
+    },
+    {
+      "src": "region:setif",
+      "rel": "agro_zone_peer",
+      "dst": "region:constantine",
+      "attrs": {}
+    },
+    {
+      "src": "region:constantine",
+      "rel": "agro_zone_peer",
+      "dst": "region:setif",
+      "attrs": {}
+    },
+    {
+      "src": "region:tiaret",
+      "rel": "agro_zone_peer",
+      "dst": "region:constantine",
+      "attrs": {}
+    },
+    {
+      "src": "region:constantine",
+      "rel": "agro_zone_peer",
+      "dst": "region:tiaret",
+      "attrs": {}
+    }
+  ]
+}

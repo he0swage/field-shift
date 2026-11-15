@@ -12,18 +12,20 @@ Environment Configuration (all optional, with safe local defaults):
   - RAG_EMBEDDING_MODEL  : Model name when using external embedding API
   - RAG_LLM_PROVIDER     : 'auto' (default: uses GEMINI_API_KEY / OPENAI_API_KEY if set,
                            otherwise deterministic grounded synthesizer)
-  - RAG_TOP_K            : Number of passages to retrieve per query (default: 4)
-  - RAG_MIN_SCORE        : Minimum retrieval score threshold before refusal (default: 0.18)
+   - RAG_TOP_K            : Number of passages to retrieve per query (default: 4)
+   - RAG_MIN_SCORE        : Minimum retrieval score threshold before refusal (default: 0.18)
   - GEMINI_API_KEY       : Optional Google Gemini API key (never hardcoded)
   - OPENAI_API_KEY       : Optional OpenAI API key (never hardcoded)
 """
 from __future__ import annotations
 
+import csv
 import hashlib
 import json
 import math
 import os
 import re
+import unicodedata
 import urllib.request
 from pathlib import Path
 from typing import Any
@@ -535,6 +537,254 @@ def _canon_crop(cid: str) -> str:
 
 _ENGINE_CTX_CACHE: dict[str, dict[str, Any]] = {}
 
+DEFAULT_GRAPH_PATH = ROOT / "data" / "processed" / "knowledge_graph.json"
+_GRAPH_CACHE: dict[str, tuple[float, dict[str, Any]]] = {}
+
+_EMPTY_GRAPH = {"version": None, "nodes_by_id": {}, "adj": {}, "radj": {}, "alias": {}}
+
+
+def load_graph(path: str | Path | None = None) -> dict[str, Any]:
+    """Load data/processed/knowledge_graph.json with an adjacency + alias index (mtime-cached)."""
+    p = Path(path) if path else DEFAULT_GRAPH_PATH
+    try:
+        mtime = p.stat().st_mtime
+    except OSError:
+        return dict(_EMPTY_GRAPH)
+    cached = _GRAPH_CACHE.get(str(p))
+    if cached and cached[0] == mtime:
+        return cached[1]
+    try:
+        doc = json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return dict(_EMPTY_GRAPH)
+    nodes_by_id = {n["id"]: n for n in doc.get("nodes", []) if isinstance(n, dict) and n.get("id")}
+    adj: dict[str, list[dict]] = {}
+    radj: dict[str, list[dict]] = {}
+    alias: dict[str, str] = {}
+    for e in doc.get("edges", []):
+        if not (isinstance(e, dict) and e.get("src") and e.get("rel") and e.get("dst")):
+            continue
+        adj.setdefault(e["src"], []).append(e)
+        radj.setdefault(e["dst"], []).append(e)
+    for nid, n in nodes_by_id.items():
+        for a in n.get("aliases") or []:
+            alias.setdefault(normalize_arabic(str(a).strip().lower()), nid)
+        alias.setdefault(normalize_arabic(nid.lower()), nid)
+    g = {"version": doc.get("version"), "nodes_by_id": nodes_by_id, "adj": adj, "radj": radj, "alias": alias}
+    _GRAPH_CACHE[str(p)] = (mtime, g)
+    return g
+
+
+def get_graph_context(
+    entities: list[str] | None,
+    max_hops: int = 2,
+    graph: dict[str, Any] | None = None,
+    max_edges: int = 48,
+) -> dict[str, Any]:
+    """Multi-hop traversal of the agronomy knowledge graph.
+
+    `entities` are free strings (region names, crop ids, concept tags); each is
+    resolved through the graph alias index, then the graph is walked up to
+    `max_hops` hops in BOTH directions (so a crop entity can still reach its
+    regions and their climate trends). Returns plain-English relation lines,
+    structured cross-region comparisons, and the raw paths.
+    """
+    g = graph if graph is not None else load_graph()
+    nodes_by_id = g["nodes_by_id"]
+    adj, radj, alias = g["adj"], g["radj"], g["alias"]
+
+    seeds: list[str] = []
+    for ent in entities or []:
+        key = normalize_arabic(str(ent).strip().lower())
+        if key.startswith("concept_"):
+            key = key[len("concept_"):]
+        nid = alias.get(key)
+        if nid and nid not in seeds:
+            seeds.append(nid)
+    if not seeds:
+        return {"entities": list(entities or []), "seeds": [], "lines": [], "comparison": [], "paths": []}
+
+    seen_edges: set[tuple[str, str, str]] = set()
+    paths: list[dict[str, Any]] = []
+    frontier = list(seeds)
+    def _edge_priority(e: dict) -> int:
+        # Structural relations first; crop fan-out (grows/stresses) last so it
+        # cannot starve the hop budget before peer trends are reached.
+        return 1 if e["rel"] in ("grows", "stresses") else 0
+
+    for hop in range(1, max(max_hops, 1) + 1):
+        nxt: list[str] = []
+        frontier.sort(key=lambda nid: nid.startswith("crop:"))
+        for nid in frontier:
+            if len(paths) >= max_edges:
+                break
+            if hop > 1 and nid.startswith("crop:") and nid not in seeds:
+                continue
+            out_edges = sorted(adj.get(nid, []), key=_edge_priority)
+            in_edges = sorted(radj.get(nid, []), key=_edge_priority)
+            for direction, edge_list in (("out", out_edges), ("in", in_edges)):
+                if len(paths) >= max_edges:
+                    break
+                for e in edge_list:
+                    if len(paths) >= max_edges:
+                        break
+                    eid = (e["src"], e["rel"], e["dst"])
+                    if eid in seen_edges:
+                        continue
+                    seen_edges.add(eid)
+                    other = e["dst"] if direction == "out" else e["src"]
+                    other_node = nodes_by_id.get(other, {})
+                    paths.append({
+                        "hop": hop,
+                        "direction": direction,
+                        "src": e["src"],
+                        "rel": e["rel"],
+                        "dst": e["dst"],
+                        "reason": e.get("attrs", {}).get("reason"),
+                        "summary": other_node.get("summary"),
+                    })
+                    if other not in nxt and other not in seeds:
+                        nxt.append(other)
+            if len(paths) >= max_edges:
+                break
+        if len(paths) >= max_edges or hop >= max_hops:
+            break
+        frontier = nxt
+
+    def _line(p: dict[str, Any]) -> str:
+        src = nodes_by_id.get(p["src"], {})
+        dst = nodes_by_id.get(p["dst"], {})
+        txt = f"{src.get('label', p['src'])} —{p['rel']}→ {dst.get('label', p['dst'])}"
+        detail = p.get("reason") or p.get("summary") or dst.get("summary")
+        if detail:
+            txt += f" ({str(detail)[:220]})"
+        return txt
+
+    lines = [_line(p) for p in paths]
+
+    # Structured cross-region comparison when 2+ region entities are present
+    comparison: list[dict[str, Any]] = []
+    region_seeds = [s for s in seeds if s.startswith("region:")]
+    if len(region_seeds) >= 2:
+        for i in range(len(region_seeds) - 1):
+            ra, rb = region_seeds[i], region_seeds[i + 1]
+            na, nb = nodes_by_id.get(ra, {}), nodes_by_id.get(rb, {})
+            ta = nodes_by_id.get(f"trend:{ra.split(':', 1)[1]}", {})
+            tb = nodes_by_id.get(f"trend:{rb.split(':', 1)[1]}", {})
+            sa = (ta.get("attrs") or {}).get("slope_mm_per_decade")
+            sb = (tb.get("attrs") or {}).get("slope_mm_per_decade")
+            sga = (ta.get("attrs") or {}).get("statistically_significant_95")
+            sgb = (tb.get("attrs") or {}).get("statistically_significant_95")
+            rain_a = (na.get("attrs") or {}).get("rainfall_mm")
+            rain_b = (nb.get("attrs") or {}).get("rainfall_mm")
+            awc_a = ((nodes_by_id.get(f"soil:{ra.split(':', 1)[1]}", {}).get("attrs")) or {}).get("awc_mm_per_m")
+            awc_b = ((nodes_by_id.get(f"soil:{rb.split(':', 1)[1]}", {}).get("attrs")) or {}).get("awc_mm_per_m")
+            comparison.append({
+                "a": ra,
+                "b": rb,
+                "a_label": na.get("label", ra),
+                "b_label": nb.get("label", rb),
+                "slope_a_mm_per_decade": sa,
+                "slope_b_mm_per_decade": sb,
+                "significant_a": sga,
+                "significant_b": sgb,
+                "rainfall_a_mm": rain_a,
+                "rainfall_b_mm": rain_b,
+                "awc_a_mm_per_m": awc_a,
+                "awc_b_mm_per_m": awc_b,
+            })
+
+    return {
+        "entities": list(entities or []),
+        "seeds": seeds,
+        "lines": lines,
+        "comparison": comparison,
+        "paths": paths,
+    }
+
+
+def _collect_graph_entities(question: str, q_concepts: set[str], target_region: str) -> list[str]:
+    """Detect graph entities in the user's question (regions by name, crops via concepts)."""
+    q_norm = normalize_arabic((question or "").lower())
+    q_ascii = "".join(ch for ch in unicodedata.normalize("NFD", q_norm) if unicodedata.category(ch) != "Mn")
+    matched_regions: list[str] = []
+    for rid, *needles in (
+        ("setif", "setif", "سطيف"),
+        ("tiaret", "tiaret", "تيارت"),
+        ("constantine", "constantine", "قسنطينه"),
+        ("kansas", "kansas"),
+        ("punjab", "punjab"),
+    ):
+        if any(n in q_norm or n in q_ascii for n in needles):
+            matched_regions.append(rid)
+    ents: list[str] = matched_regions[:]
+    for c in sorted(q_concepts):
+        cid = _CONCEPT_TO_CROP_ID.get(c)
+        if cid and cid not in ents:
+            ents.append(cid)
+    is_comparison = any(
+        w in q_norm
+        for w in ("compare", " vs ", " versus ", "vs.", "différence", "difference", "better than", "مقارنه", "أفضل من")
+    )
+    if is_comparison and target_region not in ents:
+        ents.append(target_region)
+    if not ents:
+        ents = [target_region]
+    elif target_region not in ents and len(ents) < 4:
+        ents.insert(0, target_region)
+    return ents[:6]
+
+
+def _scalar(v: Any) -> float | None:
+    """Extract a numeric value from a v2 indicator block ({value, unit, ...}) or a scalar."""
+    if isinstance(v, dict):
+        v = v.get("value")
+    if isinstance(v, (int, float)) and not isinstance(v, bool):
+        return float(v)
+    return None
+
+
+def _pipeline_processed_dir(region_id: str) -> Path | None:
+    """Locate the authoritative v2 pipeline outputs for a region.
+
+    Resolution order: the region id itself, then the `code` mapped in
+    domain/regions.csv (regionA -> setif). A directory whose indicators.json
+    carries the v2 `rainfall_trend` block (Theil-Sen keys) wins over v1-style
+    mirrors, so verified data/processed/setif|tiaret|constantine outputs are
+    preferred over legacy regionA/B/C snapshots.
+    """
+    if not region_id:
+        return None
+    code = region_id
+    regions_csv = ROOT / "domain" / "regions.csv"
+    try:
+        with regions_csv.open(newline="", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                if row.get("region_id", "").strip() == region_id:
+                    code = row.get("code", "").strip() or region_id
+                    break
+    except Exception:
+        pass
+    candidates: list[Path] = []
+    for cand in (region_id, code):
+        if cand and (ROOT / "data" / "processed" / cand / "indicators.json").exists():
+            p = ROOT / "data" / "processed" / cand
+            if p not in candidates:
+                candidates.append(p)
+
+    def has_v2_trend(p: Path) -> bool:
+        try:
+            doc = json.loads((p / "indicators.json").read_text(encoding="utf-8"))
+        except Exception:
+            return False
+        block = doc.get("rainfall_trend")
+        return isinstance(block, dict) and block.get("theilslopes_slope_per_year") is not None
+
+    for p in candidates:
+        if has_v2_trend(p):
+            return p
+    return candidates[0] if candidates else None
+
 
 def compute_engine_context(
     region_id: str = "regionA",
@@ -543,6 +793,7 @@ def compute_engine_context(
     priorities: dict[str, float] | None = None,
     scenario: dict[str, float] | None = None,
     indicators_by_region: dict[str, Any] | None = None,
+    graph_entities: list[str] | None = None,
 ) -> dict[str, Any]:
     """Run the real `engine/scoring.py` `recommend()` function and return structured plan scores."""
     cache_key = json.dumps(
@@ -552,6 +803,7 @@ def compute_engine_context(
             "alw": allowed,
             "p": priorities,
             "sc": scenario,
+            "g": graph_entities,
         },
         sort_keys=True,
     )
@@ -568,16 +820,78 @@ def compute_engine_context(
     ind = dict(indicators_by_region.get(domain_reg) or indicators_by_region.get("regionA") or {})
     # Also merge region thresholds so rainfall_reference_mm and soc_threshold_g_per_kg match domain
     thresh = data.get("thresholds") or {}
-    soil_path = ROOT / "data" / "processed" / domain_reg / "soil.json"
-    v2_ind_path = ROOT / "data" / "processed" / domain_reg / "indicators.json"
-    if v2_ind_path.exists():
-        v2_ind = json.loads(v2_ind_path.read_text(encoding="utf-8"))
-        if isinstance(v2_ind.get("rainfall_mm"), dict):
-            ind["rainfall_mm"] = float(v2_ind["rainfall_mm"]["value"])
+
+    # Prefer our verified v2 pipeline outputs (data/processed/<code>/) over v1 snapshots
+    processed_dir = _pipeline_processed_dir(region_id) or _pipeline_processed_dir(domain_reg)
+    v2_stats: dict[str, Any] = {}
+    v2_label = None
+    if processed_dir:
+        soil_path = processed_dir / "soil.json"
+        v2_ind_path = processed_dir / "indicators.json"
+        if v2_ind_path.exists():
+            try:
+                v2_ind = json.loads(v2_ind_path.read_text(encoding="utf-8"))
+            except Exception:
+                v2_ind = {}
+            for key in ("rainfall_mm", "water_stress", "ph"):
+                val = _scalar(v2_ind.get(key))
+                if val is not None:
+                    ind[key] = val
+            if isinstance(v2_ind.get("rainfall_trend"), dict):
+                ind["rainfall_trend"] = dict(v2_ind["rainfall_trend"])
+            if isinstance(v2_ind.get("label"), str) and v2_ind["label"].strip():
+                v2_label = v2_ind["label"].strip()
+            hd = v2_ind.get("historical_drought")
+            if isinstance(hd, dict) and hd:
+                v2_stats["drought"] = {
+                    "window": hd.get("window"),
+                    "drought_frequency_pct": hd.get("drought_frequency_pct"),
+                    "severe_drought_years": list(hd.get("severe_drought_years") or []),
+                    "severe_boundary_mm": hd.get("severe_boundary_mm"),
+                    "confidence": hd.get("confidence"),
+                }
+            swc = v2_ind.get("soil_water_capacity")
+            if isinstance(swc, dict) and swc.get("awc_mm_per_m") is not None:
+                v2_stats["awc"] = {
+                    "awc_mm_per_m": float(swc["awc_mm_per_m"]),
+                    "awc_is_estimate": bool(swc.get("awc_is_estimate", True)),
+                    "method": swc.get("method"),
+                    "confidence": swc.get("confidence"),
+                }
+            rt = v2_ind.get("rule_trace")
+            if isinstance(rt, dict):
+                v2_stats["rule_trace"] = {
+                    k: v
+                    for k, v in rt.items()
+                    if isinstance(v, str) and v.strip() and k != "purpose"
+                }
+            dq_path = processed_dir / "data_quality.json"
+            if dq_path.exists():
+                try:
+                    dq = json.loads(dq_path.read_text(encoding="utf-8"))
+                    v2_stats["data_quality"] = {
+                        "run_stamp": dq.get("run_stamp"),
+                        "confidence_summary": dq.get("confidence_summary"),
+                        "spatial_caveat": dq.get("spatial_caveat"),
+                    }
+                except Exception:
+                    pass
+        v2_stats["pipeline_code"] = processed_dir.name
+    else:
+        soil_path = ROOT / "data" / "processed" / domain_reg / "soil.json"
     if soil_path.exists():
         soil_d = json.loads(soil_path.read_text(encoding="utf-8"))
         if "soc_g_per_kg" in soil_d:
             ind["soil_organic_carbon_g_per_kg"] = float(soil_d["soc_g_per_kg"])
+        if soil_d.get("awc_mm_per_m") is not None and "awc" not in v2_stats:
+            v2_stats["awc"] = {
+                "awc_mm_per_m": float(soil_d["awc_mm_per_m"]),
+                "awc_is_estimate": bool(soil_d.get("awc_is_estimate", True)),
+                "method": soil_d.get("awc_method"),
+                "confidence": soil_d.get("confidence"),
+            }
+    v2_stats.update(scoring.extract_trend_stats(ind))
+    graph_ctx = get_graph_context(graph_entities) if graph_entities else {}
     if "rainfall_reference_mm" in thresh:
         ind["rainfall_reference_mm"] = float(thresh["rainfall_reference_mm"])
     if "soc_threshold_g_per_kg" in thresh:
@@ -625,9 +939,12 @@ def compute_engine_context(
     rec = scoring.recommend(weights, eff_ind, cur_rot, data=data, monte_carlo_runs=100)
     existing = rec["strategies"][0]
     best = rec["strategies"][1]
+    region_meta = dict(data.get("region_meta", {}) or {})
+    if v2_label:
+        region_meta["name"] = v2_label
     ctx_out = {
         "region": domain_reg,
-        "region_meta": data.get("region_meta", {}),
+        "region_meta": region_meta,
         "rules": data.get("rules", {}),
         "thresholds": thresh,
         "indicators": {
@@ -645,6 +962,8 @@ def compute_engine_context(
         "rank1": best,
         "alternatives": rec["strategies"][1:4],
         "rotations_to_avoid": rec.get("rotations_to_avoid", []),
+        "v2_statistics": v2_stats,
+        "graph_context": graph_ctx,
     }
     if indicators_by_region is None:
         _ENGINE_CTX_CACHE[cache_key] = ctx_out
@@ -738,6 +1057,10 @@ def _format_engine_summary(ctx: dict[str, Any]) -> dict[str, Any]:
         "final_nitrogen_kg_ha": r1["trajectory_3yr"]["final_nitrogen_kg_ha"],
         "ranking_stability_pct": ctx["ranking_stability_pct"],
     }
+    v2 = ctx.get("v2_statistics") or {}
+    drought = v2.get("drought") or {}
+    awc = v2.get("awc") or {}
+    gc = ctx.get("graph_context") or {}
     return {
         "region": ctx["region"],
         "region_name": ctx.get("region_meta", {}).get("name", ctx["region"]),
@@ -748,6 +1071,22 @@ def _format_engine_summary(ctx: dict[str, Any]) -> dict[str, Any]:
         "adjusted_weights": {k: round(v, 3) for k, v in ctx["adjusted_weights"].items()},
         "ranking_stability_pct": ctx["ranking_stability_pct"],
         "n_candidates": ctx["n_candidates"],
+        "v2_statistics": {
+            "trend_source": v2.get("trend_source"),
+            "pipeline_code": v2.get("pipeline_code"),
+            "rainfall_trend_mm_per_decade": v2.get("sen_slope_mm_per_decade"),
+            "trend_window": v2.get("trend_window"),
+            "mbb_ci_low_95": v2.get("mbb_ci_low_95_per_decade"),
+            "mbb_ci_high_95": v2.get("mbb_ci_high_95_per_decade"),
+            "statistically_significant_95": v2.get("statistically_significant_95"),
+            "drought_frequency_pct": drought.get("drought_frequency_pct"),
+            "severe_drought_years_count": len(drought.get("severe_drought_years") or []),
+            "awc_mm_per_m": awc.get("awc_mm_per_m"),
+        },
+        "knowledge_graph": {
+            "lines": list(gc.get("lines") or [])[:8],
+            "comparison": list(gc.get("comparison") or [])[:3],
+        },
         "existing": {
             "rotation": ex["rotation"],
             "crops": ex["rotation"],
@@ -1013,6 +1352,172 @@ def _synthesize_grounded_answer(
             "plant", "grow", "recommend", "best", "planter", "cultiver", "أزرع", "ازرع", "نغرس", "أفضل", "افضل",
         )
     )
+    asks_trend = any(
+        w in q_low
+        for w in (
+            "trend", "slope", "drying", "drier", "declin", "significant",
+            "séch", "assech", "اتجاه", "ميل", "تجفاف", "انخفاض",
+        )
+    ) or ("concept_water" in q_concepts and any(w in q_low for w in ("ans", "années", "years", "سنوات")))
+
+    # Build the v2 rainfall-trend paragraph (Theil-Sen slope + MBB 95% CI),
+    # explicitly distinguishing a statistically confirmed trend from an
+    # unconfirmed / noisy one.
+    trend_text = ""
+    v2 = engine_ctx.get("v2_statistics") or {}
+    if v2.get("sen_slope_mm_per_decade") is not None:
+        slope = float(v2["sen_slope_mm_per_decade"])
+        lo = v2.get("mbb_ci_low_95_per_decade")
+        hi = v2.get("mbb_ci_high_95_per_decade")
+        sig = v2.get("statistically_significant_95")
+        window = v2.get("trend_window") or "the 30-year window"
+        has_ci = lo is not None and hi is not None
+        ci_txt = f"`[{lo:+.1f}, {hi:+.1f}] mm/decade`" if has_ci else ""
+        if sig:
+            trend_texts = {
+                "en": (
+                    "**Rainfall trend — statistically confirmed (Theil-Sen slope + moving block bootstrap):**\n"
+                    f"- Theil-Sen slope: `{slope:+.1f} mm/decade` over `{window}`.\n"
+                    + (f"- Bootstrap 95% CI: {ci_txt} — excludes zero, so the drying trend is statistically significant at the 95% level (`statistically_significant_95 = true`).\n" if has_ci else "")
+                    + "- Implication: treat the decline as real when sizing the rotation — favor drought-tolerant, low-water-need crops."
+                ),
+                "fr": (
+                    "**Tendance pluviométrique — statistiquement confirmée (pente de Theil-Sen + bootstrap par blocs mobiles) :**\n"
+                    f"- Pente de Theil-Sen : `{slope:+.1f} mm/décennie` sur `{window}`.\n"
+                    + (f"- IC bootstrap 95 % : {ci_txt} — exclut zéro, la tendance à l'assèchement est donc statistiquement significative au seuil de 95 % (`statistically_significant_95 = true`).\n" if has_ci else "")
+                    + "- Implication : considérez ce déclin comme réel — privilégiez des cultures tolérantes à la sécheresse et sobres en eau."
+                ),
+                "ar": (
+                    "**اتجاه هطول الأمطار — مؤكد إحصائياً (ميل ثيل-سن + بووتستراب الكتل المتحركة):**\n"
+                    f"- ميل ثيل-سن: `{slope:+.1f} مم/عقد` خلال `{window}`.\n"
+                    + (f"- فترة الثقة البوتسترابية 95%: {ci_txt} — لا تشمل الصفر، لذا الاتجاه نحو الجفاف مؤكد إحصائياً عند مستوى 95% (`statistically_significant_95 = true`).\n" if has_ci else "")
+                    + "- الاستنتاج: عند اختيار الدورة الزراعية عامل هذا الانخفاض كأمر حقيقي وفضّل المحاصيل المتحملة للجفاف قليلة استهلاك المياه."
+                ),
+            }
+        else:
+            trend_texts = {
+                "en": (
+                    "**Rainfall trend — observed but NOT statistically confirmed:**\n"
+                    f"- Theil-Sen slope: `{slope:+.1f} mm/decade` over `{window}`"
+                    + (f", but the bootstrap 95% CI {ci_txt} includes zero (`statistically_significant_95 = false`)." if has_ci else " (`statistically_significant_95 = false`).")
+                    + "\n- Implication: treat this as natural year-to-year variability — do not overhaul the rotation because of it."
+                ),
+                "fr": (
+                    "**Tendance pluviométrique — observée mais NON confirmée statistiquement :**\n"
+                    f"- Pente de Theil-Sen : `{slope:+.1f} mm/décennie`"
+                    + (f", mais l'IC bootstrap 95 % {ci_txt} inclut zéro (`statistically_significant_95 = false`)." if has_ci else " (`statistically_significant_95 = false`).")
+                    + "\n- Implication : traitez cela comme une variabilité naturelle d'une année à l'autre — ne bouleversez pas la rotation pour autant."
+                ),
+                "ar": (
+                    "**اتجاه هطول الأمطار — ملحوظ لكنه غير مؤكد إحصائياً:**\n"
+                    f"- ميل ثيل-سن: `{slope:+.1f} مم/عقد`"
+                    + (f"، لكن فترة الثقة البوتسترابية 95% {ci_txt} تشمل الصفر (`statistically_significant_95 = false`)." if has_ci else " (`statistically_significant_95 = false`).")
+                    + "\n- الاستنتاج: عامله كتباين طبيعي من سنة لأخرى ولا تغيّر دورتك الزراعية بسببه."
+                ),
+            }
+        trend_text = trend_texts.get(lang, trend_texts["en"])
+
+    # Knowledge-graph relations + structured cross-region comparison + rule_trace weaving
+    gc = engine_ctx.get("graph_context") or {}
+    glines = list(gc.get("lines") or [])[:6]
+    comparisons = list(gc.get("comparison") or [])[:3]
+    rule_trace = (engine_ctx.get("v2_statistics") or {}).get("rule_trace") or {}
+    wanted_rules: list[str] = []
+    if asks_water and "water_stress" in rule_trace:
+        wanted_rules.append("water_stress")
+    if asks_fert and "organic_carbon" in rule_trace:
+        wanted_rules.append("organic_carbon")
+    if asks_trend and "rainfall_trend" in rule_trace:
+        wanted_rules.append("rainfall_trend")
+    if (crop_block or asks_scores) and "soil_water_capacity" in rule_trace:
+        wanted_rules.append("soil_water_capacity")
+    if not wanted_rules:
+        wanted_rules = [
+            k for k in ("water_stress", "organic_carbon", "soil_water_capacity", "historical_drought")
+            if k in rule_trace
+        ][:2]
+
+    def _sig_txt(sig: Any, lg: str) -> str:
+        if sig is True:
+            return {
+                "en": "trend statistically confirmed (95% CI)",
+                "fr": "tendance confirmée statistiquement (IC 95 %)",
+                "ar": "اتجاه مؤكد إحصائياً (فترة ثقة 95%)",
+            }[lg]
+        if sig is False:
+            return {
+                "en": "trend NOT statistically confirmed",
+                "fr": "tendance NON confirmée statistiquement",
+                "ar": "اتجاه غير مؤكد إحصائياً",
+            }[lg]
+        return {
+            "en": "trend significance not tested",
+            "fr": "significativité de la tendance non testée",
+            "ar": "لم يتم اختبار معنوية الاتجاه",
+        }[lg]
+
+    def _cmp_lines(lg: str) -> list[str]:
+        out: list[str] = []
+        for c in comparisons:
+            a, b = c.get("a_label"), c.get("b_label")
+            sa, sb = c.get("slope_a_mm_per_decade"), c.get("slope_b_mm_per_decade")
+            if sa is None or sb is None:
+                continue
+            ra, rb = c.get("rainfall_a_mm"), c.get("rainfall_b_mm")
+            if lg == "fr":
+                rain_txt = f" ; pluviométrie moyenne {ra:.0f} vs {rb:.0f} mm/an" if ra is not None and rb is not None else ""
+                out.append(
+                    f"- **{a} vs {b} :** tendance Theil-Sen {sa:+.1f} vs {sb:+.1f} mm/décennie — "
+                    f"{a} : {_sig_txt(c.get('significant_a'), lg)}, {b} : {_sig_txt(c.get('significant_b'), lg)}{rain_txt}."
+                )
+            elif lg == "ar":
+                rain_txt = f"، متوسط الأمطار {ra:.0f} مقابل {rb:.0f} مم/سنة" if ra is not None and rb is not None else ""
+                out.append(
+                    f"- **{a} في مواجهة {b}:** ميل ثيل-سن {sa:+.1f} مقابل {sb:+.1f} مم/عقد — "
+                    f"{a}: {_sig_txt(c.get('significant_a'), lg)}، {b}: {_sig_txt(c.get('significant_b'), lg)}{rain_txt}."
+                )
+            else:
+                rain_txt = f"; mean rainfall {ra:.0f} vs {rb:.0f} mm/yr" if ra is not None and rb is not None else ""
+                out.append(
+                    f"- **{a} vs {b}:** Theil-Sen trend {sa:+.1f} vs {sb:+.1f} mm/decade — "
+                    f"{a}: {_sig_txt(c.get('significant_a'), lg)}, {b}: {_sig_txt(c.get('significant_b'), lg)}{rain_txt}."
+                )
+        return out
+
+    _graph_headers = {
+        "en": "**Structured knowledge-graph relations (verified pipeline facts):**",
+        "fr": "**Relations structurées du graphe de connaissances (faits vérifiés du pipeline) :**",
+        "ar": "**علاقات رسم المعرفة المهيكلة (حقائق مدققة من خط المعالجة):**",
+    }
+    _cmp_headers = {
+        "en": "**Cross-region comparison (from the knowledge graph):**",
+        "fr": "**Comparaison inter-régions (issue du graphe de connaissances) :**",
+        "ar": "**مقارنة بين المناطق (من رسم المعرفة):**",
+    }
+    _rule_headers = {
+        "en": "**Verified rule explanations (rule_trace):**",
+        "fr": "**Explications vérifiées des règles (rule_trace) :**",
+        "ar": "**الشروح المدققة للقواعد (rule_trace):**",
+    }
+
+    def _graph_part(lg: str) -> str:
+        if not glines and not comparisons:
+            return ""
+        lines = [_graph_headers.get(lg, _graph_headers["en"])]
+        lines += [f"- {l}" for l in glines]
+        cl = _cmp_lines(lg)
+        if cl:
+            lines.append(_cmp_headers.get(lg, _cmp_headers["en"]))
+            lines += [f"- {l}" for l in cl]
+        return "\n".join(lines)
+
+    def _rule_part(lg: str) -> str:
+        if not wanted_rules:
+            return ""
+        bullets = [f"- {str(rule_trace[k])[:320]}" for k in wanted_rules if k in rule_trace]
+        if not bullets:
+            return ""
+        return "\n".join([_rule_headers.get(lg, _rule_headers["en"])] + bullets)
 
     if lang == "ar":
         parts = []
@@ -1037,7 +1542,15 @@ def _synthesize_grounded_answer(
                 "**تحمل الجفاف وكفاءة المياه عبر المحاصيل:**\n"
                 "- أعلى المحاصيل تحملاً للجفاف وأقلها استهلاكاً للمياه هي: القرطم (`safflower` احتياج مائي `35%`)، الدخن (`pearl_millet 28%` / `proso_millet 30%`)، الكزبرة (`coriander 34%`)، الماش (`mung_bean 36%`)، السلة (`sulla 38%`)، الشعير (`barley 40%`)، العدس (`lentil 40%`)، الذرة الرفيعة (`sorghum 44%`)، والحمص (`chickpea 45%`).\n"
                 + ("- **ملاحظة الري (`G9`):** يتم حساب `water_stress` من أمطار NASA POWER؛ وفي المزارع المروية قد يختلف الإجهاد الفعلي." if farming_sys == "irrigated" else "")
-            )
+        )
+        if asks_trend and trend_text:
+            parts.append(trend_text)
+        gp = _graph_part("ar")
+        if gp:
+            parts.append(gp)
+        rp = _rule_part("ar")
+        if rp:
+            parts.append(rp)
         if top_excerpt and not asks_scores:
             parts.append(f"**مقتطف موثق من الدليل الزراعي ([{top_passage['doc_id']} · {top_passage['section']}]):**\n> {top_excerpt}")
 
@@ -1079,7 +1592,15 @@ def _synthesize_grounded_answer(
                 "**Cultures les plus sobres en eau et tolérantes à la sécheresse :**\n"
                 "- Parmi nos 35 cultures validées, les plus sobres sont : le carthame (`safflower`, besoin en eau `35%`), le mil (`pearl_millet 28%`, `proso_millet 30%`), la coriandre (`34%`), le haricot mungo (`mung_bean 36%`), le sulla (`sulla 38%`), l'orge (`barley 40%`), la lentille (`lentil 40%`), le sorgho (`sorghum 44%`) et le pois chiche (`chickpea 45%`).\n"
                 + ("- **Note Irrigation (`G9`) :** Le stress hydrique (`water_stress`) est calculé à partir des pluies NASA POWER ; les exploitations irriguées peuvent différer." if farming_sys == "irrigated" else "")
-            )
+        )
+        if asks_trend and trend_text:
+            parts.append(trend_text)
+        gp = _graph_part("fr")
+        if gp:
+            parts.append(gp)
+        rp = _rule_part("fr")
+        if rp:
+            parts.append(rp)
         if top_excerpt and not asks_scores:
             parts.append(f"**Extrait vérifié du guide agronomique ([{top_passage['doc_id']} · {top_passage['section']}]) :**\n> {top_excerpt}")
 
@@ -1122,6 +1643,14 @@ def _synthesize_grounded_answer(
             "- Lowest water demand and highest drought resilience: Pearl Millet (`water_need 28%`, `drought_tolerance 85%`), Proso Millet (`30%`), Sesame (`30%`), Coriander (`34%`), Safflower (`35%`, `drought_tolerance 90%`), Mung Bean (`36%`), Sulla (`38%`), Barley (`40%`), Lentil (`40%`), Field Pea (`42%`), Grain Sorghum (`44%`), and Chickpea (`45%`).\n"
             + ("- **Irrigation Disclosure (`G9`):** `water_stress` is computed from NASA POWER rainfall; canal and tube-well irrigated farms may experience different field moisture stress." if farming_sys == "irrigated" else "")
         )
+    if asks_trend and trend_text:
+        parts.append(trend_text)
+    gp = _graph_part("en")
+    if gp:
+        parts.append(gp)
+    rp = _rule_part("en")
+    if rp:
+        parts.append(rp)
     if top_excerpt and not asks_scores:
         parts.append(f"**Grounded Guidance Excerpt ([{top_passage['doc_id']} · {top_passage['section']}]):**\n> {top_excerpt}")
 
@@ -1200,12 +1729,35 @@ def _try_external_llm(
         "3. DO NOT use developer citation codes like '[DOC-ML-001 · Section 2]', software engineering terms, database names, or API tables.\n"
         "4. If referring to sources, simply say 'According to regional agronomy trials' or 'Based on regional soil and climate data'.\n"
         "5. Always quote the key engine score numbers naturally (e.g., 'Score: 66/100', 'Saves ~120 kg NPK/ha').\n"
-        "6. Never invent unverified crop advice, chemical pesticide dosages, or unmodeled crops."
+        "6. Never invent unverified crop advice, chemical pesticide dosages, or unmodeled crops.\n"
+        "7. When discussing rainfall trends, use the `v2_statistics` block: if `statistically_significant_95` is true, "
+        "state the Theil-Sen slope (mm/decade) AND the bootstrap 95% CI and call the drying trend statistically confirmed; "
+        "if it is false, explicitly say the observed slope is NOT statistically confirmed (the 95% CI includes zero) "
+        "and should be treated as year-to-year variability, not a proven trend.\n"
+        "8. When explaining WHY, use the `knowledge_graph` relations and the `rule_trace` plain-English explanations: "
+        "weave the structured relations (e.g., a region's climate trend favoring drought-tolerant crops, or low SOC "
+        "favoring nitrogen-fixing legumes) and the exact rule_trace sentences into your answer in natural language, "
+        "never as raw node ids.\n"
     )
+    gc = engine_ctx.get("graph_context") or {}
+    graph_txt = ""
+    if gc.get("lines"):
+        graph_txt = (
+            "KNOWLEDGE GRAPH RELATIONS (verified pipeline facts):\n"
+            + "\n".join(f"- {ln}" for ln in gc["lines"][:8])
+        )
+        if gc.get("comparison"):
+            graph_txt += (
+                "\n\nCROSS-REGION COMPARISON (structured):\n"
+                + json.dumps(gc["comparison"][:3], ensure_ascii=False)
+            )
+        graph_txt += "\n\n"
+
     user_msg = (
         f"FARMER QUESTION ({lang_name}): {question}\n\n"
         + (f"REQUESTED CROP CATALOG PROFILES:\n{crop_block}\n\n" if crop_block else "")
         + f"COMPUTED ENGINE SCORES (Active Context: {engine_ctx.get('region')}):\n{ctx_summary}\n\n"
+        + graph_txt
         + f"RETRIEVED GUIDANCE PASSAGES:\n{docs_txt}"
     )
 
@@ -1293,13 +1845,26 @@ def answer_question(
     detected_lang = detect_language(q_clean, explicit_lang=lang)
     q_concepts = detect_concepts(q_clean)
     target_region, region_from_q = _detect_question_region(q_concepts, region)
+    # Name-level routing to our v2 pipeline regions (Tiaret / Constantine share
+    # the regionA agronomy domain but have their own data/processed outputs).
+    q_norm = normalize_arabic(q_clean.lower())
+    if "tiaret" in q_norm or "تيارت" in q_norm:
+        target_region = "tiaret"
+    elif "constantine" in q_norm or "قسنطينه" in q_norm or "قسنطينة" in q_norm:
+        target_region = "constantine"
+    graph_entities = _collect_graph_entities(q_clean, q_concepts, target_region)
     ctx = engine_context or compute_engine_context(
         region_id=target_region,
         rotation=None if (region_from_q and target_region != region) else rotation,
         allowed=None if (region_from_q and target_region != region) else allowed,
         priorities=priorities,
         scenario=scenario,
+        graph_entities=graph_entities,
     )
+    if engine_context is not None:
+        ctx = dict(engine_context)
+        if graph_entities:
+            ctx["graph_context"] = get_graph_context(graph_entities)
 
     retrieval = retrieve_passages(q_clean, region_id=ctx["region"], index=index)
     passages = retrieval["passages"]

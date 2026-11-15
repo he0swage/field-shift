@@ -242,14 +242,68 @@ def check_crop_compatibility(crop_spec: dict, indicators: dict) -> dict:
 
 
 # ---- Indicators and weights -----------------------------------------------
+def _v2_trend_block(indicators: dict) -> dict:
+    """Return the v2 pipeline `rainfall_trend` block (data/processed indicators.json) if present."""
+    block = indicators.get("rainfall_trend")
+    return block if isinstance(block, dict) else {}
+
+
 def extract_sen_slope_decade(indicators: dict) -> float:
-    """Extract Sen's slope / decadal rainfall drying velocity (mm/decade) from indicators."""
-    if "sen_slope_mm_per_decade" in indicators and indicators["sen_slope_mm_per_decade"] is not None:
+    """Extract the decadal rainfall drying velocity (mm/decade) from an indicators dict.
+
+    Priority: verified v2 pipeline outputs (data/processed/<region>/indicators.json):
+      1. rainfall_trend.sen_slope_mm_per_decade (alias slope_mm_per_decade)
+      2. rainfall_trend.theilslopes_slope_per_year * 10
+    Legacy v1 fallbacks (data/inputs / data/regional snapshots):
+      3. top-level sen_slope_mm_per_decade
+      4. climate_baseline.rainfall_trend_decade_mm
+    """
+    v2 = _v2_trend_block(indicators)
+    sen = v2.get("sen_slope_mm_per_decade", v2.get("slope_mm_per_decade"))
+    if sen is not None:
+        return float(sen)
+    theil = v2.get("theilslopes_slope_per_year")
+    if theil is not None:
+        return float(theil) * 10.0
+    if indicators.get("sen_slope_mm_per_decade") is not None:
         return float(indicators["sen_slope_mm_per_decade"])
     cb = indicators.get("climate_baseline") or {}
-    if "rainfall_trend_decade_mm" in cb and cb["rainfall_trend_decade_mm"] is not None:
+    if cb.get("rainfall_trend_decade_mm") is not None:
         return float(cb["rainfall_trend_decade_mm"])
     return 0.0
+
+
+def extract_trend_stats(indicators: dict) -> dict:
+    """Extract v2 rainfall-trend statistics (Theil-Sen slope + MBB 95% CI).
+
+    Slope and CI bounds are normalized to mm/decade; legacy v1 keys are used
+    only when the v2 `rainfall_trend` block is absent.
+    """
+    v2 = _v2_trend_block(indicators)
+    stats = {
+        "sen_slope_mm_per_decade": round(extract_sen_slope_decade(indicators), 2),
+        "trend_source": "v2_rainfall_trend" if v2 else "legacy_v1",
+        "trend_window": v2.get("window"),
+        "trend_confidence": v2.get("confidence"),
+        "mbb_ci_low_95_per_decade": None,
+        "mbb_ci_high_95_per_decade": None,
+        "statistically_significant_95": bool(v2.get("statistically_significant_95", False)),
+    }
+    low = v2.get("mbb_ci_low_95")
+    if low is None and v2.get("mbb_ci_low_95_per_year") is not None:
+        low = float(v2["mbb_ci_low_95_per_year"]) * 10.0
+    elif low is not None:
+        low = float(low)
+    high = v2.get("mbb_ci_high_95")
+    if high is None and v2.get("mbb_ci_high_95_per_year") is not None:
+        high = float(v2["mbb_ci_high_95_per_year"]) * 10.0
+    elif high is not None:
+        high = float(high)
+    if low is not None:
+        stats["mbb_ci_low_95_per_decade"] = round(low, 2)
+    if high is not None:
+        stats["mbb_ci_high_95_per_decade"] = round(high, 2)
+    return stats
 
 
 def derive_stress(indicators: dict) -> dict:

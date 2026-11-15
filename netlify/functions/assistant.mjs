@@ -13,9 +13,9 @@ const CORS_HEADERS = {
 
 const DEFAULT_REGIONAL_FACTS = {
   regionA: {
-    name: 'Sétif High Plains, Algeria',
-    climate: 'Semi-arid continental (mean rainfall: 485 mm/yr, Sen’s slope drying trend: -1.2 mm/yr, acute drought shock threshold: ≤ 398 mm/yr; 34 spring frost days in March–April; 20 hot days >35°C in June–July; longest dry spell: 25 days).',
-    soil: 'Calcareous clay-loam (ISRIC SoilGrids 0–30 cm: pH 7.8–8.2, Soil Organic Carbon: 12.5–17.1 g/kg, medium rating).',
+    name: 'Sétif High Plateaux, Algeria',
+    climate: 'Semi-arid continental (verified v2 pipeline, data/processed/setif/indicators.json: mean annual rainfall 2015-2024: 509.0 mm/yr; 30-year mean 574.9 mm; Theil-Sen drying trend: -44.1 mm/decade over 1995-2024, moving block bootstrap 95% CI [-74.1, -11.8] mm/decade — excludes zero, statistically significant at 95%; historical drought frequency: 10.0%, severe drought years 2000/2001/2024; water stress: 0.163).',
+    soil: 'Calcareous clay-loam (ISRIC SoilGrids 0-30 cm: pH 7.77, SOC 12.52 g/kg medium, AWC 140.6 mm/m Saxton-Rawls 2006 pedotransfer estimate).',
     recommended: 'Durum Wheat → Lentil → Barley (or Sulla / Chickpea / Safflower).',
     crops: [
       { name: 'Durum Wheat', family: 'Cereal', sowing: 'Nov 15 – Dec 10', harvest: 'June 20 – July 10', seed_rate: '130–150 kg/ha', depth: '4–5 cm', yield: '20.0 q/ha', price: '6,000 DZD/q (OAIC)', gross: '120,000 DZD/ha', fert: '160 kg NPK/ha', rain_opt: '350–650 mm', ph_opt: '6.0–8.5' },
@@ -30,7 +30,7 @@ const DEFAULT_REGIONAL_FACTS = {
   },
   regionB: {
     name: 'Central Kansas, USA',
-    climate: 'Temperate continental (mean rainfall: 720 mm/yr, drying trend: -0.8 mm/yr; 60 frost days; 42 hot days >35°C; Ogallala groundwater depletion).',
+    climate: 'Temperate continental (mean annual rainfall 2015-2024: 692.0 mm/yr, rainfall trend: -36.4 mm/decade (medium confidence, no MBB test); 60 frost days; 42 hot days >35°C; Ogallala groundwater depletion).',
     soil: 'Silt loam (pH 6.5–7.2, Soil Organic Carbon: 18.2 g/kg).',
     recommended: 'Winter Wheat → Grain Sorghum → Soybean or Alfalfa.',
     crops: [
@@ -42,7 +42,7 @@ const DEFAULT_REGIONAL_FACTS = {
   },
   regionC: {
     name: 'Punjab Plains, India',
-    climate: 'Sub-tropical monsoon-dominant (mean rainfall: 650 mm/yr; water table dropping ~0.5 m/yr due to flood-irrigated rice-wheat).',
+    climate: 'Sub-tropical monsoon-dominant (mean annual rainfall 2015-2024: 709.2 mm/yr, rainfall trend: -38.2 mm/decade (medium confidence, no MBB test); water table dropping ~0.5 m/yr due to flood-irrigated rice-wheat).',
     soil: 'Indo-Gangetic alluvial loam (pH 7.8–8.3, low Soil Organic Carbon: 5.8 g/kg).',
     recommended: 'Direct-Seeded Rice (or Kharif Maize) → Summer Mung Bean → Rabi Wheat.',
     crops: [
@@ -52,6 +52,27 @@ const DEFAULT_REGIONAL_FACTS = {
     ],
     npk_3yr_summary: 'Short-duration Mung Bean fixes +28 kg N/ha and breaks the rice-wheat root nematode cycle.',
   },
+};
+
+// Verified v2 pipeline regional facts (data/processed/tiaret|constantine/indicators.json).
+// Both share the regionA agronomy domain, so the crop cards are reused.
+DEFAULT_REGIONAL_FACTS.tiaret = {
+  name: 'Tiaret Western High Plateaux, Algeria',
+  climate: 'Semi-arid high plains (verified v2 pipeline, data/processed/tiaret/indicators.json: mean annual rainfall 2015-2024: 519.1 mm/yr; 30-year mean 575.3 mm; Theil-Sen drying trend: -16.8 mm/decade over 1995-2024, moving block bootstrap 95% CI [-95.2, 61.7] mm/decade — includes zero, NOT statistically significant at 95%; historical drought frequency: 23.3%, severe drought years 1998/2000/2002/2005/2020/2023/2024; water stress: 0.140).',
+  soil: 'Calcareous (ISRIC SoilGrids 0-30 cm: pH 7.57, SOC 12.38 g/kg medium, AWC 140.6 mm/m Saxton-Rawls 2006 pedotransfer estimate).',
+  recommended: 'Durum Wheat → Lentil → Barley (or Sulla / Chickpea / Safflower).',
+  crops: DEFAULT_REGIONAL_FACTS.regionA.crops,
+  npk_3yr_summary: 'Baseline continuous wheat: 420 kg NPK/ha. Legume sequences cut ~30% synthetic N on the following crop.',
+  sanitation_rules: '2-year pulse rest against Ascochyta blight and root-knot nematodes; breaks cereal Fusarium crown rot.',
+};
+DEFAULT_REGIONAL_FACTS.constantine = {
+  name: 'Constantine / El Khroub Plains, Algeria',
+  climate: 'Sub-humid plains (verified v2 pipeline, data/processed/constantine/indicators.json: mean annual rainfall 2015-2024: 603.8 mm/yr; 30-year mean 684.4 mm; Theil-Sen drying trend: -46.4 mm/decade over 1995-2024, moving block bootstrap 95% CI [-117.7, 20.5] mm/decade — includes zero, NOT statistically significant at 95%; historical drought frequency: 20.0%, severe drought years 2000/2001/2016/2021/2022/2024; water stress: 0.167).',
+  soil: 'Calcareous (ISRIC SoilGrids 0-30 cm: pH 7.50, SOC 17.08 g/kg medium, AWC 140.1 mm/m Saxton-Rawls 2006 pedotransfer estimate).',
+  recommended: 'Durum Wheat → Lentil → Barley (or Sulla / Chickpea / Safflower).',
+  crops: DEFAULT_REGIONAL_FACTS.regionA.crops,
+  npk_3yr_summary: 'Baseline continuous wheat: 420 kg NPK/ha. Legume sequences cut ~30% synthetic N on the following crop.',
+  sanitation_rules: '2-year pulse rest against Ascochyta blight and root-knot nematodes; breaks cereal Fusarium crown rot.',
 };
 
 export const handler = async (event) => {
@@ -93,7 +114,8 @@ export const handler = async (event) => {
       };
     }
 
-    const regId = body.region === 'regionB' || body.region === 'kansas' ? 'regionB' : body.region === 'regionC' || body.region === 'punjab' ? 'regionC' : 'regionA';
+    const REGION_ALIASES = { kansas: 'regionB', punjab: 'regionC', setif: 'regionA', tiaret: 'tiaret', constantine: 'constantine' };
+    const regId = REGION_ALIASES[body.region] || (DEFAULT_REGIONAL_FACTS[body.region] ? body.region : 'regionA');
     const regFacts = DEFAULT_REGIONAL_FACTS[regId] || DEFAULT_REGIONAL_FACTS.regionA;
 
     // Filter out internal software docs from sources
