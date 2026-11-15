@@ -54,8 +54,11 @@ REGIONS = {
 # ----------------------------------------------------------------- loaders
 
 def load_thresholds(path: Path = DOMAIN) -> dict:
-    doc = json.loads(path.read_text(encoding="utf-8"))
-    doc["_sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()[:16]
+    raw = path.read_bytes()
+    # Hash the git-normalized (LF) content so the recorded sha256 is stable across
+    # Windows checkout styles (core.autocrlf can hand us CRLF bytes on disk).
+    doc = json.loads(raw.decode("utf-8"))
+    doc["_sha256"] = hashlib.sha256(raw.replace(b"\r\n", b"\n")).hexdigest()[:16]
     return doc
 
 
