@@ -1,0 +1,8 @@
+{
+  "rotation_length": 3,
+  "forbid_consecutive_same_family": true,
+  "min_legumes": 1,
+  "max_high_water_crops": 1,
+  "high_water_need_threshold": 0.68,
+  "max_occurrences_per_crop": 1
+}

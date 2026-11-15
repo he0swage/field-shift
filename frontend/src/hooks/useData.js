@@ -1,10 +1,11 @@
 // Climate data hooks with a module-level cache, so switching views never refetches.
-import { useEffect, useState } from 'react';
-import { getClimate } from '../api/client';
+import { useCallback, useEffect, useState } from 'react';
+import { getClimate, getFireWatch } from '../api/client';
 import { REGION_IDS } from '../data/regions';
 import { rainTrend } from '../utils/agronomy';
 
 const climateCache = new Map(); // regionId -> Promise
+const firesCache = new Map();
 
 export function loadClimate(id) {
   if (!climateCache.has(id)) climateCache.set(id, getClimate(id));
@@ -57,4 +58,29 @@ export function useRegionTrends() {
     'all',
   );
   return data || {};
+}
+
+/** NASA FIRMS Fire Watch hook (detections within 25 km). */
+export function useFires(regionId, { radiusKm = 25, days = 2 } = {}) {
+  const [opts, setOpts] = useState({ live: false, simulateError: false, tick: 0 });
+  const key = `${regionId}:${radiusKm}:${days}:${opts.live}:${opts.simulateError}:${opts.tick}`;
+
+  const state = useAsync(() => {
+    if (!opts.live && !opts.simulateError && firesCache.has(key)) {
+      return firesCache.get(key);
+    }
+    const p = getFireWatch(regionId);
+    if (!opts.live && !opts.simulateError) firesCache.set(key, p);
+    return p;
+  }, key);
+
+  const refreshLive = useCallback(() => {
+    setOpts(o => ({ live: true, simulateError: false, tick: o.tick + 1 }));
+  }, []);
+
+  const toggleErrorDemo = useCallback(() => {
+    setOpts(o => ({ live: false, simulateError: !o.simulateError, tick: o.tick + 1 }));
+  }, []);
+
+  return { ...state, refreshLive, toggleErrorDemo, isErrorDemo: opts.simulateError };
 }

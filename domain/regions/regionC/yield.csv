@@ -1,0 +1,16 @@
+crop,yield_potential,price_local,currency,gross_income_ha,risk_note_local,source
+rice,65.0,3100,INR,201500,Flooded paddy depletes Punjab groundwater by ~0.5 m/yr and generates 6+ t/ha straw linked to October residue burning.,PAU Ludhiana / DES India 2023 (65 q/ha)
+wheat,50.2,3250,INR,163150,Rabi irrigated wheat; late March heatwaves (>35 °C) shrivel grain and Phalaris minor resistance builds in rice-wheat.,PAU Ludhiana / CACP MSP 2023-24 (50.2 q/ha)
+maize,38.5,3100,INR,119350,Kharif maize requires ~60% less irrigation water than paddy rice and leaves easily incorporated residue.,PAU Ludhiana / ICAR Maize Directorate
+mung_bean,10.5,11800,INR,123900,65-day summer/kharif pulse (PAU SML-668/832); fixes ~30 kg N/ha and eliminates synthetic starter N for following wheat.,PAU Ludhiana / CACP Moong MSP
+chickpea,13.5,8600,INR,116100,Low-water rabi pulse (Desi gram); breaks grassy weed resistance in continuous wheat fields.,ICAR-IIPR / FAOSTAT India
+lentil,11.8,9200,INR,108560,Rabi lentil suited to lighter alluvial loams; sensitive to excess flood irrigation.,ICAR / PAU Rabi Pulse Guide
+canola,16.2,8400,INR,136080,Rabi Gobhi Sarson / Indian Mustard; high oil return with half the irrigation requirement of rabi wheat.,ICAR-DRMR / PAU Oilseeds
+pearl_millet,18.0,4032,INR,72576,Very low water need; good alternative to paddy in kharif.,Team estimate - verify with national statistics (ICAR / CACP MSP)
+groundnut,20.0,9677,INR,193540,Legume oilseed for lighter soils; fixes nitrogen.,Team estimate - verify with national statistics (PAU)
+pigeon_pea,14.0,11290,INR,158060,Long-season pulse; deep roots improve soil.,Team estimate - verify with national statistics (ICAR-IIPR)
+berseem,70.0,1935,INR,135450,Winter fodder legume that adds nitrogen; needs irrigation.,Team estimate - verify with national statistics (PAU)
+potato,250.0,1613,INR,403250,Important winter cash crop; high cost and storage need.,Team estimate - verify with national statistics (PAU)
+cotton,20.0,11290,INR,225800,Grown in south-west Punjab; bollworm and heat risk.,Team estimate - verify with national statistics (CACP)
+sesame,4.5,14516,INR,65322,"Short summer oilseed, low water need, low yield.",Team estimate - verify with national statistics (ICAR)
+barley,38.0,2984,INR,113392,Uses less water than wheat; good for lighter soils.,Team estimate - verify with national statistics (PAU / CACP MSP)

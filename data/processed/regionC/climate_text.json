@@ -1,0 +1,27 @@
+{
+  "hot_days": {
+    "en": "48.5 pre-monsoon days/yr above 38 °C; late March heat spikes shrivel rabi wheat grain if sowing is delayed by late paddy harvest.",
+    "fr": "48,5 jours/an > 38 °C avant la mousson; les vagues de chaleur de fin mars échaudent le blé rabi.",
+    "ar": "48.5 يوماً في السنة فوق 38 درجة مئوية قبل الرياح الموسمية تؤثر على امتلاء حبوب القمح."
+  },
+  "frost_days": {
+    "en": "0.6 radiación chill nights (< 2 °C) in Dec–Jan; frost risk is minimal on the Ludhiana alluvial plain.",
+    "fr": "0,6 nuit froide (< 2 °C) en déc-janv; risque de gel minime.",
+    "ar": "مخاطر الصقيع منخفضة جداً (0.6 ليلة في السنة)."
+  },
+  "extreme_rain_days": {
+    "en": "7.8 Jul–Sep monsoon downpour days (> 35 mm/day) waterlog flat fields where puddling has created a plough pan.",
+    "fr": "7,8 jours de fortes pluies de mousson (> 35 mm/j) en juillet-septembre.",
+    "ar": "7.8 أيام من أمطار الرياح الموسمية الغزيرة."
+  },
+  "longest_dry_spell_days": {
+    "en": "38-day Oct–May dry spells outside the Jul–Sep monsoon are bridged by canal and tube-well irrigation, driving severe groundwater depletion.",
+    "fr": "Séquences sèches de 38 jours hors mousson compensées par l'irrigation par forage.",
+    "ar": "فترات جفاف تمتد 38 يوماً خارج موسم الأمطار يتم تعويضها بالري الجوفي."
+  },
+  "rainfall_source_disagreement": {
+    "en": "Water stress is based on rainfall (709 mm/yr, 70% concentrated in Jul–Sep monsoon). Because 98% of Punjab cropland is irrigated by tube-wells and canals, aquifer depletion—not meteoric rain—is the binding water constraint.",
+    "fr": "Le stress hydrique est basé sur la pluie; l'irrigation par forage masque le déficit pluviométrique mais épuise la nappe.",
+    "ar": "يعتمد مؤشر الإجهاد المائي على الأمطار، بينما تعتمد مزارع البنجاب على الري الجوفي والقنوات."
+  }
+}

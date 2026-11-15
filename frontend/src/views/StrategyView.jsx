@@ -7,6 +7,7 @@ import { useToast } from '../state/ToastContext';
 import { FAMILIES } from '../data/crops';
 import { KEYS, PRIO, order, setMain, setSecond } from '../utils/priorities';
 import { cropFit, cropProblems } from '../utils/agronomy';
+import { rankDynamicCropsForRegion } from '../utils/localEngine';
 import { Alert, PageHead, PageNav, RegionStrip } from '../components/ui';
 import Icon from '../components/icons';
 import AnalysisRunner from '../components/AnalysisRunner';
@@ -91,13 +92,29 @@ function UsualRotation() {
   const { state, dispatch, crops } = useFarm();
   return (
     <section className="card" aria-labelledby="rot-title">
-      <h3 className="card-title" id="rot-title">{t('rot.title')}</h3>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8, marginBottom: 8 }}>
+        <h3 className="card-title" id="rot-title" style={{ margin: 0 }}>{t('rot.title')}</h3>
+        <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+          <span className="muted" style={{ fontSize: '0.8rem', fontWeight: 600 }}>Period:</span>
+          {[2, 3, 4, 5].map(len => (
+            <button
+              key={len}
+              type="button"
+              className={`chip ${state.rotation.length === len ? 'on' : ''}`}
+              style={{ padding: '3px 8px', fontSize: '0.78rem', minHeight: 'unset' }}
+              onClick={() => dispatch({ type: 'setRotationLength', length: len })}
+            >
+              {len} Yrs
+            </button>
+          ))}
+        </div>
+      </div>
       <p className="card-sub">{t('rot.sub')}</p>
       <ol className="rot-years">
-        {[0, 1, 2].map(y => (
+        {state.rotation.map((cropId, y) => (
           <li key={y} className="field">
             <label htmlFor={`rot-${y}`}>{t('common.year', { n: y + 1 })}</label>
-            <select id={`rot-${y}`} className="select" value={state.rotation[y]}
+            <select id={`rot-${y}`} className="select" value={cropId}
               onChange={e => dispatch({ type: 'rotation', year: y, crop: e.target.value })}>
               {FAMILIES.map(f => {
                 const list = crops.filter(c => c.family === f);
@@ -259,6 +276,52 @@ function CustomCrop() {
   );
 }
 
+function DynamicCropRankingSection() {
+  const { state } = useFarm();
+  const dyn = rankDynamicCropsForRegion({
+    region: state.region,
+    custom: state.custom,
+    priorities: state.priorities,
+    scenario: state.scenario,
+  });
+  const topCrops = (dyn?.crops || []).slice(0, 6);
+
+  return (
+    <section className="card" style={{ marginTop: 24, background: 'var(--surface-2)', border: '1px solid var(--line)' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8, marginBottom: 8 }}>
+        <div>
+          <h3 className="card-title" style={{ margin: 0 }}>📊 Dynamic Crop Suitability Ranking</h3>
+          <p className="card-sub" style={{ margin: 0 }}>
+            Ranked deterministically against SoilGrids SOC, rainfall envelope, and Sen's slope drying trend.
+          </p>
+        </div>
+        {dyn?.senSlopeDecade != null && (
+          <span className="badge badge-warn" style={{ fontWeight: 700 }}>
+            Sen's Slope: {dyn.senSlopeDecade > 0 ? '+' : ''}{dyn.senSlopeDecade} mm/decade
+          </span>
+        )}
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 10, marginTop: 12 }}>
+        {topCrops.map(c => (
+          <div key={c.crop_id} className="card" style={{ padding: '10px 12px', background: 'var(--surface)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
+              <strong>#{c.rank} {c.name}</strong>
+              <span className="badge badge-good" style={{ fontWeight: 700 }}>{c.suitability_pct}% Fit</span>
+            </div>
+            <div className="muted" style={{ fontSize: '0.78rem', marginBottom: 6 }}>
+              Water Need: {c.water_need_pct}% · Drought Tol: {c.drought_tolerance_pct}% · N: {c.n_impact_kg_ha > 0 ? `+${c.n_impact_kg_ha}` : c.n_impact_kg_ha} kg/ha
+            </div>
+            <p className="hint" style={{ margin: 0, fontSize: '0.78rem', lineHeight: 1.35 }}>
+              💡 {c.rule_trace}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function StrategyView() {
   const t = useT();
   return (
@@ -271,6 +334,8 @@ export default function StrategyView() {
         <div><Priorities /></div>
         <div><UsualRotation /><AllowedCrops /></div>
       </div>
+
+      <DynamicCropRankingSection />
 
       <section className="analyse" aria-labelledby="analyse-title">
         <div>

@@ -1,0 +1,32 @@
+{
+  "id": "pigeon_pea",
+  "crop": "Pigeon Pea (Arhar)",
+  "scientific_name": "Cajanus cajan",
+  "family": "legume",
+  "water_need": 0.4,
+  "soil_effect": 0.35,
+  "nitrogen_fixing": 1,
+  "n_impact_kg_ha": 30,
+  "residue_carbon": 0.6,
+  "drought_tolerance": 0.75,
+  "profit": 0.65,
+  "oaic_ccls_price_dzd_q": 11290,
+  "baseline_yield_q_ha": 14.0,
+  "gross_income_dzd_ha": 158060,
+  "risk_level": 0.4,
+  "soil_depletion_index": 1,
+  "soil_health_delta": 18,
+  "base_npk_kg_ha": 50,
+  "fertilizer_name": "DAP (starter P)",
+  "optimal_rain_min": 500,
+  "optimal_rain_max": 1000,
+  "optimal_ph_min": 5.5,
+  "optimal_ph_max": 7.5,
+  "frost_tolerant": 0,
+  "heat_tolerant": 1,
+  "risk_note": "Long season (about 150 to 180 days); waterlogging and wilt in heavy soil.",
+  "sources": {
+    "yield": "Team estimate - verify with national statistics (ICAR-IIPR)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

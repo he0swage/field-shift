@@ -1,0 +1,32 @@
+{
+  "id": "pearl_millet",
+  "crop": "Pearl Millet (Bajra)",
+  "scientific_name": "Pennisetum glaucum",
+  "family": "cereal",
+  "water_need": 0.28,
+  "soil_effect": -0.08,
+  "nitrogen_fixing": 0,
+  "n_impact_kg_ha": -20,
+  "residue_carbon": 0.55,
+  "drought_tolerance": 0.85,
+  "profit": 0.5,
+  "oaic_ccls_price_dzd_q": 4032,
+  "baseline_yield_q_ha": 18.0,
+  "gross_income_dzd_ha": 72576,
+  "risk_level": 0.22,
+  "soil_depletion_index": 2,
+  "soil_health_delta": -3,
+  "base_npk_kg_ha": 80,
+  "fertilizer_name": "Urea",
+  "optimal_rain_min": 250,
+  "optimal_rain_max": 650,
+  "optimal_ph_min": 5.5,
+  "optimal_ph_max": 8.5,
+  "frost_tolerant": 0,
+  "heat_tolerant": 1,
+  "risk_note": "Very low water need and heat tolerant; low price; birds at grain fill.",
+  "sources": {
+    "yield": "Team estimate - verify with national statistics (ICAR / CACP MSP)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "mung_bean",
+  "crop": "Mung Bean (Moong)",
+  "scientific_name": "Vigna radiata",
+  "family": "legume",
+  "water_need": 0.36,
+  "soil_effect": 0.46,
+  "nitrogen_fixing": 1,
+  "n_impact_kg_ha": 28,
+  "residue_carbon": 0.42,
+  "drought_tolerance": 0.82,
+  "profit": 0.79,
+  "oaic_ccls_price_dzd_q": 11800,
+  "baseline_yield_q_ha": 10.5,
+  "gross_income_dzd_ha": 123900,
+  "risk_level": 0.26,
+  "soil_depletion_index": 1,
+  "soil_health_delta": 19,
+  "base_npk_kg_ha": 85,
+  "fertilizer_name": "DAP starter (100 kg/ha)",
+  "optimal_rain_min": 300,
+  "optimal_rain_max": 850,
+  "optimal_ph_min": 6.0,
+  "optimal_ph_max": 8.3,
+  "frost_tolerant": 0,
+  "heat_tolerant": 1,
+  "risk_note": "Short-duration (65-day) pulse that restores soil nitrogen and breaks the rice–wheat cereal monoculture.",
+  "sources": {
+    "yield": "PAU Ludhiana / CACP Moong MSP",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

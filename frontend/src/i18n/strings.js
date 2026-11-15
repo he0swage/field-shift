@@ -1,6 +1,10 @@
 // UI strings. Missing keys fall back to English. {placeholders} are filled by t(key, vars).
 // Crop names, fertilizer names and agronomic risk notes come from the data/API and stay in English for now.
 const en = {
+  'regionSearch.cta': 'Choose your region',
+  'plan.kicker': 'Your 3-year plan', 'plan.usual': 'Your current rotation', 'plan.recommended': 'Recommended rotation · Rank 1',
+  'regionSearch.placeholder': 'Search a region — Kansas, Sétif, Punjab…', 'regionSearch.hint': 'Goes to the current regions and the globe.', 'regionSearch.title': 'Current regions',
+  'about.src.openmeteo': 'Free historical-weather API used to fetch the cross-check series (CC BY 4.0).',
   'cmp.betterWord': 'better', 'cmp.worseWord': 'worse',
 
   // redesign
@@ -25,7 +29,7 @@ const en = {
   'about.src.power': 'Daily rain and temperature, 1995–2024 (NASA Langley, CC BY 4.0).',
   'about.src.soilgrids': 'Soil organic carbon and pH, 0–30 cm, 250 m model (ISRIC, CC BY 4.0).',
   'about.src.modis': 'Spring vegetation vigour (NDVI) from the Terra satellite, 250 m.',
-  'about.src.era5': 'Independent weather cross-check that sets our confidence labels (CC BY 4.0).',
+  'about.src.era5': 'ECMWF reanalysis: independent weather cross-check that sets our confidence labels.',
   'about.src.prices': 'Official cereal and pulse purchase prices used for income estimates.',
   'team.role.frontend': 'Frontend & design', 'team.role.backend': 'Backend API', 'team.role.data': 'Data analysis & pipeline',
   'team.role.engine': 'Rotation engine & water stress', 'team.role.agronomy': 'Agronomic thresholds', 'team.role.sources': 'Data sources & attribution',
@@ -137,7 +141,7 @@ const en = {
   'run.stale': 'You changed your answers since the last analysis. Run it again to update the recommendations.',
 
   // climate
-  'climate.title': 'Understand Your Local Climate', 'climate.sub': 'NASA POWER Climate Data (1995–2024) & What-If Scenarios',
+  'climate.title': 'Understand Your Local Climate', 'climate.sub': 'Climate data 1995–2024 and what-if scenarios',
   'scen.title': 'Climate scenario', 'scen.sub': 'Move the sliders to simulate a drier, wetter or warmer future. Every page updates.',
   'scen.rain': 'Rainfall change', 'scen.temp': 'Temperature change', 'scen.reset': 'Reset', 'scen.resetDone': 'Scenario reset to today’s climate.',
   'ind.baseline': 'Baseline', 'ind.scenario': 'Scenario', 'ind.diff': 'Difference',
@@ -260,7 +264,7 @@ const en = {
   // footer
   'about.text': 'A NASA Space Apps project that turns open climate, soil and satellite data into practical crop-rotation advice for farmers.',
   'about.method': 'How it works',
-  'about.m1': 'Rainfall trends: OLS slope + Mann–Kendall test on NASA POWER 1995–2024.',
+  'about.m1': 'Rainfall trends: OLS slope + Mann–Kendall test on daily data 1995–2024.',
   'about.m2': 'Scenario model: rain scales monthly totals; +9 hot days, −1.5 frost days and +4% water demand per °C.',
   'about.m3': 'Ranking: agronomic rules filter, KNN climate match and Random Forest score, weighted by your priorities.',
   'about.m4': '3-year soil nitrogen simulation with legume credits; Monte-Carlo weather runs test ranking stability.',
@@ -269,6 +273,10 @@ const en = {
 };
 
 const fr = {
+  'regionSearch.cta': 'Choisir votre région',
+  'plan.kicker': 'Votre plan sur 3 ans', 'plan.usual': 'Votre rotation actuelle', 'plan.recommended': 'Rotation recommandée · Rang 1',
+  'regionSearch.placeholder': 'Chercher une région — Kansas, Sétif, Pendjab…', 'regionSearch.hint': 'Mène aux régions disponibles et au globe.', 'regionSearch.title': 'Régions disponibles',
+  'about.src.openmeteo': 'API météo historique gratuite utilisée pour la série de contre-vérification (CC BY 4.0).',
   'cmp.betterWord': 'mieux', 'cmp.worseWord': 'moins bien',
 
   'home.kicker': 'Conseiller de rotation des cultures', 'home.title': 'Améliorez votre expérience agricole',
@@ -292,7 +300,7 @@ const fr = {
   'about.src.power': 'Pluie et températures journalières, 1995–2024 (NASA Langley, CC BY 4.0).',
   'about.src.soilgrids': 'Carbone organique et pH du sol, 0–30 cm, modèle à 250 m (ISRIC, CC BY 4.0).',
   'about.src.modis': 'Vigueur de la végétation au printemps (NDVI), satellite Terra, 250 m.',
-  'about.src.era5': 'Contre-vérification météo indépendante qui fixe nos niveaux de confiance (CC BY 4.0).',
+  'about.src.era5': 'Réanalyse ECMWF : contre-vérification météo indépendante qui fixe nos niveaux de confiance.',
   'about.src.prices': 'Prix officiels d’achat des céréales et légumineuses pour estimer les revenus.',
   'team.role.frontend': 'Frontend et design', 'team.role.backend': 'API backend', 'team.role.data': 'Analyse de données et pipeline',
   'team.role.engine': 'Moteur de rotation et stress hydrique', 'team.role.agronomy': 'Seuils agronomiques', 'team.role.sources': 'Sources et attributions',
@@ -391,7 +399,7 @@ const fr = {
   'run.doneText': 'Le rang 1 reste premier dans {pct} % des simulations.', 'run.view': 'Voir le top 4',
   'run.toast': 'Vos 4 meilleures rotations sont prêtes.',
   'run.stale': 'Vous avez modifié vos réponses depuis la dernière analyse. Relancez-la pour mettre à jour les recommandations.',
-  'climate.title': 'Comprendre votre climat local', 'climate.sub': 'Données climatiques NASA POWER (1995–2024) et scénarios « et si ? »',
+  'climate.title': 'Comprendre votre climat local', 'climate.sub': 'Données climatiques 1995–2024 et scénarios « et si ? »',
   'scen.title': 'Scénario climatique', 'scen.sub': 'Déplacez les curseurs pour simuler un futur plus sec, plus humide ou plus chaud. Toutes les pages se mettent à jour.',
   'scen.rain': 'Variation de pluie', 'scen.temp': 'Variation de température', 'scen.reset': 'Réinitialiser', 'scen.resetDone': 'Scénario remis au climat actuel.',
   'ind.baseline': 'Référence', 'ind.scenario': 'Scénario', 'ind.diff': 'Écart',
@@ -497,7 +505,7 @@ const fr = {
   'top.assumptions': 'Comment ces chiffres sont calculés',
   'about.text': 'Un projet NASA Space Apps qui transforme les données ouvertes sur le climat, les sols et les satellites en conseils de rotation concrets pour les agriculteurs.',
   'about.method': 'Comment ça marche',
-  'about.m1': 'Tendances des pluies : pente OLS + test de Mann–Kendall sur NASA POWER 1995–2024.',
+  'about.m1': 'Tendances des pluies : pente OLS + test de Mann–Kendall sur les données journalières 1995–2024.',
   'about.m2': 'Modèle de scénario : la pluie ajuste les totaux mensuels ; +9 jours chauds, −1,5 jour de gel et +4 % de besoin en eau par °C.',
   'about.m3': 'Classement : filtre de règles agronomiques, similarité climatique KNN et score Random Forest, pondérés par vos priorités.',
   'about.m4': 'Simulation de l’azote du sol sur 3 ans avec crédits des légumineuses ; des tirages météo Monte-Carlo testent la stabilité du classement.',
@@ -506,6 +514,10 @@ const fr = {
 };
 
 const ar = {
+  'regionSearch.cta': 'اختر منطقتك',
+  'plan.kicker': 'خطتك لثلاث سنوات', 'plan.usual': 'دورتك الحالية', 'plan.recommended': 'الدورة الموصى بها · المرتبة 1',
+  'regionSearch.placeholder': 'ابحث عن منطقة — كانساس، سطيف، البنجاب…', 'regionSearch.hint': 'ينقلك إلى المناطق المتاحة والكرة الأرضية.', 'regionSearch.title': 'المناطق المتاحة',
+  'about.src.openmeteo': 'واجهة مجانية لبيانات الطقس التاريخية لجلب سلسلة التحقق (CC BY 4.0).',
   'cmp.betterWord': 'أفضل', 'cmp.worseWord': 'أسوأ',
 
   'home.kicker': 'مستشار الدورة الزراعية', 'home.title': 'طوّر تجربتك الزراعية',
@@ -529,7 +541,7 @@ const ar = {
   'about.src.power': 'الأمطار والحرارة اليومية 1995–2024 (ناسا لانغلي، CC BY 4.0).',
   'about.src.soilgrids': 'الكربون العضوي وpH التربة، 0–30 سم، نموذج 250 م (ISRIC، CC BY 4.0).',
   'about.src.modis': 'حيوية الغطاء النباتي في الربيع (NDVI) من القمر Terra، 250 م.',
-  'about.src.era5': 'تحقق مستقل من الطقس يحدد مستويات الثقة لدينا (CC BY 4.0).',
+  'about.src.era5': 'إعادة تحليل ECMWF: تحقق مستقل من الطقس يحدد مستويات الثقة لدينا.',
   'about.src.prices': 'أسعار الشراء الرسمية للحبوب والبقوليات لتقدير الدخل.',
   'team.role.frontend': 'الواجهة والتصميم', 'team.role.backend': 'واجهة الخادم', 'team.role.data': 'تحليل البيانات',
   'team.role.engine': 'محرك الدورات والإجهاد المائي', 'team.role.agronomy': 'العتبات الزراعية', 'team.role.sources': 'المصادر والإسناد',
@@ -628,7 +640,7 @@ const ar = {
   'run.doneText': 'تبقى الدورة الأولى في المرتبة الأولى في {pct}% من المحاكاة.', 'run.view': 'عرض أفضل 4 دورات',
   'run.toast': 'أفضل 4 دورات لمزرعتك جاهزة.',
   'run.stale': 'غيّرت إجاباتك منذ آخر تحليل. أعد التحليل لتحديث التوصيات.',
-  'climate.title': 'افهم مناخك المحلي', 'climate.sub': 'بيانات المناخ NASA POWER (1995–2024) وسيناريوهات «ماذا لو»',
+  'climate.title': 'افهم مناخك المحلي', 'climate.sub': 'بيانات المناخ 1995–2024 وسيناريوهات «ماذا لو»',
   'scen.title': 'السيناريو المناخي', 'scen.sub': 'حرّك المؤشرات لمحاكاة مستقبل أكثر جفافًا أو رطوبة أو حرارة. تتحدث كل الصفحات.',
   'scen.rain': 'تغيّر الأمطار', 'scen.temp': 'تغيّر الحرارة', 'scen.reset': 'إعادة ضبط', 'scen.resetDone': 'أُعيد السيناريو إلى المناخ الحالي.',
   'ind.baseline': 'المرجع', 'ind.scenario': 'السيناريو', 'ind.diff': 'الفرق',
@@ -734,7 +746,7 @@ const ar = {
   'top.assumptions': 'كيف تُحسب هذه الأرقام',
   'about.text': 'مشروع NASA Space Apps يحوّل البيانات المفتوحة عن المناخ والتربة والأقمار الصناعية إلى نصائح عملية للدورة الزراعية.',
   'about.method': 'كيف يعمل',
-  'about.m1': 'اتجاهات الأمطار: ميل OLS واختبار مان-كندال على بيانات NASA POWER 1995–2024.',
+  'about.m1': 'اتجاهات الأمطار: ميل OLS واختبار مان-كندال على البيانات اليومية 1995–2024.',
   'about.m2': 'نموذج السيناريو: تُعدَّل الأمطار الشهرية؛ +9 أيام حارة و−1.5 يوم صقيع و+4% حاجة للماء لكل درجة.',
   'about.m3': 'الترتيب: مرشّح القواعد الزراعية ومطابقة المناخ KNN وتقييم Random Forest، مرجّحة بأولوياتك.',
   'about.m4': 'محاكاة نيتروجين التربة لـ3 سنوات مع رصيد البقوليات؛ ومحاكاة مونت كارلو للطقس تختبر ثبات الترتيب.',

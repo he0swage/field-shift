@@ -1,21 +1,19 @@
-// Hero motif: three field strips (Year 1, 2, 3). Interactive: drag the cloud — it rains under it,
-// and grass grows on the strip it waters, stays a few seconds, then fades.
+// The 3-year plan: three field strips side by side (Year 1, 2, 3), each tinted by crop family and
+// labelled with its crop. Interactive: drag the cloud — it rains, and grass grows on the strip it waters.
 import { useCallback, useEffect, useRef, useState } from 'react';
 import './FieldScene.css';
 
 const W = 640, H = 480;
 const TOP = 210;                        // top edge of the strips (the "ground")
-const STRIPS = [
-  { x: 36, family: 'legume' },
-  { x: 232, family: 'cereal' },
-  { x: 428, family: 'oilseed' },
-];
+const STRIP_X = [36, 232, 428];
+const DEFAULT_YEARS = [{ family: 'legume' }, { family: 'cereal' }, { family: 'oilseed' }];
 const SW = 176;                         // strip width
 const GRASS_LIFE = 6000;
 
-const onStrip = x => STRIPS.some(s => x >= s.x + 6 && x <= s.x + SW - 6);
+const onStrip = x => STRIP_X.some(sx => x >= sx + 6 && x <= sx + SW - 6);
 
-export default function FieldScene({ hint, yearLabel }) {
+export default function FieldScene({ hint, yearLabel, years = DEFAULT_YEARS }) {
+  const STRIPS = STRIP_X.map((x, i) => ({ x, family: years[i]?.family || 'other', crop: years[i]?.crop || years[i]?.name }));
   const svgRef = useRef(null);
   const [cloud, setCloud] = useState({ x: 320, y: 96 });
   const cloudRef = useRef(cloud);
@@ -82,7 +80,8 @@ export default function FieldScene({ hint, yearLabel }) {
         <g key={s.x}>
           <rect className={`fs-strip ${s.family}`} x={s.x} y={TOP} width={SW} height={H - TOP - 16} rx="14" />
           <rect x={s.x} y={TOP} width={SW} height={H - TOP - 16} rx="14" fill="url(#fs-rows)" />
-          <text className={`fs-label ${s.family}`} x={s.x + 16} y={H - 40}>{yearLabel(i + 1)}</text>
+          <text className={`fs-label ${s.family}`} x={s.x + 16} y={H - 74}>{yearLabel(i + 1)}</text>
+          {s.crop && <text className={`fs-crop ${s.family}`} x={s.x + 16} y={H - 46}>{s.crop}</text>}
         </g>
       ))}
 

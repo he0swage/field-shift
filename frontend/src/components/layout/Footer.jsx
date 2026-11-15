@@ -1,7 +1,7 @@
 // Footer: short about, method, sources, the AI disclosure and collapsible "Developer Information".
 import { Sparkles } from 'lucide-react';
 import { useT } from '../../i18n/I18nContext';
-import { Logo, SOURCES } from './Header';
+import { Logo } from './Header';
 import './layout.css';
 
 const CLIMATE_CONTRACT = `GET /api/v1/climate?region=setif
@@ -33,10 +33,6 @@ export default function Footer() {
               <li>{t('about.m3')}</li>
               <li>{t('about.m4')}</li>
             </ul>
-          </section>
-          <section>
-            <h2>{t('about.sources')}</h2>
-            <ul>{SOURCES.map(s => <li key={s}>{s}</li>)}</ul>
           </section>
         </div>
         <p className="ai-disclosure"><Sparkles size={16} aria-hidden="true" /><span>{t('ai.disclosure')}</span></p>

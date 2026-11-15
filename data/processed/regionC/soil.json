@@ -1,0 +1,12 @@
+{
+  "region": "punjab",
+  "soc_g_per_kg": 8.6,
+  "soc_class": "low_alluvial",
+  "ph": 7.9,
+  "clay_pct": 18.0,
+  "sand_pct": 46.0,
+  "silt_pct": 36.0,
+  "texture_class": "Alluvial Sandy Loam (Indo-Gangetic Ustochrept)",
+  "confidence": "high",
+  "note": "Indo-Gangetic alluvial sandy loam (ISRIC SoilGrids v2.0). Intensive rice–wheat puddling and straw burning have depleted topsoil organic carbon (8.6 g/kg, low)."
+}

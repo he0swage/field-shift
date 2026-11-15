@@ -1,0 +1,20 @@
+crop,yield_potential,price_local,currency,gross_income_ha,risk_note_local,source
+wheat,26.0,6000,DZD,156000,Sensitive to Sirocco heat (>35 °C) during May grain filling in Sétif.,ITGC / MADR Algeria + OAIC 2024
+barley,23.0,3400,DZD,78200,Early heading escapes May drought; consecutive cereal years build root rot.,ITGC / MADR Algeria + OAIC 2024
+lentil,12.0,14000,DZD,168000,Low pod height complicates combine harvest on stony calcareous plains.,ITGC / CCLS Algeria 2024
+chickpea,14.0,13500,DZD,189000,Ascochyta blight risk in humid springs; requires 2-year break between legumes.,ICARDA / CCLS Algeria 2024
+soft_wheat,25.0,5000,DZD,125000,Higher water demand than durum; vulnerable to spring moisture deficit.,ITGC / OAIC Algeria 2024
+oats,21.0,4200,DZD,88200,Reliable livestock forage; shares cereal root pathogens with wheat.,ITGC Algeria 2024
+triticale,25.0,4500,DZD,112500,Hardy cereal hybrid for calcareous High Plateaux soils.,ITGC Algeria 2024
+faba,16.0,10500,DZD,168000,High N fixation but sensitive to spring frost and Orobanche.,ITGC / CCLS Algeria 2024
+vetch,19.0,5500,DZD,104500,Terminated at flowering for hay; conserves spring soil moisture.,ICARDA / ITGC Algeria 2024
+canola,18.0,9500,DZD,171000,Deep taproot breaks cereal hardpans; watch pod shattering at harvest.,ITGC Colza Programme 2024
+safflower,14.0,8800,DZD,123200,Deepest taproot (>2 m) for semi-arid High Plateaux dryland.,ICARDA Dryland Oilseeds 2023
+sunflower,16.0,9200,DZD,147200,Spring-sown oilseed; sensitive to late spring dry spells.,FAO / ITGC Algeria
+field_pea,14.0,9500,DZD,133000,Good break crop before cereals on the High Plateaux.,Team estimate - verify with national statistics (ITGC / CCLS)
+potato,220.0,2500,DZD,550000,Setif is a known potato area; needs irrigation and has high costs.,Team estimate - verify with national statistics (MADR)
+sulla,40.0,2200,DZD,88000,Forage legume (hay); fits mixed crop-livestock farms.,Team estimate - verify with national statistics (ICARDA)
+lupin,12.0,9000,DZD,108000,Only on neutral to acid pockets; avoid very calcareous fields.,Team estimate - verify with national statistics (ITGC)
+onion,250.0,2200,DZD,550000,Irrigated vegetable; price swings are large.,Team estimate - verify with national statistics (MADR)
+coriander,7.0,20000,DZD,140000,Short-cycle low-input cash crop.,Team estimate - verify with national statistics (ITGC)
+fallow,0.0,0,DZD,0,Zero revenue in fallow year; retain stubble to prevent wind erosion.,ICARDA Conservation Agriculture

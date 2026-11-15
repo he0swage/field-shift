@@ -1,0 +1,32 @@
+{
+  "id": "corn",
+  "crop": "Corn (Grain Maize)",
+  "scientific_name": "Zea mays",
+  "family": "cereal",
+  "water_need": 0.72,
+  "soil_effect": -0.22,
+  "nitrogen_fixing": 0,
+  "n_impact_kg_ha": -42,
+  "residue_carbon": 0.78,
+  "drought_tolerance": 0.52,
+  "profit": 0.84,
+  "oaic_ccls_price_dzd_q": 2600,
+  "baseline_yield_q_ha": 78.0,
+  "gross_income_dzd_ha": 202800,
+  "risk_level": 0.38,
+  "soil_depletion_index": 4,
+  "soil_health_delta": -9,
+  "base_npk_kg_ha": 240,
+  "fertilizer_name": "Anhydrous NH3 / UAN + Starter P",
+  "optimal_rain_min": 480,
+  "optimal_rain_max": 950,
+  "optimal_ph_min": 5.8,
+  "optimal_ph_max": 7.8,
+  "frost_tolerant": 0,
+  "heat_tolerant": 1,
+  "risk_note": "High nitrogen demand and silk-stage heat sensitivity; benefits strongly from following soybean.",
+  "sources": {
+    "yield": "USDA NASS Kansas 2019-2023 (124 bu/ac)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

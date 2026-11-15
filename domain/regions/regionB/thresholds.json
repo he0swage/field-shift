@@ -1,0 +1,10 @@
+{
+  "region_id": "regionB",
+  "hot_day_c": 35.0,
+  "frost_night_c": 0.0,
+  "extreme_rain_mm": 25.0,
+  "dry_day_mm": 1.0,
+  "soc_threshold_g_per_kg": 18.0,
+  "rainfall_reference_mm": 725.0,
+  "note": "Central Great Plains continental rainfed regime (May-Aug summer heat, Apr late freeze, Apr-Sep warm season)."
+}

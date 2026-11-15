@@ -1,0 +1,32 @@
+{
+  "id": "maize",
+  "crop": "Maize (Kharif / Spring)",
+  "scientific_name": "Zea mays",
+  "family": "cereal",
+  "water_need": 0.56,
+  "soil_effect": -0.18,
+  "nitrogen_fixing": 0,
+  "n_impact_kg_ha": -30,
+  "residue_carbon": 0.74,
+  "drought_tolerance": 0.64,
+  "profit": 0.76,
+  "oaic_ccls_price_dzd_q": 3100,
+  "baseline_yield_q_ha": 38.5,
+  "gross_income_dzd_ha": 119350,
+  "risk_level": 0.28,
+  "soil_depletion_index": 3,
+  "soil_health_delta": -7,
+  "base_npk_kg_ha": 195,
+  "fertilizer_name": "Urea + SSP + MOP",
+  "optimal_rain_min": 420,
+  "optimal_rain_max": 950,
+  "optimal_ph_min": 5.8,
+  "optimal_ph_max": 8.2,
+  "frost_tolerant": 0,
+  "heat_tolerant": 1,
+  "risk_note": "Key crop-diversification alternative to paddy rice in Punjab; saves ~60% irrigation water vs flooded rice.",
+  "sources": {
+    "yield": "PAU Ludhiana / ICAR Maize Directorate",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

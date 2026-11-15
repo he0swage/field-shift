@@ -1,17 +1,37 @@
+# Secrets & Environments
 .env
-node_modules/
+.env.*
+!.env.example
+aPI
 
-# Python
+# Node build & dependencies
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+
+# Netlify cache
+.netlify/
+
+# Python cache & virtualenvs
+__pycache__/
+*.py[cod]
+*$py.class
 venv/
 .venv/
-__pycache__/
 
-# Raw downloads must never be committed (PRD data rule: raw files stay on the shared Drive)
+# Database files
+*.sqlite
+*.db
+
+# Raw dataset files
 data/raw/
 
-# Binary artifacts / logs
-*.pkl
+# Logs & temp artifacts
 *.log
-
-# Team Drive drop folder (unzipped next to repo; never commit)
+*.pkl
 field_shift_drive_files/
+
+# Operating System files
+.DS_Store
+Thumbs.db

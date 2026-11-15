@@ -1,0 +1,32 @@
+{
+  "id": "sesame",
+  "crop": "Sesame",
+  "scientific_name": "Sesamum indicum",
+  "family": "oilseed",
+  "water_need": 0.3,
+  "soil_effect": 0.0,
+  "nitrogen_fixing": 0,
+  "n_impact_kg_ha": -12,
+  "residue_carbon": 0.3,
+  "drought_tolerance": 0.8,
+  "profit": 0.5,
+  "oaic_ccls_price_dzd_q": 14516,
+  "baseline_yield_q_ha": 4.5,
+  "gross_income_dzd_ha": 65322,
+  "risk_level": 0.4,
+  "soil_depletion_index": 2,
+  "soil_health_delta": 0,
+  "base_npk_kg_ha": 60,
+  "fertilizer_name": "NPK 15:15:15",
+  "optimal_rain_min": 300,
+  "optimal_rain_max": 650,
+  "optimal_ph_min": 5.5,
+  "optimal_ph_max": 8.0,
+  "frost_tolerant": 0,
+  "heat_tolerant": 1,
+  "risk_note": "Short summer crop; waterlogging kills seedlings; low yield per hectare.",
+  "sources": {
+    "yield": "Team estimate - verify with national statistics (ICAR)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "region": "punjab",
+  "region_id": "regionC",
+  "label": "Punjab Plains, India",
+  "country": "India",
+  "role": "light",
+  "farming_system": "irrigated",
+  "default_crops": [
+    "rice",
+    "wheat",
+    "maize",
+    "mung_bean"
+  ],
+  "lat": 30.9,
+  "lon": 75.9,
+  "rainfall_mm": {
+    "value": 709.2,
+    "window": "2015-2024",
+    "crosscheck_value": 695.0,
+    "confidence": "high"
+  },
+  "rainfall_30yr_mean_mm": {
+    "value": 733.5,
+    "window": "1995-2024",
+    "crosscheck_value": 718.2,
+    "confidence": "high"
+  },
+  "rainfall_trend": {
+    "slope_mm_per_decade": -38.2,
+    "ols_p": 0.084,
+    "mk_p": 0.092,
+    "confidence": "medium"
+  },
+  "water_stress": {
+    "value": 0.22,
+    "window": "2015-2024",
+    "confidence": "low"
+  },
+  "water_stress_5yr": {
+    "value": 0.24,
+    "window": "2020-2024",
+    "confidence": "low"
+  },
+  "hot_days": {
+    "value": 48.5,
+    "threshold_c": 38.0,
+    "window": "Mar-Jun",
+    "confidence": "high"
+  },
+  "frost_days": {
+    "value": 0.6,
+    "threshold_c": 2.0,
+    "window": "Dec-Jan",
+    "confidence": "high"
+  },
+  "extreme_rain_days": {
+    "value": 7.8,
+    "threshold_mm": 35.0,
+    "confidence": "high"
+  },
+  "longest_dry_spell_days": {
+    "value": 38.0,
+    "confidence": "high"
+  },
+  "ndvi": {
+    "yield_baseline": 0.76,
+    "mean_spring_peak_ndvi": 0.74,
+    "confidence": "high"
+  },
+  "suggested_priorities": {
+    "save_water": 45,
+    "protect_soil": 35,
+    "yield_": 20
+  }
+}

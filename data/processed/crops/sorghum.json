@@ -1,0 +1,32 @@
+{
+  "id": "sorghum",
+  "crop": "Grain Sorghum (Milo)",
+  "scientific_name": "Sorghum bicolor",
+  "family": "cereal",
+  "water_need": 0.44,
+  "soil_effect": -0.14,
+  "nitrogen_fixing": 0,
+  "n_impact_kg_ha": -24,
+  "residue_carbon": 0.72,
+  "drought_tolerance": 0.86,
+  "profit": 0.72,
+  "oaic_ccls_price_dzd_q": 2750,
+  "baseline_yield_q_ha": 49.0,
+  "gross_income_dzd_ha": 134750,
+  "risk_level": 0.24,
+  "soil_depletion_index": 3,
+  "soil_health_delta": -5,
+  "base_npk_kg_ha": 160,
+  "fertilizer_name": "UAN 28% + DAP",
+  "optimal_rain_min": 350,
+  "optimal_rain_max": 800,
+  "optimal_ph_min": 5.5,
+  "optimal_ph_max": 8.4,
+  "frost_tolerant": 0,
+  "heat_tolerant": 1,
+  "risk_note": "Waxy leaf cuticle and C4 photosynthesis withstand Plains heatwaves where dryland corn fails.",
+  "sources": {
+    "yield": "USDA NASS Kansas 2019-2023 (78 bu/ac)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

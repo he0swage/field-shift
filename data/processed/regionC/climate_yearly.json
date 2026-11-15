@@ -1,0 +1,127 @@
+{
+  "region": "punjab",
+  "region_id": "regionC",
+  "source": "NASA POWER AG climatology (PRECTOTCORR, 1995-2024) at 30.90N, 75.90E",
+  "rows": [
+    {
+      "year": 1995,
+      "annual_rain_mm": 842.0
+    },
+    {
+      "year": 1996,
+      "annual_rain_mm": 798.4
+    },
+    {
+      "year": 1997,
+      "annual_rain_mm": 816.2
+    },
+    {
+      "year": 1998,
+      "annual_rain_mm": 864.5
+    },
+    {
+      "year": 1999,
+      "annual_rain_mm": 694.8
+    },
+    {
+      "year": 2000,
+      "annual_rain_mm": 712.6
+    },
+    {
+      "year": 2001,
+      "annual_rain_mm": 748.2
+    },
+    {
+      "year": 2002,
+      "annual_rain_mm": 586.4
+    },
+    {
+      "year": 2003,
+      "annual_rain_mm": 782.1
+    },
+    {
+      "year": 2004,
+      "annual_rain_mm": 642.9
+    },
+    {
+      "year": 2005,
+      "annual_rain_mm": 736.5
+    },
+    {
+      "year": 2006,
+      "annual_rain_mm": 698.0
+    },
+    {
+      "year": 2007,
+      "annual_rain_mm": 724.8
+    },
+    {
+      "year": 2008,
+      "annual_rain_mm": 856.2
+    },
+    {
+      "year": 2009,
+      "annual_rain_mm": 564.3
+    },
+    {
+      "year": 2010,
+      "annual_rain_mm": 792.4
+    },
+    {
+      "year": 2011,
+      "annual_rain_mm": 818.6
+    },
+    {
+      "year": 2012,
+      "annual_rain_mm": 648.5
+    },
+    {
+      "year": 2013,
+      "annual_rain_mm": 774.0
+    },
+    {
+      "year": 2014,
+      "annual_rain_mm": 612.8
+    },
+    {
+      "year": 2015,
+      "annual_rain_mm": 684.2
+    },
+    {
+      "year": 2016,
+      "annual_rain_mm": 658.9
+    },
+    {
+      "year": 2017,
+      "annual_rain_mm": 692.4
+    },
+    {
+      "year": 2018,
+      "annual_rain_mm": 746.1
+    },
+    {
+      "year": 2019,
+      "annual_rain_mm": 768.5
+    },
+    {
+      "year": 2020,
+      "annual_rain_mm": 712.0
+    },
+    {
+      "year": 2021,
+      "annual_rain_mm": 738.4
+    },
+    {
+      "year": 2022,
+      "annual_rain_mm": 664.2
+    },
+    {
+      "year": 2023,
+      "annual_rain_mm": 784.6
+    },
+    {
+      "year": 2024,
+      "annual_rain_mm": 642.7
+    }
+  ]
+}

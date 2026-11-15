@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "project": "Field Shift — NASA Space Apps Challenge 2026",
+    "selection_method": "Selected 3 official ITGC (Institut Technique des Grandes Cultures) rainfed cereal-legume-oilseed benchmark zones forming an east-west & aridity gradient across Algeria's High Plateaux. Mitidja was replaced by Constantine/El Khroub because Mitidja (600-800+ mm) is dominated by irrigated horticulture and citrus orchards rather than extensive dryland cereal-legume rotations.",
+    "sources": [
+      "ITGC Algeria (itgc.dz) — experimental stations at Setif, El Khroub (Constantine), Tiaret",
+      "ICARDA WANA Mediterranean cereal-legume rotation trials",
+      "FAO Irrigation & Drainage Paper No. 56 & FAOSTAT"
+    ]
+  },
+  "regions": {
+    "regionA": {
+      "id": "setif",
+      "name": "Sétif High Plateaux",
+      "zone": "Dry Semi-Arid Eastern High Plateaux",
+      "lat": 36.19,
+      "lon": 5.41,
+      "annual_rainfall_range_mm": [300, 450],
+      "rainfall_mm_baseline": 380,
+      "rainfall_reference_mm": 480,
+      "soil_types": ["Brown calcareous soils", "Heavy clay / clay-loam vertisols (north)"],
+      "ph_range": [7.7, 8.2],
+      "ph_mean": 7.9,
+      "soc_g_per_kg": 9.9,
+      "soc_threshold_g_per_kg": 15.0,
+      "dominant_system": "Durum wheat / barley historically rotated with fallow; shifting to Barley/Wheat + Lentil/Chickpea + Forage Oats & direct seeding.",
+      "priority_crops": ["wheat", "barley", "oats", "chickpea", "lentil"],
+      "key_hazards": ["Spring drought spells during heading", "Winter/early-spring radiation frost (<0 C)", "Terminal heat >35 C at grain filling"]
+    },
+    "regionB": {
+      "id": "constantine",
+      "name": "Constantine / El Khroub High Plains",
+      "zone": "Sub-Humid to Semi-Arid Eastern Cereal-Pulse Hub",
+      "lat": 36.36,
+      "lon": 6.61,
+      "annual_rainfall_range_mm": [450, 600],
+      "rainfall_mm_baseline": 530,
+      "rainfall_reference_mm": 600,
+      "soil_types": ["Deep clay vertisols", "Fertile calcareous rendzinas"],
+      "ph_range": [7.5, 8.0],
+      "ph_mean": 7.7,
+      "soc_g_per_kg": 14.5,
+      "soc_threshold_g_per_kg": 15.0,
+      "dominant_system": "High-potential Durum Wheat + Faba Bean / Lentil + Rapeseed (Canola) under direct seeding (semis direct).",
+      "priority_crops": ["wheat", "faba", "lentil", "chickpea", "canola", "barley"],
+      "key_hazards": ["Ascochyta blight & Fusarium rust in wet springs", "Orobanche (broomrape) on faba bean if repeated", "Soil compaction on heavy vertisols"]
+    },
+    "regionC": {
+      "id": "tiaret",
+      "name": "Tiaret Western High Plateaux",
+      "zone": "Semi-Arid to Sub-Humid Transition Cereal Belt",
+      "lat": 35.37,
+      "lon": 1.32,
+      "annual_rainfall_range_mm": [350, 500],
+      "rainfall_mm_baseline": 420,
+      "rainfall_reference_mm": 520,
+      "soil_types": ["Deep clay-loam", "Vertisols", "Calcareous slope soils"],
+      "ph_range": [7.6, 8.1],
+      "ph_mean": 7.8,
+      "soc_g_per_kg": 10.8,
+      "soc_threshold_g_per_kg": 15.0,
+      "dominant_system": "Large-scale mechanized Durum/Bread Wheat & Barley transitioning via CCLS to Chickpea/Field Pea/Forage + emerging Canola trials.",
+      "priority_crops": ["wheat", "barley", "chickpea", "oats", "canola"],
+      "key_hazards": ["Wild oat grass-weed infestation in continuous cereals", "Variable inter-annual Atlantic rain", "May heat waves (>35 C)"]
+    }
+  }
+}
+

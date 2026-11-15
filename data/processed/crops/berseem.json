@@ -1,0 +1,32 @@
+{
+  "id": "berseem",
+  "crop": "Berseem (Egyptian Clover)",
+  "scientific_name": "Trifolium alexandrinum",
+  "family": "legume",
+  "water_need": 0.6,
+  "soil_effect": 0.38,
+  "nitrogen_fixing": 1,
+  "n_impact_kg_ha": 32,
+  "residue_carbon": 0.5,
+  "drought_tolerance": 0.35,
+  "profit": 0.5,
+  "oaic_ccls_price_dzd_q": 1935,
+  "baseline_yield_q_ha": 70.0,
+  "gross_income_dzd_ha": 135450,
+  "risk_level": 0.2,
+  "soil_depletion_index": 1,
+  "soil_health_delta": 20,
+  "base_npk_kg_ha": 60,
+  "fertilizer_name": "SSP / Starter P",
+  "optimal_rain_min": 450,
+  "optimal_rain_max": 900,
+  "optimal_ph_min": 6.0,
+  "optimal_ph_max": 8.0,
+  "frost_tolerant": 1,
+  "heat_tolerant": 0,
+  "risk_note": "Winter fodder legume, needs irrigation; good for dairy farms.",
+  "sources": {
+    "yield": "Team estimate - verify with national statistics (PAU)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

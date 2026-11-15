@@ -3,10 +3,17 @@
 .fs-strip.legume { fill: var(--strip-legume); }
 .fs-strip.cereal { fill: var(--strip-cereal); }
 .fs-strip.oilseed { fill: var(--strip-oilseed); }
+.fs-strip.forage { fill: var(--strip-forage); }
+.fs-strip.root { fill: var(--strip-root); }
+.fs-strip.fallow, .fs-strip.other { fill: var(--strip-fallow); }
 .fs-label { font: 600 12px/1 var(--font); letter-spacing: .12em; text-transform: uppercase; }
-.fs-label.legume { fill: var(--on-strip-legume); }
-.fs-label.cereal { fill: var(--on-strip-cereal); }
-.fs-label.oilseed { fill: var(--on-strip-oilseed); }
+.fs-crop { font: 500 22px/1 var(--font-display); }
+.fs-label.legume, .fs-crop.legume { fill: var(--on-strip-legume); }
+.fs-label.cereal, .fs-crop.cereal { fill: var(--on-strip-cereal); }
+.fs-label.oilseed, .fs-crop.oilseed { fill: var(--on-strip-oilseed); }
+.fs-label.forage, .fs-crop.forage { fill: var(--on-strip-forage); }
+.fs-label.root, .fs-crop.root { fill: var(--on-strip-root); }
+.fs-label.fallow, .fs-crop.fallow, .fs-label.other, .fs-crop.other { fill: var(--on-strip-fallow); }
 .fs-grass { fill: none; stroke: var(--deep); stroke-width: 2.6; stroke-linecap: round; transform-box: fill-box; transform-origin: bottom; animation: fs-grow 6s ease-out forwards; }
 :root[data-theme="dark"] .fs-grass { stroke: #c9e09a; }
 .fs-grass path:nth-child(2) { stroke: var(--primary); }

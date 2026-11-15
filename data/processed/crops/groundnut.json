@@ -1,0 +1,32 @@
+{
+  "id": "groundnut",
+  "crop": "Groundnut (Peanut)",
+  "scientific_name": "Arachis hypogaea",
+  "family": "legume",
+  "water_need": 0.52,
+  "soil_effect": 0.3,
+  "nitrogen_fixing": 1,
+  "n_impact_kg_ha": 20,
+  "residue_carbon": 0.4,
+  "drought_tolerance": 0.55,
+  "profit": 0.7,
+  "oaic_ccls_price_dzd_q": 9677,
+  "baseline_yield_q_ha": 20.0,
+  "gross_income_dzd_ha": 193540,
+  "risk_level": 0.4,
+  "soil_depletion_index": 2,
+  "soil_health_delta": 12,
+  "base_npk_kg_ha": 60,
+  "fertilizer_name": "Gypsum + SSP",
+  "optimal_rain_min": 500,
+  "optimal_rain_max": 1000,
+  "optimal_ph_min": 5.8,
+  "optimal_ph_max": 7.5,
+  "frost_tolerant": 0,
+  "heat_tolerant": 1,
+  "risk_note": "Fixes nitrogen but prefers light sandy soil; aflatoxin risk if dried badly.",
+  "sources": {
+    "yield": "Team estimate - verify with national statistics (PAU)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

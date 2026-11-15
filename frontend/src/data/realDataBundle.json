@@ -1,0 +1,5095 @@
+{
+  "generatedFrom": "NASA POWER (1995-2024) + NASA FIRMS (VIIRS NOAA-21 NRT) + Open-Meteo ERA5 + ISRIC SoilGrids v2.0 + ORNL MODIS MOD13Q1 + USDA NASS / FAOSTAT / ICAR / ITGC",
+  "cropsCount": 35,
+  "regionsCsv": [
+    {
+      "region_id": "regionA",
+      "code": "setif",
+      "name": "Sétif High Plains",
+      "country": "Algeria",
+      "lat": 36.2,
+      "lon": 5.4,
+      "role": "deep",
+      "farming_system": "rainfed",
+      "default_crops": "wheat,barley,lentil,chickpea",
+      "currency": "DZD",
+      "currency_symbol": "DA",
+      "agro_zone": "Semi-arid Mediterranean High Plateaux (900–1,100 m)",
+      "default_crops_list": [
+        "wheat",
+        "barley",
+        "lentil",
+        "chickpea"
+      ]
+    },
+    {
+      "region_id": "regionB",
+      "code": "kansas",
+      "name": "Central Kansas Plains",
+      "country": "USA",
+      "lat": 38.8,
+      "lon": -97.6,
+      "role": "light",
+      "farming_system": "rainfed",
+      "default_crops": "wheat,corn,soybean,sorghum",
+      "currency": "USD",
+      "currency_symbol": "$",
+      "agro_zone": "Central Great Plains dryland prairie (Salina / Smoky Hill basin, 375 m)",
+      "default_crops_list": [
+        "wheat",
+        "corn",
+        "soybean",
+        "sorghum"
+      ]
+    },
+    {
+      "region_id": "regionC",
+      "code": "punjab",
+      "name": "Punjab Plains",
+      "country": "India",
+      "lat": 30.9,
+      "lon": 75.9,
+      "role": "light",
+      "farming_system": "irrigated",
+      "default_crops": "rice,wheat,maize,mung_bean",
+      "currency": "INR",
+      "currency_symbol": "₹",
+      "agro_zone": "Indo-Gangetic alluvial plain (Ludhiana / Sutlej basin, 245 m, canal + tube-well irrigated)",
+      "default_crops_list": [
+        "rice",
+        "wheat",
+        "maize",
+        "mung_bean"
+      ]
+    }
+  ],
+  "regions": {
+    "regionA": {
+      "id": "regionA",
+      "code": "setif",
+      "meta": {
+        "region_id": "regionA",
+        "code": "setif",
+        "name": "Sétif High Plains",
+        "country": "Algeria",
+        "lat": 36.2,
+        "lon": 5.4,
+        "role": "deep",
+        "farming_system": "rainfed",
+        "default_crops": "wheat,barley,lentil,chickpea",
+        "currency": "DZD",
+        "currency_symbol": "DA",
+        "agro_zone": "Semi-arid Mediterranean High Plateaux (900–1,100 m)",
+        "default_crops_list": [
+          "wheat",
+          "barley",
+          "lentil",
+          "chickpea"
+        ]
+      },
+      "v1": {
+        "region": "Sétif High Plains, Algeria",
+        "code": "setif",
+        "label": "Sétif High Plateaux (36.15°N, 5.38°E)",
+        "fetched_at": "2026-11-13T23:42:49Z",
+        "sources": {
+          "climate": "NASA POWER API (daily 1995-2024, PRECTOTCORR/T2M_MAX/T2M_MIN)",
+          "soil": "ISRIC SoilGrids v2.0 live (0-30cm depth-weighted 5:10:15)",
+          "ndvi": "ORNL DAAC MODIS MOD13Q1 live (250m spring peak 2020-2024, 5x5km patch)"
+        },
+        "rainfall_mm": 484.5,
+        "rainfall_30yr_mean_mm": 574.9,
+        "rainfall_reference_mm": 607.8,
+        "soil_organic_carbon_g_per_kg": 12.52,
+        "soc_threshold_g_per_kg": 15.0,
+        "ph": 7.77,
+        "water_stress": 0.2029,
+        "frost_risk": 0.86,
+        "organic_carbon": {
+          "g_per_kg": 12.52,
+          "class": "Moderate (12-16 g/kg)",
+          "deficit_score": 0.165
+        },
+        "erosion_risk": 0.48,
+        "yield_baseline": 0.363,
+        "mean_spring_peak_ndvi": 0.431,
+        "suggested_priorities": {
+          "save_water": 35,
+          "protect_soil": 30,
+          "yield": 35
+        },
+        "confidence": {
+          "indicators": "both methods agree",
+          "ols_p": 0.0367,
+          "mk_p": 0.0092
+        },
+        "climate_baseline": {
+          "rainfall_mm": 484.5,
+          "rainfall_30yr_mean_mm": 574.9,
+          "rainfall_trend_decade_mm": -44.1,
+          "hot_days": 23.7,
+          "frost_days": 34.6,
+          "extreme_rain_days": 3.6,
+          "longest_dry_spell_days": 40.6,
+          "monthly_rain_mm": [
+            70.0,
+            50.9,
+            55.9,
+            58.6,
+            58.4,
+            25.2,
+            7.6,
+            20.6,
+            57.9,
+            44.4,
+            59.7,
+            65.6
+          ]
+        },
+        "country": "Algeria",
+        "role": "deep",
+        "farming_system": "rainfed",
+        "default_crops": [
+          "wheat",
+          "barley",
+          "lentil",
+          "chickpea"
+        ],
+        "lat": 36.2,
+        "lon": 5.4
+      },
+      "v2": {
+        "region": "setif",
+        "code": "setif",
+        "label": "Sétif High Plateaux",
+        "lat": 36.15,
+        "lon": 5.38,
+        "sources": {
+          "climate": "NASA POWER daily 1995-2024 PRECTOTCORR/T2M_MAX/T2M_MIN (offline from data/raw)",
+          "crosscheck": "Open-Meteo ERA5 archive daily 1995-2024 (offline from data/raw)",
+          "soil": "ISRIC SoilGrids v2.0 (offline from data/raw)",
+          "ndvi": "MODIS MOD13Q1 250 m via ORNL DAAC REST (offline from data/raw)"
+        },
+        "thresholds_used": {
+          "file": "domain/thresholds.json",
+          "sha256_16": "358ce410e8e56d5b"
+        },
+        "rainfall_mm": {
+          "value": 509.0,
+          "unit": "mm/yr",
+          "window": "2015-2024",
+          "crosscheck_value": 405.5,
+          "confidence": "medium"
+        },
+        "rainfall_30yr_mean_mm": {
+          "value": 574.9,
+          "unit": "mm/yr",
+          "window": "1995-2024",
+          "crosscheck_value": 506.2,
+          "confidence": "medium"
+        },
+        "water_stress": {
+          "value": 0.1625,
+          "window": "ref 1995-2014 vs 2015-2024",
+          "confidence": "pending Alaa",
+          "note": "pending Alaa (recent-window choice) - see logs/step1_report.md finding c"
+        },
+        "water_stress_5yr": {
+          "value": 0.2029,
+          "window": "ref 1995-2014 vs 2020-2024",
+          "confidence": "sensitivity check only",
+          "note": "v1's 2020-2024 version kept for comparison"
+        },
+        "rainfall_trend": {
+          "window": "1995-2024",
+          "ols_slope_mm_per_decade": -46.7,
+          "ols_p": 0.0459,
+          "sen_slope_mm_per_decade": -44.1,
+          "mk_p": 0.0092,
+          "label": "both methods agree",
+          "confidence": "high",
+          "unit": "mm/decade"
+        },
+        "hot_days": {
+          "value": 3.1,
+          "unit": "days/yr",
+          "window": "grain-filling window months [4, 5, 6], mean 1995-2024",
+          "crosscheck_value": 1.9,
+          "confidence": "low"
+        },
+        "frost_days": {
+          "value": 4.5,
+          "unit": "days/yr",
+          "window": "late-frost window months [3, 4], mean 1995-2024",
+          "crosscheck_value": 3.1,
+          "confidence": "low"
+        },
+        "extreme_rain_days": {
+          "value": 3.6,
+          "unit": "days/yr",
+          "window": "calendar year, mean 1995-2024",
+          "crosscheck_value": null,
+          "confidence": "low"
+        },
+        "longest_dry_spell_days": {
+          "value": 23.5,
+          "unit": "days",
+          "window": "growing season months [10, 11, 12, 1, 2, 3, 4, 5], mean 1995-2024",
+          "crosscheck_value": null,
+          "confidence": "low"
+        },
+        "organic_carbon": {
+          "g_per_kg": 12.52,
+          "class": "medium",
+          "unit": "g/kg, 0-30 cm depth-weighted 5:10:15",
+          "confidence": "medium"
+        },
+        "ph": {
+          "value": 7.77,
+          "unit": "pH (H2O), 0-30 cm depth-weighted 5:10:15",
+          "confidence": "medium"
+        },
+        "ndvi": {
+          "available": true,
+          "source": "MODIS MOD13Q1 250 m via ORNL DAAC REST (offline from data/raw)",
+          "window": "2020-2024",
+          "patch": "5x5 km",
+          "mean_spring_peak_ndvi": 0.432,
+          "spring_peaks_by_year": {
+            "2020": 0.448,
+            "2021": 0.377,
+            "2022": 0.517,
+            "2023": 0.335,
+            "2024": 0.481
+          },
+          "yield_baseline": 0.363,
+          "normalization": "clamp((mean_spring_peak_ndvi - 0.25) / 0.50, 0, 1)",
+          "caveat": "no cropland mask (ESA WorldCover class 40 not applied), no pixel QA filter, 5 years only",
+          "confidence": "low"
+        },
+        "suggested_priorities": {
+          "save_water": 36,
+          "protect_soil": 33,
+          "yield_": 31,
+          "rule": "PRD v3 section 6.2",
+          "basis": {
+            "water_stress_used": 0.1625,
+            "soc_class": "medium"
+          }
+        },
+        "region_id": "regionA",
+        "country": "Algeria",
+        "role": "deep",
+        "farming_system": "rainfed",
+        "default_crops": [
+          "wheat",
+          "barley",
+          "lentil",
+          "chickpea"
+        ]
+      },
+      "soil": {
+        "region": "setif",
+        "lat": 36.15,
+        "lon": 5.38,
+        "source": "ISRIC SoilGrids v2.0 (offline from data/raw)",
+        "method": "0-30 cm depth-weighted 5:10:15, dg/kg divided by 10 (pH x10 divided by 10)",
+        "soc_g_per_kg": 12.52,
+        "soc_class": "medium",
+        "ph": 7.77,
+        "soc_layers_dg_per_kg": {
+          "0-5cm": 213,
+          "5-15cm": 128,
+          "15-30cm": 94
+        },
+        "confidence": "medium",
+        "confidence_note": "SoilGrids is a 250 m model estimate; PRD section 6.4: soil is at best medium",
+        "soc_class_rule": "low < 10, medium 10-20, high > 20 g/kg (domain/thresholds.json, pending Younes)"
+      },
+      "climateText": {
+        "rainfall": {
+          "en": "The region received about 509.0 mm of rain per year on average over 2015-2024. Data sources agree only roughly, so treat this as a good estimate.",
+          "fr": "",
+          "ar": "",
+          "_confidence": "medium"
+        },
+        "rainfall_trend": {
+          "en": "Rainfall has declined by about 44 mm per decade over 1995-2024 (two independent trend tests agree). Data sources agree well, so this number is fairly reliable.",
+          "fr": "",
+          "ar": "",
+          "_confidence": "high"
+        },
+        "water_stress": {
+          "en": "Recent years (2015-2024) were about 16% drier than the 1995-2014 average of the same region. Definition is still being confirmed by the team.",
+          "fr": "",
+          "ar": "",
+          "_confidence": "pending Alaa"
+        },
+        "hot_days": {
+          "en": "During grain filling (April to June), the crop endures about 3.1 hot days (above 35.0 degrees C) per year. Data sources disagree or data is limited, so treat this as a rough indication only.",
+          "fr": "",
+          "ar": "",
+          "_confidence": "low"
+        },
+        "frost_days": {
+          "en": "Spring frost (March to April) still reaches the crop on about 4.5 nights per year. Data sources disagree or data is limited, so treat this as a rough indication only.",
+          "fr": "",
+          "ar": "",
+          "_confidence": "low"
+        },
+        "extreme_rain_days": {
+          "en": "Expect about 3.6 days per year with intense rain over 20.0 mm. Data sources disagree or data is limited, so treat this as a rough indication only.",
+          "fr": "",
+          "ar": "",
+          "_confidence": "low"
+        },
+        "longest_dry_spell_days": {
+          "en": "The longest stretch without effective rain within the growing season lasts about 23.5 days on average. Data sources disagree or data is limited, so treat this as a rough indication only.",
+          "fr": "",
+          "ar": "",
+          "_confidence": "low"
+        },
+        "soil": {
+          "en": "Soil organic matter is medium (12.52 g/kg in the top 30 cm), pH around 7.77. SoilGrids is a model estimate, not a lab measurement. Data sources agree only roughly, so treat this as a good estimate.",
+          "fr": "",
+          "ar": "",
+          "_confidence": "medium"
+        },
+        "ndvi": {
+          "en": "Satellite greenness (NDVI) from the nearby 5x5 km pixel averaged over 2020-2024 suggests a yield baseline of 0.363 (0-1 scale). This is a rough proxy: no crop mask, no pixel quality filter, only 5 years. Data sources disagree or data is limited, so treat this as a rough indication only.",
+          "fr": "",
+          "ar": "",
+          "_confidence": "low"
+        },
+        "rainfall_source_disagreement": {
+          "en": "NASA POWER and ERA5 differ by under 25 percent on rainfall over 1995-2024 (574.9 vs 506.2 mm/yr). Data sources agree only roughly, so treat this as a good estimate.",
+          "fr": "",
+          "ar": "",
+          "_confidence": "medium"
+        }
+      },
+      "annual": [
+        {
+          "year": 1995,
+          "rain": 613.3
+        },
+        {
+          "year": 1996,
+          "rain": 664.8
+        },
+        {
+          "year": 1997,
+          "rain": 579.4
+        },
+        {
+          "year": 1998,
+          "rain": 665.5
+        },
+        {
+          "year": 1999,
+          "rain": 609.8
+        },
+        {
+          "year": 2000,
+          "rain": 389.6
+        },
+        {
+          "year": 2001,
+          "rain": 445.9
+        },
+        {
+          "year": 2002,
+          "rain": 564.2
+        },
+        {
+          "year": 2003,
+          "rain": 897.2
+        },
+        {
+          "year": 2004,
+          "rain": 831.3
+        },
+        {
+          "year": 2005,
+          "rain": 520.8
+        },
+        {
+          "year": 2006,
+          "rain": 527.2
+        },
+        {
+          "year": 2007,
+          "rain": 632.8
+        },
+        {
+          "year": 2008,
+          "rain": 517.3
+        },
+        {
+          "year": 2009,
+          "rain": 649.2
+        },
+        {
+          "year": 2010,
+          "rain": 581.0
+        },
+        {
+          "year": 2011,
+          "rain": 756.2
+        },
+        {
+          "year": 2012,
+          "rain": 545.1
+        },
+        {
+          "year": 2013,
+          "rain": 640.9
+        },
+        {
+          "year": 2014,
+          "rain": 525.0
+        },
+        {
+          "year": 2015,
+          "rain": 538.4
+        },
+        {
+          "year": 2016,
+          "rain": 482.0
+        },
+        {
+          "year": 2017,
+          "rain": 495.8
+        },
+        {
+          "year": 2018,
+          "rain": 553.2
+        },
+        {
+          "year": 2019,
+          "rain": 598.4
+        },
+        {
+          "year": 2020,
+          "rain": 503.1
+        },
+        {
+          "year": 2021,
+          "rain": 514.4
+        },
+        {
+          "year": 2022,
+          "rain": 502.7
+        },
+        {
+          "year": 2023,
+          "rain": 497.0
+        },
+        {
+          "year": 2024,
+          "rain": 405.4
+        }
+      ],
+      "monthly": [
+        70.0,
+        50.9,
+        55.9,
+        58.6,
+        58.4,
+        25.2,
+        7.6,
+        20.6,
+        57.9,
+        44.4,
+        59.7,
+        65.6
+      ],
+      "forecast": {
+        "modelType": "experimental_sarima",
+        "confidenceStatus": "model projection, high uncertainty",
+        "trainingWindow": {
+          "from": "1995-01",
+          "to": "2024-12",
+          "n_months": 360
+        },
+        "note": "Statistical projection of monthly rainfall from NASA POWER history. Wide intervals on individual months are normal - use the pattern, not exact numbers. Core pipeline indicators are unaffected by this file.",
+        "projection": [
+          {
+            "year": 2025,
+            "month": 1,
+            "rain_mm_forecast": 56.2,
+            "lower_95": -7.9,
+            "upper_95": 120.3
+          },
+          {
+            "year": 2025,
+            "month": 2,
+            "rain_mm_forecast": 44.9,
+            "lower_95": -19.5,
+            "upper_95": 109.2
+          },
+          {
+            "year": 2025,
+            "month": 3,
+            "rain_mm_forecast": 47.1,
+            "lower_95": -17.2,
+            "upper_95": 111.5
+          },
+          {
+            "year": 2025,
+            "month": 4,
+            "rain_mm_forecast": 50.7,
+            "lower_95": -13.6,
+            "upper_95": 115.1
+          },
+          {
+            "year": 2025,
+            "month": 5,
+            "rain_mm_forecast": 49.3,
+            "lower_95": -15.0,
+            "upper_95": 113.7
+          },
+          {
+            "year": 2025,
+            "month": 6,
+            "rain_mm_forecast": 21.7,
+            "lower_95": -42.6,
+            "upper_95": 86.1
+          },
+          {
+            "year": 2025,
+            "month": 7,
+            "rain_mm_forecast": 6.6,
+            "lower_95": -57.8,
+            "upper_95": 70.9
+          },
+          {
+            "year": 2025,
+            "month": 8,
+            "rain_mm_forecast": 17.8,
+            "lower_95": -46.5,
+            "upper_95": 82.1
+          },
+          {
+            "year": 2025,
+            "month": 9,
+            "rain_mm_forecast": 50.0,
+            "lower_95": -14.3,
+            "upper_95": 114.4
+          },
+          {
+            "year": 2025,
+            "month": 10,
+            "rain_mm_forecast": 37.4,
+            "lower_95": -26.9,
+            "upper_95": 101.8
+          },
+          {
+            "year": 2025,
+            "month": 11,
+            "rain_mm_forecast": 50.9,
+            "lower_95": -13.4,
+            "upper_95": 115.2
+          },
+          {
+            "year": 2025,
+            "month": 12,
+            "rain_mm_forecast": 57.0,
+            "lower_95": -7.3,
+            "upper_95": 121.4
+          },
+          {
+            "year": 2026,
+            "month": 1,
+            "rain_mm_forecast": 56.1,
+            "lower_95": -8.3,
+            "upper_95": 120.5
+          },
+          {
+            "year": 2026,
+            "month": 2,
+            "rain_mm_forecast": 44.3,
+            "lower_95": -20.1,
+            "upper_95": 108.6
+          },
+          {
+            "year": 2026,
+            "month": 3,
+            "rain_mm_forecast": 46.7,
+            "lower_95": -17.6,
+            "upper_95": 111.1
+          },
+          {
+            "year": 2026,
+            "month": 4,
+            "rain_mm_forecast": 50.2,
+            "lower_95": -14.1,
+            "upper_95": 114.6
+          },
+          {
+            "year": 2026,
+            "month": 5,
+            "rain_mm_forecast": 48.9,
+            "lower_95": -15.4,
+            "upper_95": 113.2
+          },
+          {
+            "year": 2026,
+            "month": 6,
+            "rain_mm_forecast": 21.5,
+            "lower_95": -42.8,
+            "upper_95": 85.8
+          },
+          {
+            "year": 2026,
+            "month": 7,
+            "rain_mm_forecast": 6.5,
+            "lower_95": -57.8,
+            "upper_95": 70.8
+          },
+          {
+            "year": 2026,
+            "month": 8,
+            "rain_mm_forecast": 17.6,
+            "lower_95": -46.7,
+            "upper_95": 81.9
+          },
+          {
+            "year": 2026,
+            "month": 9,
+            "rain_mm_forecast": 49.6,
+            "lower_95": -14.8,
+            "upper_95": 113.9
+          },
+          {
+            "year": 2026,
+            "month": 10,
+            "rain_mm_forecast": 37.1,
+            "lower_95": -27.2,
+            "upper_95": 101.4
+          },
+          {
+            "year": 2026,
+            "month": 11,
+            "rain_mm_forecast": 50.4,
+            "lower_95": -13.9,
+            "upper_95": 114.7
+          },
+          {
+            "year": 2026,
+            "month": 12,
+            "rain_mm_forecast": 56.5,
+            "lower_95": -7.8,
+            "upper_95": 120.8
+          }
+        ]
+      },
+      "fires": {
+        "region": "regionA",
+        "fetched_at": "2026-11-14T09:30:00Z",
+        "source": "VIIRS_NOAA21_NRT",
+        "radius_km": 25,
+        "days": 2,
+        "count": 2,
+        "nearest_km": 8.4,
+        "detections": [
+          {
+            "km": 8.4,
+            "date": "2026-11-13",
+            "time": "1342",
+            "lat": 36.25,
+            "lon": 5.47,
+            "frp_mw": 11.2,
+            "confidence": "nominal"
+          },
+          {
+            "km": 18.7,
+            "date": "2026-11-13",
+            "time": "0215",
+            "lat": 36.07,
+            "lon": 5.26,
+            "frp_mw": 6.8,
+            "confidence": "nominal"
+          }
+        ],
+        "dry_conditions": {
+          "consecutive_dry_days": 19,
+          "hot_days_recent": 17,
+          "mean_rh_pct": 38,
+          "wind_m_s": 4.6,
+          "label": "Indicative only"
+        },
+        "notice": "Satellite data, about 3 hours old. Not a forecast. No detection does not mean no fire."
+      },
+      "rules": {
+        "rotation_length": 3,
+        "forbid_consecutive_same_family": true,
+        "min_legumes": 1,
+        "max_high_water_crops": 1,
+        "high_water_need_threshold": 0.6,
+        "max_occurrences_per_crop": 1
+      },
+      "thresholds": {
+        "region_id": "regionA",
+        "hot_day_c": 35.0,
+        "frost_night_c": 0.0,
+        "extreme_rain_mm": 20.0,
+        "dry_day_mm": 1.0,
+        "soc_threshold_g_per_kg": 15.0,
+        "rainfall_reference_mm": 402.0,
+        "note": "Mediterranean semi-arid high plains (Apr-Jun heat window, Mar-Apr frost window, Oct-May growing season)."
+      },
+      "regionalCrops": {
+        "wheat": {
+          "name": "Wheat (Durum / Winter)",
+          "family": "cereal",
+          "water_need": 0.65,
+          "soil_effect": -0.25,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.7,
+          "drought_tolerance": 0.55,
+          "profit": 0.75,
+          "risk_level": 0.35,
+          "risk_note": "Sensitive to Sirocco heat (>35 °C) during May grain filling in Sétif.",
+          "depletion": 4,
+          "n_impact": -35,
+          "health_delta": -10,
+          "npk_base": 220,
+          "fert_name": "Urea 46% + DAP",
+          "rain_opt": [
+            350.0,
+            650.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.2
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 6000,
+          "baseline_yield_q_ha": 26.0,
+          "yield_potential": 26.0,
+          "gross_income_dzd_ha": 156000,
+          "currency": "DZD",
+          "source": "ITGC / MADR Algeria + OAIC 2024"
+        },
+        "barley": {
+          "name": "Barley",
+          "family": "cereal",
+          "water_need": 0.4,
+          "soil_effect": -0.15,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.65,
+          "drought_tolerance": 0.8,
+          "profit": 0.5,
+          "risk_level": 0.2,
+          "risk_note": "Early heading escapes May drought; consecutive cereal years build root rot.",
+          "depletion": 3,
+          "n_impact": -25,
+          "health_delta": -7,
+          "npk_base": 160,
+          "fert_name": "NPK 15:15:15",
+          "rain_opt": [
+            250.0,
+            550.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.5
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 3400,
+          "baseline_yield_q_ha": 23.0,
+          "yield_potential": 23.0,
+          "gross_income_dzd_ha": 78200,
+          "currency": "DZD",
+          "source": "ITGC / MADR Algeria + OAIC 2024"
+        },
+        "lentil": {
+          "name": "Lentil",
+          "family": "legume",
+          "water_need": 0.4,
+          "soil_effect": 0.38,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.35,
+          "drought_tolerance": 0.7,
+          "profit": 0.75,
+          "risk_level": 0.35,
+          "risk_note": "Low pod height complicates combine harvest on stony calcareous plains.",
+          "depletion": 1,
+          "n_impact": 20,
+          "health_delta": 15,
+          "npk_base": 90,
+          "fert_name": "TSP 46% + K2O",
+          "rain_opt": [
+            280.0,
+            550.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.2
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 14000,
+          "baseline_yield_q_ha": 12.0,
+          "yield_potential": 12.0,
+          "gross_income_dzd_ha": 168000,
+          "currency": "DZD",
+          "source": "ITGC / CCLS Algeria 2024"
+        },
+        "chickpea": {
+          "name": "Chickpea",
+          "family": "legume",
+          "water_need": 0.45,
+          "soil_effect": 0.42,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.4,
+          "drought_tolerance": 0.75,
+          "profit": 0.8,
+          "risk_level": 0.4,
+          "risk_note": "Ascochyta blight risk in humid springs; requires 2-year break between legumes.",
+          "depletion": 1,
+          "n_impact": 25,
+          "health_delta": 18,
+          "npk_base": 100,
+          "fert_name": "DAP (starter P)",
+          "rain_opt": [
+            300.0,
+            600.0
+          ],
+          "ph_opt": [
+            6.2,
+            8.4
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 13500,
+          "baseline_yield_q_ha": 14.0,
+          "yield_potential": 14.0,
+          "gross_income_dzd_ha": 189000,
+          "currency": "DZD",
+          "source": "ICARDA / CCLS Algeria 2024"
+        },
+        "soft_wheat": {
+          "name": "Soft Bread Wheat",
+          "family": "cereal",
+          "water_need": 0.7,
+          "soil_effect": -0.28,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.72,
+          "drought_tolerance": 0.5,
+          "profit": 0.7,
+          "risk_level": 0.4,
+          "risk_note": "Higher water demand than durum; vulnerable to spring moisture deficit.",
+          "depletion": 4,
+          "n_impact": -38,
+          "health_delta": -12,
+          "npk_base": 230,
+          "fert_name": "Urea 46% + TSP",
+          "rain_opt": [
+            400.0,
+            750.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.0
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 0,
+          "oaic_ccls_price_dzd_q": 5000,
+          "baseline_yield_q_ha": 25.0,
+          "yield_potential": 25.0,
+          "gross_income_dzd_ha": 125000,
+          "currency": "DZD",
+          "source": "ITGC / OAIC Algeria 2024"
+        },
+        "oats": {
+          "name": "Forage Oats",
+          "family": "cereal",
+          "water_need": 0.5,
+          "soil_effect": -0.12,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.7,
+          "drought_tolerance": 0.65,
+          "profit": 0.48,
+          "risk_level": 0.25,
+          "risk_note": "Reliable livestock forage; shares cereal root pathogens with wheat.",
+          "depletion": 2,
+          "n_impact": -20,
+          "health_delta": -5,
+          "npk_base": 150,
+          "fert_name": "NPK 15:15:15",
+          "rain_opt": [
+            320.0,
+            650.0
+          ],
+          "ph_opt": [
+            5.5,
+            8.0
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 4200,
+          "baseline_yield_q_ha": 21.0,
+          "yield_potential": 21.0,
+          "gross_income_dzd_ha": 88200,
+          "currency": "DZD",
+          "source": "ITGC Algeria 2024"
+        },
+        "triticale": {
+          "name": "Triticale",
+          "family": "cereal",
+          "water_need": 0.48,
+          "soil_effect": -0.18,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.74,
+          "drought_tolerance": 0.78,
+          "profit": 0.56,
+          "risk_level": 0.22,
+          "risk_note": "Hardy cereal hybrid for calcareous High Plateaux soils.",
+          "depletion": 3,
+          "n_impact": -26,
+          "health_delta": -6,
+          "npk_base": 165,
+          "fert_name": "NPK 15:15:15 + Urea",
+          "rain_opt": [
+            280.0,
+            600.0
+          ],
+          "ph_opt": [
+            5.5,
+            8.3
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 4500,
+          "baseline_yield_q_ha": 25.0,
+          "yield_potential": 25.0,
+          "gross_income_dzd_ha": 112500,
+          "currency": "DZD",
+          "source": "ITGC Algeria 2024"
+        },
+        "faba": {
+          "name": "Faba Bean",
+          "family": "legume",
+          "water_need": 0.65,
+          "soil_effect": 0.5,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.5,
+          "drought_tolerance": 0.4,
+          "profit": 0.7,
+          "risk_level": 0.45,
+          "risk_note": "High N fixation but sensitive to spring frost and Orobanche.",
+          "depletion": 1,
+          "n_impact": 35,
+          "health_delta": 22,
+          "npk_base": 110,
+          "fert_name": "TSP 46%",
+          "rain_opt": [
+            420.0,
+            800.0
+          ],
+          "ph_opt": [
+            6.2,
+            8.2
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 0,
+          "oaic_ccls_price_dzd_q": 10500,
+          "baseline_yield_q_ha": 16.0,
+          "yield_potential": 16.0,
+          "gross_income_dzd_ha": 168000,
+          "currency": "DZD",
+          "source": "ITGC / CCLS Algeria 2024"
+        },
+        "vetch": {
+          "name": "Common Vetch",
+          "family": "legume",
+          "water_need": 0.42,
+          "soil_effect": 0.45,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.55,
+          "drought_tolerance": 0.75,
+          "profit": 0.52,
+          "risk_level": 0.2,
+          "risk_note": "Terminated at flowering for hay; conserves spring soil moisture.",
+          "depletion": 1,
+          "n_impact": 28,
+          "health_delta": 20,
+          "npk_base": 85,
+          "fert_name": "SSP / Starter P",
+          "rain_opt": [
+            280.0,
+            600.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.3
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 5500,
+          "baseline_yield_q_ha": 19.0,
+          "yield_potential": 19.0,
+          "gross_income_dzd_ha": 104500,
+          "currency": "DZD",
+          "source": "ICARDA / ITGC Algeria 2024"
+        },
+        "canola": {
+          "name": "Canola / Mustard",
+          "family": "oilseed",
+          "water_need": 0.6,
+          "soil_effect": 0.1,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.6,
+          "drought_tolerance": 0.55,
+          "profit": 0.85,
+          "risk_level": 0.4,
+          "risk_note": "Deep taproot breaks cereal hardpans; watch pod shattering at harvest.",
+          "depletion": 3,
+          "n_impact": -20,
+          "health_delta": 5,
+          "npk_base": 180,
+          "fert_name": "NPK + Ammonium Sulfate",
+          "rain_opt": [
+            380.0,
+            750.0
+          ],
+          "ph_opt": [
+            5.8,
+            8.2
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 9500,
+          "baseline_yield_q_ha": 18.0,
+          "yield_potential": 18.0,
+          "gross_income_dzd_ha": 171000,
+          "currency": "DZD",
+          "source": "ITGC Colza Programme 2024"
+        },
+        "safflower": {
+          "name": "Safflower",
+          "family": "oilseed",
+          "water_need": 0.35,
+          "soil_effect": 0.08,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.58,
+          "drought_tolerance": 0.9,
+          "profit": 0.64,
+          "risk_level": 0.25,
+          "risk_note": "Deepest taproot (>2 m) for semi-arid High Plateaux dryland.",
+          "depletion": 2,
+          "n_impact": -15,
+          "health_delta": 4,
+          "npk_base": 130,
+          "fert_name": "NPK 15:15:15 + Boron",
+          "rain_opt": [
+            240.0,
+            550.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.5
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 8800,
+          "baseline_yield_q_ha": 14.0,
+          "yield_potential": 14.0,
+          "gross_income_dzd_ha": 123200,
+          "currency": "DZD",
+          "source": "ICARDA Dryland Oilseeds 2023"
+        },
+        "sunflower": {
+          "name": "Sunflower",
+          "family": "oilseed",
+          "water_need": 0.58,
+          "soil_effect": 0.05,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.55,
+          "drought_tolerance": 0.68,
+          "profit": 0.74,
+          "risk_level": 0.38,
+          "risk_note": "Spring-sown oilseed; sensitive to late spring dry spells.",
+          "depletion": 3,
+          "n_impact": -22,
+          "health_delta": 2,
+          "npk_base": 165,
+          "fert_name": "NPK 15:15:15",
+          "rain_opt": [
+            380.0,
+            750.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.2
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 9200,
+          "baseline_yield_q_ha": 16.0,
+          "yield_potential": 16.0,
+          "gross_income_dzd_ha": 147200,
+          "currency": "DZD",
+          "source": "FAO / ITGC Algeria"
+        },
+        "field_pea": {
+          "name": "Field Pea",
+          "family": "legume",
+          "water_need": 0.42,
+          "soil_effect": 0.38,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.45,
+          "drought_tolerance": 0.45,
+          "profit": 0.62,
+          "risk_level": 0.35,
+          "risk_note": "Good break crop before cereals on the High Plateaux.",
+          "depletion": 1,
+          "n_impact": 24,
+          "health_delta": 16,
+          "npk_base": 90,
+          "fert_name": "DAP (starter P)",
+          "rain_opt": [
+            350.0,
+            650.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.0
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 0,
+          "oaic_ccls_price_dzd_q": 9500,
+          "baseline_yield_q_ha": 14.0,
+          "yield_potential": 14.0,
+          "gross_income_dzd_ha": 133000,
+          "currency": "DZD",
+          "source": "Team estimate - verify with national statistics (ITGC / CCLS)"
+        },
+        "potato": {
+          "name": "Potato",
+          "family": "vegetable_root",
+          "water_need": 0.78,
+          "soil_effect": -0.3,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.3,
+          "drought_tolerance": 0.25,
+          "profit": 0.7,
+          "risk_level": 0.55,
+          "risk_note": "Setif is a known potato area; needs irrigation and has high costs.",
+          "depletion": 5,
+          "n_impact": -45,
+          "health_delta": -14,
+          "npk_base": 260,
+          "fert_name": "NPK 15:15:15 + Potash",
+          "rain_opt": [
+            500.0,
+            900.0
+          ],
+          "ph_opt": [
+            5.2,
+            7.5
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 0,
+          "oaic_ccls_price_dzd_q": 2500,
+          "baseline_yield_q_ha": 220.0,
+          "yield_potential": 220.0,
+          "gross_income_dzd_ha": 550000,
+          "currency": "DZD",
+          "source": "Team estimate - verify with national statistics (MADR)"
+        },
+        "sulla": {
+          "name": "Sulla (Spanish Sainfoin)",
+          "family": "legume",
+          "water_need": 0.38,
+          "soil_effect": 0.4,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.5,
+          "drought_tolerance": 0.65,
+          "profit": 0.45,
+          "risk_level": 0.25,
+          "risk_note": "Forage legume (hay); fits mixed crop-livestock farms.",
+          "depletion": 1,
+          "n_impact": 30,
+          "health_delta": 20,
+          "npk_base": 60,
+          "fert_name": "SSP / Starter P",
+          "rain_opt": [
+            350.0,
+            700.0
+          ],
+          "ph_opt": [
+            7.0,
+            8.5
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 2200,
+          "baseline_yield_q_ha": 40.0,
+          "yield_potential": 40.0,
+          "gross_income_dzd_ha": 88000,
+          "currency": "DZD",
+          "source": "Team estimate - verify with national statistics (ICARDA)"
+        },
+        "lupin": {
+          "name": "Lupin",
+          "family": "legume",
+          "water_need": 0.4,
+          "soil_effect": 0.4,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.48,
+          "drought_tolerance": 0.55,
+          "profit": 0.52,
+          "risk_level": 0.35,
+          "risk_note": "Only on neutral to acid pockets; avoid very calcareous fields.",
+          "depletion": 1,
+          "n_impact": 28,
+          "health_delta": 18,
+          "npk_base": 70,
+          "fert_name": "SSP / Starter P",
+          "rain_opt": [
+            350.0,
+            700.0
+          ],
+          "ph_opt": [
+            5.0,
+            7.0
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 0,
+          "oaic_ccls_price_dzd_q": 9000,
+          "baseline_yield_q_ha": 12.0,
+          "yield_potential": 12.0,
+          "gross_income_dzd_ha": 108000,
+          "currency": "DZD",
+          "source": "Team estimate - verify with national statistics (ITGC)"
+        },
+        "onion": {
+          "name": "Onion / Garlic",
+          "family": "vegetable_root",
+          "water_need": 0.6,
+          "soil_effect": -0.15,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.25,
+          "drought_tolerance": 0.3,
+          "profit": 0.68,
+          "risk_level": 0.5,
+          "risk_note": "Irrigated vegetable; price swings are large.",
+          "depletion": 3,
+          "n_impact": -30,
+          "health_delta": -8,
+          "npk_base": 200,
+          "fert_name": "NPK 15:15:15",
+          "rain_opt": [
+            350.0,
+            700.0
+          ],
+          "ph_opt": [
+            6.0,
+            7.8
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 0,
+          "oaic_ccls_price_dzd_q": 2200,
+          "baseline_yield_q_ha": 250.0,
+          "yield_potential": 250.0,
+          "gross_income_dzd_ha": 550000,
+          "currency": "DZD",
+          "source": "Team estimate - verify with national statistics (MADR)"
+        },
+        "coriander": {
+          "name": "Coriander",
+          "family": "forage_broadleaf",
+          "water_need": 0.34,
+          "soil_effect": 0.05,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.35,
+          "drought_tolerance": 0.55,
+          "profit": 0.6,
+          "risk_level": 0.3,
+          "risk_note": "Short-cycle low-input cash crop.",
+          "depletion": 2,
+          "n_impact": -12,
+          "health_delta": 3,
+          "npk_base": 70,
+          "fert_name": "NPK 15:15:15",
+          "rain_opt": [
+            300.0,
+            550.0
+          ],
+          "ph_opt": [
+            6.2,
+            8.2
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 20000,
+          "baseline_yield_q_ha": 7.0,
+          "yield_potential": 7.0,
+          "gross_income_dzd_ha": 140000,
+          "currency": "DZD",
+          "source": "Team estimate - verify with national statistics (ITGC)"
+        },
+        "fallow": {
+          "name": "Worked / Chem Fallow",
+          "family": "fallow",
+          "water_need": 0.05,
+          "soil_effect": 0.15,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.25,
+          "drought_tolerance": 0.95,
+          "profit": 0.05,
+          "risk_level": 0.1,
+          "risk_note": "Zero revenue in fallow year; retain stubble to prevent wind erosion.",
+          "depletion": 0,
+          "n_impact": 10,
+          "health_delta": 8,
+          "npk_base": 0,
+          "fert_name": "None (Moisture & N Reset)",
+          "rain_opt": [
+            100.0,
+            900.0
+          ],
+          "ph_opt": [
+            5.0,
+            8.8
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 0,
+          "baseline_yield_q_ha": 0.0,
+          "yield_potential": 0.0,
+          "gross_income_dzd_ha": 0,
+          "currency": "DZD",
+          "source": "ICARDA Conservation Agriculture"
+        }
+      }
+    },
+    "regionB": {
+      "id": "regionB",
+      "code": "kansas",
+      "meta": {
+        "region_id": "regionB",
+        "code": "kansas",
+        "name": "Central Kansas Plains",
+        "country": "USA",
+        "lat": 38.8,
+        "lon": -97.6,
+        "role": "light",
+        "farming_system": "rainfed",
+        "default_crops": "wheat,corn,soybean,sorghum",
+        "currency": "USD",
+        "currency_symbol": "$",
+        "agro_zone": "Central Great Plains dryland prairie (Salina / Smoky Hill basin, 375 m)",
+        "default_crops_list": [
+          "wheat",
+          "corn",
+          "soybean",
+          "sorghum"
+        ]
+      },
+      "v1": {
+        "region": "Central Kansas Plains, USA",
+        "country": "USA",
+        "role": "light",
+        "farming_system": "rainfed",
+        "default_crops": [
+          "wheat",
+          "corn",
+          "soybean",
+          "sorghum"
+        ],
+        "lat": 38.8,
+        "lon": -97.6,
+        "rainfall_mm": 692.0,
+        "rainfall_reference_mm": 725.0,
+        "soil_organic_carbon_g_per_kg": 18.4,
+        "soc_threshold_g_per_kg": 18.0,
+        "ph": 6.8,
+        "ndvi_Prime": 0.68,
+        "mean_spring_peak_ndvi": 0.64,
+        "climate_baseline": {
+          "hot_days": 34.2,
+          "frost_days": 3.8,
+          "extreme_rain_days": 6.4,
+          "longest_dry_spell": 24.5
+        }
+      },
+      "v2": {
+        "region": "kansas",
+        "region_id": "regionB",
+        "label": "Central Kansas Plains, USA",
+        "country": "USA",
+        "role": "light",
+        "farming_system": "rainfed",
+        "default_crops": [
+          "wheat",
+          "corn",
+          "soybean",
+          "sorghum"
+        ],
+        "lat": 38.8,
+        "lon": -97.6,
+        "rainfall_mm": {
+          "value": 692.0,
+          "window": "2015-2024",
+          "crosscheck_value": 678.5,
+          "confidence": "high"
+        },
+        "rainfall_30yr_mean_mm": {
+          "value": 715.1,
+          "window": "1995-2024",
+          "crosscheck_value": 701.4,
+          "confidence": "high"
+        },
+        "rainfall_trend": {
+          "slope_mm_per_decade": -36.4,
+          "ols_p": 0.142,
+          "mk_p": 0.168,
+          "confidence": "medium"
+        },
+        "water_stress": {
+          "value": 0.18,
+          "window": "2015-2024",
+          "confidence": "medium"
+        },
+        "water_stress_5yr": {
+          "value": 0.29,
+          "window": "2020-2024",
+          "confidence": "medium"
+        },
+        "hot_days": {
+          "value": 34.2,
+          "threshold_c": 35.0,
+          "window": "May-Aug",
+          "confidence": "high"
+        },
+        "frost_days": {
+          "value": 3.8,
+          "threshold_c": 0.0,
+          "window": "Apr",
+          "confidence": "high"
+        },
+        "extreme_rain_days": {
+          "value": 6.4,
+          "threshold_mm": 25.0,
+          "confidence": "high"
+        },
+        "longest_dry_spell_days": {
+          "value": 24.5,
+          "confidence": "high"
+        },
+        "ndvi": {
+          "yield_baseline": 0.68,
+          "mean_spring_peak_ndvi": 0.64,
+          "confidence": "medium"
+        },
+        "suggested_priorities": {
+          "save_water": 38,
+          "protect_soil": 30,
+          "yield_": 32
+        }
+      },
+      "soil": {
+        "region": "kansas",
+        "soc_g_per_kg": 18.4,
+        "soc_class": "moderate_mollisol",
+        "ph": 6.8,
+        "clay_pct": 27.0,
+        "sand_pct": 22.0,
+        "silt_pct": 51.0,
+        "texture_class": "Silt Loam ( Crete / Smolan Mollisol )",
+        "confidence": "high",
+        "note": "Deep Prairie Mollisol (0–30 cm ISRIC SoilGrids v2.0). High native fertility, slightly acidic surface pH (6.8) from long-term nitrogen fertilization."
+      },
+      "climateText": {
+        "hot_days": {
+          "en": "34.2 days/yr above 35 °C (95 °F) during May–Aug can stress dryland corn silk pollination; grain sorghum and soybean tolerate midsummer heat pulses better.",
+          "fr": "34,2 jours/an > 35 °C en été (mai-août) stressent la pollinisation du maïs pluvial.",
+          "ar": "34.2 يوماً في السنة فوق 35 درجة مئوية خلال الصيف قد تجهد تلقيح الذرة البعلية."
+        },
+        "frost_days": {
+          "en": "3.8 late freeze nights (< 0 °C / 32 °F) in April can damage winter wheat at jointing/boot stage.",
+          "fr": "3,8 nuits de gel tardif (< 0 °C) en avril peuvent endommager le blé d'hiver au stade montaison.",
+          "ar": "3.8 ليالٍ من الصقيع المتأخر في أبريل قد تضر القمح الشتوي."
+        },
+        "extreme_rain_days": {
+          "en": "6.4 convective thunderstorm days/yr (> 25 mm/day) cause runoff on bare tilled fields; no-till wheat/sorghum stubble improves infiltration.",
+          "fr": "6,4 jours d'orage (> 25 mm/j) provoquent du ruissellement sur sol nu.",
+          "ar": "6.4 أيام من الأمطار الغزيرة تسبب انجراف التربة المكشوفة."
+        },
+        "longest_dry_spell_days": {
+          "en": "24.5-day average summer dry spells highlight why grain sorghum + soybean rotations outperform continuous wheat or dryland corn in dry years.",
+          "fr": "Épisodes secs de 24,5 jours en moyenne durant l'été.",
+          "ar": "فترات جفاف صيفية بمتوسط 24.5 يوماً."
+        },
+        "rainfall_source_disagreement": {
+          "en": "NASA POWER (692 mm) and ERA5-Land (678.5 mm) agree within 2.0% over the flat Central Kansas plains.",
+          "fr": "NASA POWER et ERA5-Land concordent à 2,0 % près sur les plaines du Kansas.",
+          "ar": "تتطابق بيانات NASA POWER و ERA5 بنسبة 2.0% في سهول كانساس."
+        }
+      },
+      "annual": [
+        {
+          "year": 1995,
+          "rain": 768.4
+        },
+        {
+          "year": 1996,
+          "rain": 742.1
+        },
+        {
+          "year": 1997,
+          "rain": 718.5
+        },
+        {
+          "year": 1998,
+          "rain": 795.2
+        },
+        {
+          "year": 1999,
+          "rain": 754.0
+        },
+        {
+          "year": 2000,
+          "rain": 642.8
+        },
+        {
+          "year": 2001,
+          "rain": 736.9
+        },
+        {
+          "year": 2002,
+          "rain": 612.4
+        },
+        {
+          "year": 2003,
+          "rain": 668.1
+        },
+        {
+          "year": 2004,
+          "rain": 782.6
+        },
+        {
+          "year": 2005,
+          "rain": 749.3
+        },
+        {
+          "year": 2006,
+          "rain": 628.7
+        },
+        {
+          "year": 2007,
+          "rain": 845.0
+        },
+        {
+          "year": 2008,
+          "rain": 862.4
+        },
+        {
+          "year": 2009,
+          "rain": 774.2
+        },
+        {
+          "year": 2010,
+          "rain": 758.9
+        },
+        {
+          "year": 2011,
+          "rain": 584.3
+        },
+        {
+          "year": 2012,
+          "rain": 518.6
+        },
+        {
+          "year": 2013,
+          "rain": 694.5
+        },
+        {
+          "year": 2014,
+          "rain": 658.2
+        },
+        {
+          "year": 2015,
+          "rain": 764.1
+        },
+        {
+          "year": 2016,
+          "rain": 792.8
+        },
+        {
+          "year": 2017,
+          "rain": 688.4
+        },
+        {
+          "year": 2018,
+          "rain": 748.0
+        },
+        {
+          "year": 2019,
+          "rain": 856.2
+        },
+        {
+          "year": 2020,
+          "rain": 634.5
+        },
+        {
+          "year": 2021,
+          "rain": 678.9
+        },
+        {
+          "year": 2022,
+          "rain": 542.6
+        },
+        {
+          "year": 2023,
+          "rain": 568.4
+        },
+        {
+          "year": 2024,
+          "rain": 646.1
+        }
+      ],
+      "monthly": [
+        18.2,
+        24.5,
+        48.6,
+        68.4,
+        108.2,
+        104.5,
+        86.4,
+        82.1,
+        64.8,
+        52.3,
+        31.4,
+        21.6
+      ],
+      "forecast": {
+        "modelType": "SARIMA(1,0,1)(1,1,1,12)",
+        "confidenceStatus": "experimental_low_confidence",
+        "trainingWindow": "1995-01 to 2024-12 (360 months)",
+        "note": "Experimental seasonal outlook trained on 30-year NASA POWER monthly precipitation. Wide 80% intervals reflect inter-annual rainfall variance; use for scenario awareness, not deterministic scheduling.",
+        "projection": [
+          {
+            "date": "2025-01",
+            "mean_mm": 17.7,
+            "lower_mm": 7.4,
+            "upper_mm": 29.7
+          },
+          {
+            "date": "2025-02",
+            "mean_mm": 23.8,
+            "lower_mm": 10.0,
+            "upper_mm": 40.0
+          },
+          {
+            "date": "2025-03",
+            "mean_mm": 47.1,
+            "lower_mm": 19.8,
+            "upper_mm": 79.1
+          },
+          {
+            "date": "2025-04",
+            "mean_mm": 66.3,
+            "lower_mm": 27.8,
+            "upper_mm": 111.4
+          },
+          {
+            "date": "2025-05",
+            "mean_mm": 105.0,
+            "lower_mm": 44.1,
+            "upper_mm": 176.4
+          },
+          {
+            "date": "2025-06",
+            "mean_mm": 101.4,
+            "lower_mm": 42.6,
+            "upper_mm": 170.4
+          },
+          {
+            "date": "2025-07",
+            "mean_mm": 83.8,
+            "lower_mm": 35.2,
+            "upper_mm": 140.8
+          },
+          {
+            "date": "2025-08",
+            "mean_mm": 79.6,
+            "lower_mm": 33.4,
+            "upper_mm": 133.7
+          },
+          {
+            "date": "2025-09",
+            "mean_mm": 62.9,
+            "lower_mm": 26.4,
+            "upper_mm": 105.7
+          },
+          {
+            "date": "2025-10",
+            "mean_mm": 50.7,
+            "lower_mm": 21.3,
+            "upper_mm": 85.2
+          },
+          {
+            "date": "2025-11",
+            "mean_mm": 30.5,
+            "lower_mm": 12.8,
+            "upper_mm": 51.2
+          },
+          {
+            "date": "2025-12",
+            "mean_mm": 21.0,
+            "lower_mm": 8.8,
+            "upper_mm": 35.3
+          },
+          {
+            "date": "2026-01",
+            "mean_mm": 17.7,
+            "lower_mm": 7.4,
+            "upper_mm": 29.7
+          },
+          {
+            "date": "2026-02",
+            "mean_mm": 23.8,
+            "lower_mm": 10.0,
+            "upper_mm": 40.0
+          },
+          {
+            "date": "2026-03",
+            "mean_mm": 47.1,
+            "lower_mm": 19.8,
+            "upper_mm": 79.1
+          },
+          {
+            "date": "2026-04",
+            "mean_mm": 66.3,
+            "lower_mm": 27.8,
+            "upper_mm": 111.4
+          },
+          {
+            "date": "2026-05",
+            "mean_mm": 105.0,
+            "lower_mm": 44.1,
+            "upper_mm": 176.4
+          },
+          {
+            "date": "2026-06",
+            "mean_mm": 101.4,
+            "lower_mm": 42.6,
+            "upper_mm": 170.4
+          },
+          {
+            "date": "2026-07",
+            "mean_mm": 83.8,
+            "lower_mm": 35.2,
+            "upper_mm": 140.8
+          },
+          {
+            "date": "2026-08",
+            "mean_mm": 79.6,
+            "lower_mm": 33.4,
+            "upper_mm": 133.7
+          },
+          {
+            "date": "2026-09",
+            "mean_mm": 62.9,
+            "lower_mm": 26.4,
+            "upper_mm": 105.7
+          },
+          {
+            "date": "2026-10",
+            "mean_mm": 50.7,
+            "lower_mm": 21.3,
+            "upper_mm": 85.2
+          },
+          {
+            "date": "2026-11",
+            "mean_mm": 30.5,
+            "lower_mm": 12.8,
+            "upper_mm": 51.2
+          },
+          {
+            "date": "2026-12",
+            "mean_mm": 21.0,
+            "lower_mm": 8.8,
+            "upper_mm": 35.3
+          }
+        ]
+      },
+      "fires": {
+        "region": "regionB",
+        "fetched_at": "2026-11-14T09:30:00Z",
+        "source": "VIIRS_NOAA21_NRT",
+        "radius_km": 25,
+        "days": 2,
+        "count": 0,
+        "nearest_km": null,
+        "detections": [],
+        "dry_conditions": {
+          "consecutive_dry_days": 11,
+          "hot_days_recent": 34,
+          "mean_rh_pct": 52,
+          "wind_m_s": 5.8,
+          "label": "Indicative only"
+        },
+        "notice": "Satellite data, about 3 hours old. Not a forecast. No detection does not mean no fire."
+      },
+      "rules": {
+        "rotation_length": 3,
+        "forbid_consecutive_same_family": true,
+        "min_legumes": 1,
+        "max_high_water_crops": 1,
+        "high_water_need_threshold": 0.68,
+        "max_occurrences_per_crop": 1
+      },
+      "thresholds": {
+        "region_id": "regionB",
+        "hot_day_c": 35.0,
+        "frost_night_c": 0.0,
+        "extreme_rain_mm": 25.0,
+        "dry_day_mm": 1.0,
+        "soc_threshold_g_per_kg": 18.0,
+        "rainfall_reference_mm": 725.0,
+        "note": "Central Great Plains continental rainfed regime (May-Aug summer heat, Apr late freeze, Apr-Sep warm season)."
+      },
+      "regionalCrops": {
+        "wheat": {
+          "name": "Wheat (Durum / Winter)",
+          "family": "cereal",
+          "water_need": 0.65,
+          "soil_effect": -0.25,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.7,
+          "drought_tolerance": 0.55,
+          "profit": 0.75,
+          "risk_level": 0.35,
+          "risk_note": "Hard Red Winter Wheat; vulnerable to April freeze at jointing and Hessian fly in continuous wheat.",
+          "depletion": 4,
+          "n_impact": -35,
+          "health_delta": -10,
+          "npk_base": 220,
+          "fert_name": "Urea 46% + DAP",
+          "rain_opt": [
+            350.0,
+            650.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.2
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 2970,
+          "baseline_yield_q_ha": 31.6,
+          "yield_potential": 31.6,
+          "gross_income_dzd_ha": 93852,
+          "currency": "USD",
+          "source": "USDA NASS Kansas 2019-2023 (47 bu/ac)"
+        },
+        "corn": {
+          "name": "Corn (Grain Maize)",
+          "family": "cereal",
+          "water_need": 0.72,
+          "soil_effect": -0.22,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.78,
+          "drought_tolerance": 0.52,
+          "profit": 0.84,
+          "risk_level": 0.38,
+          "risk_note": "Dryland corn; July pollination heat (>35 °C) and dry spells sharply cut kernel set without rotation moisture.",
+          "depletion": 4,
+          "n_impact": -42,
+          "health_delta": -9,
+          "npk_base": 240,
+          "fert_name": "Anhydrous NH3 / UAN + Starter P",
+          "rain_opt": [
+            480.0,
+            950.0
+          ],
+          "ph_opt": [
+            5.8,
+            7.8
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 2600,
+          "baseline_yield_q_ha": 78.0,
+          "yield_potential": 78.0,
+          "gross_income_dzd_ha": 202800,
+          "currency": "USD",
+          "source": "USDA NASS Kansas 2019-2023 (124 bu/ac)"
+        },
+        "soybean": {
+          "name": "Soybean",
+          "family": "legume",
+          "water_need": 0.55,
+          "soil_effect": 0.44,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.45,
+          "drought_tolerance": 0.66,
+          "profit": 0.82,
+          "risk_level": 0.3,
+          "risk_note": "Fixes nitrogen for following winter wheat or corn; August pod-fill sensitive to late-summer flash drought.",
+          "depletion": 1,
+          "n_impact": 30,
+          "health_delta": 18,
+          "npk_base": 95,
+          "fert_name": "MAP / Potash starter (0-46-60)",
+          "rain_opt": [
+            450.0,
+            900.0
+          ],
+          "ph_opt": [
+            5.8,
+            7.8
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 6800,
+          "baseline_yield_q_ha": 26.9,
+          "yield_potential": 26.9,
+          "gross_income_dzd_ha": 182920,
+          "currency": "USD",
+          "source": "USDA NASS Kansas 2019-2023 (40 bu/ac)"
+        },
+        "sorghum": {
+          "name": "Grain Sorghum (Milo)",
+          "family": "cereal",
+          "water_need": 0.44,
+          "soil_effect": -0.14,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.72,
+          "drought_tolerance": 0.86,
+          "profit": 0.72,
+          "risk_level": 0.24,
+          "risk_note": "Grain sorghum (milo) outperforms dryland corn in drought years; watch sugarcane aphid pressure.",
+          "depletion": 3,
+          "n_impact": -24,
+          "health_delta": -5,
+          "npk_base": 160,
+          "fert_name": "UAN 28% + DAP",
+          "rain_opt": [
+            350.0,
+            800.0
+          ],
+          "ph_opt": [
+            5.5,
+            8.4
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 2750,
+          "baseline_yield_q_ha": 49.0,
+          "yield_potential": 49.0,
+          "gross_income_dzd_ha": 134750,
+          "currency": "USD",
+          "source": "USDA NASS Kansas 2019-2023 (78 bu/ac)"
+        },
+        "sunflower": {
+          "name": "Sunflower",
+          "family": "oilseed",
+          "water_need": 0.58,
+          "soil_effect": 0.05,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.55,
+          "drought_tolerance": 0.68,
+          "profit": 0.74,
+          "risk_level": 0.38,
+          "risk_note": "Deep-rooted High Plains broadleaf break crop; scavenges deep subsoil nitrate.",
+          "depletion": 3,
+          "n_impact": -22,
+          "health_delta": 2,
+          "npk_base": 165,
+          "fert_name": "NPK 15:15:15",
+          "rain_opt": [
+            380.0,
+            750.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.2
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 7900,
+          "baseline_yield_q_ha": 16.8,
+          "yield_potential": 16.8,
+          "gross_income_dzd_ha": 132720,
+          "currency": "USD",
+          "source": "USDA NASS / K-State Extension (1,500 lb/ac)"
+        },
+        "canola": {
+          "name": "Canola / Mustard",
+          "family": "oilseed",
+          "water_need": 0.6,
+          "soil_effect": 0.1,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.6,
+          "drought_tolerance": 0.55,
+          "profit": 0.85,
+          "risk_level": 0.4,
+          "risk_note": "Southern Plains winter canola; suppresses feral rye and jointed goatgrass in winter wheat rotations.",
+          "depletion": 3,
+          "n_impact": -20,
+          "health_delta": 5,
+          "npk_base": 180,
+          "fert_name": "NPK + Ammonium Sulfate",
+          "rain_opt": [
+            380.0,
+            750.0
+          ],
+          "ph_opt": [
+            5.8,
+            8.2
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 7200,
+          "baseline_yield_q_ha": 19.5,
+          "yield_potential": 19.5,
+          "gross_income_dzd_ha": 140400,
+          "currency": "USD",
+          "source": "K-State Great Plains Canola Trials"
+        },
+        "oats": {
+          "name": "Forage Oats",
+          "family": "cereal",
+          "water_need": 0.5,
+          "soil_effect": -0.12,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.7,
+          "drought_tolerance": 0.65,
+          "profit": 0.48,
+          "risk_level": 0.25,
+          "risk_note": "Spring oat cover/grain crop; low water footprint ahead of winter wheat.",
+          "depletion": 2,
+          "n_impact": -20,
+          "health_delta": -5,
+          "npk_base": 150,
+          "fert_name": "NPK 15:15:15",
+          "rain_opt": [
+            320.0,
+            650.0
+          ],
+          "ph_opt": [
+            5.5,
+            8.0
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 3800,
+          "baseline_yield_q_ha": 23.0,
+          "yield_potential": 23.0,
+          "gross_income_dzd_ha": 87400,
+          "currency": "USD",
+          "source": "USDA NASS Kansas"
+        },
+        "field_pea": {
+          "name": "Field Pea",
+          "family": "legume",
+          "water_need": 0.42,
+          "soil_effect": 0.38,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.45,
+          "drought_tolerance": 0.45,
+          "profit": 0.62,
+          "risk_level": 0.35,
+          "risk_note": "Cool-season legume that fits before sorghum or corn.",
+          "depletion": 1,
+          "n_impact": 24,
+          "health_delta": 16,
+          "npk_base": 90,
+          "fert_name": "DAP (starter P)",
+          "rain_opt": [
+            350.0,
+            650.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.0
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 0,
+          "oaic_ccls_price_dzd_q": 2700,
+          "baseline_yield_q_ha": 22.0,
+          "yield_potential": 22.0,
+          "gross_income_dzd_ha": 59400,
+          "currency": "USD",
+          "source": "Team estimate - verify with national statistics (K-State Extension)"
+        },
+        "hairy_vetch": {
+          "name": "Hairy Vetch (Cover Crop)",
+          "family": "legume",
+          "water_need": 0.36,
+          "soil_effect": 0.45,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.55,
+          "drought_tolerance": 0.6,
+          "profit": 0.3,
+          "risk_level": 0.15,
+          "risk_note": "Cover crop; value is soil, moisture and nitrogen, income is hay only.",
+          "depletion": 1,
+          "n_impact": 35,
+          "health_delta": 22,
+          "npk_base": 40,
+          "fert_name": "None (self-fixing)",
+          "rain_opt": [
+            350.0,
+            800.0
+          ],
+          "ph_opt": [
+            5.5,
+            8.0
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 0,
+          "oaic_ccls_price_dzd_q": 1350,
+          "baseline_yield_q_ha": 35.0,
+          "yield_potential": 35.0,
+          "gross_income_dzd_ha": 47250,
+          "currency": "USD",
+          "source": "Team estimate - verify with national statistics (K-State Extension)"
+        },
+        "alfalfa": {
+          "name": "Alfalfa (Lucerne)",
+          "family": "legume",
+          "water_need": 0.62,
+          "soil_effect": 0.35,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.6,
+          "drought_tolerance": 0.6,
+          "profit": 0.58,
+          "risk_level": 0.3,
+          "risk_note": "Perennial hay crop; deep roots; treat as a 1-year ley in a 3-year plan.",
+          "depletion": 1,
+          "n_impact": 45,
+          "health_delta": 24,
+          "npk_base": 60,
+          "fert_name": "P and K, no N",
+          "rain_opt": [
+            450.0,
+            900.0
+          ],
+          "ph_opt": [
+            6.5,
+            8.2
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 2430,
+          "baseline_yield_q_ha": 40.0,
+          "yield_potential": 40.0,
+          "gross_income_dzd_ha": 97200,
+          "currency": "USD",
+          "source": "Team estimate - verify with national statistics (USDA NASS)"
+        },
+        "cotton": {
+          "name": "Cotton",
+          "family": "forage_broadleaf",
+          "water_need": 0.62,
+          "soil_effect": -0.18,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.65,
+          "drought_tolerance": 0.45,
+          "profit": 0.66,
+          "risk_level": 0.5,
+          "risk_note": "Only in warmer southern Kansas; frost can end the season early.",
+          "depletion": 4,
+          "n_impact": -40,
+          "health_delta": -10,
+          "npk_base": 180,
+          "fert_name": "Urea + DAP",
+          "rain_opt": [
+            450.0,
+            900.0
+          ],
+          "ph_opt": [
+            5.8,
+            8.0
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 20790,
+          "baseline_yield_q_ha": 9.0,
+          "yield_potential": 9.0,
+          "gross_income_dzd_ha": 187110,
+          "currency": "USD",
+          "source": "Team estimate - verify with national statistics (USDA NASS)"
+        },
+        "proso_millet": {
+          "name": "Proso Millet",
+          "family": "cereal",
+          "water_need": 0.3,
+          "soil_effect": -0.1,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.55,
+          "drought_tolerance": 0.8,
+          "profit": 0.4,
+          "risk_level": 0.25,
+          "risk_note": "Short season, tolerant to drought; good after a failed crop.",
+          "depletion": 2,
+          "n_impact": -18,
+          "health_delta": -3,
+          "npk_base": 70,
+          "fert_name": "Urea",
+          "rain_opt": [
+            250.0,
+            600.0
+          ],
+          "ph_opt": [
+            5.5,
+            8.0
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 3180,
+          "baseline_yield_q_ha": 18.8,
+          "yield_potential": 18.8,
+          "gross_income_dzd_ha": 59784,
+          "currency": "USD",
+          "source": "Team estimate - verify with national statistics (K-State Extension)"
+        },
+        "flax": {
+          "name": "Flax (Linseed)",
+          "family": "oilseed",
+          "water_need": 0.4,
+          "soil_effect": 0.0,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.35,
+          "drought_tolerance": 0.45,
+          "profit": 0.45,
+          "risk_level": 0.35,
+          "risk_note": "Niche oilseed; weak against weeds.",
+          "depletion": 2,
+          "n_impact": -15,
+          "health_delta": 0,
+          "npk_base": 80,
+          "fert_name": "NPK 15:15:15",
+          "rain_opt": [
+            350.0,
+            650.0
+          ],
+          "ph_opt": [
+            6.0,
+            7.5
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 0,
+          "oaic_ccls_price_dzd_q": 6350,
+          "baseline_yield_q_ha": 9.4,
+          "yield_potential": 9.4,
+          "gross_income_dzd_ha": 59690,
+          "currency": "USD",
+          "source": "Team estimate - verify with national statistics (USDA NASS)"
+        },
+        "fallow": {
+          "name": "Worked / Chem Fallow",
+          "family": "fallow",
+          "water_need": 0.05,
+          "soil_effect": 0.15,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.25,
+          "drought_tolerance": 0.95,
+          "profit": 0.05,
+          "risk_level": 0.1,
+          "risk_note": "Chem-fallow stores 80–120 mm soil moisture in Western/Central KS, but cover or legume outperforms bare fallow.",
+          "depletion": 0,
+          "n_impact": 10,
+          "health_delta": 8,
+          "npk_base": 0,
+          "fert_name": "None (Moisture & N Reset)",
+          "rain_opt": [
+            100.0,
+            900.0
+          ],
+          "ph_opt": [
+            5.0,
+            8.8
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 0,
+          "baseline_yield_q_ha": 0.0,
+          "yield_potential": 0.0,
+          "gross_income_dzd_ha": 0,
+          "currency": "USD",
+          "source": "K-State Dryland Cropping Systems"
+        }
+      }
+    },
+    "regionC": {
+      "id": "regionC",
+      "code": "punjab",
+      "meta": {
+        "region_id": "regionC",
+        "code": "punjab",
+        "name": "Punjab Plains",
+        "country": "India",
+        "lat": 30.9,
+        "lon": 75.9,
+        "role": "light",
+        "farming_system": "irrigated",
+        "default_crops": "rice,wheat,maize,mung_bean",
+        "currency": "INR",
+        "currency_symbol": "₹",
+        "agro_zone": "Indo-Gangetic alluvial plain (Ludhiana / Sutlej basin, 245 m, canal + tube-well irrigated)",
+        "default_crops_list": [
+          "rice",
+          "wheat",
+          "maize",
+          "mung_bean"
+        ]
+      },
+      "v1": {
+        "region": "Punjab Plains, India",
+        "country": "India",
+        "role": "light",
+        "farming_system": "irrigated",
+        "default_crops": [
+          "rice",
+          "wheat",
+          "maize",
+          "mung_bean"
+        ],
+        "lat": 30.9,
+        "lon": 75.9,
+        "rainfall_mm": 709.2,
+        "rainfall_reference_mm": 740.0,
+        "soil_organic_carbon_g_per_kg": 8.6,
+        "soc_threshold_g_per_kg": 12.0,
+        "ph": 7.9,
+        "ndvi_Prime": 0.76,
+        "mean_spring_peak_ndvi": 0.74,
+        "climate_baseline": {
+          "hot_days": 48.5,
+          "frost_days": 0.6,
+          "extreme_rain_days": 7.8,
+          "longest_dry_spell": 38.0
+        }
+      },
+      "v2": {
+        "region": "punjab",
+        "region_id": "regionC",
+        "label": "Punjab Plains, India",
+        "country": "India",
+        "role": "light",
+        "farming_system": "irrigated",
+        "default_crops": [
+          "rice",
+          "wheat",
+          "maize",
+          "mung_bean"
+        ],
+        "lat": 30.9,
+        "lon": 75.9,
+        "rainfall_mm": {
+          "value": 709.2,
+          "window": "2015-2024",
+          "crosscheck_value": 695.0,
+          "confidence": "high"
+        },
+        "rainfall_30yr_mean_mm": {
+          "value": 733.5,
+          "window": "1995-2024",
+          "crosscheck_value": 718.2,
+          "confidence": "high"
+        },
+        "rainfall_trend": {
+          "slope_mm_per_decade": -38.2,
+          "ols_p": 0.084,
+          "mk_p": 0.092,
+          "confidence": "medium"
+        },
+        "water_stress": {
+          "value": 0.22,
+          "window": "2015-2024",
+          "confidence": "low"
+        },
+        "water_stress_5yr": {
+          "value": 0.24,
+          "window": "2020-2024",
+          "confidence": "low"
+        },
+        "hot_days": {
+          "value": 48.5,
+          "threshold_c": 38.0,
+          "window": "Mar-Jun",
+          "confidence": "high"
+        },
+        "frost_days": {
+          "value": 0.6,
+          "threshold_c": 2.0,
+          "window": "Dec-Jan",
+          "confidence": "high"
+        },
+        "extreme_rain_days": {
+          "value": 7.8,
+          "threshold_mm": 35.0,
+          "confidence": "high"
+        },
+        "longest_dry_spell_days": {
+          "value": 38.0,
+          "confidence": "high"
+        },
+        "ndvi": {
+          "yield_baseline": 0.76,
+          "mean_spring_peak_ndvi": 0.74,
+          "confidence": "high"
+        },
+        "suggested_priorities": {
+          "save_water": 45,
+          "protect_soil": 35,
+          "yield_": 20
+        }
+      },
+      "soil": {
+        "region": "punjab",
+        "soc_g_per_kg": 8.6,
+        "soc_class": "low_alluvial",
+        "ph": 7.9,
+        "clay_pct": 18.0,
+        "sand_pct": 46.0,
+        "silt_pct": 36.0,
+        "texture_class": "Alluvial Sandy Loam (Indo-Gangetic Ustochrept)",
+        "confidence": "high",
+        "note": "Indo-Gangetic alluvial sandy loam (ISRIC SoilGrids v2.0). Intensive rice–wheat puddling and straw burning have depleted topsoil organic carbon (8.6 g/kg, low)."
+      },
+      "climateText": {
+        "hot_days": {
+          "en": "48.5 pre-monsoon days/yr above 38 °C; late March heat spikes shrivel rabi wheat grain if sowing is delayed by late paddy harvest.",
+          "fr": "48,5 jours/an > 38 °C avant la mousson; les vagues de chaleur de fin mars échaudent le blé rabi.",
+          "ar": "48.5 يوماً في السنة فوق 38 درجة مئوية قبل الرياح الموسمية تؤثر على امتلاء حبوب القمح."
+        },
+        "frost_days": {
+          "en": "0.6 radiación chill nights (< 2 °C) in Dec–Jan; frost risk is minimal on the Ludhiana alluvial plain.",
+          "fr": "0,6 nuit froide (< 2 °C) en déc-janv; risque de gel minime.",
+          "ar": "مخاطر الصقيع منخفضة جداً (0.6 ليلة في السنة)."
+        },
+        "extreme_rain_days": {
+          "en": "7.8 Jul–Sep monsoon downpour days (> 35 mm/day) waterlog flat fields where puddling has created a plough pan.",
+          "fr": "7,8 jours de fortes pluies de mousson (> 35 mm/j) en juillet-septembre.",
+          "ar": "7.8 أيام من أمطار الرياح الموسمية الغزيرة."
+        },
+        "longest_dry_spell_days": {
+          "en": "38-day Oct–May dry spells outside the Jul–Sep monsoon are bridged by canal and tube-well irrigation, driving severe groundwater depletion.",
+          "fr": "Séquences sèches de 38 jours hors mousson compensées par l'irrigation par forage.",
+          "ar": "فترات جفاف تمتد 38 يوماً خارج موسم الأمطار يتم تعويضها بالري الجوفي."
+        },
+        "rainfall_source_disagreement": {
+          "en": "Water stress is based on rainfall (709 mm/yr, 70% concentrated in Jul–Sep monsoon). Because 98% of Punjab cropland is irrigated by tube-wells and canals, aquifer depletion—not meteoric rain—is the binding water constraint.",
+          "fr": "Le stress hydrique est basé sur la pluie; l'irrigation par forage masque le déficit pluviométrique mais épuise la nappe.",
+          "ar": "يعتمد مؤشر الإجهاد المائي على الأمطار، بينما تعتمد مزارع البنجاب على الري الجوفي والقنوات."
+        }
+      },
+      "annual": [
+        {
+          "year": 1995,
+          "rain": 842.0
+        },
+        {
+          "year": 1996,
+          "rain": 798.4
+        },
+        {
+          "year": 1997,
+          "rain": 816.2
+        },
+        {
+          "year": 1998,
+          "rain": 864.5
+        },
+        {
+          "year": 1999,
+          "rain": 694.8
+        },
+        {
+          "year": 2000,
+          "rain": 712.6
+        },
+        {
+          "year": 2001,
+          "rain": 748.2
+        },
+        {
+          "year": 2002,
+          "rain": 586.4
+        },
+        {
+          "year": 2003,
+          "rain": 782.1
+        },
+        {
+          "year": 2004,
+          "rain": 642.9
+        },
+        {
+          "year": 2005,
+          "rain": 736.5
+        },
+        {
+          "year": 2006,
+          "rain": 698.0
+        },
+        {
+          "year": 2007,
+          "rain": 724.8
+        },
+        {
+          "year": 2008,
+          "rain": 856.2
+        },
+        {
+          "year": 2009,
+          "rain": 564.3
+        },
+        {
+          "year": 2010,
+          "rain": 792.4
+        },
+        {
+          "year": 2011,
+          "rain": 818.6
+        },
+        {
+          "year": 2012,
+          "rain": 648.5
+        },
+        {
+          "year": 2013,
+          "rain": 774.0
+        },
+        {
+          "year": 2014,
+          "rain": 612.8
+        },
+        {
+          "year": 2015,
+          "rain": 684.2
+        },
+        {
+          "year": 2016,
+          "rain": 658.9
+        },
+        {
+          "year": 2017,
+          "rain": 692.4
+        },
+        {
+          "year": 2018,
+          "rain": 746.1
+        },
+        {
+          "year": 2019,
+          "rain": 768.5
+        },
+        {
+          "year": 2020,
+          "rain": 712.0
+        },
+        {
+          "year": 2021,
+          "rain": 738.4
+        },
+        {
+          "year": 2022,
+          "rain": 664.2
+        },
+        {
+          "year": 2023,
+          "rain": 784.6
+        },
+        {
+          "year": 2024,
+          "rain": 642.7
+        }
+      ],
+      "monthly": [
+        26.4,
+        28.8,
+        24.2,
+        16.5,
+        22.8,
+        68.4,
+        214.6,
+        188.2,
+        92.4,
+        14.2,
+        6.8,
+        15.9
+      ],
+      "forecast": {
+        "modelType": "SARIMA(1,0,1)(1,1,1,12)",
+        "confidenceStatus": "experimental_low_confidence",
+        "trainingWindow": "1995-01 to 2024-12 (360 months)",
+        "note": "Experimental seasonal outlook trained on 30-year NASA POWER monthly precipitation. Wide 80% intervals reflect inter-annual rainfall variance; use for scenario awareness, not deterministic scheduling.",
+        "projection": [
+          {
+            "date": "2025-01",
+            "mean_mm": 25.6,
+            "lower_mm": 10.8,
+            "upper_mm": 43.0
+          },
+          {
+            "date": "2025-02",
+            "mean_mm": 27.9,
+            "lower_mm": 11.7,
+            "upper_mm": 46.9
+          },
+          {
+            "date": "2025-03",
+            "mean_mm": 23.5,
+            "lower_mm": 9.9,
+            "upper_mm": 39.5
+          },
+          {
+            "date": "2025-04",
+            "mean_mm": 16.0,
+            "lower_mm": 6.7,
+            "upper_mm": 26.9
+          },
+          {
+            "date": "2025-05",
+            "mean_mm": 22.1,
+            "lower_mm": 9.3,
+            "upper_mm": 37.1
+          },
+          {
+            "date": "2025-06",
+            "mean_mm": 66.3,
+            "lower_mm": 27.8,
+            "upper_mm": 111.4
+          },
+          {
+            "date": "2025-07",
+            "mean_mm": 208.2,
+            "lower_mm": 87.4,
+            "upper_mm": 349.8
+          },
+          {
+            "date": "2025-08",
+            "mean_mm": 182.6,
+            "lower_mm": 76.7,
+            "upper_mm": 306.8
+          },
+          {
+            "date": "2025-09",
+            "mean_mm": 89.6,
+            "lower_mm": 37.6,
+            "upper_mm": 150.5
+          },
+          {
+            "date": "2025-10",
+            "mean_mm": 13.8,
+            "lower_mm": 5.8,
+            "upper_mm": 23.2
+          },
+          {
+            "date": "2025-11",
+            "mean_mm": 6.6,
+            "lower_mm": 2.8,
+            "upper_mm": 11.1
+          },
+          {
+            "date": "2025-12",
+            "mean_mm": 15.4,
+            "lower_mm": 6.5,
+            "upper_mm": 25.9
+          },
+          {
+            "date": "2026-01",
+            "mean_mm": 25.6,
+            "lower_mm": 10.8,
+            "upper_mm": 43.0
+          },
+          {
+            "date": "2026-02",
+            "mean_mm": 27.9,
+            "lower_mm": 11.7,
+            "upper_mm": 46.9
+          },
+          {
+            "date": "2026-03",
+            "mean_mm": 23.5,
+            "lower_mm": 9.9,
+            "upper_mm": 39.5
+          },
+          {
+            "date": "2026-04",
+            "mean_mm": 16.0,
+            "lower_mm": 6.7,
+            "upper_mm": 26.9
+          },
+          {
+            "date": "2026-05",
+            "mean_mm": 22.1,
+            "lower_mm": 9.3,
+            "upper_mm": 37.1
+          },
+          {
+            "date": "2026-06",
+            "mean_mm": 66.3,
+            "lower_mm": 27.8,
+            "upper_mm": 111.4
+          },
+          {
+            "date": "2026-07",
+            "mean_mm": 208.2,
+            "lower_mm": 87.4,
+            "upper_mm": 349.8
+          },
+          {
+            "date": "2026-08",
+            "mean_mm": 182.6,
+            "lower_mm": 76.7,
+            "upper_mm": 306.8
+          },
+          {
+            "date": "2026-09",
+            "mean_mm": 89.6,
+            "lower_mm": 37.6,
+            "upper_mm": 150.5
+          },
+          {
+            "date": "2026-10",
+            "mean_mm": 13.8,
+            "lower_mm": 5.8,
+            "upper_mm": 23.2
+          },
+          {
+            "date": "2026-11",
+            "mean_mm": 6.6,
+            "lower_mm": 2.8,
+            "upper_mm": 11.1
+          },
+          {
+            "date": "2026-12",
+            "mean_mm": 15.4,
+            "lower_mm": 6.5,
+            "upper_mm": 25.9
+          }
+        ]
+      },
+      "fires": {
+        "region": "regionC",
+        "fetched_at": "2026-11-14T09:30:00Z",
+        "source": "VIIRS_NOAA21_NRT",
+        "radius_km": 25,
+        "days": 2,
+        "count": 3,
+        "nearest_km": 6.1,
+        "detections": [
+          {
+            "km": 6.1,
+            "date": "2026-11-14",
+            "time": "0815",
+            "lat": 30.94,
+            "lon": 75.95,
+            "frp_mw": 18.4,
+            "confidence": "high"
+          },
+          {
+            "km": 14.3,
+            "date": "2026-11-13",
+            "time": "1350",
+            "lat": 30.81,
+            "lon": 75.8,
+            "frp_mw": 14.1,
+            "confidence": "nominal"
+          },
+          {
+            "km": 21.8,
+            "date": "2026-11-13",
+            "time": "0805",
+            "lat": 31.05,
+            "lon": 76.04,
+            "frp_mw": 9.5,
+            "confidence": "nominal"
+          }
+        ],
+        "dry_conditions": {
+          "consecutive_dry_days": 26,
+          "hot_days_recent": 48,
+          "mean_rh_pct": 44,
+          "wind_m_s": 2.9,
+          "label": "Indicative only"
+        },
+        "notice": "Satellite data, about 3 hours old. Not a forecast. No detection does not mean no fire."
+      },
+      "rules": {
+        "rotation_length": 3,
+        "forbid_consecutive_same_family": true,
+        "min_legumes": 1,
+        "max_high_water_crops": 1,
+        "high_water_need_threshold": 0.75,
+        "max_occurrences_per_crop": 1
+      },
+      "thresholds": {
+        "region_id": "regionC",
+        "hot_day_c": 38.0,
+        "frost_night_c": 2.0,
+        "extreme_rain_mm": 35.0,
+        "dry_day_mm": 1.0,
+        "soc_threshold_g_per_kg": 12.0,
+        "rainfall_reference_mm": 740.0,
+        "note": "Subtropical Indo-Gangetic irrigated plain (Mar-Jun pre-monsoon heat >38 °C, Jul-Sep monsoon downpours, low alluvial SOC)."
+      },
+      "regionalCrops": {
+        "rice": {
+          "name": "Paddy Rice",
+          "family": "cereal",
+          "water_need": 0.9,
+          "soil_effect": -0.32,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.68,
+          "drought_tolerance": 0.25,
+          "profit": 0.78,
+          "risk_level": 0.42,
+          "risk_note": "Flooded paddy depletes Punjab groundwater by ~0.5 m/yr and generates 6+ t/ha straw linked to October residue burning.",
+          "depletion": 4,
+          "n_impact": -40,
+          "health_delta": -14,
+          "npk_base": 250,
+          "fert_name": "Urea + DAP + Zinc Sulfate",
+          "rain_opt": [
+            550.0,
+            1800.0
+          ],
+          "ph_opt": [
+            5.5,
+            8.3
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 3100,
+          "baseline_yield_q_ha": 65.0,
+          "yield_potential": 65.0,
+          "gross_income_dzd_ha": 201500,
+          "currency": "INR",
+          "source": "PAU Ludhiana / DES India 2023 (65 q/ha)"
+        },
+        "wheat": {
+          "name": "Wheat (Durum / Winter)",
+          "family": "cereal",
+          "water_need": 0.65,
+          "soil_effect": -0.25,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.7,
+          "drought_tolerance": 0.55,
+          "profit": 0.75,
+          "risk_level": 0.35,
+          "risk_note": "Rabi irrigated wheat; late March heatwaves (>35 °C) shrivel grain and Phalaris minor resistance builds in rice-wheat.",
+          "depletion": 4,
+          "n_impact": -35,
+          "health_delta": -10,
+          "npk_base": 220,
+          "fert_name": "Urea 46% + DAP",
+          "rain_opt": [
+            350.0,
+            650.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.2
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 3250,
+          "baseline_yield_q_ha": 50.2,
+          "yield_potential": 50.2,
+          "gross_income_dzd_ha": 163150,
+          "currency": "INR",
+          "source": "PAU Ludhiana / CACP MSP 2023-24 (50.2 q/ha)"
+        },
+        "maize": {
+          "name": "Maize (Kharif / Spring)",
+          "family": "cereal",
+          "water_need": 0.56,
+          "soil_effect": -0.18,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.74,
+          "drought_tolerance": 0.64,
+          "profit": 0.76,
+          "risk_level": 0.28,
+          "risk_note": "Kharif maize requires ~60% less irrigation water than paddy rice and leaves easily incorporated residue.",
+          "depletion": 3,
+          "n_impact": -30,
+          "health_delta": -7,
+          "npk_base": 195,
+          "fert_name": "Urea + SSP + MOP",
+          "rain_opt": [
+            420.0,
+            950.0
+          ],
+          "ph_opt": [
+            5.8,
+            8.2
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 3100,
+          "baseline_yield_q_ha": 38.5,
+          "yield_potential": 38.5,
+          "gross_income_dzd_ha": 119350,
+          "currency": "INR",
+          "source": "PAU Ludhiana / ICAR Maize Directorate"
+        },
+        "mung_bean": {
+          "name": "Mung Bean (Moong)",
+          "family": "legume",
+          "water_need": 0.36,
+          "soil_effect": 0.46,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.42,
+          "drought_tolerance": 0.82,
+          "profit": 0.79,
+          "risk_level": 0.26,
+          "risk_note": "65-day summer/kharif pulse (PAU SML-668/832); fixes ~30 kg N/ha and eliminates synthetic starter N for following wheat.",
+          "depletion": 1,
+          "n_impact": 28,
+          "health_delta": 19,
+          "npk_base": 85,
+          "fert_name": "DAP starter (100 kg/ha)",
+          "rain_opt": [
+            300.0,
+            850.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.3
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 11800,
+          "baseline_yield_q_ha": 10.5,
+          "yield_potential": 10.5,
+          "gross_income_dzd_ha": 123900,
+          "currency": "INR",
+          "source": "PAU Ludhiana / CACP Moong MSP"
+        },
+        "chickpea": {
+          "name": "Chickpea",
+          "family": "legume",
+          "water_need": 0.45,
+          "soil_effect": 0.42,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.4,
+          "drought_tolerance": 0.75,
+          "profit": 0.8,
+          "risk_level": 0.4,
+          "risk_note": "Low-water rabi pulse (Desi gram); breaks grassy weed resistance in continuous wheat fields.",
+          "depletion": 1,
+          "n_impact": 25,
+          "health_delta": 18,
+          "npk_base": 100,
+          "fert_name": "DAP (starter P)",
+          "rain_opt": [
+            300.0,
+            600.0
+          ],
+          "ph_opt": [
+            6.2,
+            8.4
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 8600,
+          "baseline_yield_q_ha": 13.5,
+          "yield_potential": 13.5,
+          "gross_income_dzd_ha": 116100,
+          "currency": "INR",
+          "source": "ICAR-IIPR / FAOSTAT India"
+        },
+        "lentil": {
+          "name": "Lentil",
+          "family": "legume",
+          "water_need": 0.4,
+          "soil_effect": 0.38,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.35,
+          "drought_tolerance": 0.7,
+          "profit": 0.75,
+          "risk_level": 0.35,
+          "risk_note": "Rabi lentil suited to lighter alluvial loams; sensitive to excess flood irrigation.",
+          "depletion": 1,
+          "n_impact": 20,
+          "health_delta": 15,
+          "npk_base": 90,
+          "fert_name": "TSP 46% + K2O",
+          "rain_opt": [
+            280.0,
+            550.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.2
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 9200,
+          "baseline_yield_q_ha": 11.8,
+          "yield_potential": 11.8,
+          "gross_income_dzd_ha": 108560,
+          "currency": "INR",
+          "source": "ICAR / PAU Rabi Pulse Guide"
+        },
+        "canola": {
+          "name": "Canola / Mustard",
+          "family": "oilseed",
+          "water_need": 0.6,
+          "soil_effect": 0.1,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.6,
+          "drought_tolerance": 0.55,
+          "profit": 0.85,
+          "risk_level": 0.4,
+          "risk_note": "Rabi Gobhi Sarson / Indian Mustard; high oil return with half the irrigation requirement of rabi wheat.",
+          "depletion": 3,
+          "n_impact": -20,
+          "health_delta": 5,
+          "npk_base": 180,
+          "fert_name": "NPK + Ammonium Sulfate",
+          "rain_opt": [
+            380.0,
+            750.0
+          ],
+          "ph_opt": [
+            5.8,
+            8.2
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 8400,
+          "baseline_yield_q_ha": 16.2,
+          "yield_potential": 16.2,
+          "gross_income_dzd_ha": 136080,
+          "currency": "INR",
+          "source": "ICAR-DRMR / PAU Oilseeds"
+        },
+        "pearl_millet": {
+          "name": "Pearl Millet (Bajra)",
+          "family": "cereal",
+          "water_need": 0.28,
+          "soil_effect": -0.08,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.55,
+          "drought_tolerance": 0.85,
+          "profit": 0.5,
+          "risk_level": 0.22,
+          "risk_note": "Very low water need; good alternative to paddy in kharif.",
+          "depletion": 2,
+          "n_impact": -20,
+          "health_delta": -3,
+          "npk_base": 80,
+          "fert_name": "Urea",
+          "rain_opt": [
+            250.0,
+            650.0
+          ],
+          "ph_opt": [
+            5.5,
+            8.5
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 4032,
+          "baseline_yield_q_ha": 18.0,
+          "yield_potential": 18.0,
+          "gross_income_dzd_ha": 72576,
+          "currency": "INR",
+          "source": "Team estimate - verify with national statistics (ICAR / CACP MSP)"
+        },
+        "groundnut": {
+          "name": "Groundnut (Peanut)",
+          "family": "legume",
+          "water_need": 0.52,
+          "soil_effect": 0.3,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.4,
+          "drought_tolerance": 0.55,
+          "profit": 0.7,
+          "risk_level": 0.4,
+          "risk_note": "Legume oilseed for lighter soils; fixes nitrogen.",
+          "depletion": 2,
+          "n_impact": 20,
+          "health_delta": 12,
+          "npk_base": 60,
+          "fert_name": "Gypsum + SSP",
+          "rain_opt": [
+            500.0,
+            1000.0
+          ],
+          "ph_opt": [
+            5.8,
+            7.5
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 9677,
+          "baseline_yield_q_ha": 20.0,
+          "yield_potential": 20.0,
+          "gross_income_dzd_ha": 193540,
+          "currency": "INR",
+          "source": "Team estimate - verify with national statistics (PAU)"
+        },
+        "pigeon_pea": {
+          "name": "Pigeon Pea (Arhar)",
+          "family": "legume",
+          "water_need": 0.4,
+          "soil_effect": 0.35,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.6,
+          "drought_tolerance": 0.75,
+          "profit": 0.65,
+          "risk_level": 0.4,
+          "risk_note": "Long-season pulse; deep roots improve soil.",
+          "depletion": 1,
+          "n_impact": 30,
+          "health_delta": 18,
+          "npk_base": 50,
+          "fert_name": "DAP (starter P)",
+          "rain_opt": [
+            500.0,
+            1000.0
+          ],
+          "ph_opt": [
+            5.5,
+            7.5
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 11290,
+          "baseline_yield_q_ha": 14.0,
+          "yield_potential": 14.0,
+          "gross_income_dzd_ha": 158060,
+          "currency": "INR",
+          "source": "Team estimate - verify with national statistics (ICAR-IIPR)"
+        },
+        "berseem": {
+          "name": "Berseem (Egyptian Clover)",
+          "family": "legume",
+          "water_need": 0.6,
+          "soil_effect": 0.38,
+          "nitrogen_fixing": 1,
+          "residue_carbon": 0.5,
+          "drought_tolerance": 0.35,
+          "profit": 0.5,
+          "risk_level": 0.2,
+          "risk_note": "Winter fodder legume that adds nitrogen; needs irrigation.",
+          "depletion": 1,
+          "n_impact": 32,
+          "health_delta": 20,
+          "npk_base": 60,
+          "fert_name": "SSP / Starter P",
+          "rain_opt": [
+            450.0,
+            900.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.0
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 0,
+          "oaic_ccls_price_dzd_q": 1935,
+          "baseline_yield_q_ha": 70.0,
+          "yield_potential": 70.0,
+          "gross_income_dzd_ha": 135450,
+          "currency": "INR",
+          "source": "Team estimate - verify with national statistics (PAU)"
+        },
+        "potato": {
+          "name": "Potato",
+          "family": "vegetable_root",
+          "water_need": 0.78,
+          "soil_effect": -0.3,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.3,
+          "drought_tolerance": 0.25,
+          "profit": 0.7,
+          "risk_level": 0.55,
+          "risk_note": "Important winter cash crop; high cost and storage need.",
+          "depletion": 5,
+          "n_impact": -45,
+          "health_delta": -14,
+          "npk_base": 260,
+          "fert_name": "NPK 15:15:15 + Potash",
+          "rain_opt": [
+            500.0,
+            900.0
+          ],
+          "ph_opt": [
+            5.2,
+            7.5
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 0,
+          "oaic_ccls_price_dzd_q": 1613,
+          "baseline_yield_q_ha": 250.0,
+          "yield_potential": 250.0,
+          "gross_income_dzd_ha": 403250,
+          "currency": "INR",
+          "source": "Team estimate - verify with national statistics (PAU)"
+        },
+        "cotton": {
+          "name": "Cotton",
+          "family": "forage_broadleaf",
+          "water_need": 0.62,
+          "soil_effect": -0.18,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.65,
+          "drought_tolerance": 0.45,
+          "profit": 0.66,
+          "risk_level": 0.5,
+          "risk_note": "Grown in south-west Punjab; bollworm and heat risk.",
+          "depletion": 4,
+          "n_impact": -40,
+          "health_delta": -10,
+          "npk_base": 180,
+          "fert_name": "Urea + DAP",
+          "rain_opt": [
+            450.0,
+            900.0
+          ],
+          "ph_opt": [
+            5.8,
+            8.0
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 11290,
+          "baseline_yield_q_ha": 20.0,
+          "yield_potential": 20.0,
+          "gross_income_dzd_ha": 225800,
+          "currency": "INR",
+          "source": "Team estimate - verify with national statistics (CACP)"
+        },
+        "sesame": {
+          "name": "Sesame",
+          "family": "oilseed",
+          "water_need": 0.3,
+          "soil_effect": 0.0,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.3,
+          "drought_tolerance": 0.8,
+          "profit": 0.5,
+          "risk_level": 0.4,
+          "risk_note": "Short summer oilseed, low water need, low yield.",
+          "depletion": 2,
+          "n_impact": -12,
+          "health_delta": 0,
+          "npk_base": 60,
+          "fert_name": "NPK 15:15:15",
+          "rain_opt": [
+            300.0,
+            650.0
+          ],
+          "ph_opt": [
+            5.5,
+            8.0
+          ],
+          "frost_tolerant": 0,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 14516,
+          "baseline_yield_q_ha": 4.5,
+          "yield_potential": 4.5,
+          "gross_income_dzd_ha": 65322,
+          "currency": "INR",
+          "source": "Team estimate - verify with national statistics (ICAR)"
+        },
+        "barley": {
+          "name": "Barley",
+          "family": "cereal",
+          "water_need": 0.4,
+          "soil_effect": -0.15,
+          "nitrogen_fixing": 0,
+          "residue_carbon": 0.65,
+          "drought_tolerance": 0.8,
+          "profit": 0.5,
+          "risk_level": 0.2,
+          "risk_note": "Uses less water than wheat; good for lighter soils.",
+          "depletion": 3,
+          "n_impact": -25,
+          "health_delta": -7,
+          "npk_base": 160,
+          "fert_name": "NPK 15:15:15",
+          "rain_opt": [
+            250.0,
+            550.0
+          ],
+          "ph_opt": [
+            6.0,
+            8.5
+          ],
+          "frost_tolerant": 1,
+          "heat_tolerant": 1,
+          "oaic_ccls_price_dzd_q": 2984,
+          "baseline_yield_q_ha": 38.0,
+          "yield_potential": 38.0,
+          "gross_income_dzd_ha": 113392,
+          "currency": "INR",
+          "source": "Team estimate - verify with national statistics (PAU / CACP MSP)"
+        }
+      }
+    }
+  },
+  "firesSnapshots": {
+    "regionA": {
+      "region": "regionA",
+      "fetched_at": "2026-11-14T09:30:00Z",
+      "source": "VIIRS_NOAA21_NRT",
+      "radius_km": 25,
+      "days": 2,
+      "count": 2,
+      "nearest_km": 8.4,
+      "detections": [
+        {
+          "km": 8.4,
+          "date": "2026-11-13",
+          "time": "1342",
+          "lat": 36.25,
+          "lon": 5.47,
+          "frp_mw": 11.2,
+          "confidence": "nominal"
+        },
+        {
+          "km": 18.7,
+          "date": "2026-11-13",
+          "time": "0215",
+          "lat": 36.07,
+          "lon": 5.26,
+          "frp_mw": 6.8,
+          "confidence": "nominal"
+        }
+      ],
+      "dry_conditions": {
+        "consecutive_dry_days": 19,
+        "hot_days_recent": 17,
+        "mean_rh_pct": 38,
+        "wind_m_s": 4.6,
+        "label": "Indicative only"
+      },
+      "notice": "Satellite data, about 3 hours old. Not a forecast. No detection does not mean no fire."
+    },
+    "regionB": {
+      "region": "regionB",
+      "fetched_at": "2026-11-14T09:30:00Z",
+      "source": "VIIRS_NOAA21_NRT",
+      "radius_km": 25,
+      "days": 2,
+      "count": 0,
+      "nearest_km": null,
+      "detections": [],
+      "dry_conditions": {
+        "consecutive_dry_days": 11,
+        "hot_days_recent": 34,
+        "mean_rh_pct": 52,
+        "wind_m_s": 5.8,
+        "label": "Indicative only"
+      },
+      "notice": "Satellite data, about 3 hours old. Not a forecast. No detection does not mean no fire."
+    },
+    "regionC": {
+      "region": "regionC",
+      "fetched_at": "2026-11-14T09:30:00Z",
+      "source": "VIIRS_NOAA21_NRT",
+      "radius_km": 25,
+      "days": 2,
+      "count": 3,
+      "nearest_km": 6.1,
+      "detections": [
+        {
+          "km": 6.1,
+          "date": "2026-11-14",
+          "time": "0815",
+          "lat": 30.94,
+          "lon": 75.95,
+          "frp_mw": 18.4,
+          "confidence": "high"
+        },
+        {
+          "km": 14.3,
+          "date": "2026-11-13",
+          "time": "1350",
+          "lat": 30.81,
+          "lon": 75.8,
+          "frp_mw": 14.1,
+          "confidence": "nominal"
+        },
+        {
+          "km": 21.8,
+          "date": "2026-11-13",
+          "time": "0805",
+          "lat": 31.05,
+          "lon": 76.04,
+          "frp_mw": 9.5,
+          "confidence": "nominal"
+        }
+      ],
+      "dry_conditions": {
+        "consecutive_dry_days": 26,
+        "hot_days_recent": 48,
+        "mean_rh_pct": 44,
+        "wind_m_s": 2.9,
+        "label": "Indicative only"
+      },
+      "notice": "Satellite data, about 3 hours old. Not a forecast. No detection does not mean no fire."
+    }
+  },
+  "customExample": {
+    "id": "custom_35.4_1.3",
+    "name": "Custom Point (35.40° N, 1.30° E · Tiaret Plains)",
+    "country": "Custom Coordinates",
+    "lat": 35.4,
+    "lon": 1.3,
+    "role": "custom",
+    "farming_system": "rainfed",
+    "default_crops": [
+      "wheat",
+      "barley",
+      "lentil",
+      "chickpea"
+    ],
+    "warning": "Data only: crop values are not adjusted for this place.",
+    "v1": {
+      "region": "Punjab Plains, India",
+      "country": "India",
+      "role": "light",
+      "farming_system": "irrigated",
+      "default_crops": [
+        "rice",
+        "wheat",
+        "maize",
+        "mung_bean"
+      ],
+      "lat": 30.9,
+      "lon": 75.9,
+      "rainfall_mm": 709.2,
+      "rainfall_reference_mm": 740.0,
+      "soil_organic_carbon_g_per_kg": 8.6,
+      "soc_threshold_g_per_kg": 12.0,
+      "ph": 7.9,
+      "ndvi_Prime": 0.76,
+      "mean_spring_peak_ndvi": 0.74,
+      "climate_baseline": {
+        "hot_days": 48.5,
+        "frost_days": 0.6,
+        "extreme_rain_days": 7.8,
+        "longest_dry_spell": 38.0
+      }
+    },
+    "v2": {
+      "region": "tiaret",
+      "code": "tiaret",
+      "label": "Tiaret Western High Plateaux",
+      "lat": 35.34,
+      "lon": 1.38,
+      "sources": {
+        "climate": "NASA POWER daily 1995-2024 PRECTOTCORR/T2M_MAX/T2M_MIN (offline from data/raw)",
+        "crosscheck": "Open-Meteo ERA5 archive daily 1995-2024 (offline from data/raw)",
+        "soil": "ISRIC SoilGrids v2.0 (offline from data/raw)",
+        "ndvi": "MODIS MOD13Q1 250 m via ORNL DAAC REST (offline from data/raw)"
+      },
+      "thresholds_used": {
+        "file": "domain/thresholds.json",
+        "sha256_16": "358ce410e8e56d5b"
+      },
+      "rainfall_mm": {
+        "value": 519.1,
+        "unit": "mm/yr",
+        "window": "2015-2024",
+        "crosscheck_value": 398.5,
+        "confidence": "low"
+      },
+      "rainfall_30yr_mean_mm": {
+        "value": 575.3,
+        "unit": "mm/yr",
+        "window": "1995-2024",
+        "crosscheck_value": 401.7,
+        "confidence": "low"
+      },
+      "water_stress": {
+        "value": 0.1397,
+        "window": "ref 1995-2014 vs 2015-2024",
+        "confidence": "pending Alaa",
+        "note": "pending Alaa (recent-window choice) - see logs/step1_report.md finding c"
+      },
+      "water_stress_5yr": {
+        "value": 0.3275,
+        "window": "ref 1995-2014 vs 2020-2024",
+        "confidence": "sensitivity check only",
+        "note": "v1's 2020-2024 version kept for comparison"
+      },
+      "rainfall_trend": {
+        "window": "1995-2024",
+        "ols_slope_mm_per_decade": -21.0,
+        "ols_p": 0.5093,
+        "sen_slope_mm_per_decade": -16.8,
+        "mk_p": 0.5441,
+        "label": "no clear trend",
+        "confidence": "low",
+        "unit": "mm/decade"
+      },
+      "hot_days": {
+        "value": 9.2,
+        "unit": "days/yr",
+        "window": "grain-filling window months [4, 5, 6], mean 1995-2024",
+        "crosscheck_value": 3.3,
+        "confidence": "low"
+      },
+      "frost_days": {
+        "value": 1.1,
+        "unit": "days/yr",
+        "window": "late-frost window months [3, 4], mean 1995-2024",
+        "crosscheck_value": 1.4,
+        "confidence": "medium"
+      },
+      "extreme_rain_days": {
+        "value": 4.8,
+        "unit": "days/yr",
+        "window": "calendar year, mean 1995-2024",
+        "crosscheck_value": null,
+        "confidence": "low"
+      },
+      "longest_dry_spell_days": {
+        "value": 32.2,
+        "unit": "days",
+        "window": "growing season months [10, 11, 12, 1, 2, 3, 4, 5], mean 1995-2024",
+        "crosscheck_value": null,
+        "confidence": "low"
+      },
+      "organic_carbon": {
+        "g_per_kg": 12.38,
+        "class": "medium",
+        "unit": "g/kg, 0-30 cm depth-weighted 5:10:15",
+        "confidence": "medium"
+      },
+      "ph": {
+        "value": 7.57,
+        "unit": "pH (H2O), 0-30 cm depth-weighted 5:10:15",
+        "confidence": "medium"
+      },
+      "ndvi": {
+        "available": true,
+        "source": "MODIS MOD13Q1 250 m via ORNL DAAC REST (offline from data/raw)",
+        "window": "2020-2024",
+        "patch": "5x5 km",
+        "mean_spring_peak_ndvi": 0.535,
+        "spring_peaks_by_year": {
+          "2020": 0.532,
+          "2021": 0.498,
+          "2022": 0.619,
+          "2023": 0.512,
+          "2024": 0.512
+        },
+        "yield_baseline": 0.569,
+        "normalization": "clamp((mean_spring_peak_ndvi - 0.25) / 0.50, 0, 1)",
+        "caveat": "no cropland mask (ESA WorldCover class 40 not applied), no pixel QA filter, 5 years only",
+        "confidence": "low"
+      },
+      "suggested_priorities": {
+        "save_water": 32,
+        "protect_soil": 34,
+        "yield_": 34,
+        "rule": "PRD v3 section 6.2",
+        "basis": {
+          "water_stress_used": 0.1397,
+          "soc_class": "medium"
+        }
+      }
+    },
+    "soil": {
+      "region": "tiaret",
+      "lat": 35.34,
+      "lon": 1.38,
+      "source": "ISRIC SoilGrids v2.0 (offline from data/raw)",
+      "method": "0-30 cm depth-weighted 5:10:15, dg/kg divided by 10 (pH x10 divided by 10)",
+      "soc_g_per_kg": 12.38,
+      "soc_class": "medium",
+      "ph": 7.57,
+      "soc_layers_dg_per_kg": {
+        "0-5cm": 212,
+        "5-15cm": 120,
+        "15-30cm": 97
+      },
+      "confidence": "medium",
+      "confidence_note": "SoilGrids is a 250 m model estimate; PRD section 6.4: soil is at best medium",
+      "soc_class_rule": "low < 10, medium 10-20, high > 20 g/kg (domain/thresholds.json, pending Younes)"
+    },
+    "climateText": {
+      "rainfall": {
+        "en": "The region received about 519.1 mm of rain per year on average over 2015-2024. Data sources disagree or data is limited, so treat this as a rough indication only.",
+        "fr": "",
+        "ar": "",
+        "_confidence": "low"
+      },
+      "rainfall_trend": {
+        "en": "Rainfall shows no clear long-term trend over 1995-2024. Data sources disagree or data is limited, so treat this as a rough indication only.",
+        "fr": "",
+        "ar": "",
+        "_confidence": "low"
+      },
+      "water_stress": {
+        "en": "Recent years (2015-2024) were about 14% drier than the 1995-2014 average of the same region. Definition is still being confirmed by the team.",
+        "fr": "",
+        "ar": "",
+        "_confidence": "pending Alaa"
+      },
+      "hot_days": {
+        "en": "During grain filling (April to June), the crop endures about 9.2 hot days (above 35.0 degrees C) per year. Data sources disagree or data is limited, so treat this as a rough indication only.",
+        "fr": "",
+        "ar": "",
+        "_confidence": "low"
+      },
+      "frost_days": {
+        "en": "Spring frost (March to April) still reaches the crop on about 1.1 nights per year. Data sources agree only roughly, so treat this as a good estimate.",
+        "fr": "",
+        "ar": "",
+        "_confidence": "medium"
+      },
+      "extreme_rain_days": {
+        "en": "Expect about 4.8 days per year with intense rain over 20.0 mm. Data sources disagree or data is limited, so treat this as a rough indication only.",
+        "fr": "",
+        "ar": "",
+        "_confidence": "low"
+      },
+      "longest_dry_spell_days": {
+        "en": "The longest stretch without effective rain within the growing season lasts about 32.2 days on average. Data sources disagree or data is limited, so treat this as a rough indication only.",
+        "fr": "",
+        "ar": "",
+        "_confidence": "low"
+      },
+      "soil": {
+        "en": "Soil organic matter is medium (12.38 g/kg in the top 30 cm), pH around 7.57. SoilGrids is a model estimate, not a lab measurement. Data sources agree only roughly, so treat this as a good estimate.",
+        "fr": "",
+        "ar": "",
+        "_confidence": "medium"
+      },
+      "ndvi": {
+        "en": "Satellite greenness (NDVI) from the nearby 5x5 km pixel averaged over 2020-2024 suggests a yield baseline of 0.569 (0-1 scale). This is a rough proxy: no crop mask, no pixel quality filter, only 5 years. Data sources disagree or data is limited, so treat this as a rough indication only.",
+        "fr": "",
+        "ar": "",
+        "_confidence": "low"
+      },
+      "rainfall_source_disagreement": {
+        "en": "Careful: two independent rainfall datasets disagree here (NASA POWER says 575.3 mm/yr over 1995-2024, ERA5 says 401.7 mm/yr), so the exact amount is uncertain even though the drought pattern is consistent. Data sources disagree or data is limited, so treat this as a rough indication only.",
+        "fr": "",
+        "ar": "",
+        "_confidence": "low"
+      }
+    },
+    "annual": [
+      {
+        "year": 1995,
+        "rain": 541.0
+      },
+      {
+        "year": 1996,
+        "rain": 881.1
+      },
+      {
+        "year": 1997,
+        "rain": 631.4
+      },
+      {
+        "year": 1998,
+        "rain": 387.5
+      },
+      {
+        "year": 1999,
+        "rain": 569.3
+      },
+      {
+        "year": 2000,
+        "rain": 342.4
+      },
+      {
+        "year": 2001,
+        "rain": 503.4
+      },
+      {
+        "year": 2002,
+        "rain": 380.1
+      },
+      {
+        "year": 2003,
+        "rain": 629.2
+      },
+      {
+        "year": 2004,
+        "rain": 619.0
+      },
+      {
+        "year": 2005,
+        "rain": 402.9
+      },
+      {
+        "year": 2006,
+        "rain": 592.0
+      },
+      {
+        "year": 2007,
+        "rain": 608.9
+      },
+      {
+        "year": 2008,
+        "rain": 588.3
+      },
+      {
+        "year": 2009,
+        "rain": 760.2
+      },
+      {
+        "year": 2010,
+        "rain": 769.5
+      },
+      {
+        "year": 2011,
+        "rain": 695.4
+      },
+      {
+        "year": 2012,
+        "rain": 673.7
+      },
+      {
+        "year": 2013,
+        "rain": 841.3
+      },
+      {
+        "year": 2014,
+        "rain": 650.8
+      },
+      {
+        "year": 2015,
+        "rain": 605.9
+      },
+      {
+        "year": 2016,
+        "rain": 618.8
+      },
+      {
+        "year": 2017,
+        "rain": 606.8
+      },
+      {
+        "year": 2018,
+        "rain": 752.0
+      },
+      {
+        "year": 2019,
+        "rain": 578.5
+      },
+      {
+        "year": 2020,
+        "rain": 412.1
+      },
+      {
+        "year": 2021,
+        "rain": 460.8
+      },
+      {
+        "year": 2022,
+        "rain": 466.3
+      },
+      {
+        "year": 2023,
+        "rain": 345.9
+      },
+      {
+        "year": 2024,
+        "rain": 343.8
+      }
+    ],
+    "monthly": [
+      85.1,
+      74.0,
+      68.4,
+      64.4,
+      42.0,
+      15.7,
+      4.4,
+      11.1,
+      30.8,
+      38.6,
+      69.6,
+      71.2
+    ],
+    "fires": {
+      "region": "custom_35.4_1.3",
+      "fetched_at": "2026-11-14T09:30:00Z",
+      "source": "VIIRS_NOAA21_NRT",
+      "radius_km": 25,
+      "days": 2,
+      "count": 1,
+      "nearest_km": 14.2,
+      "detections": [
+        {
+          "km": 14.2,
+          "date": "2026-11-13",
+          "time": "1410",
+          "lat": 35.48,
+          "lon": 1.41,
+          "frp_mw": 7.9,
+          "confidence": "nominal"
+        }
+      ],
+      "dry_conditions": {
+        "consecutive_dry_days": 22,
+        "hot_days_recent": 28,
+        "mean_rh_pct": 35,
+        "wind_m_s": 5.1,
+        "label": "Indicative only"
+      },
+      "notice": "Satellite data, about 3 hours old. Not a forecast. No detection does not mean no fire."
+    }
+  },
+  "crops": [
+    {
+      "id": "wheat",
+      "crop": "Wheat (Durum / Winter)",
+      "scientific_name": "Triticum durum / T. aestivum",
+      "family": "cereal",
+      "water_need": 0.65,
+      "soil_effect": -0.25,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -35,
+      "residue_carbon": 0.7,
+      "drought_tolerance": 0.55,
+      "profit": 0.75,
+      "oaic_ccls_price_dzd_q": 6000,
+      "baseline_yield_q_ha": 26.0,
+      "gross_income_dzd_ha": 156000,
+      "risk_level": 0.35,
+      "soil_depletion_index": 4,
+      "soil_health_delta": -10,
+      "base_npk_kg_ha": 220,
+      "fertilizer_name": "Urea 46% + DAP",
+      "optimal_rain_min": 350,
+      "optimal_rain_max": 650,
+      "optimal_ph_min": 6.0,
+      "optimal_ph_max": 8.2,
+      "frost_tolerant": 1,
+      "heat_tolerant": 1,
+      "risk_note": "Sensitive to terminal heat (>35 °C) during grain filling and spring moisture deficit.",
+      "sources": {
+        "yield": "ITGC / MADR Algeria + OAIC 2024",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "soft_wheat",
+      "crop": "Soft Bread Wheat",
+      "scientific_name": "Triticum aestivum",
+      "family": "cereal",
+      "water_need": 0.7,
+      "soil_effect": -0.28,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -38,
+      "residue_carbon": 0.72,
+      "drought_tolerance": 0.5,
+      "profit": 0.7,
+      "oaic_ccls_price_dzd_q": 5000,
+      "baseline_yield_q_ha": 25.0,
+      "gross_income_dzd_ha": 125000,
+      "risk_level": 0.4,
+      "soil_depletion_index": 4,
+      "soil_health_delta": -12,
+      "base_npk_kg_ha": 230,
+      "fertilizer_name": "Urea 46% + TSP",
+      "optimal_rain_min": 400,
+      "optimal_rain_max": 750,
+      "optimal_ph_min": 6.0,
+      "optimal_ph_max": 8.0,
+      "frost_tolerant": 1,
+      "heat_tolerant": 0,
+      "risk_note": "Higher water demand than durum wheat; vulnerable to Septoria and late spring drought.",
+      "sources": {
+        "yield": "ITGC / OAIC Algeria 2024",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "barley",
+      "crop": "Barley",
+      "scientific_name": "Hordeum vulgare",
+      "family": "cereal",
+      "water_need": 0.4,
+      "soil_effect": -0.15,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -25,
+      "residue_carbon": 0.65,
+      "drought_tolerance": 0.8,
+      "profit": 0.5,
+      "oaic_ccls_price_dzd_q": 3400,
+      "baseline_yield_q_ha": 23.0,
+      "gross_income_dzd_ha": 78200,
+      "risk_level": 0.2,
+      "soil_depletion_index": 3,
+      "soil_health_delta": -7,
+      "base_npk_kg_ha": 160,
+      "fertilizer_name": "NPK 15:15:15",
+      "optimal_rain_min": 250,
+      "optimal_rain_max": 550,
+      "optimal_ph_min": 6.0,
+      "optimal_ph_max": 8.5,
+      "frost_tolerant": 1,
+      "heat_tolerant": 1,
+      "risk_note": "Early heading escapes terminal drought; consecutive cereal years build up root rot (take-all).",
+      "sources": {
+        "yield": "ITGC / MADR Algeria + OAIC 2024",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "oats",
+      "crop": "Forage Oats",
+      "scientific_name": "Avena sativa",
+      "family": "cereal",
+      "water_need": 0.5,
+      "soil_effect": -0.12,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -20,
+      "residue_carbon": 0.7,
+      "drought_tolerance": 0.65,
+      "profit": 0.48,
+      "oaic_ccls_price_dzd_q": 4200,
+      "baseline_yield_q_ha": 21.0,
+      "gross_income_dzd_ha": 88200,
+      "risk_level": 0.25,
+      "soil_depletion_index": 2,
+      "soil_health_delta": -5,
+      "base_npk_kg_ha": 150,
+      "fertilizer_name": "NPK 15:15:15",
+      "optimal_rain_min": 320,
+      "optimal_rain_max": 650,
+      "optimal_ph_min": 5.5,
+      "optimal_ph_max": 8.0,
+      "frost_tolerant": 1,
+      "heat_tolerant": 1,
+      "risk_note": "Reliable forage and livestock feed crop; shares cereal root pathogens with wheat and barley.",
+      "sources": {
+        "yield": "ITGC Algeria 2024",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "triticale",
+      "crop": "Triticale",
+      "scientific_name": "× Triticosecale",
+      "family": "cereal",
+      "water_need": 0.48,
+      "soil_effect": -0.18,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -26,
+      "residue_carbon": 0.74,
+      "drought_tolerance": 0.78,
+      "profit": 0.56,
+      "oaic_ccls_price_dzd_q": 4500,
+      "baseline_yield_q_ha": 25.0,
+      "gross_income_dzd_ha": 112500,
+      "risk_level": 0.22,
+      "soil_depletion_index": 3,
+      "soil_health_delta": -6,
+      "base_npk_kg_ha": 165,
+      "fertilizer_name": "NPK 15:15:15 + Urea",
+      "optimal_rain_min": 280,
+      "optimal_rain_max": 600,
+      "optimal_ph_min": 5.5,
+      "optimal_ph_max": 8.3,
+      "frost_tolerant": 1,
+      "heat_tolerant": 1,
+      "risk_note": "Hardy wheat × rye hybrid tolerant of calcareous soils; still acts as a cereal host in rotations.",
+      "sources": {
+        "yield": "ITGC Algeria 2024",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "chickpea",
+      "crop": "Chickpea",
+      "scientific_name": "Cicer arietinum",
+      "family": "legume",
+      "water_need": 0.45,
+      "soil_effect": 0.42,
+      "nitrogen_fixing": 1,
+      "n_impact_kg_ha": 25,
+      "residue_carbon": 0.4,
+      "drought_tolerance": 0.75,
+      "profit": 0.8,
+      "oaic_ccls_price_dzd_q": 13500,
+      "baseline_yield_q_ha": 14.0,
+      "gross_income_dzd_ha": 189000,
+      "risk_level": 0.4,
+      "soil_depletion_index": 1,
+      "soil_health_delta": 18,
+      "base_npk_kg_ha": 100,
+      "fertilizer_name": "DAP (starter P)",
+      "optimal_rain_min": 300,
+      "optimal_rain_max": 600,
+      "optimal_ph_min": 6.2,
+      "optimal_ph_max": 8.4,
+      "frost_tolerant": 1,
+      "heat_tolerant": 1,
+      "risk_note": "High Ascochyta blight risk in wet springs; requires at least a 2-year break between legume crops.",
+      "sources": {
+        "yield": "ICARDA / CCLS Algeria 2024",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "lentil",
+      "crop": "Lentil",
+      "scientific_name": "Lens culinaris",
+      "family": "legume",
+      "water_need": 0.4,
+      "soil_effect": 0.38,
+      "nitrogen_fixing": 1,
+      "n_impact_kg_ha": 20,
+      "residue_carbon": 0.35,
+      "drought_tolerance": 0.7,
+      "profit": 0.75,
+      "oaic_ccls_price_dzd_q": 14000,
+      "baseline_yield_q_ha": 12.0,
+      "gross_income_dzd_ha": 168000,
+      "risk_level": 0.35,
+      "soil_depletion_index": 1,
+      "soil_health_delta": 15,
+      "base_npk_kg_ha": 90,
+      "fertilizer_name": "TSP 46% + K2O",
+      "optimal_rain_min": 280,
+      "optimal_rain_max": 550,
+      "optimal_ph_min": 6.0,
+      "optimal_ph_max": 8.2,
+      "frost_tolerant": 1,
+      "heat_tolerant": 1,
+      "risk_note": "Shallow roots and low pod height complicate combine harvest on stony soils; sensitive to waterlogging.",
+      "sources": {
+        "yield": "ITGC / CCLS Algeria 2024",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "faba",
+      "crop": "Faba Bean",
+      "scientific_name": "Vicia faba",
+      "family": "legume",
+      "water_need": 0.65,
+      "soil_effect": 0.5,
+      "nitrogen_fixing": 1,
+      "n_impact_kg_ha": 35,
+      "residue_carbon": 0.5,
+      "drought_tolerance": 0.4,
+      "profit": 0.7,
+      "oaic_ccls_price_dzd_q": 10500,
+      "baseline_yield_q_ha": 16.0,
+      "gross_income_dzd_ha": 168000,
+      "risk_level": 0.45,
+      "soil_depletion_index": 1,
+      "soil_health_delta": 22,
+      "base_npk_kg_ha": 110,
+      "fertilizer_name": "TSP 46%",
+      "optimal_rain_min": 420,
+      "optimal_rain_max": 800,
+      "optimal_ph_min": 6.2,
+      "optimal_ph_max": 8.2,
+      "frost_tolerant": 1,
+      "heat_tolerant": 0,
+      "risk_note": "Strongest biological N fixer, but flowers abort under spring heat (>32 °C) or broomrape (Orobanche).",
+      "sources": {
+        "yield": "ITGC / CCLS Algeria 2024",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "vetch",
+      "crop": "Common Vetch",
+      "scientific_name": "Vicia sativa",
+      "family": "legume",
+      "water_need": 0.42,
+      "soil_effect": 0.45,
+      "nitrogen_fixing": 1,
+      "n_impact_kg_ha": 28,
+      "residue_carbon": 0.55,
+      "drought_tolerance": 0.75,
+      "profit": 0.52,
+      "oaic_ccls_price_dzd_q": 5500,
+      "baseline_yield_q_ha": 19.0,
+      "gross_income_dzd_ha": 104500,
+      "risk_level": 0.2,
+      "soil_depletion_index": 1,
+      "soil_health_delta": 20,
+      "base_npk_kg_ha": 85,
+      "fertilizer_name": "SSP / Starter P",
+      "optimal_rain_min": 280,
+      "optimal_rain_max": 600,
+      "optimal_ph_min": 6.0,
+      "optimal_ph_max": 8.3,
+      "frost_tolerant": 1,
+      "heat_tolerant": 1,
+      "risk_note": "Forage legume terminated at flowering; conserves spring soil moisture and suppresses grassy weeds.",
+      "sources": {
+        "yield": "ICARDA / ITGC Algeria 2024",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "canola",
+      "crop": "Canola / Mustard",
+      "scientific_name": "Brassica napus / B. juncea",
+      "family": "oilseed",
+      "water_need": 0.6,
+      "soil_effect": 0.1,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -20,
+      "residue_carbon": 0.6,
+      "drought_tolerance": 0.55,
+      "profit": 0.85,
+      "oaic_ccls_price_dzd_q": 9500,
+      "baseline_yield_q_ha": 18.0,
+      "gross_income_dzd_ha": 171000,
+      "risk_level": 0.4,
+      "soil_depletion_index": 3,
+      "soil_health_delta": 5,
+      "base_npk_kg_ha": 180,
+      "fertilizer_name": "NPK + Ammonium Sulfate",
+      "optimal_rain_min": 380,
+      "optimal_rain_max": 750,
+      "optimal_ph_min": 5.8,
+      "optimal_ph_max": 8.2,
+      "frost_tolerant": 1,
+      "heat_tolerant": 1,
+      "risk_note": "Deep taproot bio-drills compacted subsoil and breaks cereal root-rot cycles; pods shatter if harvest is delayed.",
+      "sources": {
+        "yield": "ITGC Colza Programme 2024",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "safflower",
+      "crop": "Safflower",
+      "scientific_name": "Carthamus tinctorius",
+      "family": "oilseed",
+      "water_need": 0.35,
+      "soil_effect": 0.08,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -15,
+      "residue_carbon": 0.58,
+      "drought_tolerance": 0.9,
+      "profit": 0.64,
+      "oaic_ccls_price_dzd_q": 8800,
+      "baseline_yield_q_ha": 14.0,
+      "gross_income_dzd_ha": 123200,
+      "risk_level": 0.25,
+      "soil_depletion_index": 2,
+      "soil_health_delta": 4,
+      "base_npk_kg_ha": 130,
+      "fertilizer_name": "NPK 15:15:15 + Boron",
+      "optimal_rain_min": 240,
+      "optimal_rain_max": 550,
+      "optimal_ph_min": 6.0,
+      "optimal_ph_max": 8.5,
+      "frost_tolerant": 1,
+      "heat_tolerant": 1,
+      "risk_note": "Deepest taproot (>2 m) among dryland oilseeds; ideal break crop for dry steppe and high-plains zones.",
+      "sources": {
+        "yield": "ICARDA Dryland Oilseeds 2023",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "sunflower",
+      "crop": "Sunflower",
+      "scientific_name": "Helianthus annuus",
+      "family": "oilseed",
+      "water_need": 0.58,
+      "soil_effect": 0.05,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -22,
+      "residue_carbon": 0.55,
+      "drought_tolerance": 0.68,
+      "profit": 0.74,
+      "oaic_ccls_price_dzd_q": 9200,
+      "baseline_yield_q_ha": 16.0,
+      "gross_income_dzd_ha": 147200,
+      "risk_level": 0.38,
+      "soil_depletion_index": 3,
+      "soil_health_delta": 2,
+      "base_npk_kg_ha": 165,
+      "fertilizer_name": "NPK 15:15:15",
+      "optimal_rain_min": 380,
+      "optimal_rain_max": 750,
+      "optimal_ph_min": 6.0,
+      "optimal_ph_max": 8.2,
+      "frost_tolerant": 0,
+      "heat_tolerant": 1,
+      "risk_note": "Summer oilseed break crop; requires stored spring subsoil moisture or supplemental irrigation.",
+      "sources": {
+        "yield": "FAO / ITGC Algeria",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "fallow",
+      "crop": "Worked / Chem Fallow",
+      "scientific_name": "Rest / cover-stubble year",
+      "family": "fallow",
+      "water_need": 0.05,
+      "soil_effect": 0.15,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": 10,
+      "residue_carbon": 0.25,
+      "drought_tolerance": 0.95,
+      "profit": 0.05,
+      "oaic_ccls_price_dzd_q": 0,
+      "baseline_yield_q_ha": 0.0,
+      "gross_income_dzd_ha": 0,
+      "risk_level": 0.1,
+      "soil_depletion_index": 0,
+      "soil_health_delta": 8,
+      "base_npk_kg_ha": 0,
+      "fertilizer_name": "None (Moisture & N Reset)",
+      "optimal_rain_min": 100,
+      "optimal_rain_max": 900,
+      "optimal_ph_min": 5.0,
+      "optimal_ph_max": 8.8,
+      "frost_tolerant": 1,
+      "heat_tolerant": 1,
+      "risk_note": "Zero harvest revenue in the fallow year; bare-soil tillage increases wind/water erosion if stubble is removed.",
+      "sources": {
+        "yield": "ICARDA Conservation Agriculture",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "corn",
+      "crop": "Corn (Grain Maize)",
+      "scientific_name": "Zea mays",
+      "family": "cereal",
+      "water_need": 0.72,
+      "soil_effect": -0.22,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -42,
+      "residue_carbon": 0.78,
+      "drought_tolerance": 0.52,
+      "profit": 0.84,
+      "oaic_ccls_price_dzd_q": 2600,
+      "baseline_yield_q_ha": 78.0,
+      "gross_income_dzd_ha": 202800,
+      "risk_level": 0.38,
+      "soil_depletion_index": 4,
+      "soil_health_delta": -9,
+      "base_npk_kg_ha": 240,
+      "fertilizer_name": "Anhydrous NH3 / UAN + Starter P",
+      "optimal_rain_min": 480,
+      "optimal_rain_max": 950,
+      "optimal_ph_min": 5.8,
+      "optimal_ph_max": 7.8,
+      "frost_tolerant": 0,
+      "heat_tolerant": 1,
+      "risk_note": "High nitrogen demand and silk-stage heat sensitivity; benefits strongly from following soybean.",
+      "sources": {
+        "yield": "USDA NASS Kansas 2019-2023 (124 bu/ac)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "soybean",
+      "crop": "Soybean",
+      "scientific_name": "Glycine max",
+      "family": "legume",
+      "water_need": 0.55,
+      "soil_effect": 0.44,
+      "nitrogen_fixing": 1,
+      "n_impact_kg_ha": 30,
+      "residue_carbon": 0.45,
+      "drought_tolerance": 0.66,
+      "profit": 0.82,
+      "oaic_ccls_price_dzd_q": 6800,
+      "baseline_yield_q_ha": 26.9,
+      "gross_income_dzd_ha": 182920,
+      "risk_level": 0.3,
+      "soil_depletion_index": 1,
+      "soil_health_delta": 18,
+      "base_npk_kg_ha": 95,
+      "fertilizer_name": "MAP / Potash starter (0-46-60)",
+      "optimal_rain_min": 450,
+      "optimal_rain_max": 900,
+      "optimal_ph_min": 5.8,
+      "optimal_ph_max": 7.8,
+      "frost_tolerant": 0,
+      "heat_tolerant": 1,
+      "risk_note": "Fixes 25–40 kg N/ha for following winter wheat or corn; late August dry spells reduce pod fill.",
+      "sources": {
+        "yield": "USDA NASS Kansas 2019-2023 (40 bu/ac)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "sorghum",
+      "crop": "Grain Sorghum (Milo)",
+      "scientific_name": "Sorghum bicolor",
+      "family": "cereal",
+      "water_need": 0.44,
+      "soil_effect": -0.14,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -24,
+      "residue_carbon": 0.72,
+      "drought_tolerance": 0.86,
+      "profit": 0.72,
+      "oaic_ccls_price_dzd_q": 2750,
+      "baseline_yield_q_ha": 49.0,
+      "gross_income_dzd_ha": 134750,
+      "risk_level": 0.24,
+      "soil_depletion_index": 3,
+      "soil_health_delta": -5,
+      "base_npk_kg_ha": 160,
+      "fertilizer_name": "UAN 28% + DAP",
+      "optimal_rain_min": 350,
+      "optimal_rain_max": 800,
+      "optimal_ph_min": 5.5,
+      "optimal_ph_max": 8.4,
+      "frost_tolerant": 0,
+      "heat_tolerant": 1,
+      "risk_note": "Waxy leaf cuticle and C4 photosynthesis withstand Plains heatwaves where dryland corn fails.",
+      "sources": {
+        "yield": "USDA NASS Kansas 2019-2023 (78 bu/ac)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "rice",
+      "crop": "Paddy Rice",
+      "scientific_name": "Oryza sativa",
+      "family": "cereal",
+      "water_need": 0.9,
+      "soil_effect": -0.32,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -40,
+      "residue_carbon": 0.68,
+      "drought_tolerance": 0.25,
+      "profit": 0.78,
+      "oaic_ccls_price_dzd_q": 3100,
+      "baseline_yield_q_ha": 65.0,
+      "gross_income_dzd_ha": 201500,
+      "risk_level": 0.42,
+      "soil_depletion_index": 4,
+      "soil_health_delta": -14,
+      "base_npk_kg_ha": 250,
+      "fertilizer_name": "Urea + DAP + Zinc Sulfate",
+      "optimal_rain_min": 550,
+      "optimal_rain_max": 1800,
+      "optimal_ph_min": 5.5,
+      "optimal_ph_max": 8.3,
+      "frost_tolerant": 0,
+      "heat_tolerant": 1,
+      "risk_note": "Puddled flood irrigation depletes groundwater aquifers; heavy straw load often triggers autumn residue burning.",
+      "sources": {
+        "yield": "PAU Ludhiana / DES India 2023 (65 q/ha)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "maize",
+      "crop": "Maize (Kharif / Spring)",
+      "scientific_name": "Zea mays",
+      "family": "cereal",
+      "water_need": 0.56,
+      "soil_effect": -0.18,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -30,
+      "residue_carbon": 0.74,
+      "drought_tolerance": 0.64,
+      "profit": 0.76,
+      "oaic_ccls_price_dzd_q": 3100,
+      "baseline_yield_q_ha": 38.5,
+      "gross_income_dzd_ha": 119350,
+      "risk_level": 0.28,
+      "soil_depletion_index": 3,
+      "soil_health_delta": -7,
+      "base_npk_kg_ha": 195,
+      "fertilizer_name": "Urea + SSP + MOP",
+      "optimal_rain_min": 420,
+      "optimal_rain_max": 950,
+      "optimal_ph_min": 5.8,
+      "optimal_ph_max": 8.2,
+      "frost_tolerant": 0,
+      "heat_tolerant": 1,
+      "risk_note": "Key crop-diversification alternative to paddy rice in Punjab; saves ~60% irrigation water vs flooded rice.",
+      "sources": {
+        "yield": "PAU Ludhiana / ICAR Maize Directorate",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "mung_bean",
+      "crop": "Mung Bean (Moong)",
+      "scientific_name": "Vigna radiata",
+      "family": "legume",
+      "water_need": 0.36,
+      "soil_effect": 0.46,
+      "nitrogen_fixing": 1,
+      "n_impact_kg_ha": 28,
+      "residue_carbon": 0.42,
+      "drought_tolerance": 0.82,
+      "profit": 0.79,
+      "oaic_ccls_price_dzd_q": 11800,
+      "baseline_yield_q_ha": 10.5,
+      "gross_income_dzd_ha": 123900,
+      "risk_level": 0.26,
+      "soil_depletion_index": 1,
+      "soil_health_delta": 19,
+      "base_npk_kg_ha": 85,
+      "fertilizer_name": "DAP starter (100 kg/ha)",
+      "optimal_rain_min": 300,
+      "optimal_rain_max": 850,
+      "optimal_ph_min": 6.0,
+      "optimal_ph_max": 8.3,
+      "frost_tolerant": 0,
+      "heat_tolerant": 1,
+      "risk_note": "Short-duration (65-day) pulse that restores soil nitrogen and breaks the rice–wheat cereal monoculture.",
+      "sources": {
+        "yield": "PAU Ludhiana / CACP Moong MSP",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "field_pea",
+      "crop": "Field Pea",
+      "scientific_name": "Pisum sativum",
+      "family": "legume",
+      "water_need": 0.42,
+      "soil_effect": 0.38,
+      "nitrogen_fixing": 1,
+      "n_impact_kg_ha": 24,
+      "residue_carbon": 0.45,
+      "drought_tolerance": 0.45,
+      "profit": 0.62,
+      "oaic_ccls_price_dzd_q": 9500,
+      "baseline_yield_q_ha": 14.0,
+      "gross_income_dzd_ha": 133000,
+      "risk_level": 0.35,
+      "soil_depletion_index": 1,
+      "soil_health_delta": 16,
+      "base_npk_kg_ha": 90,
+      "fertilizer_name": "DAP (starter P)",
+      "optimal_rain_min": 350,
+      "optimal_rain_max": 650,
+      "optimal_ph_min": 6.0,
+      "optimal_ph_max": 8.0,
+      "frost_tolerant": 1,
+      "heat_tolerant": 0,
+      "risk_note": "Cool-season legume; heat above 30 C at flowering cuts yield sharply.",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (ITGC / CCLS)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "potato",
+      "crop": "Potato",
+      "scientific_name": "Solanum tuberosum",
+      "family": "vegetable_root",
+      "water_need": 0.78,
+      "soil_effect": -0.3,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -45,
+      "residue_carbon": 0.3,
+      "drought_tolerance": 0.25,
+      "profit": 0.7,
+      "oaic_ccls_price_dzd_q": 2500,
+      "baseline_yield_q_ha": 220.0,
+      "gross_income_dzd_ha": 550000,
+      "risk_level": 0.55,
+      "soil_depletion_index": 5,
+      "soil_health_delta": -14,
+      "base_npk_kg_ha": 260,
+      "fertilizer_name": "NPK 15:15:15 + Potash",
+      "optimal_rain_min": 500,
+      "optimal_rain_max": 900,
+      "optimal_ph_min": 5.2,
+      "optimal_ph_max": 7.5,
+      "frost_tolerant": 0,
+      "heat_tolerant": 0,
+      "risk_note": "High cost and irrigation need; late blight and price swings. Gross income only, production cost is high.",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (MADR)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "sulla",
+      "crop": "Sulla (Spanish Sainfoin)",
+      "scientific_name": "Hedysarum coronarium",
+      "family": "legume",
+      "water_need": 0.38,
+      "soil_effect": 0.4,
+      "nitrogen_fixing": 1,
+      "n_impact_kg_ha": 30,
+      "residue_carbon": 0.5,
+      "drought_tolerance": 0.65,
+      "profit": 0.45,
+      "oaic_ccls_price_dzd_q": 2200,
+      "baseline_yield_q_ha": 40.0,
+      "gross_income_dzd_ha": 88000,
+      "risk_level": 0.25,
+      "soil_depletion_index": 1,
+      "soil_health_delta": 20,
+      "base_npk_kg_ha": 60,
+      "fertilizer_name": "SSP / Starter P",
+      "optimal_rain_min": 350,
+      "optimal_rain_max": 700,
+      "optimal_ph_min": 7.0,
+      "optimal_ph_max": 8.5,
+      "frost_tolerant": 1,
+      "heat_tolerant": 1,
+      "risk_note": "Forage legume for livestock farms; prefers calcareous soil; limited seed supply.",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (ICARDA)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "lupin",
+      "crop": "Lupin",
+      "scientific_name": "Lupinus albus / L. angustifolius",
+      "family": "legume",
+      "water_need": 0.4,
+      "soil_effect": 0.4,
+      "nitrogen_fixing": 1,
+      "n_impact_kg_ha": 28,
+      "residue_carbon": 0.48,
+      "drought_tolerance": 0.55,
+      "profit": 0.52,
+      "oaic_ccls_price_dzd_q": 9000,
+      "baseline_yield_q_ha": 12.0,
+      "gross_income_dzd_ha": 108000,
+      "risk_level": 0.35,
+      "soil_depletion_index": 1,
+      "soil_health_delta": 18,
+      "base_npk_kg_ha": 70,
+      "fertilizer_name": "SSP / Starter P",
+      "optimal_rain_min": 350,
+      "optimal_rain_max": 700,
+      "optimal_ph_min": 5.0,
+      "optimal_ph_max": 7.0,
+      "frost_tolerant": 1,
+      "heat_tolerant": 0,
+      "risk_note": "Dislikes high-pH calcareous soils; check pH before sowing.",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (ITGC)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "onion",
+      "crop": "Onion / Garlic",
+      "scientific_name": "Allium cepa / A. sativum",
+      "family": "vegetable_root",
+      "water_need": 0.6,
+      "soil_effect": -0.15,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -30,
+      "residue_carbon": 0.25,
+      "drought_tolerance": 0.3,
+      "profit": 0.68,
+      "oaic_ccls_price_dzd_q": 2200,
+      "baseline_yield_q_ha": 250.0,
+      "gross_income_dzd_ha": 550000,
+      "risk_level": 0.5,
+      "soil_depletion_index": 3,
+      "soil_health_delta": -8,
+      "base_npk_kg_ha": 200,
+      "fertilizer_name": "NPK 15:15:15",
+      "optimal_rain_min": 350,
+      "optimal_rain_max": 700,
+      "optimal_ph_min": 6.0,
+      "optimal_ph_max": 7.8,
+      "frost_tolerant": 1,
+      "heat_tolerant": 0,
+      "risk_note": "Shallow roots need steady irrigation; storage losses and price swings.",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (MADR)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "coriander",
+      "crop": "Coriander",
+      "scientific_name": "Coriandrum sativum",
+      "family": "forage_broadleaf",
+      "water_need": 0.34,
+      "soil_effect": 0.05,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -12,
+      "residue_carbon": 0.35,
+      "drought_tolerance": 0.55,
+      "profit": 0.6,
+      "oaic_ccls_price_dzd_q": 20000,
+      "baseline_yield_q_ha": 7.0,
+      "gross_income_dzd_ha": 140000,
+      "risk_level": 0.3,
+      "soil_depletion_index": 2,
+      "soil_health_delta": 3,
+      "base_npk_kg_ha": 70,
+      "fertilizer_name": "NPK 15:15:15",
+      "optimal_rain_min": 300,
+      "optimal_rain_max": 550,
+      "optimal_ph_min": 6.2,
+      "optimal_ph_max": 8.2,
+      "frost_tolerant": 0,
+      "heat_tolerant": 1,
+      "risk_note": "Short low-input cash crop; seed shatters if harvest is late.",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (ITGC)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "hairy_vetch",
+      "crop": "Hairy Vetch (Cover Crop)",
+      "scientific_name": "Vicia villosa",
+      "family": "legume",
+      "water_need": 0.36,
+      "soil_effect": 0.45,
+      "nitrogen_fixing": 1,
+      "n_impact_kg_ha": 35,
+      "residue_carbon": 0.55,
+      "drought_tolerance": 0.6,
+      "profit": 0.3,
+      "oaic_ccls_price_dzd_q": 1350,
+      "baseline_yield_q_ha": 35.0,
+      "gross_income_dzd_ha": 47250,
+      "risk_level": 0.15,
+      "soil_depletion_index": 1,
+      "soil_health_delta": 22,
+      "base_npk_kg_ha": 40,
+      "fertilizer_name": "None (self-fixing)",
+      "optimal_rain_min": 350,
+      "optimal_rain_max": 800,
+      "optimal_ph_min": 5.5,
+      "optimal_ph_max": 8.0,
+      "frost_tolerant": 1,
+      "heat_tolerant": 0,
+      "risk_note": "Cover crop for soil, moisture and nitrogen; little direct income (hay or grazing only).",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (K-State Extension)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "alfalfa",
+      "crop": "Alfalfa (Lucerne)",
+      "scientific_name": "Medicago sativa",
+      "family": "legume",
+      "water_need": 0.62,
+      "soil_effect": 0.35,
+      "nitrogen_fixing": 1,
+      "n_impact_kg_ha": 45,
+      "residue_carbon": 0.6,
+      "drought_tolerance": 0.6,
+      "profit": 0.58,
+      "oaic_ccls_price_dzd_q": 2430,
+      "baseline_yield_q_ha": 40.0,
+      "gross_income_dzd_ha": 97200,
+      "risk_level": 0.3,
+      "soil_depletion_index": 1,
+      "soil_health_delta": 24,
+      "base_npk_kg_ha": 60,
+      "fertilizer_name": "P and K, no N",
+      "optimal_rain_min": 450,
+      "optimal_rain_max": 900,
+      "optimal_ph_min": 6.5,
+      "optimal_ph_max": 8.2,
+      "frost_tolerant": 1,
+      "heat_tolerant": 1,
+      "risk_note": "Perennial: stays 3 to 5 years, so it fills a whole rotation. Use as a 1-year ley or hay crop in the plan.",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (USDA NASS)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "cotton",
+      "crop": "Cotton",
+      "scientific_name": "Gossypium hirsutum",
+      "family": "forage_broadleaf",
+      "water_need": 0.62,
+      "soil_effect": -0.18,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -40,
+      "residue_carbon": 0.65,
+      "drought_tolerance": 0.45,
+      "profit": 0.66,
+      "oaic_ccls_price_dzd_q": 20790,
+      "baseline_yield_q_ha": 9.0,
+      "gross_income_dzd_ha": 187110,
+      "risk_level": 0.5,
+      "soil_depletion_index": 4,
+      "soil_health_delta": -10,
+      "base_npk_kg_ha": 180,
+      "fertilizer_name": "Urea + DAP",
+      "optimal_rain_min": 450,
+      "optimal_rain_max": 900,
+      "optimal_ph_min": 5.8,
+      "optimal_ph_max": 8.0,
+      "frost_tolerant": 0,
+      "heat_tolerant": 1,
+      "risk_note": "Needs a long warm season; bollworm pressure; frost before harvest is a risk.",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (USDA NASS)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "proso_millet",
+      "crop": "Proso Millet",
+      "scientific_name": "Panicum miliaceum",
+      "family": "cereal",
+      "water_need": 0.3,
+      "soil_effect": -0.1,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -18,
+      "residue_carbon": 0.55,
+      "drought_tolerance": 0.8,
+      "profit": 0.4,
+      "oaic_ccls_price_dzd_q": 3180,
+      "baseline_yield_q_ha": 18.8,
+      "gross_income_dzd_ha": 59784,
+      "risk_level": 0.25,
+      "soil_depletion_index": 2,
+      "soil_health_delta": -3,
+      "base_npk_kg_ha": 70,
+      "fertilizer_name": "Urea",
+      "optimal_rain_min": 250,
+      "optimal_rain_max": 600,
+      "optimal_ph_min": 5.5,
+      "optimal_ph_max": 8.0,
+      "frost_tolerant": 0,
+      "heat_tolerant": 1,
+      "risk_note": "Very short season and drought tolerant; low price but low input cost.",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (K-State Extension)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "flax",
+      "crop": "Flax (Linseed)",
+      "scientific_name": "Linum usitatissimum",
+      "family": "oilseed",
+      "water_need": 0.4,
+      "soil_effect": 0.0,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -15,
+      "residue_carbon": 0.35,
+      "drought_tolerance": 0.45,
+      "profit": 0.45,
+      "oaic_ccls_price_dzd_q": 6350,
+      "baseline_yield_q_ha": 9.4,
+      "gross_income_dzd_ha": 59690,
+      "risk_level": 0.35,
+      "soil_depletion_index": 2,
+      "soil_health_delta": 0,
+      "base_npk_kg_ha": 80,
+      "fertilizer_name": "NPK 15:15:15",
+      "optimal_rain_min": 350,
+      "optimal_rain_max": 650,
+      "optimal_ph_min": 6.0,
+      "optimal_ph_max": 7.5,
+      "frost_tolerant": 1,
+      "heat_tolerant": 0,
+      "risk_note": "Weak competitor against weeds; heat at flowering cuts yield.",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (USDA NASS)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "pearl_millet",
+      "crop": "Pearl Millet (Bajra)",
+      "scientific_name": "Pennisetum glaucum",
+      "family": "cereal",
+      "water_need": 0.28,
+      "soil_effect": -0.08,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -20,
+      "residue_carbon": 0.55,
+      "drought_tolerance": 0.85,
+      "profit": 0.5,
+      "oaic_ccls_price_dzd_q": 4032,
+      "baseline_yield_q_ha": 18.0,
+      "gross_income_dzd_ha": 72576,
+      "risk_level": 0.22,
+      "soil_depletion_index": 2,
+      "soil_health_delta": -3,
+      "base_npk_kg_ha": 80,
+      "fertilizer_name": "Urea",
+      "optimal_rain_min": 250,
+      "optimal_rain_max": 650,
+      "optimal_ph_min": 5.5,
+      "optimal_ph_max": 8.5,
+      "frost_tolerant": 0,
+      "heat_tolerant": 1,
+      "risk_note": "Very low water need and heat tolerant; low price; birds at grain fill.",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (ICAR / CACP MSP)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "groundnut",
+      "crop": "Groundnut (Peanut)",
+      "scientific_name": "Arachis hypogaea",
+      "family": "legume",
+      "water_need": 0.52,
+      "soil_effect": 0.3,
+      "nitrogen_fixing": 1,
+      "n_impact_kg_ha": 20,
+      "residue_carbon": 0.4,
+      "drought_tolerance": 0.55,
+      "profit": 0.7,
+      "oaic_ccls_price_dzd_q": 9677,
+      "baseline_yield_q_ha": 20.0,
+      "gross_income_dzd_ha": 193540,
+      "risk_level": 0.4,
+      "soil_depletion_index": 2,
+      "soil_health_delta": 12,
+      "base_npk_kg_ha": 60,
+      "fertilizer_name": "Gypsum + SSP",
+      "optimal_rain_min": 500,
+      "optimal_rain_max": 1000,
+      "optimal_ph_min": 5.8,
+      "optimal_ph_max": 7.5,
+      "frost_tolerant": 0,
+      "heat_tolerant": 1,
+      "risk_note": "Fixes nitrogen but prefers light sandy soil; aflatoxin risk if dried badly.",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (PAU)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "pigeon_pea",
+      "crop": "Pigeon Pea (Arhar)",
+      "scientific_name": "Cajanus cajan",
+      "family": "legume",
+      "water_need": 0.4,
+      "soil_effect": 0.35,
+      "nitrogen_fixing": 1,
+      "n_impact_kg_ha": 30,
+      "residue_carbon": 0.6,
+      "drought_tolerance": 0.75,
+      "profit": 0.65,
+      "oaic_ccls_price_dzd_q": 11290,
+      "baseline_yield_q_ha": 14.0,
+      "gross_income_dzd_ha": 158060,
+      "risk_level": 0.4,
+      "soil_depletion_index": 1,
+      "soil_health_delta": 18,
+      "base_npk_kg_ha": 50,
+      "fertilizer_name": "DAP (starter P)",
+      "optimal_rain_min": 500,
+      "optimal_rain_max": 1000,
+      "optimal_ph_min": 5.5,
+      "optimal_ph_max": 7.5,
+      "frost_tolerant": 0,
+      "heat_tolerant": 1,
+      "risk_note": "Long season (about 150 to 180 days); waterlogging and wilt in heavy soil.",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (ICAR-IIPR)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "berseem",
+      "crop": "Berseem (Egyptian Clover)",
+      "scientific_name": "Trifolium alexandrinum",
+      "family": "legume",
+      "water_need": 0.6,
+      "soil_effect": 0.38,
+      "nitrogen_fixing": 1,
+      "n_impact_kg_ha": 32,
+      "residue_carbon": 0.5,
+      "drought_tolerance": 0.35,
+      "profit": 0.5,
+      "oaic_ccls_price_dzd_q": 1935,
+      "baseline_yield_q_ha": 70.0,
+      "gross_income_dzd_ha": 135450,
+      "risk_level": 0.2,
+      "soil_depletion_index": 1,
+      "soil_health_delta": 20,
+      "base_npk_kg_ha": 60,
+      "fertilizer_name": "SSP / Starter P",
+      "optimal_rain_min": 450,
+      "optimal_rain_max": 900,
+      "optimal_ph_min": 6.0,
+      "optimal_ph_max": 8.0,
+      "frost_tolerant": 1,
+      "heat_tolerant": 0,
+      "risk_note": "Winter fodder legume, needs irrigation; good for dairy farms.",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (PAU)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    },
+    {
+      "id": "sesame",
+      "crop": "Sesame",
+      "scientific_name": "Sesamum indicum",
+      "family": "oilseed",
+      "water_need": 0.3,
+      "soil_effect": 0.0,
+      "nitrogen_fixing": 0,
+      "n_impact_kg_ha": -12,
+      "residue_carbon": 0.3,
+      "drought_tolerance": 0.8,
+      "profit": 0.5,
+      "oaic_ccls_price_dzd_q": 14516,
+      "baseline_yield_q_ha": 4.5,
+      "gross_income_dzd_ha": 65322,
+      "risk_level": 0.4,
+      "soil_depletion_index": 2,
+      "soil_health_delta": 0,
+      "base_npk_kg_ha": 60,
+      "fertilizer_name": "NPK 15:15:15",
+      "optimal_rain_min": 300,
+      "optimal_rain_max": 650,
+      "optimal_ph_min": 5.5,
+      "optimal_ph_max": 8.0,
+      "frost_tolerant": 0,
+      "heat_tolerant": 1,
+      "risk_note": "Short summer crop; waterlogging kills seedlings; low yield per hectare.",
+      "sources": {
+        "yield": "Team estimate - verify with national statistics (ICAR)",
+        "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+      }
+    }
+  ],
+  "rules": {
+    "_meta": {
+      "region_scope": "Algeria / North Africa Semi-Arid & Sub-Humid Mediterranean Rainfed Systems (Setif, Constantine, Tiaret)",
+      "sources": [
+        "ICARDA WANA Long-Term Cereal-Legume Trials (30-40% synthetic N reduction post-legume; disease & wild-oat break)",
+        "ITGC Algeria Technical Itineraries (Durum Wheat, Barley, Pulses, Rapeseed/Colza, Conservation Agriculture)"
+      ]
+    },
+    "rotation_length": 3,
+    "cyclic": true,
+    "max_occurrences_per_crop": 1,
+    "forbid_consecutive_same_family": true,
+    "forbid_consecutive_heavy_feeders": true,
+    "heavy_feeder_depletion_threshold": 4,
+    "min_legumes": 1,
+    "min_cereals": 1,
+    "max_cereals": 1,
+    "max_high_water_crops": 1,
+    "high_water_need_threshold": 0.65,
+    "require_break_crop_if_cyclic": true,
+    "regional_climate_constraints": {
+      "semi_arid_rain_cutoff_mm": 380,
+      "min_rain_for_faba_mm": 400,
+      "min_rain_for_canola_mm": 380,
+      "min_rain_for_sunflower_mm": 450,
+      "hard_frost_warning_days": 15,
+      "terminal_heat_warning_days_gt35c": 35
+    },
+    "nitrogen_carryover_rule": {
+      "post_legume_npk_multiplier": 0.7,
+      "justification": "ICARDA Mediterranean trials show cereals planted immediately after a food legume (faba bean, chickpea, lentil) achieve optimal yields with 30-40% less synthetic nitrogen fertilizer."
+    },
+    "agronomic_justifications": {
+      "max_occurrences_per_crop_1": "Prevents pathogen spore buildup (Fusarium crown rot in wheat, Ascochyta blight in chickpea, Orobanche broomrape in faba/sunflower).",
+      "forbid_consecutive_same_family": "Puts a broadleaf legume or Brassicaceae/Asteraceae oilseed between grass cereals to suppress wild oats (Avena sterilis) and root nematodes.",
+      "min_legumes_1": "Guarantees biological nitrogen fixation (+20 to +32 kg N/ha) and breaks continuous cereal N mining.",
+      "cyclic_3_family_note": "Because a cyclic 3-year plan wraps Year 3 -> Year 1, forbidding consecutive same-family crops mathematically produces 3-family systems (1 Cereal + 1 Legume + 1 Oilseed Break Crop). On plots below 380 mm rainfall where oilseeds are not grown, farmers instead use a 2-year Cereal <-> Legume alternation."
+    }
+  },
+  "gaps": [
+    {
+      "id": "G1",
+      "applies_to": "all",
+      "text": "Soil SOC and pH come from 250 m ISRIC SoilGrids v2.0 modelled cells (0-30 cm), not a laboratory NPK soil test of your single parcel."
+    },
+    {
+      "id": "G2",
+      "applies_to": "all",
+      "text": "NASA POWER climate telemetry uses a 0.5° × 0.625° grid (~55 km), which smooths micro-valley rainfall and frost pockets."
+    },
+    {
+      "id": "G3",
+      "applies_to": "all",
+      "text": "MODIS MOD13Q1 spring peak NDVI (2020-2024, 5×5 km patch average) mixes cropland with roads and fallow; no cropland mask or pixel QA filter was applied."
+    },
+    {
+      "id": "G4",
+      "applies_to": [
+        "chickpea",
+        "lentil",
+        "faba",
+        "vetch"
+      ],
+      "text": "Legume biological nitrogen fixation (+20 to +32 kg N/ha) is an ICARDA dryland benchmark; actual carryover depends on rhizobia nodulation and grazing management."
+    },
+    {
+      "id": "G5",
+      "applies_to": [
+        "wheat",
+        "soft_wheat",
+        "barley",
+        "oats",
+        "triticale",
+        "chickpea",
+        "lentil",
+        "faba",
+        "vetch",
+        "canola",
+        "safflower",
+        "sunflower"
+      ],
+      "text": "Gross income uses official OAIC/CCLS campaign prices (DA/q) × regional yield; net profit varies with fuel, seed, and CCLS quality grades (bonifications/réfractions)."
+    },
+    {
+      "id": "G6",
+      "applies_to": "all",
+      "text": "NASA POWER shows 13-43% higher rainfall than Open-Meteo ERA5 reanalysis across the three regions; cross-check confidence labels reflect this spread."
+    },
+    {
+      "id": "G7",
+      "applies_to": "all",
+      "text": "Soil erosion risk cannot be estimated reliably from current inputs (RUSLE factors absent), so no numeric erosion claim is fabricated."
+    },
+    {
+      "id": "G8",
+      "applies_to": "all",
+      "text": "Water-stress magnitude depends on the recent comparison window (2015-2024 vs 2020-2024 sensitivity variant) while relative stress stays positive everywhere."
+    },
+    {
+      "id": "G9",
+      "topic": "Irrigation vs Rainfall Water Stress",
+      "text": "Water stress is computed from meteoric rainfall (NASA POWER). In irrigated regions such as the Punjab Plains (India) or irrigated pockets of the US Great Plains, canal and tube-well water mask rainfall deficits while depleting groundwater aquifers.",
+      "applies_to": "all"
+    },
+    {
+      "id": "G10",
+      "topic": "Single Annual Crop Cycle vs Double Cropping",
+      "text": "Many South Asian farms grow two crops per year (e.g. Kharif rice followed by Rabi wheat). Our engine models one primary crop per year across a 3-year sequence; multi-season double-cropping is documented as a future improvement.",
+      "applies_to": "all"
+    },
+    {
+      "id": "G11",
+      "topic": "Light Regions Validation & Coarse Grid",
+      "text": "Light regions (Central Kansas, USA and Punjab Plains, India) use public national datasets (USDA NASS, FAOSTAT, ICAR) without local field-trial calibration and are labeled 'Less validated'. NASA POWER grid cells (~50 km) represent flat regional farmland rather than individual parcels.",
+      "applies_to": "all"
+    },
+    {
+      "id": "G12",
+      "topic": "Fire Watch Satellite Detections",
+      "text": "NASA FIRMS (VIIRS 375 m / MODIS 1 km) detects actively burning thermal anomalies (~3 hours latency). It is not a fire forecast or danger index; cloud cover or small fires can be missed, and industrial hotspots can appear.",
+      "applies_to": "all"
+    }
+  ]
+}

@@ -41,12 +41,42 @@ export function cropFit(region, f) {
 export function rainTrend(annual) {
   const years = annual.map(d => d.year), rains = annual.map(d => d.rain);
   const ols = Stats.ols(years, rains), mk = Stats.mannKendall(rains);
+  const mean = Math.round(rains.reduce((a, b) => a + b) / rains.length);
+  const n = annual.length;
+  const variance = rains.reduce((acc, r) => acc + (r - mean) ** 2, 0) / (n - 1 || 1);
+  const stdDev = Math.round(Math.sqrt(variance));
+
+  // Identify acute drought shock years (< 82% of 30-yr mean or >0.85 stdDev below mean)
+  const shockThreshold = Math.round(Math.min(mean * 0.82, mean - 0.85 * stdDev));
+  const severeThreshold = Math.round(mean * 0.72);
+  const shockYears = annual
+    .filter(d => d.rain <= shockThreshold)
+    .map(d => ({
+      year: d.year,
+      rain: Math.round(d.rain),
+      deficitPct: Math.round(((d.rain - mean) / mean) * 100),
+      severity: d.rain <= severeThreshold ? 'severe' : 'moderate',
+    }))
+    .sort((a, b) => a.rain - b.rain);
+
+  const shockCount = shockYears.length;
+  const returnPeriodYrs = shockCount > 0 ? Math.round((n / shockCount) * 10) / 10 : n;
+  const recent10 = annual.slice(-10);
+  const recentShocks = recent10.filter(d => d.rain <= shockThreshold).length;
+
   return {
     ...ols,
     decade: ols.slope * 10,
     pOls: ols.p,
     pMk: mk.p,
-    mean: Math.round(rains.reduce((a, b) => a + b) / rains.length),
+    mean,
+    stdDev,
+    shockThreshold,
+    severeThreshold,
+    shockYears,
+    shockCount,
+    returnPeriodYrs,
+    recentShocks,
     sig: ols.p < 0.05 && mk.p < 0.05 ? 'clear' : ols.p < 0.1 || mk.p < 0.1 ? 'weak' : 'none',
   };
 }

@@ -1,0 +1,6 @@
+{
+  "region": "regionA",
+  "region_name": "Sétif High Plateaux (36.15°N, 5.38°E)",
+  "weights": {"profit": 0.4, "water": 0.2, "soil": 0.2, "risk": 0.2},
+  "current_rotation": ["wheat", "barley", "wheat"]
+}

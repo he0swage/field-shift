@@ -1,0 +1,46 @@
+{
+  "region": "regionC",
+  "fetched_at": "2026-11-14T09:30:00Z",
+  "source": "VIIRS_NOAA21_NRT",
+  "radius_km": 25,
+  "days": 2,
+  "count": 3,
+  "nearest_km": 6.1,
+  "detections": [
+    {
+      "km": 6.1,
+      "date": "2026-11-14",
+      "time": "0815",
+      "lat": 30.94,
+      "lon": 75.95,
+      "frp_mw": 18.4,
+      "confidence": "high"
+    },
+    {
+      "km": 14.3,
+      "date": "2026-11-13",
+      "time": "1350",
+      "lat": 30.81,
+      "lon": 75.8,
+      "frp_mw": 14.1,
+      "confidence": "nominal"
+    },
+    {
+      "km": 21.8,
+      "date": "2026-11-13",
+      "time": "0805",
+      "lat": 31.05,
+      "lon": 76.04,
+      "frp_mw": 9.5,
+      "confidence": "nominal"
+    }
+  ],
+  "dry_conditions": {
+    "consecutive_dry_days": 26,
+    "hot_days_recent": 48,
+    "mean_rh_pct": 44,
+    "wind_m_s": 2.9,
+    "label": "Indicative only"
+  },
+  "notice": "Satellite data, about 3 hours old. Not a forecast. No detection does not mean no fire."
+}

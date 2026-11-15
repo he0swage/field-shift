@@ -1,0 +1,32 @@
+{
+  "id": "field_pea",
+  "crop": "Field Pea",
+  "scientific_name": "Pisum sativum",
+  "family": "legume",
+  "water_need": 0.42,
+  "soil_effect": 0.38,
+  "nitrogen_fixing": 1,
+  "n_impact_kg_ha": 24,
+  "residue_carbon": 0.45,
+  "drought_tolerance": 0.45,
+  "profit": 0.62,
+  "oaic_ccls_price_dzd_q": 9500,
+  "baseline_yield_q_ha": 14.0,
+  "gross_income_dzd_ha": 133000,
+  "risk_level": 0.35,
+  "soil_depletion_index": 1,
+  "soil_health_delta": 16,
+  "base_npk_kg_ha": 90,
+  "fertilizer_name": "DAP (starter P)",
+  "optimal_rain_min": 350,
+  "optimal_rain_max": 650,
+  "optimal_ph_min": 6.0,
+  "optimal_ph_max": 8.0,
+  "frost_tolerant": 1,
+  "heat_tolerant": 0,
+  "risk_note": "Cool-season legume; heat above 30 C at flowering cuts yield sharply.",
+  "sources": {
+    "yield": "Team estimate - verify with national statistics (ITGC / CCLS)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

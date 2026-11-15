@@ -1,7 +1,6 @@
 {
-  "description": "Algerian cool-season crop/agronomy reference table converted verbatim from domain/crops_algeria.csv (originally field_shift_drive_files/data_regional/). One JSON per crop plus this index; values are the team's, all pending local review.",
-  "source": "domain/crops_algeria.csv",
-  "n_crops": 13,
+  "source": "domain/crops_base.csv + domain/regions/*/yield.csv (ITGC/OAIC Algeria, USDA NASS USA, ICAR/PAU India, FAOSTAT)",
+  "n_crops": 35,
   "ids": [
     "wheat",
     "soft_wheat",
@@ -15,6 +14,28 @@
     "canola",
     "safflower",
     "sunflower",
-    "fallow"
+    "fallow",
+    "corn",
+    "soybean",
+    "sorghum",
+    "rice",
+    "maize",
+    "mung_bean",
+    "field_pea",
+    "potato",
+    "sulla",
+    "lupin",
+    "onion",
+    "coriander",
+    "hairy_vetch",
+    "alfalfa",
+    "cotton",
+    "proso_millet",
+    "flax",
+    "pearl_millet",
+    "groundnut",
+    "pigeon_pea",
+    "berseem",
+    "sesame"
   ]
 }

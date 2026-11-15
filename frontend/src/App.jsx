@@ -6,10 +6,9 @@ import { AnalysisProvider } from './state/AnalysisContext';
 import { AuthProvider, useAuth } from './state/AuthContext';
 import LoginView from './views/LoginView';
 import { useEffect } from 'react';
-import Header, { DataStatus } from './components/layout/Header';
+import Header from './components/layout/Header';
 import Progress from './components/layout/Progress';
 import Footer from './components/layout/Footer';
-import JourneyHome from './views/JourneyHome';
 import AboutView from './views/AboutView';
 import RegionView from './views/RegionView';
 import StrategyView from './views/StrategyView';
@@ -22,9 +21,10 @@ import SummaryView from './views/SummaryView';
 import MapView from './views/MapView';
 import CompareView from './views/CompareView';
 import Report from './views/Report';
+import AgronomyAssistant from './components/AgronomyAssistant';
+import FarmerAccountModal from './components/FarmerAccountModal';
 
 const VIEWS = {
-  home: JourneyHome,      // Journey hub (title, start, 4-stage path)
   region: RegionView,     // 1.2
   strategy: StrategyView, // 1.3
   climate: ClimateView,   // 2.1
@@ -56,15 +56,14 @@ function Shell() {
   const { view } = useNav();
   const View = VIEWS[view];
   useReveal(view);
-  const journey = view === 'home' || JOURNEY.includes(view);
+  const journey = JOURNEY.includes(view);
   return (
     <>
       <a className="skip" href="#main">{t('common.skip')}</a>
       <Header />
-      <DataStatus />
       {journey && <Progress />}
-      {view === 'home' ? (
-        <main id="main" tabIndex={-1} className="view" key="home"><View /></main>
+      {view === 'region' ? (
+        <main id="main" tabIndex={-1} className="view" key="region"><View /></main>
       ) : (
         <main className="main" id="main" tabIndex={-1}>
           <div className="wrap view" key={view}><View /></div>
@@ -72,6 +71,8 @@ function Shell() {
       )}
       <Footer />
       <Report />
+      <FarmerAccountModal />
+      <AgronomyAssistant floating />
     </>
   );
 }

@@ -1,0 +1,12 @@
+{
+  "region": "kansas",
+  "soc_g_per_kg": 18.4,
+  "soc_class": "moderate_mollisol",
+  "ph": 6.8,
+  "clay_pct": 27.0,
+  "sand_pct": 22.0,
+  "silt_pct": 51.0,
+  "texture_class": "Silt Loam ( Crete / Smolan Mollisol )",
+  "confidence": "high",
+  "note": "Deep Prairie Mollisol (0–30 cm ISRIC SoilGrids v2.0). High native fertility, slightly acidic surface pH (6.8) from long-term nitrogen fertilization."
+}

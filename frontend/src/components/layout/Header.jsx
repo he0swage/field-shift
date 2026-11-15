@@ -1,41 +1,13 @@
 // Top bar: brand · navigation · language · theme · account. Data status lives in the sidebar.
 import { useEffect, useRef, useState } from 'react';
-import { Check, ChevronDown, Globe2, LogOut } from 'lucide-react';
+import { Check, ChevronDown, Globe2, LogOut, UserCheck } from 'lucide-react';
 import { useI18n, LANGS } from '../../i18n/I18nContext';
 import { useNav, JOURNEY } from '../../state/NavContext';
-import { checkHealth } from '../../api/client';
+import { useFarm } from '../../state/FarmContext';
 import { useAuth } from '../../state/AuthContext';
 import ThemeToggle from './ThemeToggle';
 import './layout.css';
 
-export const SOURCES = ['NASA POWER 1995–2024', 'ISRIC SoilGrids', 'MODIS NDVI', 'Open-Meteo ERA5', 'OAIC / CCLS prices'];
-
-/** Asks the backend /health every 30 s. */
-export function useApiLive() {
-  const [live, setLive] = useState(null); // null = checking
-  useEffect(() => {
-    let alive = true;
-    const ping = () => checkHealth().then(ok => { if (alive) setLive(ok); });
-    ping();
-    const id = setInterval(ping, 30000);
-    return () => { alive = false; clearInterval(id); };
-  }, []);
-  return live;
-}
-
-/** One thin, quiet strip: live/sample status + data sources. */
-export function DataStatus() {
-  const { t } = useI18n();
-  const live = useApiLive();
-  return (
-    <div className={`data-strip${live ? ' live' : ''}`}>
-      <div className="wrap data-strip-row">
-        <span className="data-status"><span className="status-dot" aria-hidden="true" />{live ? t('banner.liveShort') : t('banner.sampleShort')}</span>
-        <ul className="sources" aria-label={t('banner.sources')}>{SOURCES.map(s => <li key={s}>{s}</li>)}</ul>
-      </div>
-    </div>
-  );
-}
 
 /** Brand mark: a simple leaf/field glyph (no emoji). */
 export function Logo() {
@@ -118,38 +90,53 @@ function UserMenu() {
 export default function Header() {
   const { t } = useI18n();
   const { view, go } = useNav();
+  const { state: farmState, set: setFarm } = useFarm();
   const inJourney = JOURNEY.includes(view);
 
-  const link = (id, label, current) => (
+  const link = (id, label, current, extra = '') => (
     <li>
-      <button type="button" className="nav-link" aria-current={current ? 'page' : undefined} onClick={() => go(id)}>
+      <button type="button" className={`nav-link${extra}`} aria-current={current ? 'page' : undefined} onClick={() => go(id)}>
         {label}
       </button>
     </li>
   );
 
   return (
+    <>
+    {/* the bar sits ~3 cm (113 px) below the top of the page, then sticks to the top on scroll */}
+    <div className="topbar-offset" aria-hidden="true" />
     <header className="topbar">
       <div className="topbar-row">
-      <a className="brand" href="#/home" onClick={e => { e.preventDefault(); go('home', { top: true }); }}>
+      <a className="brand" href="#/region" onClick={e => { e.preventDefault(); go('region', { top: true }); }}>
         <Logo />
         <span className="brand-name">Crop Rotation Advisor</span>
       </a>
 
       <nav className="top-nav" aria-label={t('nav.main')}>
         <ul>
-          {link('home', t('nav.journey'), inJourney || view === 'home')}
+          {link('region', t('nav.journey'), inJourney, ' journey')}
           {link('compare', t('nav.compare'), view === 'compare')}
           {link('about', t('nav.about'), view === 'about')}
         </ul>
       </nav>
 
       <div className="header-tools">
+        <button
+          type="button"
+          className="tool-btn"
+          style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
+          onClick={() => setFarm({ accountOpen: true })}
+          title="PostgreSQL Farmer Account & Saved Plans"
+        >
+          <UserCheck size={16} aria-hidden="true" />
+          <span>{farmState.farmerUser ? (farmState.farmerUser.farm_name || farmState.farmerUser.full_name) : 'Farmer Account'}</span>
+        </button>
         <LangMenu />
         <ThemeToggle />
         <UserMenu />
       </div>
       </div>
     </header>
+    </>
   );
 }

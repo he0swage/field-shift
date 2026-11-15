@@ -1,0 +1,32 @@
+{
+  "id": "sulla",
+  "crop": "Sulla (Spanish Sainfoin)",
+  "scientific_name": "Hedysarum coronarium",
+  "family": "legume",
+  "water_need": 0.38,
+  "soil_effect": 0.4,
+  "nitrogen_fixing": 1,
+  "n_impact_kg_ha": 30,
+  "residue_carbon": 0.5,
+  "drought_tolerance": 0.65,
+  "profit": 0.45,
+  "oaic_ccls_price_dzd_q": 2200,
+  "baseline_yield_q_ha": 40.0,
+  "gross_income_dzd_ha": 88000,
+  "risk_level": 0.25,
+  "soil_depletion_index": 1,
+  "soil_health_delta": 20,
+  "base_npk_kg_ha": 60,
+  "fertilizer_name": "SSP / Starter P",
+  "optimal_rain_min": 350,
+  "optimal_rain_max": 700,
+  "optimal_ph_min": 7.0,
+  "optimal_ph_max": 8.5,
+  "frost_tolerant": 1,
+  "heat_tolerant": 1,
+  "risk_note": "Forage legume for livestock farms; prefers calcareous soil; limited seed supply.",
+  "sources": {
+    "yield": "Team estimate - verify with national statistics (ICARDA)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}
