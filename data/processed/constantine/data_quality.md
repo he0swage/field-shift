@@ -1,6 +1,6 @@
 # Data quality — constantine
 
-Generated offline by `analysis/build_indicators.py` from `data/raw/constantine/`. Run stamp: 2026-11-15 mbb-trend.
+Generated offline by `analysis/build_indicators.py` from `data/raw/constantine/`. Run stamp: 2026-11-15 gap-patch.
 
 ## Missing data (NASA POWER, 1995-2024)
 

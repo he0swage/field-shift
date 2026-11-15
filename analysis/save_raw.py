@@ -69,6 +69,24 @@ def already_saved(code: str, name: str) -> bool:
     return False
 
 
+def fetch_soilgrids_texture(code: str, lat: float, lon: float) -> None:
+    """Fetch SoilGrids texture layers (sand, silt, clay) for the AWC pedotransfer.
+
+    Saved as soilgrids_texture.json so the original soilgrids.json payload
+    (soc, phh2o) stays byte-identical for v1 cross-checks.
+    """
+    print(f"[{code}] ISRIC SoilGrids texture (sand, silt, clay)...", flush=True)
+    tex_params = urllib.parse.urlencode([
+        ("lat", lat), ("lon", lon),
+        ("property", "sand"), ("property", "silt"), ("property", "clay"),
+        ("depth", "0-5cm"), ("depth", "5-15cm"), ("depth", "15-30cm"),
+        ("value", "mean"),
+    ])
+    if not already_saved(code, "soilgrids_texture.json"):
+        save(code, "soilgrids_texture.json", get_json(f"https://rest.isric.org/soilgrids/v2.0/properties/query?{tex_params}"))
+    time.sleep(PAUSE)
+
+
 def fetch_region(code: str, lat: float, lon: float, with_modis: bool) -> None:
     print(f"[{code}] NASA POWER daily 1995-2024...", flush=True)
     params = urllib.parse.urlencode({
@@ -90,6 +108,7 @@ def fetch_region(code: str, lat: float, lon: float, with_modis: bool) -> None:
     if not already_saved(code, "soilgrids.json"):
         save(code, "soilgrids.json", get_json(f"https://rest.isric.org/soilgrids/v2.0/properties/query?{soil_params}"))
     time.sleep(PAUSE)
+    fetch_soilgrids_texture(code, lat, lon)
 
     print(f"[{code}] Open-Meteo archive (ERA5) daily 1995-2024...", flush=True)
     om_params = urllib.parse.urlencode({

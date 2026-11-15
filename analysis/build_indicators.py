@@ -16,8 +16,16 @@ data/processed/<region>/:
                         BOTH methods (OLS t-dist + Mann-Kendall/Sen), suggested
                         priorities per PRD 6.2 (save_water / protect_soil /
                         yield_), NDVI fields (low confidence)
-  soil.json             SOC g/kg and pH (0-30 cm, depth weights 5:10:15), SOC class
+  soil.json             SOC g/kg and pH (0-30 cm, depth weights 5:10:15), SOC class,
+                        estimated AWC (Saxton & Rawls 2006 pedotransfer, awc_is_estimate)
+  indicators.json       ... + soil_water_capacity (AWC estimate), historical_drought
+                        (SPI-like z-scores, drought_frequency_pct, severe_drought_years)
+                        and rule_trace (plain-English why for every level/flag/priority)
   data_quality.md       missing-data share, gaps, source disagreements, caveats
+  data_quality.json     machine-readable provenance contract: sources, spatial
+                        resolutions, observation windows, missing rates, source
+                        disagreement, spatial caveat (statistical confidence vs
+                        grid-cell representativeness)
 
 v1 (fetch_real_data.py) is untouched and remains the reference implementation.
 
@@ -269,6 +277,127 @@ def rel_diff_confidence(power: float, era5: float, missing_share: float, unit_ma
     return level, round(rel, 4)
 
 
+# ----------------------------------------------------------------- soil water capacity (pedotransfer)
+
+def awc_saxton_rawls(sand_frac: float, clay_frac: float, om_pct: float) -> tuple[float, float]:
+    """Volumetric water content at -33 kPa (field capacity) and -1500 kPa (wilting point).
+
+    Saxton & Rawls (2006), Soil Sci Soc Am J 70:1569-1578, Table 1 Eqs 1-2.
+    sand/clay are fractions (0-1); organic matter is in percent.
+    Validity domain (per the paper): clay <= 60%, organic matter moderate
+    (results flagged questionable for SOC > 8%).
+    """
+    t15 = (-0.024 * sand_frac + 0.487 * clay_frac + 0.006 * om_pct
+           + 0.005 * sand_frac * om_pct - 0.013 * clay_frac * om_pct
+           + 0.068 * sand_frac * clay_frac + 0.031)
+    theta1500 = t15 + 0.14 * t15 - 0.02
+    t33 = (-0.251 * sand_frac + 0.195 * clay_frac + 0.011 * om_pct
+           + 0.006 * sand_frac * om_pct - 0.027 * clay_frac * om_pct
+           + 0.452 * sand_frac * clay_frac + 0.299)
+    theta33 = t33 + 1.283 * t33 ** 2 - 0.374 * t33 - 0.015
+    return theta33, theta1500
+
+
+def awc_from_texture(raw_dir: Path, soc_g_kg: float) -> dict | None:
+    """Estimated Available Water Capacity from SoilGrids texture + SOC.
+
+    Requires data/raw/<region>/soilgrids_texture.json (sand, silt, clay means at
+    0-5, 5-15, 15-30 cm). Uses the Saxton & Rawls (2006) pedotransfer with
+    organic matter = SOC x 1.724 (Van Bemmelen factor), depth-weighted 5:10:15,
+    and converts the volumetric difference (theta33 - theta1500) to mm of
+    plant-available water per meter of soil (x 1000).
+
+    Returns None when the texture file is absent (SoilGrids fetch failed), so
+    the output stays honest instead of inventing a number.
+    """
+    path = raw_dir / "soilgrids_texture.json"
+    if not path.exists():
+        return None
+    doc = json.loads(path.read_text())
+    layers = {l["name"]: {d["label"]: d["values"]["mean"] for d in l["depths"]}
+              for l in doc["properties"]["layers"]}
+    if not {"sand", "silt", "clay"} <= set(layers):
+        return None
+    units = {l["name"]: l.get("units") or l.get("unit_measure", {}).get("mapped_units", "g/kg")
+             for l in doc["properties"]["layers"]}
+
+    def to_pct(gkg_val: float, unit: str) -> float:
+        if unit == "g/kg":
+            return gkg_val / 10.0
+        if unit == "percent":
+            return gkg_val
+        raise ValueError(f"unexpected SoilGrids texture unit: {unit}")
+
+    weights = {"0-5cm": 5, "5-15cm": 10, "15-30cm": 15}
+    om_pct = soc_g_kg / 10.0 * 1.724  # g/kg -> %, then SOC -> SOM (Van Bemmelen)
+    awc_vol = fc_vol = wp_vol = wsum = 0.0
+    tex_sums = []
+    for k, w in weights.items():
+        sand = to_pct(layers["sand"][k], units["sand"])
+        silt = to_pct(layers["silt"][k], units["silt"])
+        clay = to_pct(layers["clay"][k], units["clay"])
+        tex_sums.append(sand + silt + clay)
+        theta33, theta1500 = awc_saxton_rawls(sand / 100.0, clay / 100.0, om_pct)
+        awc_vol += w * (theta33 - theta1500)
+        fc_vol += w * theta33
+        wp_vol += w * theta1500
+        wsum += w
+    awc_vol /= wsum
+    fc_vol /= wsum
+    wp_vol /= wsum
+    tex_dev = max(abs(s - 100.0) for s in tex_sums)
+    if tex_dev > 15.0:
+        note = (f"texture fractions sum {min(tex_sums):.0f}-{max(tex_sums):.0f}% "
+                f"(expect ~100%); treat with extra caution")
+    else:
+        note = "texture fractions sum to ~100%; pedotransfer inputs consistent"
+    return {
+        "awc_mm_per_m": round(awc_vol * 1000.0, 1),
+        "field_capacity_vol_pct": round(fc_vol * 100.0, 1),
+        "wilting_point_vol_pct": round(wp_vol * 100.0, 1),
+        "organic_matter_pct": round(om_pct, 2),
+        "awc_is_estimate": True,
+        "awc_depth": "0-30 cm depth-weighted 5:10:15",
+        "awc_method": ("Saxton & Rawls (2006) Soil Sci Soc Am J 70:1569-1578 Table 1 Eqs 1-2 "
+                       "pedotransfer from ISRIC SoilGrids sand/silt/clay + SOC (OM = SOC x 1.724)"),
+        "awc_check": note,
+    }
+
+
+# ----------------------------------------------------------------- historical drought
+
+def drought_stats(years: list[int], annual: dict[int, float]) -> dict:
+    """Historical drought frequency and shock years from annual rainfall.
+
+    SPI-like z-score per year: z = (rain - mean) / std over the full window
+    (sample standard deviation). A severe drought year is z <= -1.0, matching
+    the WMO SPI 'severely dry' boundary. The threshold is a placeholder pending
+    Younes; changing it is a one-line edit in this function.
+    """
+    ys = [annual[y] for y in years if y in annual and annual[y] is not None]
+    mean = statistics.mean(ys)
+    std = statistics.stdev(ys)
+    z_by_year = {}
+    if std > 0:
+        z_by_year = {int(y): (annual[y] - mean) / std for y in years if y in annual and annual[y] is not None}
+    severe = sorted(y for y, z in z_by_year.items() if z <= -1.0)
+    return {
+        "method": "SPI-like annual rainfall z-score: z = (rain - mean) / std over the window; "
+                  "severe drought year = z <= -1.0 (WMO SPI 'severely dry' boundary, pending Younes)",
+        "window": f"{years[0]}-{years[-1]}" if years else "",
+        "n_years": len(ys),
+        "mean_mm": round(mean, 1),
+        "std_mm": round(std, 1),
+        "severe_boundary_mm": round(mean - 1.0 * std, 1),
+        "drought_frequency_pct": round(100.0 * len(severe) / len(ys), 1) if ys else None,
+        "severe_drought_years": severe,
+        "zscore_by_year": {str(y): round(z, 2) for y, z in z_by_year.items()},
+        "confidence": "medium",
+        "confidence_note": "single climate source (NASA POWER); boundary threshold pending Younes; "
+                           "z-scores are distribution-based, not a fitted SPI distribution",
+    }
+
+
 # ----------------------------------------------------------------- soil & NDVI
 
 def soil_from_raw(raw_dir: Path, thresholds: dict | None = None) -> dict:
@@ -279,7 +408,7 @@ def soil_from_raw(raw_dir: Path, thresholds: dict | None = None) -> dict:
     soc = sum(weights[k] * layers["soc"][k] for k in weights) / 30.0 / 10.0
     ph = sum(weights[k] * layers["phh2o"][k] for k in weights) / 30.0 / 10.0
     soc_class_rule = soc_class_rule_str(thresholds)
-    return {
+    soil = {
         "source": "ISRIC SoilGrids v2.0 (offline from data/raw)",
         "method": "0-30 cm depth-weighted 5:10:15, dg/kg divided by 10 (pH x10 divided by 10)",
         "soc_g_per_kg": round(soc, 2),
@@ -290,6 +419,81 @@ def soil_from_raw(raw_dir: Path, thresholds: dict | None = None) -> dict:
         "confidence_note": "SoilGrids is a 250 m model estimate; PRD section 6.4: soil is at best medium",
         "soc_class_rule": soc_class_rule,
     }
+    awc = awc_from_texture(raw_dir, soc)
+    if awc is not None:
+        soil.update(awc)
+        soil["confidence_note"] += ("; AWC is an estimated pedotransfer output "
+                                    "(Saxton & Rawls 2006), not a measured value")
+    return soil
+
+
+def rule_trace_block(ind: dict, t: dict) -> dict:
+    """Plain-English justification strings for every flagged level/priority.
+
+    Built deterministically from the SAME numbers already stored in
+    indicators.json — a recommendation is only as transparent as the rule that
+    produced it. No new numbers are computed here.
+    """
+    rain, stress, trend = ind["rainfall_mm"], ind["water_stress"], ind["rainfall_trend"]
+    soc, ph = ind["organic_carbon"], ind["ph"]
+    prio, awc, drought = ind["suggested_priorities"], ind.get("soil_water_capacity"), ind.get("historical_drought", {})
+    recent_window = stress["window"].split(" vs ")[1]
+    trace = {
+        "purpose": "plain-English why for every level/flag/priority; each string cites the exact rule "
+                   "and the numbers stored in this file",
+        "water_stress": (
+            f"Flagged because the mean annual rainfall of {recent_window} ({rain['value']} mm) is "
+            f"{stress['value'] * 100:.1f}% below this region's own 1995-2014 reference mean "
+            f"(rule: deficit / 0.30, capped at 1.0 — PRD v3 section 6.2 rescaling). "
+            f"Definition still pending Alaa."),
+        "organic_carbon": (
+            f"Soil flagged as {soc['class']} because top-30-cm organic carbon is {soc['g_per_kg']} g/kg "
+            f"and the rule is low < 10, medium 10-20, high > 20 g/kg "
+            f"({soc_class_rule_str()}, pending Younes)."),
+        "soil_water_capacity": (
+            f"AWC {awc['awc_mm_per_m']} mm/m is flagged as an estimate because it comes from the "
+            f"Saxton & Rawls (2006) pedotransfer applied to SoilGrids model texture (250 m pixel), "
+            f"not from lab measurement; field capacity {awc.get('field_capacity_vol_pct')} vol%, "
+            f"wilting point {awc.get('wilting_point_vol_pct')} vol%.") if awc and awc.get("awc_mm_per_m") is not None else (
+            "No AWC available: SoilGrids texture layers were not fetched, and no value is invented."),
+        "rainfall_trend": (
+            f"Trend flagged '{trend['label']}' because OLS p={trend['ols_p']} and Mann-Kendall p={trend['mk_p']} "
+            f"(both must be < {t['trend_p']} and same sign); Sen slope {trend['sen_slope_mm_per_decade']} mm/decade; "
+            f"the moving block bootstrap 95% CI is [{trend['mbb_ci_low_95']}, {trend['mbb_ci_high_95']}] mm/decade "
+            f"({'' if trend['statistically_significant_95'] else 'includes '}0, so it is "
+            f"{'significant' if trend['statistically_significant_95'] else 'not significant'} at 95%)."),
+        "hot_days": (
+            f"Counted only inside the grain-filling window (months {t['gf_months']}) when daily max temperature "
+            f"exceeds {t['hot']} degrees C (threshold pending Younes); value is the 1995-2024 mean of yearly counts "
+            f"= {ind['hot_days']['value']} days/yr."),
+        "frost_days": (
+            f"Counted only inside the late-frost window (months {t['lf_months']}) when daily min temperature "
+            f"is below {t['frost']} degrees C; value is the 1995-2024 mean of yearly counts "
+            f"= {ind['frost_days']['value']} nights/yr."),
+        "extreme_rain_days": (
+            f"Counted per calendar year whenever daily rain exceeds {t['extreme']} mm; value is the 1995-2024 mean."),
+        "longest_dry_spell_days": (
+            f"A dry day is rain < {t['dry']} mm (strict), and spells are never merged across missing days; "
+            f"only the growing season (months {t['gs_months']}) is searched."),
+        "historical_drought": (
+            f"{drought.get('drought_frequency_pct')}% of the years in {drought.get('window')} were severe droughts "
+            f"(annual rain <= {drought.get('severe_boundary_mm')} mm, i.e. z <= -1.0): {drought.get('severe_drought_years')}. "
+            f"Boundary pending Younes.") if drought.get("drought_frequency_pct") is not None else
+            "Drought statistics unavailable.",
+        "suggested_priorities": (
+            f"Weights follow PRD v3 section 6.2: water need = min(1, stress/0.3) using stress "
+            f"{prio['basis']['water_stress_used']}; soil need = 1.0/0.5/0.1 for low/medium/high SOC "
+            f"(class {prio['basis']['soc_class']}); yield gets the remainder, floor 0.2; the three needs "
+            f"are rescaled to sum 100 with largest-remainder rounding "
+            f"(got {prio['save_water']}/{prio['protect_soil']}/{prio['yield_']})."),
+        "ph": (
+            f"pH {ph['value']} is the 0-30 cm depth-weighted SoilGrids pH(H2O) estimate; reported without a "
+            f"level flag because no pH banding rule has been agreed yet."),
+        "ndvi": (
+            "Yield baseline is a rough proxy: mean spring peak NDVI of a 5x5 km MODIS patch (2020-2024), "
+            "normalized 0.25-0.75 to [0,1]; no cropland mask, no pixel QA filter, 5 years only."),
+    }
+    return trace
 
 
 def soc_class_rule_str(thresholds: dict | None = None) -> str:
@@ -431,6 +635,7 @@ def build_region(code: str, raw_dir: Path, out_dir: Path, thr: dict, stamp: str 
     cls = soc_class(soil["soc_g_per_kg"], thr)
     ndvi = ndvi_from_raw(raw_dir)
     prio = suggested_priorities(ws, cls)
+    drought = drought_stats([y for y in years if y in annual], annual)
 
     def metric(value, unit, window, crosscheck, conf):
         return {"value": value, "unit": unit, "window": window,
@@ -468,9 +673,23 @@ def build_region(code: str, raw_dir: Path, out_dir: Path, thr: dict, stamp: str 
         "organic_carbon": {"g_per_kg": soil["soc_g_per_kg"], "class": cls, "unit": "g/kg, 0-30 cm depth-weighted 5:10:15",
                            "confidence": soil["confidence"]},
         "ph": {"value": soil["ph"], "unit": "pH (H2O), 0-30 cm depth-weighted 5:10:15", "confidence": soil["confidence"]},
+        "soil_water_capacity": (
+            {"awc_mm_per_m": soil["awc_mm_per_m"], "field_capacity_vol_pct": soil["field_capacity_vol_pct"],
+             "wilting_point_vol_pct": soil["wilting_point_vol_pct"], "awc_is_estimate": soil["awc_is_estimate"],
+             "depth": soil["awc_depth"], "method": soil["awc_method"], "unit": "mm of plant-available water per m soil",
+             "confidence": "low",
+             "confidence_note": "pedotransfer estimate (Saxton & Rawls 2006) from SoilGrids 250 m model texture, "
+                                "not a lab measurement; " + soil["awc_check"]}
+            if "awc_mm_per_m" in soil else
+            {"awc_mm_per_m": None, "awc_is_estimate": None, "unit": "mm of plant-available water per m soil",
+             "confidence": "unavailable",
+             "confidence_note": "SoilGrids texture layers not fetched (soilgrids_texture.json absent); "
+                                "no value invented"}),
         "ndvi": ndvi,
+        "historical_drought": drought,
         "suggested_priorities": {**prio, "rule": "PRD v3 section 6.2", "basis": {"water_stress_used": round(ws, 4), "soc_class": cls}},
     }
+    indicators["rule_trace"] = rule_trace_block(indicators, t)
     if stamp:
         indicators["run_date"] = stamp
 
@@ -505,6 +724,7 @@ def build_region(code: str, raw_dir: Path, out_dir: Path, thr: dict, stamp: str 
     write_data_quality(code, out_dir, power, era5, missing, yearly, annual, annual_e,
                        power_rain_30yr, era5_rain, power_hot_30yr, era5_hot_30yr, power_frost_30yr, era5_frost_30yr,
                        conf_rain, conf_hot, conf_frost, rel_rain, rel_hot, rel_frost, t, thr, stamp)
+    write_data_quality_json(code, out_dir, indicators, missing, era5, len(power), t, stamp)
     return indicators
 
 
@@ -578,6 +798,102 @@ def write_data_quality(code, out_dir, power, era5, missing, yearly, annual, annu
         "",
     ]
     (out_dir / "data_quality.md").write_text("\n".join(lines), encoding="utf-8")
+
+
+def write_data_quality_json(code, out_dir, ind, missing, era5, power_days, t, stamp) -> None:
+    """Machine-readable data quality / provenance contract (data_quality.json).
+
+    Complements data_quality.md: dataset sources, spatial resolutions,
+    observation windows, missing-value rates, source disagreement, and the
+    explicit spatial caveat separating statistical confidence from grid-cell
+    representativeness. Deterministic (no timestamps unless --stamp).
+    """
+    n_power = power_days
+    doc = {
+        "region": code,
+        "generated_by": "analysis/build_indicators.py (offline; no API calls)",
+        "run_stamp": stamp,
+        "sources": [
+            {
+                "name": "NASA POWER",
+                "product": "daily point request, parameters PRECTOTCORR/T2M_MAX/T2M_MIN, community AG",
+                "role": "primary climate source",
+                "spatial_resolution": "gridded meteorology at 0.5 deg x 0.625 deg (~55 km, MERRA-2 based), "
+                                      "interpolated to the requested point; NOT a station measurement",
+                "observation_window": "1995-01-01..2024-12-31, daily",
+                "variables": ["PRECTOTCORR", "T2M_MAX", "T2M_MIN"],
+                "missing_value_rate_pct": {
+                    "PRECTOTCORR": round(missing["pr"] * 100, 2),
+                    "T2M_MAX": round(missing["tmax"] * 100, 2),
+                    "T2M_MIN": round(missing["tmin"] * 100, 2),
+                },
+                "missing_value_rule": "values <= -999 treated as missing (converted to null/NaN)",
+                "days_in_record": n_power,
+            },
+            {
+                "name": "Open-Meteo ERA5 archive",
+                "product": "daily precipitation_sum/temperature_2m_max/temperature_2m_min, ERA5-Land blended with ERA5",
+                "role": "independent cross-check source",
+                "spatial_resolution": "reanalysis grid ~11 km (ERA5-Land) / ~31 km (ERA5) at the requested point",
+                "observation_window": "1995-01-01..2024-12-31, daily",
+                "variables": ["precipitation_sum", "temperature_2m_max", "temperature_2m_min"],
+                "missing_value_rate_pct": {
+                    "all_variables": round(float(era5[["pr", "tmax", "tmin"]].isna().any(axis=1).mean()) * 100, 2),
+                },
+            },
+            {
+                "name": "ISRIC SoilGrids v2.0",
+                "product": "soc + phh2o (+ sand/silt/clay when soilgrids_texture.json exists), value=mean",
+                "role": "static soil model estimate",
+                "spatial_resolution": "250 m raster",
+                "observation_window": "static model snapshot (no time dimension; current release trained on 2016-2021 data)",
+                "depths_cm": ["0-5", "5-15", "15-30"],
+                "missing_value_rate_pct": None,
+                "awc_is_estimate": ind.get("soil_water_capacity", {}).get("awc_is_estimate"),
+            },
+            {
+                "name": "MODIS MOD13Q1 (ORNL DAAC)",
+                "product": "16-day NDVI composite, 5x5 km patch mean, spring windows 2020-2024",
+                "role": "NDVI yield-baseline proxy",
+                "spatial_resolution": "250 m raster (patch mean), 16-day composites",
+                "observation_window": "2020-2024 spring composites only",
+                "missing_value_rate_pct": None,
+            },
+        ],
+        "source_disagreement": {
+            "rule": "POWER vs ERA5 relative difference <= 10% high, <= 25% medium, else low; "
+                    "downgraded one level when > 5% of the relevant POWER days are missing",
+            "annual_rain": {"power_mm_per_yr": ind["rainfall_30yr_mean_mm"]["value"],
+                            "era5_mm_per_yr": ind["rainfall_30yr_mean_mm"]["crosscheck_value"],
+                            "confidence": ind["rainfall_mm"]["confidence"]},
+            "hot_days": {"power_days_per_yr": ind["hot_days"]["value"],
+                         "era5_days_per_yr": ind["hot_days"]["crosscheck_value"],
+                         "confidence": ind["hot_days"]["confidence"]},
+            "frost_days": {"power_days_per_yr": ind["frost_days"]["value"],
+                           "era5_days_per_yr": ind["frost_days"]["crosscheck_value"],
+                           "confidence": ind["frost_days"]["confidence"]},
+        },
+        "confidence_summary": {
+            "rainfall": ind["rainfall_mm"]["confidence"],
+            "hot_days": ind["hot_days"]["confidence"],
+            "frost_days": ind["frost_days"]["confidence"],
+            "rainfall_trend": ind["rainfall_trend"]["confidence"],
+            "water_stress": ind["water_stress"]["confidence"],
+            "soil": ind["organic_carbon"]["confidence"],
+            "ndvi": ind["ndvi"].get("confidence", "low"),
+        },
+        "spatial_caveat": (
+            "Two different kinds of uncertainty must not be conflated. (1) STATISTICAL CONFIDENCE - e.g. the "
+            "moving block bootstrap 95% CI on the rainfall trend, or the POWER-vs-ERA5 agreement rule - says how "
+            "certain we are about the value AT the queried cell itself, given measurement noise, missing data and "
+            "autocorrelation. It says NOTHING about how representative that single cell is. (2) GRID-CELL "
+            "REPRESENTATIVENESS - a NASA POWER value is one ~55 km model cell, ERA5 one ~11 km cell, SoilGrids and "
+            "MODIS one 250 m pixel; none of them represents the whole region or a specific field, and soil texture "
+            "or SOC can vary within a few meters on the ground. A trend can therefore be statistically solid "
+            "(small CI) while still only describing one coarse cell - regional conclusions inherit the coarser "
+            "scale, and the soil point values must be verified on farm before use."),
+    }
+    (out_dir / "data_quality.json").write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 # ----------------------------------------------------------------- entry point

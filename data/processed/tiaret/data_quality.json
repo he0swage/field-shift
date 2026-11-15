@@ -1,0 +1,91 @@
+{
+  "region": "tiaret",
+  "generated_by": "analysis/build_indicators.py (offline; no API calls)",
+  "run_stamp": "2026-11-15 gap-patch",
+  "sources": [
+    {
+      "name": "NASA POWER",
+      "product": "daily point request, parameters PRECTOTCORR/T2M_MAX/T2M_MIN, community AG",
+      "role": "primary climate source",
+      "spatial_resolution": "gridded meteorology at 0.5 deg x 0.625 deg (~55 km, MERRA-2 based), interpolated to the requested point; NOT a station measurement",
+      "observation_window": "1995-01-01..2024-12-31, daily",
+      "variables": [
+        "PRECTOTCORR",
+        "T2M_MAX",
+        "T2M_MIN"
+      ],
+      "missing_value_rate_pct": {
+        "PRECTOTCORR": 0.0,
+        "T2M_MAX": 0.0,
+        "T2M_MIN": 0.0
+      },
+      "missing_value_rule": "values <= -999 treated as missing (converted to null/NaN)",
+      "days_in_record": 10958
+    },
+    {
+      "name": "Open-Meteo ERA5 archive",
+      "product": "daily precipitation_sum/temperature_2m_max/temperature_2m_min, ERA5-Land blended with ERA5",
+      "role": "independent cross-check source",
+      "spatial_resolution": "reanalysis grid ~11 km (ERA5-Land) / ~31 km (ERA5) at the requested point",
+      "observation_window": "1995-01-01..2024-12-31, daily",
+      "variables": [
+        "precipitation_sum",
+        "temperature_2m_max",
+        "temperature_2m_min"
+      ],
+      "missing_value_rate_pct": {
+        "all_variables": 0.0
+      }
+    },
+    {
+      "name": "ISRIC SoilGrids v2.0",
+      "product": "soc + phh2o (+ sand/silt/clay when soilgrids_texture.json exists), value=mean",
+      "role": "static soil model estimate",
+      "spatial_resolution": "250 m raster",
+      "observation_window": "static model snapshot (no time dimension; current release trained on 2016-2021 data)",
+      "depths_cm": [
+        "0-5",
+        "5-15",
+        "15-30"
+      ],
+      "missing_value_rate_pct": null,
+      "awc_is_estimate": true
+    },
+    {
+      "name": "MODIS MOD13Q1 (ORNL DAAC)",
+      "product": "16-day NDVI composite, 5x5 km patch mean, spring windows 2020-2024",
+      "role": "NDVI yield-baseline proxy",
+      "spatial_resolution": "250 m raster (patch mean), 16-day composites",
+      "observation_window": "2020-2024 spring composites only",
+      "missing_value_rate_pct": null
+    }
+  ],
+  "source_disagreement": {
+    "rule": "POWER vs ERA5 relative difference <= 10% high, <= 25% medium, else low; downgraded one level when > 5% of the relevant POWER days are missing",
+    "annual_rain": {
+      "power_mm_per_yr": 575.3,
+      "era5_mm_per_yr": 401.7,
+      "confidence": "low"
+    },
+    "hot_days": {
+      "power_days_per_yr": 9.2,
+      "era5_days_per_yr": 3.3,
+      "confidence": "low"
+    },
+    "frost_days": {
+      "power_days_per_yr": 1.1,
+      "era5_days_per_yr": 1.4,
+      "confidence": "medium"
+    }
+  },
+  "confidence_summary": {
+    "rainfall": "low",
+    "hot_days": "low",
+    "frost_days": "medium",
+    "rainfall_trend": "low",
+    "water_stress": "pending Alaa",
+    "soil": "medium",
+    "ndvi": "low"
+  },
+  "spatial_caveat": "Two different kinds of uncertainty must not be conflated. (1) STATISTICAL CONFIDENCE - e.g. the moving block bootstrap 95% CI on the rainfall trend, or the POWER-vs-ERA5 agreement rule - says how certain we are about the value AT the queried cell itself, given measurement noise, missing data and autocorrelation. It says NOTHING about how representative that single cell is. (2) GRID-CELL REPRESENTATIVENESS - a NASA POWER value is one ~55 km model cell, ERA5 one ~11 km cell, SoilGrids and MODIS one 250 m pixel; none of them represents the whole region or a specific field, and soil texture or SOC can vary within a few meters on the ground. A trend can therefore be statistically solid (small CI) while still only describing one coarse cell - regional conclusions inherit the coarser scale, and the soil point values must be verified on farm before use."
+}

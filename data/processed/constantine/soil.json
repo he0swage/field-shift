@@ -13,6 +13,14 @@
     "15-30cm": 126
   },
   "confidence": "medium",
-  "confidence_note": "SoilGrids is a 250 m model estimate; PRD section 6.4: soil is at best medium",
-  "soc_class_rule": "low < 10, medium 10-20, high > 20 g/kg (domain/thresholds.json, pending Younes)"
+  "confidence_note": "SoilGrids is a 250 m model estimate; PRD section 6.4: soil is at best medium; AWC is an estimated pedotransfer output (Saxton & Rawls 2006), not a measured value",
+  "soc_class_rule": "low < 10, medium 10-20, high > 20 g/kg (domain/thresholds.json, pending Younes)",
+  "awc_mm_per_m": 140.1,
+  "field_capacity_vol_pct": 34.8,
+  "wilting_point_vol_pct": 20.8,
+  "organic_matter_pct": 2.95,
+  "awc_is_estimate": true,
+  "awc_depth": "0-30 cm depth-weighted 5:10:15",
+  "awc_method": "Saxton & Rawls (2006) Soil Sci Soc Am J 70:1569-1578 Table 1 Eqs 1-2 pedotransfer from ISRIC SoilGrids sand/silt/clay + SOC (OM = SOC x 1.724)",
+  "awc_check": "texture fractions sum to ~100%; pedotransfer inputs consistent"
 }

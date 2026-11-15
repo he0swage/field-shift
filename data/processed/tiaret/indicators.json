@@ -102,6 +102,17 @@
     "unit": "pH (H2O), 0-30 cm depth-weighted 5:10:15",
     "confidence": "medium"
   },
+  "soil_water_capacity": {
+    "awc_mm_per_m": 140.6,
+    "field_capacity_vol_pct": 33.0,
+    "wilting_point_vol_pct": 18.9,
+    "awc_is_estimate": true,
+    "depth": "0-30 cm depth-weighted 5:10:15",
+    "method": "Saxton & Rawls (2006) Soil Sci Soc Am J 70:1569-1578 Table 1 Eqs 1-2 pedotransfer from ISRIC SoilGrids sand/silt/clay + SOC (OM = SOC x 1.724)",
+    "unit": "mm of plant-available water per m soil",
+    "confidence": "low",
+    "confidence_note": "pedotransfer estimate (Saxton & Rawls 2006) from SoilGrids 250 m model texture, not a lab measurement; texture fractions sum to ~100%; pedotransfer inputs consistent"
+  },
   "ndvi": {
     "available": true,
     "source": "MODIS MOD13Q1 250 m via ORNL DAAC REST (offline from data/raw)",
@@ -120,6 +131,58 @@
     "caveat": "no cropland mask (ESA WorldCover class 40 not applied), no pixel QA filter, 5 years only",
     "confidence": "low"
   },
+  "historical_drought": {
+    "method": "SPI-like annual rainfall z-score: z = (rain - mean) / std over the window; severe drought year = z <= -1.0 (WMO SPI 'severely dry' boundary, pending Younes)",
+    "window": "1995-2024",
+    "n_years": 30,
+    "mean_mm": 575.3,
+    "std_mm": 147.6,
+    "severe_boundary_mm": 427.6,
+    "drought_frequency_pct": 23.3,
+    "severe_drought_years": [
+      1998,
+      2000,
+      2002,
+      2005,
+      2020,
+      2023,
+      2024
+    ],
+    "zscore_by_year": {
+      "1995": -0.23,
+      "1996": 2.07,
+      "1997": 0.38,
+      "1998": -1.27,
+      "1999": -0.04,
+      "2000": -1.58,
+      "2001": -0.49,
+      "2002": -1.32,
+      "2003": 0.37,
+      "2004": 0.3,
+      "2005": -1.17,
+      "2006": 0.11,
+      "2007": 0.23,
+      "2008": 0.09,
+      "2009": 1.25,
+      "2010": 1.32,
+      "2011": 0.81,
+      "2012": 0.67,
+      "2013": 1.8,
+      "2014": 0.51,
+      "2015": 0.21,
+      "2016": 0.29,
+      "2017": 0.21,
+      "2018": 1.2,
+      "2019": 0.02,
+      "2020": -1.11,
+      "2021": -0.78,
+      "2022": -0.74,
+      "2023": -1.55,
+      "2024": -1.57
+    },
+    "confidence": "medium",
+    "confidence_note": "single climate source (NASA POWER); boundary threshold pending Younes; z-scores are distribution-based, not a fitted SPI distribution"
+  },
   "suggested_priorities": {
     "save_water": 32,
     "protect_soil": 34,
@@ -130,5 +193,20 @@
       "soc_class": "medium"
     }
   },
-  "run_date": "2026-11-15 mbb-trend"
+  "rule_trace": {
+    "purpose": "plain-English why for every level/flag/priority; each string cites the exact rule and the numbers stored in this file",
+    "water_stress": "Flagged because the mean annual rainfall of 2015-2024 (519.1 mm) is 14.0% below this region's own 1995-2014 reference mean (rule: deficit / 0.30, capped at 1.0 — PRD v3 section 6.2 rescaling). Definition still pending Alaa.",
+    "organic_carbon": "Soil flagged as medium because top-30-cm organic carbon is 12.38 g/kg and the rule is low < 10, medium 10-20, high > 20 g/kg (low < 10.0, medium 10.0-20.0, high > 20.0 g/kg (pending Younes), pending Younes).",
+    "soil_water_capacity": "AWC 140.6 mm/m is flagged as an estimate because it comes from the Saxton & Rawls (2006) pedotransfer applied to SoilGrids model texture (250 m pixel), not from lab measurement; field capacity 33.0 vol%, wilting point 18.9 vol%.",
+    "rainfall_trend": "Trend flagged 'no clear trend' because OLS p=0.5093 and Mann-Kendall p=0.5441 (both must be < 0.05 and same sign); Sen slope -16.8 mm/decade; the moving block bootstrap 95% CI is [-95.2, 61.7] mm/decade (includes 0, so it is not significant at 95%).",
+    "hot_days": "Counted only inside the grain-filling window (months [4, 5, 6]) when daily max temperature exceeds 35.0 degrees C (threshold pending Younes); value is the 1995-2024 mean of yearly counts = 9.2 days/yr.",
+    "frost_days": "Counted only inside the late-frost window (months [3, 4]) when daily min temperature is below 0.0 degrees C; value is the 1995-2024 mean of yearly counts = 1.1 nights/yr.",
+    "extreme_rain_days": "Counted per calendar year whenever daily rain exceeds 20.0 mm; value is the 1995-2024 mean.",
+    "longest_dry_spell_days": "A dry day is rain < 1.0 mm (strict), and spells are never merged across missing days; only the growing season (months [10, 11, 12, 1, 2, 3, 4, 5]) is searched.",
+    "historical_drought": "23.3% of the years in 1995-2024 were severe droughts (annual rain <= 427.6 mm, i.e. z <= -1.0): [1998, 2000, 2002, 2005, 2020, 2023, 2024]. Boundary pending Younes.",
+    "suggested_priorities": "Weights follow PRD v3 section 6.2: water need = min(1, stress/0.3) using stress 0.1397; soil need = 1.0/0.5/0.1 for low/medium/high SOC (class medium); yield gets the remainder, floor 0.2; the three needs are rescaled to sum 100 with largest-remainder rounding (got 32/34/34).",
+    "ph": "pH 7.57 is the 0-30 cm depth-weighted SoilGrids pH(H2O) estimate; reported without a level flag because no pH banding rule has been agreed yet.",
+    "ndvi": "Yield baseline is a rough proxy: mean spring peak NDVI of a 5x5 km MODIS patch (2020-2024), normalized 0.25-0.75 to [0,1]; no cropland mask, no pixel QA filter, 5 years only."
+  },
+  "run_date": "2026-11-15 gap-patch"
 }
