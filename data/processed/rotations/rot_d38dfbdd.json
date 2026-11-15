@@ -1,0 +1,354 @@
+{
+  "id": "rot_d38dfbdd",
+  "createdAt": "2026-11-14T22:37:38.896Z",
+  "regionName": "Occitanie — démo",
+  "requestedCrops": [
+    "ble",
+    "lentille",
+    "orge"
+  ],
+  "weights": {
+    "water": 34,
+    "soil": 33,
+    "yield": 33
+  },
+  "totalPermutations": 6,
+  "bestRotation": {
+    "rank": 1,
+    "sequence": [
+      {
+        "id": "wheat",
+        "name": "wheat",
+        "scientificName": "Triticum durum",
+        "family": "cereal",
+        "waterNeed": 0.52,
+        "droughtTolerance": 0.55,
+        "nitrogenFixing": false
+      },
+      {
+        "id": "lentil",
+        "name": "lentil",
+        "scientificName": "Lens culinaris",
+        "family": "legume",
+        "waterNeed": 0.3,
+        "droughtTolerance": 0.85,
+        "nitrogenFixing": true
+      },
+      {
+        "id": "barley",
+        "name": "barley",
+        "scientificName": "Hordeum vulgare",
+        "family": "cereal",
+        "waterNeed": 0.38,
+        "droughtTolerance": 0.8,
+        "nitrogenFixing": false
+      }
+    ],
+    "cropNames": [
+      "wheat",
+      "lentil",
+      "barley"
+    ],
+    "scores": {
+      "water": 65,
+      "soil": 87,
+      "yield": 64,
+      "weighted": 72
+    },
+    "metrics": {
+      "averageWaterNeed": 0.4,
+      "totalNitrogenImpactKg": -30,
+      "distinctFamilies": 2
+    }
+  },
+  "rotations": [
+    {
+      "rank": 1,
+      "sequence": [
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "wheat",
+        "lentil",
+        "barley"
+      ],
+      "scores": {
+        "water": 65,
+        "soil": 87,
+        "yield": 64,
+        "weighted": 72
+      },
+      "metrics": {
+        "averageWaterNeed": 0.4,
+        "totalNitrogenImpactKg": -30,
+        "distinctFamilies": 2
+      }
+    },
+    {
+      "rank": 2,
+      "sequence": [
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "barley",
+        "lentil",
+        "wheat"
+      ],
+      "scores": {
+        "water": 65,
+        "soil": 87,
+        "yield": 64,
+        "weighted": 72
+      },
+      "metrics": {
+        "averageWaterNeed": 0.4,
+        "totalNitrogenImpactKg": -30,
+        "distinctFamilies": 2
+      }
+    },
+    {
+      "rank": 3,
+      "sequence": [
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "lentil",
+        "wheat",
+        "barley"
+      ],
+      "scores": {
+        "water": 65,
+        "soil": 69,
+        "yield": 64,
+        "weighted": 66
+      },
+      "metrics": {
+        "averageWaterNeed": 0.4,
+        "totalNitrogenImpactKg": -30,
+        "distinctFamilies": 2
+      }
+    },
+    {
+      "rank": 4,
+      "sequence": [
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "lentil",
+        "barley",
+        "wheat"
+      ],
+      "scores": {
+        "water": 65,
+        "soil": 69,
+        "yield": 64,
+        "weighted": 66
+      },
+      "metrics": {
+        "averageWaterNeed": 0.4,
+        "totalNitrogenImpactKg": -30,
+        "distinctFamilies": 2
+      }
+    },
+    {
+      "rank": 5,
+      "sequence": [
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        }
+      ],
+      "cropNames": [
+        "wheat",
+        "barley",
+        "lentil"
+      ],
+      "scores": {
+        "water": 65,
+        "soil": 54,
+        "yield": 64,
+        "weighted": 61
+      },
+      "metrics": {
+        "averageWaterNeed": 0.4,
+        "totalNitrogenImpactKg": -30,
+        "distinctFamilies": 2
+      }
+    },
+    {
+      "rank": 6,
+      "sequence": [
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        }
+      ],
+      "cropNames": [
+        "barley",
+        "wheat",
+        "lentil"
+      ],
+      "scores": {
+        "water": 65,
+        "soil": 54,
+        "yield": 64,
+        "weighted": 61
+      },
+      "metrics": {
+        "averageWaterNeed": 0.4,
+        "totalNitrogenImpactKg": -30,
+        "distinctFamilies": 2
+      }
+    }
+  ]
+}

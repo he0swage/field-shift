@@ -1,0 +1,1469 @@
+{
+  "id": "rot_6cffd958",
+  "createdAt": "2026-11-14T22:27:03.098Z",
+  "regionName": "Occitanie - d�mo",
+  "requestedCrops": [
+    "ble",
+    "lentille",
+    "colza",
+    "orge"
+  ],
+  "weights": {
+    "water": 34,
+    "soil": 33,
+    "yield": 33
+  },
+  "totalPermutations": 24,
+  "bestRotation": {
+    "rank": 1,
+    "sequence": [
+      {
+        "id": "wheat",
+        "name": "wheat",
+        "scientificName": "Triticum durum",
+        "family": "cereal",
+        "waterNeed": 0.52,
+        "droughtTolerance": 0.55,
+        "nitrogenFixing": false
+      },
+      {
+        "id": "lentil",
+        "name": "lentil",
+        "scientificName": "Lens culinaris",
+        "family": "legume",
+        "waterNeed": 0.3,
+        "droughtTolerance": 0.85,
+        "nitrogenFixing": true
+      },
+      {
+        "id": "barley",
+        "name": "barley",
+        "scientificName": "Hordeum vulgare",
+        "family": "cereal",
+        "waterNeed": 0.38,
+        "droughtTolerance": 0.8,
+        "nitrogenFixing": false
+      },
+      {
+        "id": "canola",
+        "name": "canola",
+        "scientificName": "Brassica napus",
+        "family": "oilseed",
+        "waterNeed": 0.48,
+        "droughtTolerance": 0.58,
+        "nitrogenFixing": false
+      }
+    ],
+    "cropNames": [
+      "wheat",
+      "lentil",
+      "barley",
+      "canola"
+    ],
+    "scores": {
+      "water": 63,
+      "soil": 84,
+      "yield": 65,
+      "weighted": 71
+    },
+    "metrics": {
+      "averageWaterNeed": 0.42,
+      "totalNitrogenImpactKg": -52,
+      "distinctFamilies": 3
+    }
+  },
+  "rotations": [
+    {
+      "rank": 1,
+      "sequence": [
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "wheat",
+        "lentil",
+        "barley",
+        "canola"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 84,
+        "yield": 65,
+        "weighted": 71
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 2,
+      "sequence": [
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "wheat",
+        "canola",
+        "lentil",
+        "barley"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 84,
+        "yield": 65,
+        "weighted": 71
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 3,
+      "sequence": [
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "lentil",
+        "wheat",
+        "canola",
+        "barley"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 84,
+        "yield": 65,
+        "weighted": 71
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 4,
+      "sequence": [
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "lentil",
+        "barley",
+        "canola",
+        "wheat"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 84,
+        "yield": 65,
+        "weighted": 71
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 5,
+      "sequence": [
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "canola",
+        "wheat",
+        "lentil",
+        "barley"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 84,
+        "yield": 65,
+        "weighted": 71
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 6,
+      "sequence": [
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "canola",
+        "barley",
+        "lentil",
+        "wheat"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 84,
+        "yield": 65,
+        "weighted": 71
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 7,
+      "sequence": [
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "barley",
+        "lentil",
+        "wheat",
+        "canola"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 84,
+        "yield": 65,
+        "weighted": 71
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 8,
+      "sequence": [
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "barley",
+        "canola",
+        "lentil",
+        "wheat"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 84,
+        "yield": 65,
+        "weighted": 71
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 9,
+      "sequence": [
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "wheat",
+        "lentil",
+        "canola",
+        "barley"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 69,
+        "yield": 65,
+        "weighted": 66
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 10,
+      "sequence": [
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        }
+      ],
+      "cropNames": [
+        "wheat",
+        "canola",
+        "barley",
+        "lentil"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 69,
+        "yield": 65,
+        "weighted": 66
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 11,
+      "sequence": [
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "barley",
+        "lentil",
+        "canola",
+        "wheat"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 69,
+        "yield": 65,
+        "weighted": 66
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 12,
+      "sequence": [
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        }
+      ],
+      "cropNames": [
+        "barley",
+        "canola",
+        "wheat",
+        "lentil"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 69,
+        "yield": 65,
+        "weighted": 66
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 13,
+      "sequence": [
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "lentil",
+        "wheat",
+        "barley",
+        "canola"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 66,
+        "yield": 65,
+        "weighted": 65
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 14,
+      "sequence": [
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "lentil",
+        "barley",
+        "wheat",
+        "canola"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 66,
+        "yield": 65,
+        "weighted": 65
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 15,
+      "sequence": [
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "canola",
+        "lentil",
+        "wheat",
+        "barley"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 66,
+        "yield": 65,
+        "weighted": 65
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 16,
+      "sequence": [
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "canola",
+        "lentil",
+        "barley",
+        "wheat"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 66,
+        "yield": 65,
+        "weighted": 65
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 17,
+      "sequence": [
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "wheat",
+        "barley",
+        "lentil",
+        "canola"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 51,
+        "yield": 65,
+        "weighted": 60
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 18,
+      "sequence": [
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        }
+      ],
+      "cropNames": [
+        "wheat",
+        "barley",
+        "canola",
+        "lentil"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 51,
+        "yield": 65,
+        "weighted": 60
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 19,
+      "sequence": [
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "lentil",
+        "canola",
+        "wheat",
+        "barley"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 51,
+        "yield": 65,
+        "weighted": 60
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 20,
+      "sequence": [
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "lentil",
+        "canola",
+        "barley",
+        "wheat"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 51,
+        "yield": 65,
+        "weighted": 60
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 21,
+      "sequence": [
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        }
+      ],
+      "cropNames": [
+        "canola",
+        "wheat",
+        "barley",
+        "lentil"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 51,
+        "yield": 65,
+        "weighted": 60
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 22,
+      "sequence": [
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        }
+      ],
+      "cropNames": [
+        "canola",
+        "barley",
+        "wheat",
+        "lentil"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 51,
+        "yield": 65,
+        "weighted": 60
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 23,
+      "sequence": [
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        }
+      ],
+      "cropNames": [
+        "barley",
+        "wheat",
+        "lentil",
+        "canola"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 51,
+        "yield": 65,
+        "weighted": 60
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    },
+    {
+      "rank": 24,
+      "sequence": [
+        {
+          "id": "barley",
+          "name": "barley",
+          "scientificName": "Hordeum vulgare",
+          "family": "cereal",
+          "waterNeed": 0.38,
+          "droughtTolerance": 0.8,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "wheat",
+          "name": "wheat",
+          "scientificName": "Triticum durum",
+          "family": "cereal",
+          "waterNeed": 0.52,
+          "droughtTolerance": 0.55,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "canola",
+          "name": "canola",
+          "scientificName": "Brassica napus",
+          "family": "oilseed",
+          "waterNeed": 0.48,
+          "droughtTolerance": 0.58,
+          "nitrogenFixing": false
+        },
+        {
+          "id": "lentil",
+          "name": "lentil",
+          "scientificName": "Lens culinaris",
+          "family": "legume",
+          "waterNeed": 0.3,
+          "droughtTolerance": 0.85,
+          "nitrogenFixing": true
+        }
+      ],
+      "cropNames": [
+        "barley",
+        "wheat",
+        "canola",
+        "lentil"
+      ],
+      "scores": {
+        "water": 63,
+        "soil": 51,
+        "yield": 65,
+        "weighted": 60
+      },
+      "metrics": {
+        "averageWaterNeed": 0.42,
+        "totalNitrogenImpactKg": -52,
+        "distinctFamilies": 3
+      }
+    }
+  ]
+}

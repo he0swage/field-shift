@@ -8,6 +8,7 @@ import { socClass } from '../utils/agronomy';
 import { StepHead, StepNav } from '../components/Layout';
 import { Metric, WeightStack } from '../components/ui';
 import RegionMap from '../components/map/RegionMap';
+import FarmRegionSetup from '../components/FarmRegionSetup';
 
 function RegionCard({ id, r, trend, checked, onSelect }) {
   return (
@@ -54,6 +55,8 @@ export default function RegionStep() {
       <StepHead id="t1" eyebrow="Step 1 of 6" title="Where is your farm?">
         Click a region on the map or a card below. We load its climate, soil and vegetation history automatically.
       </StepHead>
+
+      <FarmRegionSetup />
 
       <RegionMap selected={state.region} trends={trends} overlay={state.mapOverlay}
         onOverlay={v => set({ mapOverlay: v })} onSelect={selectRegion} />
