@@ -1,6 +1,7 @@
 // UI strings. Missing keys fall back to English. {placeholders} are filled by t(key, vars).
 // Crop names, fertilizer names and agronomic risk notes come from the data/API and stay in English for now.
 const en = {
+  'regionSearch.cta': 'Choose your region',
   'plan.kicker': 'Your 3-year plan', 'plan.usual': 'Your current rotation', 'plan.recommended': 'Recommended rotation · Rank 1',
   'regionSearch.placeholder': 'Search a region — Kansas, Sétif, Punjab…', 'regionSearch.hint': 'Goes to the current regions and the globe.', 'regionSearch.title': 'Current regions',
   'about.src.openmeteo': 'Free historical-weather API used to fetch the cross-check series (CC BY 4.0).',
@@ -272,6 +273,7 @@ const en = {
 };
 
 const fr = {
+  'regionSearch.cta': 'Choisir votre région',
   'plan.kicker': 'Votre plan sur 3 ans', 'plan.usual': 'Votre rotation actuelle', 'plan.recommended': 'Rotation recommandée · Rang 1',
   'regionSearch.placeholder': 'Chercher une région — Kansas, Sétif, Pendjab…', 'regionSearch.hint': 'Mène aux régions disponibles et au globe.', 'regionSearch.title': 'Régions disponibles',
   'about.src.openmeteo': 'API météo historique gratuite utilisée pour la série de contre-vérification (CC BY 4.0).',
@@ -512,6 +514,7 @@ const fr = {
 };
 
 const ar = {
+  'regionSearch.cta': 'اختر منطقتك',
   'plan.kicker': 'خطتك لثلاث سنوات', 'plan.usual': 'دورتك الحالية', 'plan.recommended': 'الدورة الموصى بها · المرتبة 1',
   'regionSearch.placeholder': 'ابحث عن منطقة — كانساس، سطيف، البنجاب…', 'regionSearch.hint': 'ينقلك إلى المناطق المتاحة والكرة الأرضية.', 'regionSearch.title': 'المناطق المتاحة',
   'about.src.openmeteo': 'واجهة مجانية لبيانات الطقس التاريخية لجلب سلسلة التحقق (CC BY 4.0).',

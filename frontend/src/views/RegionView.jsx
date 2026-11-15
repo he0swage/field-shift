@@ -1,9 +1,8 @@
-// Region page (start of the journey). Top: title, description and the 3-year plan (field strips).
-// Bottom of the hero: a search bar (acts as a button) with half of the globe peeking beside it —
-// hovering or clicking it scrolls to "Current regions" while the globe glides into its final place.
-// Below: "Current regions" — region cards + the interactive globe.
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { ArrowDown, Check, Search } from 'lucide-react';
+// Region page (start of the journey). Top: title, description, the 3-year plan and an arrow button
+// that scrolls to "Current regions". Then "From your field to a three-year plan" (the 4 stages),
+// then "Current regions" — region cards + the interactive globe.
+import { useCallback, useRef, useState } from 'react';
+import { ArrowDown, Check } from 'lucide-react';
 import { useT } from '../i18n/I18nContext';
 import { useFarm } from '../state/FarmContext';
 import { useAnalysis } from '../state/AnalysisContext';
@@ -15,12 +14,11 @@ import Contours from '../components/Contours';
 import FieldScene from '../components/FieldScene';
 import CountUp from '../components/CountUp';
 import Globe from '../components/globe/Globe';
-import GlobePeek from '../components/globe/GlobePeek';
+import JourneyPath from '../components/JourneyPath';
 import '../components/globe/Globe.css';
 import './RegionView.css';
 
 const GLOBE_REGIONS = REGION_IDS.map(id => ({ id, ...REGIONS[id] }));
-const ease = k => (k < 0.5 ? 4 * k * k * k : 1 - (-2 * k + 2) ** 3 / 2);
 
 export default function RegionView() {
   const t = useT();
@@ -28,12 +26,9 @@ export default function RegionView() {
   const { ranking, stale } = useAnalysis();
   const reduced = useReducedMotion();
   const [focusTick, setFocusTick] = useState(0);
-  const [flying, setFlying] = useState(false);
   const cardRefs = useRef({});
   const titleRef = useRef(null);
-  const peekRef = useRef(null);
   const sectionRef = useRef(null);
-  const hoverTimer = useRef(null);
   useFocusHeading(titleRef);
 
   const choose = useCallback(id => {
@@ -52,45 +47,13 @@ export default function RegionView() {
     cardRefs.current[id]?.focus();
   };
 
-  /* Search bar → scroll to "Current regions"; the peeking globe glides into the real globe's place. */
+  // Arrow button → smooth scroll to "Current regions" (instant with reduced motion), focus its heading
   const goToRegions = useCallback(() => {
     const section = sectionRef.current;
-    if (!section || flying) return;
-    const target = section.querySelector('.globe canvas');
-    const peek = peekRef.current;
-    if (reduced || !target || !peek) {
-      section.scrollIntoView({ behavior: 'auto', block: 'start' });
-      section.querySelector('h2')?.focus({ preventScroll: true });
-      return;
-    }
-    const from = peek.getBoundingClientRect();
-    const ghost = peek.cloneNode(true);
-    ghost.classList.add('globe-ghost');
-    Object.assign(ghost.style, { left: `${from.left}px`, top: `${from.top}px`, width: `${from.width}px`, height: `${from.height}px` });
-    document.body.appendChild(ghost);
-    setFlying(true);
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    const t0 = performance.now(), DUR = 1100;
-    const step = now => {
-      const k = Math.min(1, (now - t0) / DUR), e = ease(k);
-      const to = target.getBoundingClientRect();
-      ghost.style.left = `${from.left + (to.left - from.left) * e}px`;
-      ghost.style.top = `${from.top + (to.top - from.top) * e}px`;
-      ghost.style.width = `${from.width + (to.width - from.width) * e}px`;
-      ghost.style.height = `${from.height + (to.height - from.height) * e}px`;
-      if (k < 1) requestAnimationFrame(step);
-      else {
-        ghost.remove();
-        setFlying(false);
-        section.querySelector('h2')?.focus({ preventScroll: true });
-      }
-    };
-    requestAnimationFrame(step);
-  }, [flying, reduced]);
-
-  const onHover = () => { clearTimeout(hoverTimer.current); hoverTimer.current = setTimeout(goToRegions, 250); };
-  const offHover = () => clearTimeout(hoverTimer.current);
-  useEffect(() => () => clearTimeout(hoverTimer.current), []);
+    if (!section) return;
+    section.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    setTimeout(() => section.querySelector('h2')?.focus({ preventScroll: true }), reduced ? 0 : 600);
+  }, [reduced]);
 
   // The 3-year plan: rank 1 once the analysis has run, otherwise the farmer's usual rotation
   const usePlan = ranking && !stale;
@@ -123,20 +86,16 @@ export default function RegionView() {
         </div>
 
         <div className="wrap region-hero-bottom">
-          <button type="button" className="region-search" onMouseEnter={onHover} onMouseLeave={offHover} onFocus={offHover}
-            onClick={() => { offHover(); goToRegions(); }} aria-describedby="region-search-hint">
-            <Search size={22} aria-hidden="true" />
-            <span className="region-search-text">{t('regionSearch.placeholder')}</span>
-            <ArrowDown size={20} aria-hidden="true" className="region-search-go" />
+          <button type="button" className="hero-arrow" onClick={goToRegions}>
+            <span>{t('regionSearch.cta')}</span>
+            <span className="hero-arrow-circle" aria-hidden="true"><ArrowDown size={26} /></span>
           </button>
-          <span id="region-search-hint" className="sr-only">{t('regionSearch.hint')}</span>
-          <div className={`globe-peek${flying ? ' flying' : ''}`} aria-hidden="true">
-            <GlobePeek ref={peekRef} lat={selected.lat} lon={selected.lon} />
-          </div>
         </div>
       </section>
 
-      <section ref={sectionRef} id="current-regions" className={`wrap current-regions${flying ? ' globe-arriving' : ''}`} aria-labelledby="region-title">
+      <JourneyPath onStart={goToRegions} />
+
+      <section ref={sectionRef} id="current-regions" className="wrap current-regions" aria-labelledby="region-title">
         <header className="page-head">
           <span className="eyebrow">{t('eyebrow.setup', { n: 1 })}</span>
           <h2 id="region-title" tabIndex={-1}>{t('regionSearch.title')}</h2>

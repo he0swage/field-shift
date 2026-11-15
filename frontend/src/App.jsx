@@ -6,7 +6,7 @@ import { AnalysisProvider } from './state/AnalysisContext';
 import { AuthProvider, useAuth } from './state/AuthContext';
 import LoginView from './views/LoginView';
 import { useEffect } from 'react';
-import Header, { DataStatus } from './components/layout/Header';
+import Header from './components/layout/Header';
 import Progress from './components/layout/Progress';
 import Footer from './components/layout/Footer';
 import AboutView from './views/AboutView';
@@ -59,7 +59,6 @@ function Shell() {
     <>
       <a className="skip" href="#main">{t('common.skip')}</a>
       <Header />
-      <DataStatus />
       {journey && <Progress />}
       {view === 'region' ? (
         <main id="main" tabIndex={-1} className="view" key="region"><View /></main>

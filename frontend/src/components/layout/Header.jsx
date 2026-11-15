@@ -3,37 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 import { Check, ChevronDown, Globe2, LogOut } from 'lucide-react';
 import { useI18n, LANGS } from '../../i18n/I18nContext';
 import { useNav, JOURNEY } from '../../state/NavContext';
-import { checkHealth } from '../../api/client';
 import { useAuth } from '../../state/AuthContext';
 import ThemeToggle from './ThemeToggle';
 import './layout.css';
 
-
-/** Asks the backend /health every 30 s. */
-export function useApiLive() {
-  const [live, setLive] = useState(null); // null = checking
-  useEffect(() => {
-    let alive = true;
-    const ping = () => checkHealth().then(ok => { if (alive) setLive(ok); });
-    ping();
-    const id = setInterval(ping, 30000);
-    return () => { alive = false; clearInterval(id); };
-  }, []);
-  return live;
-}
-
-/** One thin, quiet strip: live / sample status (the data sources are listed on the About page). */
-export function DataStatus() {
-  const { t } = useI18n();
-  const live = useApiLive();
-  return (
-    <div className={`data-strip${live ? ' live' : ''}`}>
-      <div className="wrap data-strip-row">
-        <span className="data-status"><span className="status-dot" aria-hidden="true" />{live ? t('banner.liveShort') : t('banner.sampleShort')}</span>
-      </div>
-    </div>
-  );
-}
 
 /** Brand mark: a simple leaf/field glyph (no emoji). */
 export function Logo() {
