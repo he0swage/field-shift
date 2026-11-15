@@ -37,8 +37,11 @@ async function request(path, options = {}) {
   }
 }
 
+/** Backend unreachable: network error, or the dev/preview proxy answering 5xx without a backend error body. */
+const isOffline = err => !(err instanceof ApiError) || (err.status >= 500 && !err.code);
+
 /** 'offline' = backend unreachable · 'noData' = backend has nothing for this region yet */
-const reasonOf = err => (err instanceof ApiError && err.status === 404 ? 'noData' : 'offline');
+const reasonOf = err => (isOffline(err) ? 'offline' : err.status === 404 ? 'noData' : 'error');
 
 /** GET /health → true if the backend answers. */
 export async function checkHealth() {
@@ -76,7 +79,7 @@ export async function getRanking(inputs) {
     return { ...data, sample: false };
   } catch (err) {
     console.warn('Ranking API failed, using sample results:', err.message);
-    return { ...SAMPLE_RANKING, fallbackReason: err instanceof ApiError ? 'error' : 'offline' };
+    return { ...SAMPLE_RANKING, fallbackReason: isOffline(err) ? 'offline' : 'error' };
   }
 }
 
@@ -92,7 +95,7 @@ export async function login(email, password) {
       body: JSON.stringify({ email, password }),
     });
   } catch (err) {
-    if (!(err instanceof ApiError)) err.code = 'OFFLINE';
+    if (isOffline(err)) err.code = 'OFFLINE';
     throw err;
   }
 }
@@ -103,7 +106,7 @@ export async function me(token) {
     const r = await request('/auth/me', { headers: { Authorization: `Bearer ${token}` } });
     return r.user;
   } catch (err) {
-    return err instanceof ApiError && err.status === 401 ? null : undefined;
+    return !isOffline(err) && err.status === 401 ? null : undefined;
   }
 }
 

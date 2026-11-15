@@ -16,8 +16,9 @@ cd backend && node src/server.js     # API on http://localhost:5001
 cd frontend && npm run dev           # site on http://localhost:5173 (/api forwarded to 5001)
 ```
 
-Without the server, the login page shows "Server offline". Use "Continue without an account" to
-browse with sample data.
+**No server needed to sign in:** if the backend is not running (e.g. only Go Live or `npm run dev`),
+the login page switches to *local mode*: the demo account is checked in the browser and the app
+runs on the sample data. Start the server whenever you want the team's live data.
 
 Details: `backend/README.md` (routes, CORS, login, data) and `frontend/README.md` (structure,
 design, i18n).

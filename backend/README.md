@@ -94,5 +94,9 @@ The team's processed data covers Sétif, Constantine and Tiaret. The frontend cu
 
 The rotation and climate routes stay public, so the app still works for guests.
 
+When this server is not running, the frontend signs the demo account in locally
+(`frontend/src/state/AuthContext.jsx`, accounts from `VITE_DEMO_USERS`). This is a convenience
+for local demos, not a security boundary.
+
 Before any public deployment, replace this with a real user table (hashed passwords, e.g. bcrypt)
 and HTTPS.
