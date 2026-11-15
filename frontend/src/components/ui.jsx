@@ -62,7 +62,7 @@ export function SampleNotice({ data }) {
   return (
     <p className="sample-note">
       <span aria-hidden="true">🧪</span>
-      <span>{data.fallbackReason ? t('sample.fallback') : t('sample.note')}</span>
+      <span>{data.fallbackReason ? t(`sample.${data.fallbackReason}`) : t('sample.note')}</span>
     </p>
   );
 }

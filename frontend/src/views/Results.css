@@ -64,3 +64,8 @@
 .download-cta { margin-top: 48px; display: flex; gap: 24px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 32px; border-radius: 24px; background: linear-gradient(120deg, var(--forest-900), var(--forest)); color: #fff; box-shadow: var(--shadow-lg); }
 .download-cta h3 { font-family: var(--font-display); font-size: 26px; font-weight: 600; }
 .download-cta p { color: rgba(255, 255, 255, .82); margin-top: 6px; max-width: 560px; }
+
+.assumptions { margin-top: 28px; }
+.assumptions summary { cursor: pointer; font-weight: 700; color: var(--forest); min-height: 44px; display: flex; align-items: center; }
+.assumptions ul { margin: 8px 0 0; padding-inline-start: 20px; color: var(--ink-soft); font-size: 15px; }
+.rank-list + .assumptions, .results-toolbar + .card + .alert { margin-top: 24px; }

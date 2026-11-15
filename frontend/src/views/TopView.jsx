@@ -69,9 +69,21 @@ export default function TopView() {
             </div>
           </section>
 
+          {ranking.ignoredCrops?.length > 0 && (
+            <Alert tone="info">{t('top.ignored', { crops: ranking.ignoredCrops.map(id => cropById(id)?.name || id).join(', ') })}</Alert>
+          )}
+
           <div className="rank-list">
             {ranking.rotations.map(r => <RotationCard key={r.rank} r={r} allowedNames={allowedNames} />)}
           </div>
+
+          {ranking.assumptions?.length > 0 && (
+            <details className="card assumptions">
+              <summary>{t('top.assumptions')}</summary>
+              <p className="hint">{ranking.source}</p>
+              <ul>{ranking.assumptions.map(a => <li key={a}>{a}</li>)}</ul>
+            </details>
+          )}
         </>
       )}
 

@@ -17,9 +17,9 @@ export function NitrogenCard({ ranking, fixedWidth }) {
     <section className="card" aria-labelledby="n-title">
       <h3 className="card-title" id="n-title"><span aria-hidden="true">🧪</span> {t('n.title')}</h3>
       <p className="card-sub">{t('n.sub')}</p>
-      <NitrogenChart years={best.years} usualEnd={ranking.usual.soilNEnd} fixedWidth={fixedWidth}
+      <NitrogenChart years={best.years} usualEnd={ranking.usual?.soilNEnd} fixedWidth={fixedWidth}
         labels={{
-          aria: t('n.aria', { a: best.years[0].soilN, b: best.years.at(-1).soilN, u: ranking.usual.soilNEnd }),
+          aria: t('n.aria', { a: best.years[0].soilN, b: best.years.at(-1).soilN, u: ranking.usual?.soilNEnd ?? '—' }),
           year: n => t('common.year', { n }), rec: t('n.rec'), usual: t('n.usualShort'), usualLegend: t('n.usual'),
         }} />
     </section>
@@ -47,11 +47,11 @@ export default function CompareView() {
               <h3>{t('cmp.usualTitle')}</h3>
               <ol className="vs-crops">{usual.map((c, i) => <li key={i}><span>{t('common.year', { n: i + 1 })}</span>{FAMILY_ICON[c.family]} {c.name}</li>)}</ol>
               <dl className="vs-facts">
-                <div><dt>💧 {t('cmp.water')}</dt><dd>{ranking.usual.waterNeed}/100</dd></div>
-                <div><dt>🧪 {t('cmp.soilN')}</dt><dd>{ranking.usual.soilNEnd} kg/ha</dd></div>
-                <div><dt>⚗️ {t('cmp.fert')}</dt><dd>{ranking.usual.fertilizer} kg/ha</dd></div>
-                <div><dt>🌾 {t('cmp.stability')}</dt><dd>{ranking.usual.ndviStability}/100</dd></div>
-                <div><dt>💰 {t('cmp.income')}</dt><dd>{fmtInt(ranking.usual.income)} DA/ha</dd></div>
+                <div><dt>💧 {t('cmp.water')}</dt><dd>{ranking.usual?.waterNeed ?? '—'}/100</dd></div>
+                <div><dt>🧪 {t('cmp.soilN')}</dt><dd>{ranking.usual?.soilNEnd ?? '—'} kg/ha</dd></div>
+                <div><dt>⚗️ {t('cmp.fert')}</dt><dd>{ranking.usual?.fertilizer ?? '—'} kg/ha</dd></div>
+                <div><dt>🌾 {t('cmp.stability')}</dt><dd>{ranking.usual?.ndviStability ?? '—'}/100</dd></div>
+                <div><dt>💰 {t('cmp.income')}</dt><dd>{ranking.usual ? fmtInt(ranking.usual.income) : '—'} DA/ha</dd></div>
               </dl>
             </article>
             <div className="vs-badge" aria-hidden="true">VS</div>

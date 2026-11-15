@@ -1,7 +1,7 @@
 // Usual rotation vs recommended (rank 1) on the 5 farm metrics, with difference and % change.
 import { useT } from '../../i18n/I18nContext';
 import { fmtInt, pct } from '../../utils/format';
-import { Delta } from '../ui';
+import { Alert, Delta } from '../ui';
 import './rotation.css';
 
 export function compareRows(ranking) {
@@ -18,6 +18,7 @@ export function compareRows(ranking) {
 export default function CompareTable({ ranking, usualName }) {
   const t = useT();
   const best = ranking.rotations[0];
+  if (!ranking.usual) return <Alert tone="warn">{t('cmp.noUsual')}</Alert>;
   return (
     <div className="table-wrap">
       <table className="data-table compare-table">

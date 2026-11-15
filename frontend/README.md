@@ -73,47 +73,19 @@ Every text colour meets WCAG AA on its background.
 
 ## Connecting the API
 
+The frontend talks to the team backend (`backend/`, Express on port 5001):
+
 ```bash
-cp .env.example .env.local
-# then set VITE_API_BASE=https://your-backend/api
+cd backend && npm install && npm run dev      # terminal 1 → http://localhost:5001
+cd frontend && npm run dev                    # terminal 2 → http://localhost:5173
 ```
 
-While `VITE_API_BASE` is empty, or when a request fails, the app uses the sample data.
-The banner then reads "SAMPLE DATA MODE" instead of "LIVE REGIONAL DATA ACTIVE", and
-each page shows a "Sample data" notice.
+- **API URL:** `VITE_API_BASE` is set in `.env.development` (for `npm run dev`) and in `.env.production` (for `npm run build`, Go Live and preview). Both point to `http://localhost:5001/api/v1`. For a deployment, change `.env.production` to the deployed backend URL, and add the frontend URL to `FRONTEND_ORIGINS` in `backend/.env` (CORS).
+- **Banner:** it pings `/health` every 30 s. It reads "LIVE REGIONAL DATA ACTIVE" only when the backend answers; otherwise it reads "SAMPLE DATA MODE".
+- **Fallbacks:** when the backend is not running, or has no data for a region (Kansas and Punjab today), each page uses the sample data and says why.
+- **Contract:** the routes, request bodies and responses are documented in `backend/README.md`. All requests go through `src/api/client.js`.
 
 Region ids: `kansas` (38.50N, 98.00W), `setif` (36.15N, 5.38E), `punjab` (30.90N, 75.85E).
-Kansas and Punjab rainfall, soil pH and frost values are estimates until the APIs are live.
-
-### Climate
-
-`GET {VITE_API_BASE}/climate?region=setif&lat=36.15&lon=5.38` returns:
-
-```json
-{
-  "source": "NASA POWER 1995-2024",
-  "annual":  [{ "year": 1995, "rain": 412 }],
-  "monthly": [52, 46, 43, 41, 27, 10, 3, 7, 20, 24, 44, 45],
-  "indicators": { "hotDays": 48, "frostDays": 32, "extremeRainDays": 5, "longestDrySpell": 58 }
-}
-```
-
-### Ranking
-
-`POST {VITE_API_BASE}/ranking` with body
-`{ region, rotation[3], allowed[], custom[], priorities { water, soil, yield }, scenario { rain, temp } }`.
-
-It must return the same shape as `SAMPLE_RANKING` in `src/data/sampleRanking.js`:
-
-- `monteCarlo { runs, rank1StaysFirstPct }`
-- `usual { waterNeed, ndviStability, fertilizer, income, soilNEnd }`
-- `rotations[4]`, each with:
-  - `rank`, `crops[3]`, `tags[]`, `scores { final, ml, knn }`
-  - `years[3]`, each `{ crop, family, soilN, health, fertilizer, kg, nCredit?, risks[] }`
-  - `waterNeed`, `ndviStability`, `fertilizer`, `fertilizerSaved`, `income`
-- `avoid[]`, each with:
-  - `crops`, `score`, `level` (`high` or `caution`), `reason`
-  - optional: `climate`, `soil`, `water`, `disease`, `alternative` (rank number)
 
 ## Troubleshooting (Windows)
 

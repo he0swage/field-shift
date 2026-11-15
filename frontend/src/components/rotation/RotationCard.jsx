@@ -83,7 +83,7 @@ export default function RotationCard({ r, allowedNames = [] }) {
         <li><span className="m-icon" aria-hidden="true">🧪</span><span>{t('rank.fert3')}</span><b className="num">{r.fertilizer} kg/ha</b></li>
         <li><span className="m-icon" aria-hidden="true">💰</span><span>{t('rank.income')}</span><b className="num">{fmtInt(r.income)} DA/ha/{t('unit.yr')}</b></li>
       </ul>
-      <p className="saves"><span aria-hidden="true">♻️</span> {t('rank.saves', { kg: r.fertilizerSaved })}</p>
+      {r.fertilizerSaved > 0 && <p className="saves"><span aria-hidden="true">♻️</span> {t('rank.saves', { kg: r.fertilizerSaved })}</p>}
 
       {missing.length > 0 && (
         <p className="note-inline">

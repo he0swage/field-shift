@@ -82,7 +82,7 @@ export default function Report() {
                 <tr key={i}><td>{i + 1}</td><td>{y.crop}{y.nCredit ? ` (${t('rank.nCredit')} −${y.nCredit}%)` : ''}</td><td>{y.soilN} kg/ha</td><td>{y.health}%</td><td>{y.fertilizer} ({y.kg} kg/ha)</td><td>{y.risks.join(' ')}</td></tr>
               ))}</tbody>
             </table>
-            <p>{t('rank.saves', { kg: best.fertilizerSaved })}</p>
+            {best.fertilizerSaved > 0 && <p>{t('rank.saves', { kg: best.fertilizerSaved })}</p>}
           </section>
 
           <section>
@@ -95,7 +95,7 @@ export default function Report() {
           <section>
             <h2>6. {t('sum.vs')}</h2>
             <CompareTable ranking={ranking} usualName={usual.map(c => c.name).join(' → ')} />
-            <NitrogenChart years={best.years} usualEnd={ranking.usual.soilNEnd} fixedWidth={560}
+            <NitrogenChart years={best.years} usualEnd={ranking.usual?.soilNEnd} fixedWidth={560}
               labels={{ aria: t('n.title'), year: n => t('common.year', { n }), rec: t('n.rec'), usual: t('n.usualShort'), usualLegend: t('n.usual') }} />
           </section>
         </>

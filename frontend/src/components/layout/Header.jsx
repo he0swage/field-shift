@@ -2,13 +2,27 @@
 import { useEffect, useRef, useState } from 'react';
 import { useI18n, LANGS } from '../../i18n/I18nContext';
 import { useNav, JOURNEY } from '../../state/NavContext';
-import { IS_LIVE } from '../../api/client';
+import { checkHealth } from '../../api/client';
 import './layout.css';
 
 const SOURCES = ['NASA POWER 1995–2024', 'ISRIC SoilGrids', 'MODIS NDVI', 'OAIC / CCLS Prices'];
 
+/** Asks the backend /health every 30 s; the banner says LIVE only when it really answers. */
+function useApiLive() {
+  const [live, setLive] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    const ping = () => checkHealth().then(ok => { if (alive) setLive(ok); });
+    ping();
+    const id = setInterval(ping, 30000);
+    return () => { alive = false; clearInterval(id); };
+  }, []);
+  return live;
+}
+
 export function DataBanner() {
   const { t } = useI18n();
+  const IS_LIVE = useApiLive();
   return (
     <div className={`data-banner${IS_LIVE ? ' live' : ''}`}>
       <div className="wrap data-banner-row">
