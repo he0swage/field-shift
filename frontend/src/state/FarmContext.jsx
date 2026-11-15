@@ -10,7 +10,7 @@ function init() {
   const s = storage.get('farm', {});
   return {
     region: REGIONS[s.region] ? s.region : DEFAULT_REGION,
-    rotation: s.rotation?.length === 3 ? s.rotation : DEFAULT_ROTATION,
+    rotation: s.rotation?.length >= 2 ? s.rotation : DEFAULT_ROTATION,
     allowed: s.allowed ?? DEFAULT_ALLOWED,
     custom: s.custom ?? [],
     priorities: s.priorities ? balance(s.priorities) : DEFAULT_PRIORITIES,
@@ -19,6 +19,10 @@ function init() {
     scenario: s.scenario ?? { rain: -20, temp: 2 },
     analysedKey: s.analysedKey ?? null,
     mapOverlay: s.mapOverlay ?? true,
+    farmerUser: s.farmerUser ?? null,
+    farmerToken: s.farmerToken ?? null,
+    savedPlans: s.savedPlans ?? [],
+    accountOpen: false,
   };
 }
 
@@ -30,6 +34,27 @@ function reducer(s, a) {
       const rotation = [...s.rotation];
       rotation[a.year] = a.crop;
       return { ...s, rotation };
+    }
+    case 'setRotationLength': {
+      const len = Math.max(2, Math.min(5, Number(a.length) || 3));
+      const next = [...s.rotation];
+      const fallbackPool = ['durum', 'lentil', 'barley', 'safflower', 'chickpea'];
+      while (next.length < len) {
+        next.push(fallbackPool[next.length % fallbackPool.length]);
+      }
+      return { ...s, rotation: next.slice(0, len) };
+    }
+    case 'loadSavedPlan': {
+      const p = a.plan || {};
+      const mapReg = p.region === 'regionA' ? 'setif' : p.region === 'regionB' ? 'kansas' : p.region === 'regionC' ? 'punjab' : (p.region || s.region);
+      return {
+        ...s,
+        region: REGIONS[mapReg] ? mapReg : s.region,
+        rotation: Array.isArray(p.rotation) && p.rotation.length >= 2 ? p.rotation : s.rotation,
+        allowed: Array.isArray(p.allowed_crops) && p.allowed_crops.length >= 3 ? p.allowed_crops : s.allowed,
+        priorities: p.priorities ? balance(p.priorities) : s.priorities,
+        scenario: p.scenario || s.scenario,
+      };
     }
     case 'toggleAllowed':
       return { ...s, allowed: s.allowed.includes(a.id) ? s.allowed.filter(x => x !== a.id) : [...s.allowed, a.id] };

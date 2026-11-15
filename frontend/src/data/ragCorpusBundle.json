@@ -1,0 +1,1406 @@
+{
+  "version": "1.0",
+  "chunk_count": 98,
+  "chunks": [
+    {
+      "chunk_id": "DOC-AGRO-001#S1",
+      "doc_id": "DOC-AGRO-001",
+      "title": "Field Shift Reviewed Agronomy & Scoring Guidance (EN/FR/AR)",
+      "section": "Field Shift Reviewed Agronomy & Scoring Guidance (EN / FR / AR)",
+      "region": "global",
+      "concepts": [
+        "concept_cereal",
+        "concept_fires",
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_legume",
+        "concept_region_kansas",
+        "concept_region_punjab",
+        "concept_region_setif",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "Document ID: `DOC-AGRO-001`\nReviewed Sources: ICARDA WANA Cereal-Legume Trials, ITGC Algeria Technical Itineraries, USDA NASS & K-State Extension (Central Kansas), ICAR & PAU Ludhiana (Punjab), FAO-56 Crop Water Requirements, NASA POWER, ISRIC SoilGrids v2.0, ORNL DAAC MODIS MOD13Q1, NASA FIRMS VIIRS.\n\n---"
+    },
+    {
+      "chunk_id": "DOC-AGRO-001#S2",
+      "doc_id": "DOC-AGRO-001",
+      "title": "Field Shift Reviewed Agronomy & Scoring Guidance (EN/FR/AR)",
+      "section": "1.1 Why 3 Years is the Default Baseline (rotation_length: 3)",
+      "region": "global",
+      "concepts": [
+        "concept_cereal",
+        "concept_chickpea",
+        "concept_faba",
+        "concept_general_plan",
+        "concept_irrigation",
+        "concept_legume",
+        "concept_lentil",
+        "concept_nitrogen_fertilizer",
+        "concept_oilseed",
+        "concept_period_years",
+        "concept_region_kansas",
+        "concept_region_punjab",
+        "concept_region_setif",
+        "concept_risk_climate",
+        "concept_water"
+      ],
+      "text": "In semi-arid Mediterranean rainfed systems (Sétif `regionA`), continental Great Plains rainfed systems (Central Kansas `regionB`), and irrigated Indo-Gangetic plains (Punjab `regionC`), a **3-year rotation horizon (`rotation_length = 3`)** is the shortest cycle that simultaneously satisfies three agronomic rules:\n1. **Break cereal monoculture disease carryover** (`forbid_consecutive_same_family: true`): Take-all (*Gaeumannomyces graminis*), *Fusarium* crown rot, and grassy weeds (*Bromus*, *Phalaris minor*, jointed goatgrass) build up when two cereals follow each other.\n2. **Respect the 2-year pulse disease break** (`max_occurrences_per_crop: 1`): Large-seeded legumes such as chickpea (*Ascochyta* blight), lentil (*Fusarium* wilt), and faba bean (*Orobanche* broomrape) require at least 2 years between identical pulse crops.\n3. **Deliver a three-functional-group sequence**: Cereal (Year 1) → Nitrogen-Fixing Legume (Year 2, providing `-25%` synthetic NPK credit in Year 3) → Broadleaf Oilseed, Forage, or Alternate Cereal (Year 3)."
+    },
+    {
+      "chunk_id": "DOC-AGRO-001#S3",
+      "doc_id": "DOC-AGRO-001",
+      "title": "Field Shift Reviewed Agronomy & Scoring Guidance (EN/FR/AR)",
+      "section": "1.2 Other Possible Rotation Periods (2-Year, 4-Year, 5-Year & Double-Cropping Seasons)",
+      "region": "global",
+      "concepts": [
+        "concept_alfalfa",
+        "concept_canola",
+        "concept_cereal",
+        "concept_chickpea",
+        "concept_corn",
+        "concept_general_plan",
+        "concept_irrigation",
+        "concept_legume",
+        "concept_lentil",
+        "concept_mung",
+        "concept_oilseed",
+        "concept_pea",
+        "concept_period_years",
+        "concept_region_kansas",
+        "concept_region_punjab",
+        "concept_region_setif",
+        "concept_rice",
+        "concept_risk_climate",
+        "concept_safflower",
+        "concept_soil",
+        "concept_soybean",
+        "concept_sulla",
+        "concept_sunflower",
+        "concept_water",
+        "concept_wheat"
+      ],
+      "text": "The Python scoring engine (`engine/scoring.py`) is parameterized by `rules[\"rotation_length\"]` in `domain/regions/<region>/rules.json` and evaluates `itertools.product(sorted(crops), repeat=rules[\"rotation_length\"])`:\n- **2-Year Period (`rotation_length = 2`, Cereal–Legume Biculture)**: Common in dryland Wheat–Lentil (Algeria), Corn–Soybean (Kansas), or Wheat–Mung bean. Pros: simple management, 50% legume frequency. Cons: a 1-year break is too short for *Ascochyta* blight in chickpea or *Aphanomyces* root rot in field pea, and leaves no slot for a deep-rooted oilseed taproot (canola, safflower, sunflower).\n- **4-Year Period (`rotation_length = 4`, Cereal → Legume → Cereal → Oilseed/Forage)**: Ideal for diversifying weed control and allowing a full 3-year break before repeating sensitive pulses or brassicas (canola, mustard). Requires setting `max_occurrences_per_crop: 1` (with 4 distinct crops) or `2` (allowing wheat twice if separated by a legume and an oilseed).\n- **5-Year Ley Rotation (`rotation_length = 5`, Perennial Alfalfa / Sulla Phase)**: Perennial forage legumes (`alfalfa` in Kansas, `sulla` in Sétif) occupy a field for 2 to 3 consecutive years to rebuild deep soil organic carbon (`soc_g_per_kg`) and fix `+30 to +45 kg N/ha/yr`, followed by 2 to 3 years of grain and oilseed cash crops.\n- **Sub-Annual Double Cropping (2 Seasons/Year — Kharif + Rabi)**: In irrigated Punjab (`regionC`), farmers grow two crops per year (e.g., Kharif rice or maize in June–October followed by Rabi wheat, chickpea, or mustard in November–April), and sometimes a 65-day summer `mung_bean` catch crop in April–June. As disclosed in `G10`, the current engine models one primary crop per step; double-cropping sequences can be represented by pairing Kharif and Rabi crops across consecutive steps."
+    },
+    {
+      "chunk_id": "DOC-AGRO-001#S4",
+      "doc_id": "DOC-AGRO-001",
+      "title": "Field Shift Reviewed Agronomy & Scoring Guidance (EN/FR/AR)",
+      "section": "1.3 Résumé en Français (Durée de rotation : 2, 3, 4 ou 5 ans)",
+      "region": "global",
+      "concepts": [
+        "concept_alfalfa",
+        "concept_canola",
+        "concept_cereal",
+        "concept_chickpea",
+        "concept_corn",
+        "concept_general_plan",
+        "concept_legume",
+        "concept_lentil",
+        "concept_nitrogen_fertilizer",
+        "concept_oilseed",
+        "concept_pea",
+        "concept_period_years",
+        "concept_rice",
+        "concept_risk_climate",
+        "concept_soybean",
+        "concept_sulla",
+        "concept_sunflower",
+        "concept_wheat"
+      ],
+      "text": "Le cycle de **3 ans (`rotation_length = 3`)** est la période minimale pour combiner une céréale, une légumineuse fixatrice d'azote (`nitrogen_fixing = 1`, réduisant l'engrais NPK de `-25%` l'année suivante) et un oléagineux ou fourrage, tout en évitant le retour trop rapide de l'anthracnose du pois chiche (*Ascochyta*) ou de l'orobanche. Le moteur Python (`engine/scoring.py`) accepte d'autres périodes via `rotation_length` dans `rules.json` : **2 ans** (blé–lentille ou maïs–soja), **4 ans** (céréale → légumineuse → céréale → colza/tournesol) ou **5 ans** (avec luzerne `alfalfa` ou sainfoin `sulla`)."
+    },
+    {
+      "chunk_id": "DOC-AGRO-001#S5",
+      "doc_id": "DOC-AGRO-001",
+      "title": "Field Shift Reviewed Agronomy & Scoring Guidance (EN/FR/AR)",
+      "section": "1.4 ملخص بالعربية (فترة الدورة الزراعية: سنتان، 3 سنوات، 4 أو 5 سنوات)",
+      "region": "global",
+      "concepts": [
+        "concept_alfalfa",
+        "concept_canola",
+        "concept_cereal",
+        "concept_chickpea",
+        "concept_corn",
+        "concept_faba",
+        "concept_general_plan",
+        "concept_legume",
+        "concept_lentil",
+        "concept_nitrogen_fertilizer",
+        "concept_oilseed",
+        "concept_period_years",
+        "concept_risk_climate",
+        "concept_safflower",
+        "concept_score_engine",
+        "concept_soybean",
+        "concept_sulla",
+        "concept_wheat"
+      ],
+      "text": "تُعد **الدورة الثلاثية (3 سنوات `rotation_length = 3`)** الفترة النموذجية لأنها تكسر أمراض الحبوب المتتالية (`forbid_consecutive_same_family`) وتمنح فترة راحة كافية للبقوليات ضد الأمراض الفطرية (مثل لفحة الأسكوكيتا في الحمص والهالوك في الفول)، مع توفير رصيد نيتروجين طبيعي يقلل السماد الكيميائي (`NPK`) بنسبة **25%** للمحصول التالي. يدعم محرك التقييم (`engine/scoring.py`) تغيير طول الدورة (`rotation_length`) إلى **سنتين** (قمح–عدس أو ذرة–صويا)، أو **4 سنوات** (حبوب ← بقوليات ← حبوب ← محاصيل زيتية مثل الكانولا والقرطم)، أو **5 سنوات** للمحاصيل العلفية المعمرة مثل الفصة (`alfalfa`) والسلة (`sulla`).\n\n---"
+    },
+    {
+      "chunk_id": "DOC-AGRO-001#S6",
+      "doc_id": "DOC-AGRO-001",
+      "title": "Field Shift Reviewed Agronomy & Scoring Guidance (EN/FR/AR)",
+      "section": "2.1 Four Criterion Scores (criterion_scores)",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_legume",
+        "concept_nitrogen_fertilizer",
+        "concept_profit_yield",
+        "concept_region_setif",
+        "concept_rice",
+        "concept_risk_climate",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "For any candidate rotation $R = (c_1, c_2, \\dots, c_n)$ of length $n$, `criterion_scores(rotation, crops)` computes four normalized scores in $[0, 1]$ (displayed as $0\\text{–}100\\%$ in the UI):\n- **`profit` (`criteria.profit`)**: Mean of crop `profit` ratings across the rotation: $\\text{mean}(\\text{profit})$. Expected gross revenue is computed in `gross_income_dzd_ha` from regional `yield_potential` (q/ha) $\\times$ `price_local`.\n- **`water` (`criteria.water`)**: Water-saving score: $1 - \\text{mean}(\\text{water\\_need})$. Lower crop `water_need` yields a higher `water` score. UI `waterNeed` is $(1 - \\text{criteria.water}) \\times 100$.\n- **`soil` (`criteria.soil`)**: Soil protection & regeneration score: $0.5 \\times \\text{mean}(\\text{residue\\_carbon}) + 0.5 \\times \\min(1.0, 2 \\times \\text{mean}(\\text{nitrogen\\_fixing}))$. Rewards both crop residue carbon return and nitrogen-fixing legumes.\n- **`risk` (`criteria.risk`)**: Risk safety score: $1 - \\text{mean}(\\text{risk\\_level})$. Lower crop `risk_level` yields a higher `risk` score."
+    },
+    {
+      "chunk_id": "DOC-AGRO-001#S7",
+      "doc_id": "DOC-AGRO-001",
+      "title": "Field Shift Reviewed Agronomy & Scoring Guidance (EN/FR/AR)",
+      "section": "2.2 Climate & Soil Stress Weight Adjustment (derive_stress & adjust_weights)",
+      "region": "global",
+      "concepts": [
+        "concept_profit_yield",
+        "concept_risk_climate",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "The engine reads local satellite indicators from `indicators.json` and `thresholds.json`:\n- **`water_stress` (`stress.water_stress`)**: $\\text{clamp}((\\text{rainfall\\_reference\\_mm} - \\text{rainfall\\_mm}) / \\text{rainfall\\_reference\\_mm}, 0, 1)$.\n- **`soc_deficit` (`stress.soc_deficit`)**: $\\text{clamp}((\\text{soc\\_threshold\\_g\\_per\\_kg} - \\text{soil\\_organic\\_carbon\\_g\\_per\\_kg}) / \\text{soc\\_threshold\\_g\\_per\\_kg}, 0, 1)$.\n- **Dynamic weight amplification (`adjust_weights`)**:\n  - $w_{\\text{water}}' = w_{\\text{water}} \\times (1 + K_{\\text{WATER}} \\times \\text{water\\_stress})$ with $K_{\\text{WATER}} = 1.0$.\n  - $w_{\\text{soil}}' = w_{\\text{soil}} \\times (1 + K_{\\text{SOIL}} \\times \\text{soc\\_deficit})$ with $K_{\\text{SOIL}} = 1.0$.\n  - All four weights (`profit`, `water`, `soil`, `risk`) are re-normalized to sum to $1.0$ in `adjusted_weights`, and `score = total_score(criteria, adjusted_weights)`."
+    },
+    {
+      "chunk_id": "DOC-AGRO-001#S8",
+      "doc_id": "DOC-AGRO-001",
+      "title": "Field Shift Reviewed Agronomy & Scoring Guidance (EN/FR/AR)",
+      "section": "2.3 Hybrid ML Transition Score, Environmental Match & 3-Year Soil Trajectory",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_legume",
+        "concept_nitrogen_fertilizer",
+        "concept_period_years",
+        "concept_profit_yield",
+        "concept_region_setif",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "- **`env_match_pct` (`ml_metrics.env_match_pct`, UI \"Climate match\" / `scores.knn`)**: Checks whether regional `rainfall_mm` falls inside each crop's optimal rainfall envelope `[optimal_rain_min, optimal_rain_max]` (92% inside, Gaussian decay outside).\n- **`ai_confidence_pct` (`ml_metrics.ai_confidence_pct`, UI \"Crop sequence fit\" / `scores.ml`)**: Pairwise transition probability rewarding family breaks (`family_break = +1.0` vs `-0.8` same family), legume nitrogen restoration after heavy feeders (`depletion >= 3` followed by `nitrogen_fixing == 1`), drought tolerance, and low water need.\n- **`trajectory_3yr` (`simulate_3yr_trajectory`)**: Tracks year-by-year `projected_nitrogen_kg_ha` (starting from $45 + 2.5 \\times \\text{SOC}$), `soil_health_pct`, and `npk_dose_kg_ha`. When a crop follows a nitrogen-fixing legume (`legume_credit_applied: true`), its synthetic fertilizer dose `base_npk_kg_ha` is reduced by **25%** (`0.75 * base_npk`), yielding `total_3yr_npk_kg_ha` and `fertilizer_saved_vs_existing_kg_ha`.\n- **`ranking_stability_pct` (`compute_ranking_stability`)**: Runs 100 seeded Monte Carlo weather simulations perturbing rainfall by $\\pm 15\\%$ and reports the percentage of years where Rank 1 stays on top."
+    },
+    {
+      "chunk_id": "DOC-AGRO-001#S9",
+      "doc_id": "DOC-AGRO-001",
+      "title": "Field Shift Reviewed Agronomy & Scoring Guidance (EN/FR/AR)",
+      "section": "2.3 Hybrid ML Transition Score, Environmental Match & 3-Year Soil Trajectory",
+      "region": "global",
+      "concepts": [
+        "concept_period_years",
+        "concept_score_engine",
+        "concept_soil"
+      ],
+      "text": "---"
+    },
+    {
+      "chunk_id": "DOC-AGRO-001#S10",
+      "doc_id": "DOC-AGRO-001",
+      "title": "Field Shift Reviewed Agronomy & Scoring Guidance (EN/FR/AR)",
+      "section": "Section 3: Scope Boundaries & What This Guidance Does NOT Cover (Refusal Policy)",
+      "region": "global",
+      "concepts": [
+        "concept_fires",
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_nitrogen_fertilizer",
+        "concept_profit_yield",
+        "concept_region_kansas",
+        "concept_region_punjab",
+        "concept_region_setif",
+        "concept_score_engine",
+        "concept_soil"
+      ],
+      "text": "Field Shift's reviewed agronomy corpus covers **only**:\n1. Multi-year crop rotation planning, agronomic rules (`rules.json`), and crop compatibility in `regionA` (Sétif, Algeria), `regionB` (Central Kansas, USA), and `regionC` (Punjab, India).\n2. Engine scores (`score`, `criteria`, `adjusted_weights`, `stress`, `ml_metrics`, `trajectory_3yr`, `ranking_stability_pct`) and crop traits in `domain/crops_base.csv` and `domain/regions/*/yield.csv`.\n3. Satellite climate, soil, NDVI, and Fire Watch indicators (NASA POWER, ERA5, ISRIC SoilGrids v2.0, MODIS MOD13Q1, NASA FIRMS VIIRS) and scientific disclosures `G1`–`G12`."
+    },
+    {
+      "chunk_id": "DOC-AGRO-001#S11",
+      "doc_id": "DOC-AGRO-001",
+      "title": "Field Shift Reviewed Agronomy & Scoring Guidance (EN/FR/AR)",
+      "section": "Section 3: Scope Boundaries & What This Guidance Does NOT Cover (Refusal Policy)",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan"
+      ],
+      "text": "**Out-of-Scope Topics (Must Refuse):**\n- Synthetic pesticide, herbicide, or fungicide brand prescriptions, spray mixing rates, or chemical pest eradication schedules.\n- Livestock veterinary medicine, animal surgery, or feedlot antibiotic dosing.\n- Tractor mechanics, combine harvester engine diagnostics, or IoT hardware wiring.\n- Financial/cryptocurrency speculation, stock trading, legal land disputes, or non-agricultural topics.\n- Tropical plantation crops not in the reviewed database (e.g., cocoa, coffee, oil palm, bananas, rubber)."
+    },
+    {
+      "chunk_id": "DOC-FARMER-001#S1",
+      "doc_id": "DOC-FARMER-001",
+      "title": "Farmer's Guide: Choosing Your 3-Year Crop Plan",
+      "section": "🌱 Farmer's Guide: Choosing Your 3-Year Crop Plan",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_period_years",
+        "concept_risk_climate",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "Welcome! You do **not** need any computer skills to use this tool. If you can tap buttons on a phone or point with a mouse, you can finish your 3-year crop rotation plan in **3 minutes**.\n\n> **What is this tool?** Think of it as a farming notebook that already knows your region's rainfall history, heat waves, and soil tiredness—and helps you pick which 3 crops to plant over the next 3 years so your land stays fertile and your harvest stays steady.\n\n---"
+    },
+    {
+      "chunk_id": "DOC-FARMER-001#S2",
+      "doc_id": "DOC-FARMER-001",
+      "title": "Farmer's Guide: Choosing Your 3-Year Crop Plan",
+      "section": "1. How It Works in 5 Simple Steps",
+      "region": "global",
+      "concepts": [
+        "concept_barley",
+        "concept_cereal",
+        "concept_chickpea",
+        "concept_faba",
+        "concept_general_plan",
+        "concept_legume",
+        "concept_lentil",
+        "concept_period_years",
+        "concept_profit_yield",
+        "concept_risk_climate",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_water",
+        "concept_wheat"
+      ],
+      "text": "1. **Pick Your Region & Crops (`1. Setup`):**\n   - Tap your language (`العربية`, `FR`, or `EN`) at the top right.\n   - Choose your region and tap **✨ Suggest for my region** so the sliders adjust automatically for your local water and soil conditions.\n   - Select the 3 crops you usually plant in **Year 1**, **Year 2**, and **Year 3**.\n   - Tick the crops you allow on your farm (at least **3 crops**, including **one grain/cereal** like wheat or barley and **one bean/legume** like chickpea, lentil, or faba bean).\n2. **Check Local Rain & Heat (`2. Climate Changes`):**\n   - See your area's yearly rain, hot days (`>35 °C`), frost days (`<0 °C`), heavy rain days, and longest dry spell.\n   - Move the **What-If Sliders** (for example, `-20%` less rain and `+2 °C` warmer) to see how your crops hold up in a tough year.\n3. **Read the Best 3-Year Plans (`3. Rotation Ranking`):**\n   - See the top-ranked 3-year rotations scored out of **100**, with plain-language risk warnings for every crop.\n   - Tap **🖨️ Print or save as PDF** to take a paper sheet to the field or co-op.\n4. **Compare With Your Usual Plan (`4. Usual vs Rank 1`):**\n   - See your current 3-year rotation side by side with Rank 1 on **Water Need**, **Soil Health**, **Harvest Stability**, and **Estimated Income per hectare**.\n5. **Explore the Region Map (`5. Region Map`):**\n   - Tap any region marker on the map and toggle the rainfall-trend overlay to see which zones are drying fastest."
+    },
+    {
+      "chunk_id": "DOC-FARMER-001#S3",
+      "doc_id": "DOC-FARMER-001",
+      "title": "Farmer's Guide: Choosing Your 3-Year Crop Plan",
+      "section": "1. How It Works in 5 Simple Steps",
+      "region": "global",
+      "concepts": [],
+      "text": "---"
+    },
+    {
+      "chunk_id": "DOC-FARMER-001#S4",
+      "doc_id": "DOC-FARMER-001",
+      "title": "Farmer's Guide: Choosing Your 3-Year Crop Plan",
+      "section": "2. Why You Can Trust This Tool",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_legume",
+        "concept_nitrogen_fertilizer",
+        "concept_risk_climate",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "- **Built on real farming rules:** It never puts two crops from the same family back to back (which builds up pests and root disease), and it always includes a legume to restore natural nitrogen in the soil.\n- **Tested against bad weather:** When the screen says *\"rank 1 stays first in 87% of runs\"*, it means we tested that rotation across dozens of drier and hotter scenarios—and it still came out on top.\n- **Respects your current rotation:** We never hide your usual plan. We score it fairly right next to our #1 recommendation so you can judge the difference yourself.\n- **Honest about its limits:** Satellite soil and rain maps measure whole neighborhoods (`250 m` squares), not every stone in your field—so your own eyes and experience always come first."
+    },
+    {
+      "chunk_id": "DOC-REG-001#S1",
+      "doc_id": "DOC-REG-001",
+      "title": "Regional Agronomic Rules, Crop Profiles & Data Sources",
+      "section": "Regional Selection, Crop Table & Agronomic Rules (Field Shift — Algeria)",
+      "region": "global",
+      "concepts": [
+        "concept_cereal",
+        "concept_general_plan",
+        "concept_legume",
+        "concept_oilseed",
+        "concept_region_setif"
+      ],
+      "text": "This document defines the scientifically grounded **3 benchmark regions**, **13-crop regional catalog**, and **agronomic rule set** built for Algeria / North Africa dryland cereal–legume–oilseed systems, replacing generic tropical datasets (`CropSense` / `DharaaAI`).\n\n---"
+    },
+    {
+      "chunk_id": "DOC-REG-001#S2",
+      "doc_id": "DOC-REG-001",
+      "title": "Regional Agronomic Rules, Crop Profiles & Data Sources",
+      "section": "1. Why These 3 Regions Were Selected (and Why Mitidja Was Replaced)",
+      "region": "global",
+      "concepts": [
+        "concept_cereal",
+        "concept_general_plan",
+        "concept_legume",
+        "concept_water"
+      ],
+      "text": "Following **ITGC (Institut Technique des Grandes Cultures)** station locations, FAOSTAT crop footprints, and ICARDA Mediterranean aridity gradients, we selected three benchmark dryland cereal–legume zones spanning `300–600 mm` rainfall:"
+    },
+    {
+      "chunk_id": "DOC-REG-001#S3",
+      "doc_id": "DOC-REG-001",
+      "title": "Regional Agronomic Rules, Crop Profiles & Data Sources",
+      "section": "1. Why These 3 Regions Were Selected (and Why Mitidja Was Replaced)",
+      "region": "global",
+      "concepts": [
+        "concept_barley",
+        "concept_canola",
+        "concept_cereal",
+        "concept_chickpea",
+        "concept_faba",
+        "concept_fallow",
+        "concept_general_plan",
+        "concept_legume",
+        "concept_lentil",
+        "concept_oats",
+        "concept_profit_yield",
+        "concept_region_kansas",
+        "concept_region_punjab",
+        "concept_region_setif",
+        "concept_risk_climate",
+        "concept_soil",
+        "concept_water",
+        "concept_wheat"
+      ],
+      "text": "| ID | Region (ITGC Benchmark Station) | Coordinates | Annual Rain | Soil Type & Chemistry | Role in Field Shift |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| `regionA` | **Sétif High Plateaux** | `36.19°N, 5.41°E` | `300–450 mm` (`380 mm`) | Brown calcareous & clay-loam vertisols (`pH 7.9`, `SOC 9.9 g/kg`) | **Dry Semi-Arid Stress Case:** Frequent winter frost (`< 0 °C`), spring dry spells, traditional cereal-fallow shifting to barley/durum wheat + lentil/chickpea/forage oats. |\n| `regionB` | **Constantine / El Khroub Plains** | `36.36°N, 6.61°E` | `450–600 mm` (`530 mm`) | Deep clay vertisols & calcareous rendzinas (`pH 7.7`, `SOC 14.5 g/kg`) | **Sub-Humid Cereal-Pulse Hub:** Replaces coastal horticulture Mitidja. High yield potential for durum wheat + faba bean/lentil + canola under conservation agriculture (*semis direct*). |\n| `regionC` | **Tiaret Western Plateaux** | `35.37°N, 1.32°E` | `350–500 mm` (`420 mm`) | Deep clay-loam, vertisols & calcareous slopes (`pH 7.8`, `SOC 10.8 g/kg`) | **Semi-Arid Transition Belt:** Large-scale mechanized cereal zone shifting via CCLS to chickpea/forage/canola to control wild oats (*Avena sterilis*). |"
+    },
+    {
+      "chunk_id": "DOC-REG-001#S4",
+      "doc_id": "DOC-REG-001",
+      "title": "Regional Agronomic Rules, Crop Profiles & Data Sources",
+      "section": "1. Why These 3 Regions Were Selected (and Why Mitidja Was Replaced)",
+      "region": "global",
+      "concepts": [
+        "concept_cereal",
+        "concept_general_plan",
+        "concept_irrigation",
+        "concept_legume",
+        "concept_oilseed",
+        "concept_region_setif",
+        "concept_water"
+      ],
+      "text": "> **Why Mitidja (`600–800+ mm`) was replaced by Constantine:** Agronomic literature shows Mitidja is dominated by **irrigated coastal horticulture, vegetables, and citrus orchards**, not rainfed cereal-legume rotations. **Constantine / El Khroub** is Algeria's flagship sub-humid cereal-legume-oilseed research belt.\n\nMachine-readable config: [regions.json](file:///Users/morsistoredz/NasaSpaceApps/data/regional/regions.json)\n\n---"
+    },
+    {
+      "chunk_id": "DOC-REG-001#S5",
+      "doc_id": "DOC-REG-001",
+      "title": "Regional Agronomic Rules, Crop Profiles & Data Sources",
+      "section": "2. Regional Crop Table (data/regional/crops_algeria.csv)",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_irrigation",
+        "concept_legume",
+        "concept_nitrogen_fertilizer",
+        "concept_profit_yield",
+        "concept_region_setif",
+        "concept_water"
+      ],
+      "text": "Calibrated to **FAO Irrigation & Drainage Paper No. 56 ($ET_c$)**, **ICARDA WANA biological nitrogen fixation trials**, and **ITGC Algeria yield benchmarks**:"
+    },
+    {
+      "chunk_id": "DOC-REG-001#S6",
+      "doc_id": "DOC-REG-001",
+      "title": "Regional Agronomic Rules, Crop Profiles & Data Sources",
+      "section": "2. Regional Crop Table (data/regional/crops_algeria.csv)",
+      "region": "global",
+      "concepts": [
+        "concept_barley",
+        "concept_canola",
+        "concept_cereal",
+        "concept_chickpea",
+        "concept_faba",
+        "concept_fallow",
+        "concept_general_plan",
+        "concept_irrigation",
+        "concept_legume",
+        "concept_lentil",
+        "concept_nitrogen_fertilizer",
+        "concept_oats",
+        "concept_oilseed",
+        "concept_profit_yield",
+        "concept_region_punjab",
+        "concept_region_setif",
+        "concept_rice",
+        "concept_risk_climate",
+        "concept_safflower",
+        "concept_soil",
+        "concept_sunflower",
+        "concept_triticale",
+        "concept_vetch",
+        "concept_water",
+        "concept_wheat"
+      ],
+      "text": "| Crop | Botanical Family | FAO $ET_c$ (mm) | Net N (`kg/ha`) | OAIC/CCLS Price (`DA/q`) | Baseline Yield (`q/ha`) | Baseline Gross (`DA/ha`) | Primary Agronomic Role & Risk (`needs local review`) |\n| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |\n| **Durum Wheat** (*Triticum durum*) | `cereal` (*Poaceae*) | `350–500` | `-30` | `6,000 DA/q` (OAIC) | `22 q/ha` | `132,000 DA/ha` | Primary staple grain; sensitive to `>35 °C` grain-filling heat & *Fusarium*/rust. |\n| **Soft Wheat** (*Triticum aestivum*) | `cereal` (*Poaceae*) | `350–500` | `-28` | `5,000 DA/q` (OAIC) | `24 q/ha` | `120,000 DA/ha` | Milling bread wheat (Exec. Decree 22-56); yellow rust & humid spring lodging risk. |\n| **Barley** (*Hordeum vulgare*) | `cereal` (*Poaceae*) | `300–450` | `-20` | `3,400 DA/q` (OAIC) | `18 q/ha` | `61,200 DA/ha` | Hardiest dryland cereal; lodging risk if excess N is applied. |\n| **Forage Oats** (*Avena sativa*) | `cereal` (*Poaceae*) | `340–480` | `-18` | `3,400 DA/q` (OAIC) | `19 q/ha` | `64,600 DA/ha` | Key crop-livestock hay crop in Sétif/Tiaret. |\n| **Triticale** (*× Triticosecale*) | `cereal` (*Poaceae*) | `350–500` | `-22` | `~3,600 DA/q` (feed est.) | `22 q/ha` | `79,200 DA/ha` | Hardy ITGC dryland feed cereal (`2.4–4.9 t/ha`); cold winter & marginal soil tolerant. |\n| **Chickpea** (*Cicer arietinum*) | `legume` (*Fabaceae*) | `350–500` | `+22` | `20,000 DA/q` (CCLS/OAIC) | `10 q/ha` | `200,000 DA/ha` | Deep taproot extracts stored moisture; *Ascochyta* blight risk in wet springs. |\n| **Lentil** (*Lens culinaris*) | `legume` (*Fabaceae*) | `350–450` | `+20` | `19,000 DA/q` (CCLS/OAIC) | `9 q/ha` | `171,000 DA/ha` | Escapes terminal heat; modest residual N because high harvest index exports N in grain. |\n| **Faba Bean** (*Vicia faba*) | `legume` (*Fabaceae*) | `400–700` | `+32` | `~11,000 DA/q` (local est.) | `15 q/ha` | `165,000 DA/ha` | Highest BNF nitrogen carryover; needs `>=400 mm`; sensitive to *Orobanche* & sirocco. |\n| **Common Vetch** (*Vicia sativa*) | `legume` (*Fabaceae*) | `300–450` | `+26` | `~4,500 DA/q DM` (forage est.) | `30 q/ha DM` | `135,000 DA/ha` | ITGC dryland forage legume (usually vetch–oats/triticale hay mix); fixes `+26 kg N/ha`. |\n| **Rapeseed / Canola** (*Brassica napus*) | `oilseed` (*Brassicaceae*) | `400–600` | `-22` | `9,000 DA/q` (CCLS) | `18 q/ha` | `162,000 DA/ha` | ITGC strategic break crop; taproot shatters plow pan; pod shattering in dry wind. |\n| **Safflower** (*Carthamus tinctorius*) | `oilseed` (*Asteraceae*) | `300–450` | `-18` | `~10,000 DA/q` (oilseed est.) | `12 q/ha` | `120,000 DA/ha` | Deep-rooted drought break crop (`<400 mm`); spiny leaves & niche oilseed contract needed. |\n| **Sunflower** (*Helianthus annuus*) | `oilseed` (*Asteraceae*) | `600–1000` | `-26` | `~11,000 DA/q` (incentive est.) | `14 q/ha` | `154,000 DA/ha` | High $ET_c$; best suited to wet Constantine zones or supplemental irrigation. |\n| **Worked Fallow** (*Jachère travaillée*) | `fallow` | `0–100` | `+8` | `0 DA/q` | `0 q/ha` | `0 DA/ha` | Semi-arid soil & moisture reset (`+8 kg N/ha` mineralization); `0 DA` year income & bare-soil erosion risk. |"
+    },
+    {
+      "chunk_id": "DOC-REG-001#S7",
+      "doc_id": "DOC-REG-001",
+      "title": "Regional Agronomic Rules, Crop Profiles & Data Sources",
+      "section": "2. Regional Crop Table (data/regional/crops_algeria.csv)",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_profit_yield",
+        "concept_region_setif",
+        "concept_water"
+      ],
+      "text": "> **Regional Yield Scaling:** Gross revenue (`DA/ha`) scales with each region's rainfall/yield baseline (`Sétif ~0.85x`, `Tiaret ~0.95x`, `Constantine ~1.15x`), while quality bonuses/deductions (*bonifications/réfractions*) apply at CCLS delivery.\n\nFull CSV: [crops_algeria.csv](file:///Users/morsistoredz/NasaSpaceApps/data/regional/crops_algeria.csv)\n\n---"
+    },
+    {
+      "chunk_id": "DOC-REG-001#S8",
+      "doc_id": "DOC-REG-001",
+      "title": "Regional Agronomic Rules, Crop Profiles & Data Sources",
+      "section": "3. Regional Agronomic Rules (data/regional/rules_algeria.json)",
+      "region": "global",
+      "concepts": [
+        "concept_region_setif"
+      ],
+      "text": "Every rule in [rules_algeria.json](file:///Users/morsistoredz/NasaSpaceApps/data/regional/rules_algeria.json) is derived from **ICARDA** and **ITGC** Mediterranean dryland experiments:"
+    },
+    {
+      "chunk_id": "DOC-REG-001#S9",
+      "doc_id": "DOC-REG-001",
+      "title": "Regional Agronomic Rules, Crop Profiles & Data Sources",
+      "section": "3. Regional Agronomic Rules (data/regional/rules_algeria.json)",
+      "region": "global",
+      "concepts": [
+        "concept_cereal",
+        "concept_general_plan",
+        "concept_legume",
+        "concept_nitrogen_fertilizer",
+        "concept_oats",
+        "concept_oilseed",
+        "concept_period_years",
+        "concept_region_setif",
+        "concept_risk_climate",
+        "concept_score_engine",
+        "concept_sunflower",
+        "concept_water"
+      ],
+      "text": "1. **No Repeated Crop (`max_occurrences_per_crop = 1`):** Prevents *Fusarium* crown rot, *Ascochyta* blight spores, and parasitic *Orobanche* (broomrape) accumulation across a 3-year cycle.\n2. **No Consecutive Same Botanical Family (`forbid_consecutive_same_family = true`):** Breaks grass weed cycles (wild oats / *Avena sterilis*) and cereal-specific root diseases by separating cereals with broadleaf legumes or oilseeds.\n3. **Mandatory Legume Nitrogen Reset (`min_legumes = 1`):** Guarantees biological nitrogen fixation (`+20` to `+32 kg N/ha`) and activates ICARDA's **`-30%` synthetic fertilizer carryover rule** (`post_legume_npk_multiplier = 0.70`) for the following cereal.\n4. **High-Water Cap (`max_high_water_crops = 1`, `high_water_need_threshold = 0.65`):** Prevents planting water-demanding break crops (`sunflower` `600–1000 mm`) repeatedly in dry regions (`Sétif`, `Tiaret`).\n5. **Deterministic Tie-Breaker (`Alaa's Plan`):** Equal-scoring rotations always prioritize **Legume in Year 1 first**, then **alphabetical order**, guaranteeing 100% reproducible rankings on every run.\n6. **Note on 3-Year Cyclic Family Mixing:** Under strict cyclic rules (`Year 3 -> Year 1`), alternating families requires **1 Cereal + 1 Legume + 1 Oilseed Break Crop** (implemented in [mockup.html](file:///Users/morsistoredz/NasaSpaceApps/mockup.html), with an automatic 2-family `Cereal <-> Legume` fallback if the farmer disables all oilseeds)."
+    },
+    {
+      "chunk_id": "DOC-REG-001#S10",
+      "doc_id": "DOC-REG-001",
+      "title": "Regional Agronomic Rules, Crop Profiles & Data Sources",
+      "section": "3. Regional Agronomic Rules (data/regional/rules_algeria.json)",
+      "region": "global",
+      "concepts": [
+        "concept_region_setif"
+      ],
+      "text": "---"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S1",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "Part 1: Agronomy & Satellite Glossary for Computer Scientists",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_nitrogen_fertilizer",
+        "concept_region_punjab",
+        "concept_risk_climate",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "Think of a farm field as a **stateful server with a battery (`Soil Nitrogen & Carbon`), a cooling/power budget (`Water/Rainfall`), and security vulnerabilities (`Pests & Root Diseases`)**. Every crop is a workload you schedule for 1 year."
+    },
+    {
+      "chunk_id": "DOC-ML-001#S2",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "1.1 Satellite & Climate Terms (NASA Data)",
+      "region": "global",
+      "concepts": [
+        "concept_barley",
+        "concept_cereal",
+        "concept_chickpea",
+        "concept_faba",
+        "concept_fires",
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_legume",
+        "concept_lentil",
+        "concept_region_punjab",
+        "concept_risk_climate",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_sunflower",
+        "concept_water",
+        "concept_wheat"
+      ],
+      "text": "| Term | Plain Definition | CS / Systems Analogy | Range & Units |\n| :--- | :--- | :--- | :--- |\n| **NDVI** (*Normalized Difference Vegetation Index*) | Satellite measure of how green and dense plant leaves are, computed from Near-Infrared (`NIR`) and Red light: $\\text{NDVI} = \\frac{\\text{NIR} - \\text{Red}}{\\text{NIR} + \\text{Red}}$. Healthy green leaves reflect `NIR` and absorb `Red`. | **Server CPU/Throughput Utilization** measured from outside via telemetry. High peak `NDVI` in spring means crops in that pixel grew vigorously. | `-1.0` to `+1.0` (`< 0.2` bare soil; `0.3–0.5` sparse crop; `0.6–0.85` dense healthy crop) |\n| **Evapotranspiration (`ET0` / `ETc`)** | Simply put: **total water leaving the field into the air** each day. It combines **Evaporation (`E`)** (water drying straight out of warm soil, like a puddle drying in the sun) + **Transpiration (`T`)** (water the plant drinks through its roots and \"sweats\" out through its leaves to stay cool). **`ET0`** is the baseline daily water loss of standard short green grass in that weather (sun + heat + wind + dry air); **`ETc`** is your specific crop's need (`ETc = ET0 × Kc`), e.g. sunflower drinks much more than barley. | **Total System Power Draw / Battery Drain Rate.** Think of **Rainfall** as money deposited into your soil bank account, and **`ETc`** as daily cash withdrawals. Even if `380 mm` falls, high `ET` drains moisture before roots can use it. | `mm/day` or `mm/season` (`ETc`: `300–450 mm` barley, `350–500 mm` wheat, `600–1000 mm` sunflower) |\n| **Water Stress Index** | `1 - (recent_avg_rainfall / reference_20yr_rainfall)`, floored at `0`: $\\text{clamp}\\!\\left(\\frac{\\text{Rain}_{\\text{ref}} - \\text{Rain}}{\\text{Rain}_{\\text{ref}}},\\, 0,\\, 1\\right)$. | **Memory/Resource Pressure (`0%` = plenty of RAM, `100%` = OOM throttling).** High water stress boosts the weight of low-thirst crops. | `0.0` (no stress) to `1.0` (severe drought stress) |\n| **Hot Days (`>35 °C`)** | Annual count of days where maximum air temperature (`T2M_MAX`) exceeds `35 °C`. During spring **grain filling** (when wheat kernels fill with starch), `>35 °C` shuts down plant enzymes and shrivels the harvest. | **Thermal Throttling during a critical write operation.** | `days/year` |\n| **Frost Days (`<0 °C`)** | Annual count of days where minimum air temperature (`T2M_MIN`) drops below freezing. Late spring frost kills delicate flowers on legumes (chickpea, lentil, faba bean). | **Sudden power brownout during boot.** | `days/year` |\n| **Longest Dry Spell & `PRECTOTCORR`** | Maximum consecutive days with `< 1 mm` of rain (`PRECTOTCORR < 1.0`). **`PRECTOTCORR`** is the standard variable name from **NASA POWER** (*Prediction Of Worldwide Energy Resources*), representing **bias-corrected total daily precipitation** in `mm/day`. | **Longest network outage window** the crop's root buffer must survive without rain packets arriving. | `consecutive days` (`PRECTOTCORR` in `mm/day`) |\n| **Mann-Kendall & Sen's Slope (`Trend Confidence`)** | Two statistical tests on 30-year climate series: Ordinary Least Squares (parametric line fit) vs. Mann-Kendall/Sen's Slope (non-parametric rank test robust to outliers). When both show `p < 0.05` with the same sign, we show `\"both methods agree\"`; otherwise `\"no clear trend\"`. | **Consensus check between two independent anomaly detectors** before firing an alert. (`p-value` = probability the trend appeared by random chance). | `mm/decade` + confidence label |"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S3",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "1.1 Satellite & Climate Terms (NASA Data)",
+      "region": "global",
+      "concepts": [],
+      "text": "---"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S4",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "1.2 Soil Chemistry & Nutrient Terms (SoilGrids & DharaaAI)",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_legume",
+        "concept_nitrogen_fertilizer",
+        "concept_risk_climate",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "| Term | Plain Definition | CS / Systems Analogy | Range & Units |\n| :--- | :--- | :--- | :--- |\n| **SOC** (*Soil Organic Carbon*) | Carbon stored in decaying plant roots, stubble, and microbes in the top `0–30 cm` of soil. Holds water like a sponge and feeds soil microbes. | **Disk Cache + UPS Battery Capacity.** Low `SOC` (`< 10 g/kg`) means rain runs off the surface instead of soaking in. | `g/kg` (`SoilGrids` reports `dg/kg`, so divide by `10`; `10 g/kg = 1%` carbon) |\n| **SOM** (*Soil Organic Matter*) | Total organic matter in soil. Roughly $\\text{SOM} \\approx 1.724 \\times \\text{SOC}$ (the van Bemmelen factor). | **Total allocated storage** vs. raw payload (`SOC`). Never mix the two without converting. | `%` or `g/kg` |\n| **250 m Soil Estimate** | A modelled spatial average for a `250 m × 250 m` grid cell from global machine learning (`SoilGrids`), **not** a physical lab measurement of one farmer's field. | **Cluster-level telemetry average**, not a single-container probe. Always disclose this in `gaps.json`! | `250 m` pixel |\n| **N, P, K** (*Nitrogen, Phosphorus, Potassium*) | The 3 macro-nutrients every plant consumes: **N** builds green leaves/protein, **P** builds roots/flowers/seeds, **K** regulates water and disease resistance. | **CPU (`N`), Disk I/O (`P`), and Network Bandwidth (`K`).** If any one hits zero, crop growth halts (*Liebig's Law of the Minimum*). | `kg/ha` (or `mg/kg`) |\n| **Fertilizer Codes (`NPK 10:26:26`, `DAP`, `MOP`, `Urea`)** | Commercial bags of synthetic nutrients. `NPK 10:26:26` is `10% N, 26% P, 26% K`. `DAP` (Diammonium Phosphate) is `18% N, 46% P`. `MOP` is Potassium (`0:0:60`). `Urea` is concentrated Nitrogen (`46% N`). | **Paid cloud burst capacity.** Expensive in cash and energy; legumes reduce how much `Urea`/`NPK` a farmer must buy (`-30%` next season). | `kg/ha` applied |\n| **Soil `pH` (`phh2o`)** | Acidity (`< 6.0`), neutrality (`6.5–7.5`), or alkalinity (`> 7.8`, common in North African calcareous soils). Extreme `pH` chemically locks up Phosphorus and iron so roots cannot absorb them. | **File permission / protocol mismatch:** the data (`P`) is on disk, but the process can't read it outside `pH 6.0–7.8`. | `3.0–10.0` (`SoilGrids` reports `pH × 10`, so `79 = pH 7.9`) |"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S5",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "1.2 Soil Chemistry & Nutrient Terms (SoilGrids & DharaaAI)",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_soil"
+      ],
+      "text": "---"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S6",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "1.3 Crop Families & Rotation Mechanics",
+      "region": "global",
+      "concepts": [
+        "concept_barley",
+        "concept_canola",
+        "concept_cereal",
+        "concept_chickpea",
+        "concept_corn",
+        "concept_faba",
+        "concept_general_plan",
+        "concept_legume",
+        "concept_lentil",
+        "concept_nitrogen_fertilizer",
+        "concept_oats",
+        "concept_oilseed",
+        "concept_pea",
+        "concept_potato",
+        "concept_profit_yield",
+        "concept_region_punjab",
+        "concept_risk_climate",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_sunflower",
+        "concept_water",
+        "concept_wheat"
+      ],
+      "text": "| Term | Plain Definition | CS / Systems Analogy | Examples |\n| :--- | :--- | :--- | :--- |\n| **Botanical Family (`family`)** | Taxonomic group sharing root structure, nutrient appetite, and pests/fungi. | **OS / Runtime Family.** Running two crops from the same family back-to-back lets family-specific malware (fungi, root worms, parasitic weeds) multiply exponentially. | `cereal` (*Poaceae*), `legume` (*Fabaceae*), `oilseed` (*Brassicaceae* / *Asteraceae*) |\n| **Cereals (Grains)** | Grass-family crops grown for starch grain and straw. Provide dependable yield and high **residue carbon** (stubble), but consume soil nitrogen. | **Steady production worker nodes** that consume battery (`N`) but leave good logs/mulch (`residue_carbon`). | Durum wheat, barley, oats |\n| **Legumes (Pulses)** | Bean/pea-family crops whose roots host *Rhizobium* bacteria inside nodules that pull Nitrogen gas ($N_2$) from the air and turn it into natural soil fertilizer (`+20` to `+40 kg N/ha`). | **Solar charger / garbage collector** that recharges the soil `N` battery for next year's cereal crop. | Chickpea, lentil, faba bean |\n| **Oilseeds (Break Crops)** | Broadleaf crops pressed for oil (`sunflower`, `rapeseed/canola`). Deep taproots break compacted soil layers and interrupt cereal root diseases. | **Cache flush & disk defragmenter** between cereal runs. | Rapeseed (canola), sunflower |\n| **Heavy Feeders (`soil_depletion_index >= 4`)** | Crops that strip large amounts of Nitrogen, Phosphorus, and water from the soil in a single season. | **GPU training job**—high revenue, but drains the battery (`-35` to `-50 kg N/ha`). Never run two back-to-back without a legume recharge. | Durum wheat, maize, potato |\n| **Monoculture** | Planting the exact same crop (or cereal-after-cereal) every year on the same plot. | **Infinite loop with a memory leak.** Yield drops every year while fertilizer and pesticide costs climb. | `Wheat -> Wheat -> Wheat` |\n| **Lodging, Shattering, Fusarium, Ascochyta, Broomrape** | Real field failure modes: **Lodging** = tall cereal stems falling flat in wind/rain (`oats`); **Shattering** = canola pods popping open before harvest; **Fusarium / Rust / Ascochyta** = fungal blights in wet springs; **Broomrape (*Orobanche*)** = parasitic weed attacking legumes/sunflower. | **Specific runtime exceptions** documented in each crop's `risk_note` (marked `\"needs local review\"`). | Shown in UI risk notes |"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S7",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "1.3 Crop Families & Rotation Mechanics",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan"
+      ],
+      "text": "---"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S8",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "Part 2: Complete Data Collection Checklist & How We Use Each Dataset",
+      "region": "global",
+      "concepts": [
+        "concept_fires",
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_region_setif",
+        "concept_soil"
+      ],
+      "text": "```mermaid\nflowchart LR\n    D1[\"1. NASA POWER Daily Climate (30 yrs)\"] --> IND[\"indicators/{region}.json (Achref)\"]\n    D2[\"2. NASA MODIS MOD13Q1 NDVI (16-day)\"] --> IND\n    D3[\"3. ISRIC SoilGrids v2.0 (0-30 cm)\"] --> IND\n    D4[\"4. FAOSTAT + FAO EcoCrop (Regional Crops)\"] --> CROPS[\"crops.csv & rules.json (Younes/Alaa)\"]\n    D5[\"5. Data Quality & Limitations\"] --> GAPS[\"gaps.json (Nazim)\"]\n    IND --> ENG[\"Hybrid Engine (scoring.py)\"]\n    CROPS --> ENG\n    GAPS --> ENG\n```"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S9",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "2.1 Dataset 1 — NASA POWER Agro-Climatology (indicators.json)",
+      "region": "global",
+      "concepts": [
+        "concept_cereal",
+        "concept_chickpea",
+        "concept_gaps_limits",
+        "concept_lentil",
+        "concept_region_setif",
+        "concept_risk_climate",
+        "concept_water",
+        "concept_wheat"
+      ],
+      "text": "- **What it is:** Free global daily meteorology on a `0.5° × 0.625°` grid from NASA Langley Research Center (no API key needed).\n- **Exact API URL (example for Setif `36.19°N, 5.41°E`):**\n  `https://power.larc.nasa.gov/api/temporal/daily/point?parameters=PRECTOTCORR,T2M_MAX,T2M_MIN,RH2M,EVPTRNS&community=AG&longitude=5.41&latitude=36.19&start=19950101&end=20241231&format=JSON`\n- **Important Data Gotcha (CS View):** Missing values are encoded as **`-999`**. Always filter `val != -999` before computing means/counts, or your averages will corrupt!\n- **How we process and use every field in code:**\n  - `PRECTOTCORR` (`mm/day`): Sum per year $\\rightarrow$ 30-year mean `rainfall_mm`; bin by month $\\rightarrow$ `monthly_rain_mm` (12-bar chart on Screen 2); fit OLS + Mann-Kendall/Sen's slope $\\rightarrow$ `rainfall_trend_decade_mm` & `trend_confidence`; compute `water_stress = clamp((rain_ref - rain_recent) / rain_ref, 0, 1)` which dynamically scales the Water weight (`1 + K_WATER * water_stress`).\n  - `T2M_MAX` (`°C`): Count days `> 35 °C` $\\rightarrow$ `hot_days` (triggers heat-stress warning on wheat grain filling).\n  - `T2M_MIN` (`°C`): Count days `< 0 °C` $\\rightarrow$ `frost_days` (triggers frost-risk warning on winter chickpea/lentil).\n  - `PRECTOTCORR > 20 mm`: Count $\\rightarrow$ `extreme_rain_days`; consecutive `< 1 mm` $\\rightarrow$ `longest_dry_spell_days`."
+    },
+    {
+      "chunk_id": "DOC-ML-001#S10",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "2.2 Dataset 2 — NASA MODIS MOD13Q1 Vegetation Index (indicators.json)",
+      "region": "global",
+      "concepts": [
+        "concept_fires",
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_period_years",
+        "concept_profit_yield",
+        "concept_region_punjab",
+        "concept_region_setif",
+        "concept_score_engine"
+      ],
+      "text": "- **What it is:** 16-day composite satellite greenness (`250 m` resolution) via **NASA AppEEARS** (`https://appeears.earthdatacloud.nasa.gov/`) or Google Earth Engine (`MODIS/061/MOD13Q1`).\n- **Important Data Gotcha (CS View):** `NDVI` in raw MODIS GeoTIFF/HDF files is stored as an integer scaled by **`10000`** (`5400` = `0.54`). Also, you **must mask pixels** with **ESA WorldCover `class 40` (Cropland)** so forests, buildings, and bare rock do not pollute the farm signal.\n- **How we use it in code:**\n  - Extract spring peak `NDVI` (`March–May` in North Africa) for each year.\n  - Normalize regional mean peak `NDVI` (`0.25–0.75` $\\rightarrow$ `0.0–1.0`) as `yield_baseline` in `indicators.json` (used to contextualize regional productivity, never claimed as a parcel-level yield forecast).\n  - Compute Coefficient of Variation ($CV = \\sigma / \\mu$) across years as historical biomass instability."
+    },
+    {
+      "chunk_id": "DOC-ML-001#S11",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "2.3 Dataset 3 — ISRIC SoilGrids v2.0 (soil.json $\\rightarrow$ indicators.json)",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_nitrogen_fertilizer",
+        "concept_period_years",
+        "concept_score_engine",
+        "concept_soil"
+      ],
+      "text": "- **What it is:** Global `250 m` digital soil map via REST API (`https://rest.isric.org/soilgrids/v2.0/properties/query`), implemented in [scripts/fetch_soilgrids.py](file:///Users/morsistoredz/NasaSpaceApps/scripts/fetch_soilgrids.py).\n- **Properties to pull (`0-5cm`, `5-15cm`, `15-30cm`):**\n  - `soc`: Soil Organic Carbon in `dg/kg` $\\rightarrow$ **divide by `10`** to get `g/kg`.\n  - `phh2o`: Soil pH in `pH × 10` $\\rightarrow$ **divide by `10`** to get `pH`.\n  - `nitrogen`: Total nitrogen (`cg/kg`) for soil baseline context (note: **not** plant-available mineral NPK).\n- **How we process and use it in code:**\n  - Compute the `0–30 cm` depth-weighted mean using layer thicknesses `5 : 10 : 15` (`total = 30 cm`):\n    $$\\text{SOC}_{0\\text{–}30} = \\frac{5 \\cdot \\text{L}_{0\\text{–}5} + 10 \\cdot \\text{L}_{5\\text{–}15} + 15 \\cdot \\text{L}_{15\\text{–}30}}{30} \\div 10$$\n  - Map `soc_g_kg` to `soil_stress` (`low SOC < 10 g/kg` $\\rightarrow$ `1.0`; `medium 10–20` $\\rightarrow$ `0.5`; `high > 20` $\\rightarrow$ `0.0`), which scales the Soil weight (`1 + K_SOIL * soil_stress`) and sets the starting `Soil Health %` in the 3-year trajectory simulator."
+    },
+    {
+      "chunk_id": "DOC-ML-001#S12",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "2.4 Dataset 4 — Regional Crop Table & Agronomic Rules (crops.csv & rules.json)",
+      "region": "global",
+      "concepts": [
+        "concept_barley",
+        "concept_cereal",
+        "concept_chickpea",
+        "concept_faba",
+        "concept_general_plan",
+        "concept_legume",
+        "concept_lentil",
+        "concept_nitrogen_fertilizer",
+        "concept_oats",
+        "concept_period_years",
+        "concept_profit_yield",
+        "concept_region_punjab",
+        "concept_region_setif",
+        "concept_risk_climate",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_water",
+        "concept_wheat"
+      ],
+      "text": "- **Where to source for Algeria / Mediterranean (instead of `CropSense`'s 22 Indian crops):**\n  1. **FAOSTAT (`https://www.fao.org/faostat/`):** Top regional cereals (`durum wheat`, `barley`, `oats`) and legumes (`chickpea`, `lentil`, `faba bean`) + national/regional yield benchmarks.\n  2. **FAO EcoCrop (`https://gaez.fao.org/` / EcoCrop DB):** Optimal temperature, rainfall (`mm`), and `pH` envelopes for each Mediterranean crop (replaces `CropSense`'s tropical `Crop_recommendation.csv` envelopes).\n  3. **Local Extension Sheets (ITGC Algeria / ICARDA):** Agronomic rules (`min_legumes_in_3_years = 1`, `max_cereals_in_3_years = 2`, no consecutive same-crop/same-family) and crop-specific `risk_note` strings (`\"needs local review\"`).\n- **Schema (`data/inputs/crops.csv`):**\n  `crop, family, water_need, nitrogen_fixing, residue_carbon, drought_tolerance, profit, risk_level, soil_depletion_index, nitrogen_impact_kg_ha, soil_health_delta, base_npk_kg_ha, optimal_rain_min, optimal_rain_max, optimal_ph_min, optimal_ph_max, risk_note`\n- **How we use it in code:**\n  - `rules.json` filters the `n^3` combinations (`4^3 = 64` $\\rightarrow$ `24` legal rotations) in **Stage 1** before any scoring happens, and populates the **\"🚫 Rotations & Crops to Avoid\"** panel.\n  - `crops.csv` drives the marks (`water`, `soil`, `yield`), contextual tags (`🌿 Restores Nitrogen`, `💧 Low Water`), KNN environmental niche matching, and 3-year soil/NPK simulation."
+    },
+    {
+      "chunk_id": "DOC-ML-001#S13",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "2.5 Dataset 5 — Data Limitations & Scenario Config (gaps.json)",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_nitrogen_fertilizer",
+        "concept_region_setif",
+        "concept_soil"
+      ],
+      "text": "- **What it is:** Structured honesty metadata authored with `Nazim` & `Achref` (e.g., `\"250 m SoilGrids cell is a regional average, not a single-field lab NPK test\"`, `\"NASA POWER 0.5° grid smooths local micro-valleys\"`).\n- **How we use it in code:** Every recommendation's `E5` explanation block pulls directly from `gaps.json` and `indicators.json` (zero hardcoded free text), ensuring transparent scientific communication for farmers and NASA judges.\n\n---"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S14",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "Part 3: Upgrading the Engine from Pure Rules to Hybrid AI/ML",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_nitrogen_fertilizer",
+        "concept_period_years",
+        "concept_score_engine",
+        "concept_soil"
+      ],
+      "text": "> [!IMPORTANT]\n> **Why Hybrid AI beats \"Pure ML\" or \"Pure Rules\" in Agronomy (and matches your Field Shift Rules):**\n> - **Pure Rules** are 100% transparent and never recommend illegal rotations, but cannot score continuous climate-soil suitability or multi-year state dynamics.\n> - **Pure ML** without domain rules will occasionally hallucinate an illegal rotation, and `CropSense`'s RF (`0.92`) only learned rule-generated labels.\n> - **The Professional Hybrid Standard:** **Stage 1 Hard Rules** $\\rightarrow$ **Stage 2 Environmental Niche Suitability (KNN-style distance)** $\\rightarrow$ **Stage 3 Pairwise Transition Scoring** $\\rightarrow$ **Stage 4 3-Year Soil & Fertilizer State Simulator** $\\rightarrow$ **Stage 5 Stress-Adaptive Scoring & Monte Carlo Stability**."
+    },
+    {
+      "chunk_id": "DOC-ML-001#S15",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "Part 3: Upgrading the Engine from Pure Rules to Hybrid AI/ML",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_legume",
+        "concept_nitrogen_fertilizer",
+        "concept_period_years",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "```mermaid\nflowchart TD\n    IN[\"Inputs: indicators.json + 3 Sliders + Current 3-Yr Rotation + Allowed Crops\"] --> S1\n    S1[\"Stage 1: Agronomic Constraint Solver (rules.json)\\nFilters illegal rotations; builds 'Avoid' list\"] --> S2\n    S2[\"Stage 2: Environmental Niche Match (KNN-style feature distance)\\nMatches region rain/pH/SOC to crop optimal envelopes\"] --> S3\n    S3[\"Stage 3: Pairwise Transition Scorer (CropSense features)\\nScores (Y1->Y2, Y2->Y3, Y3->Y1) on depletion_delta & N restoration\"] --> S4\n    S4[\"Stage 4: 3-Year Soil & NPK State Simulator (DharaaAI)\\nTracks N (kg/ha), Soil Health (%), and -30% legume NPK credit\"] --> S5\n    S5[\"Stage 5: Stress-Adaptive Scorer & Monte Carlo (N=100+ runs)\\nApplies K_WATER/K_SOIL, tie-breaks (legume first), computes Stability %\"]\n```"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S16",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "Alignment with Your Team's Build Order (E1–E8)",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_legume",
+        "concept_nitrogen_fertilizer",
+        "concept_period_years",
+        "concept_risk_climate",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "1. **`E1` Validation:** Verify all crop names match `crops.csv`, all metrics are in `[0, 100]`, and sliders are not all zero.\n2. **`E2` Candidate Generation & Rules (`Stage 1`):** Generate all 3-year permutations (`product(allowed_crops, repeat=3)`), filter via `rules.json`, and record blocked rotations/crops for the UI warning list.\n3. **`E3–E4` Marks, Stress-Adaptive Weights & Deterministic Tie-Breaker:**\n   - Adjust slider weights by `(1 + K_WATER * water_stress)` and `(1 + K_SOIL * soil_stress)`, re-normalize to sum to `1.0`.\n   - Group by `frozenset(rot)` (best order per distinct crop set), tie-break deterministically (**legume in Year 1 first, then alphabetical**), and always include the farmer's **Usual Rotation** (unfiltered) for comparison.\n4. **`E5` Data-Driven Explanations + Contextual Tags:** Populate `why`, `evidence`, `benefits` (`🌿 Restores Nitrogen`, `💧 Low Water`, `☀️ Drought Tolerant`), `gaps` (from `gaps.json`), and `risks` (from `crops.csv` `risk_note`).\n5. **`E6–E8` API, Tests & Monte Carlo Stability:** Expose JSON to FastAPI/HTML UI, verify against hand calculations in `logs/test_log.md`, and run `N=100+` rainfall perturbations (`±10–15%`) so `ranking_stability_pct` is **always computed live, never hardcoded**."
+    },
+    {
+      "chunk_id": "DOC-ML-001#S17",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "Alignment with Your Team's Build Order (E1–E8)",
+      "region": "global",
+      "concepts": [],
+      "text": "---"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S18",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "4.1 All External APIs You Need (Role, What They Return, Auth & Gotchas)",
+      "region": "global",
+      "concepts": [
+        "concept_fires",
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_nitrogen_fertilizer",
+        "concept_period_years",
+        "concept_profit_yield",
+        "concept_region_setif",
+        "concept_rice",
+        "concept_risk_climate",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "| API / Platform | Role in `Field Shift` | Variables Requested | What It Adds to Your Project (`Output`) | Auth & Rate Limit | Critical Gotchas |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **1. NASA POWER REST API**<br>`power.larc.nasa.gov/api/temporal/daily/point` | **30-Year Historical Weather & Climate Trends** (`1995–2024`) | `PRECTOTCORR` (bias-corrected rain, `mm/day`), `T2M_MAX`, `T2M_MIN`, `RH2M`, `EVPTRNS` / `ALLSKY_SFC_SW_DWN` | Fills `rainfall_mm`, `water_stress`, `monthly_rain_mm` (12 bars), `hot_days`, `frost_days`, `longest_dry_spell_days`, `rainfall_trend_decade_mm`, and `trend_confidence` (`Mann-Kendall vs OLS`). | **Free, No API Key.** Keep requests polite (`1–2 sec` pause between regions). | Missing values are encoded as **`-999`** (always filter them out!). Resolution is `0.5° × 0.625°` (~`55 km`), so it smooths local valleys. |\n| **2. NASA AppEEARS API** (`appeears.earthdatacloud.nasa.gov/api`) **OR Google Earth Engine (`earthengine-api`)** | **Satellite Crop Greenness / Yield Baseline** (`MODIS MOD13Q1`, `250 m`, 16-day) | `_250m_16_days_NDVI`, `pixel_reliability` QA band + **ESA WorldCover `class 40`** (Cropland mask) | Fills `yield_baseline` (`0–1` normalized spring peak NDVI) and multi-year yield instability (`CV = std / mean`). | Free **NASA Earthdata Login** (AppEEARS) or free non-commercial **GEE project**. | Raw MODIS NDVI integers are scaled by **`10000`** (`5400 = 0.54`). Always mask non-cropland pixels (`WorldCover class 40`) before averaging! |\n| **3. ISRIC SoilGrids v2.0 REST API**<br>`rest.isric.org/soilgrids/v2.0/properties/query` | **Regional Topsoil Chemistry (`0–30 cm`)** | `soc` (`dg/kg`), `phh2o` (`pH × 10`), `nitrogen` (`cg/kg`), `clay` / `sand` (`g/kg`) | Fills `soil.json` $\\rightarrow$ `soil_organic_carbon_g_per_kg`, `soil_stress`, `ph`, and starting `Soil Health %` in the 3-year state simulator. | **Free, No API Key.** Rate-limited (~5 req/min). | Frequently returns HTTP `503` under load! **Always cache JSON to disk**, use exponential retry, and divide `soc` & `phh2o` by **`10`**. Remember it is a `250 m` model estimate, not a lab NPK test. |\n| **4. Open-Meteo Forecast API** *(Optional Live Extension)*<br>`api.open-meteo.com/v1/forecast` | **Live 7–16 Day Forecast & Daily Reference ET₀** | `precipitation_sum`, `et0_fao_evapotranspiration`, `temperature_2m_max`, `soil_moisture_0_to_7cm` | Adds real-time current-week rain & `ET0` alerts next to NASA POWER's 30-year climate baseline. | **Free, No API Key** (non-commercial). | Forecast only (use NASA POWER for 20–30 yr climatology and trends). |\n| **5. Static Regional Tables (No Live API Needed)** | **Agronomy Rules & Official Prices** | FAO Paper 56 $ET_c$, ICARDA BNF, ITGC yields, **OAIC/CCLS `DA/quintal`** | `data/regional/crops_algeria.csv`, `rules_algeria.json`, `regions.json`, `gaps.json`. | **Local files (0 ms latency, 100% offline-safe).** | Update prices annually from OAIC/CCLS decrees (`needs local review`). |"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S19",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "4.1 All External APIs You Need (Role, What They Return, Auth & Gotchas)",
+      "region": "global",
+      "concepts": [
+        "concept_profit_yield"
+      ],
+      "text": "---"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S20",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "4.2 Best Python & CS Tooling Stack for Your Team",
+      "region": "global",
+      "concepts": [
+        "concept_corn",
+        "concept_fires",
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_period_years",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "| Layer | Best Tool / Library | Why CS Engineers Pick It for `Field Shift` |\n| :--- | :--- | :--- |\n| **Satellite / Raster (`NDVI`)** | **`earthengine-api` (`ee`)** + **`geemap`** *(or **`earthaccess`** + **`rioxarray`**)* | **Best choice for hackathons:** GEE filters 20 years of `MOD13Q1` MODIS tiles and masks `ESA WorldCover == 40` in the cloud in 15 lines—no need to download 40 GB of raw HDF rasters! |\n| **HTTP Fetching & Caching** | **`httpx`** (or **`requests`** + `urllib3.Retry`) | Automatic timeouts, retries on SoilGrids `503`, and clean JSON caching into `data/processed/`. |\n| **Time-Series & Climate Stats** | **`pandas`**, **`numpy`**, **`scipy.stats`**, **`pymannkendall`** | `pymannkendall.original_test(series)` computes Mann-Kendall p-value + Sen's Slope in **1 line of code** to compare against OLS regression. |\n| **Hybrid ML & Optimization** | **`scikit-learn`** (`StandardScaler`, `KNeighborsClassifier`, `RandomForestRegressor`) | Train directly from clean CSV/arrays at startup (avoid insecure `.pkl` loading) + `itertools.product` for deterministic rule-constrained search. |\n| **Backend API & Validation** | **`FastAPI`** + **`pydantic`** + **`uvicorn`** | Auto-generates OpenAPI docs (`/docs`) for Mehdi, validates slider weights/crops cleanly, and serves JSON directly to your frontend. |\n| **Testing & Reproducibility** | **`pytest`** + deterministic seeded `random.Random(42)` | Guarantees identical rankings across runs and verifies hand calculations against `logs/test_log.md`. |"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S21",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "4.2 Best Python & CS Tooling Stack for Your Team",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan"
+      ],
+      "text": "---"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S22",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "4.3 Complete Copy-Paste Code Examples",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_region_punjab"
+      ],
+      "text": "#### Example 1 — Fetch NASA POWER 30-Year Climate, Clean `-999`, & Compute Mann-Kendall Consensus (`Achref`)\n```python\nimport numpy as np\nimport pandas as pd\nimport pymannkendall as mk\nimport requests\nfrom scipy.stats import linregress\n\ndef fetch_nasa_power_indicators(lat: float, lon: float, start=\"19950101\", end=\"20241231\") -> dict:\n    url = \"https://power.larc.nasa.gov/api/temporal/daily/point\"\n    params = {\n        \"parameters\": \"PRECTOTCORR,T2M_MAX,T2M_MIN,RH2M\",\n        \"community\": \"AG\",\n        \"longitude\": lon,\n        \"latitude\": lat,\n        \"start\": start,\n        \"end\": end,\n        \"format\": \"JSON\",\n    }\n    resp = requests.get(url, params=params, timeout=30)\n    resp.raise_for_status()\n    raw = resp.json()[\"properties\"][\"parameter\"]\n\ndf = pd.DataFrame(raw).replace(-999.0, np.nan).dropna()\n    df.index = pd.to_datetime(df.index, format=\"%Y%m%d\")\n    df[\"year\"] = df.index.year\n    df[\"month\"] = df.index.month"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S23",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "4.3 Complete Copy-Paste Code Examples",
+      "region": "global",
+      "concepts": [
+        "concept_risk_climate",
+        "concept_water"
+      ],
+      "text": "annual_rain = df.groupby(\"year\")[\"PRECTOTCORR\"].sum()\n    hot_days = df.groupby(\"year\")[\"T2M_MAX\"].apply(lambda s: (s > 35.0).sum()).mean()\n    frost_days = df.groupby(\"year\")[\"T2M_MIN\"].apply(lambda s: (s < 0.0).sum()).mean()\n    extreme_rain = df.groupby(\"year\")[\"PRECTOTCORR\"].apply(lambda s: (s > 20.0).sum()).mean()"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S24",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "Longest consecutive dry spell (< 1 mm/day) per year",
+      "region": "global",
+      "concepts": [
+        "concept_profit_yield",
+        "concept_water"
+      ],
+      "text": "def max_dry_spell(series: pd.Series) -> int:\n        dry = (series < 1.0).astype(int)\n        groups = (dry != dry.shift()).cumsum()\n        return int(dry.groupby(groups).sum().max() or 0)\n\nlongest_dry = df.groupby(\"year\")[\"PRECTOTCORR\"].apply(max_dry_spell).mean()\n    monthly_rain = df.groupby([\"year\", \"month\"])[\"PRECTOTCORR\"].sum().groupby(\"month\").mean().round(1).tolist()"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S25",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "Consensus trend test: OLS linear regression vs Mann-Kendall + Sen's slope",
+      "region": "global",
+      "concepts": [
+        "concept_region_punjab",
+        "concept_water"
+      ],
+      "text": "ols = linregress(annual_rain.index.to_numpy(), annual_rain.to_numpy())\n    mk_res = mk.original_test(annual_rain.to_numpy())\n    agree = (ols.pvalue < 0.05) and (mk_res.p < 0.05) and (np.sign(ols.slope) == np.sign(mk_res.slope))\n\nrain_ref_20yr = float(annual_rain.iloc[:-5].mean())\n    rain_recent_5yr = float(annual_rain.iloc[-5:].mean())\n    water_stress = float(np.clip((rain_ref_20yr - rain_recent_5yr) / rain_ref_20yr, 0.0, 1.0))"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S26",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "Consensus trend test: OLS linear regression vs Mann-Kendall + Sen's slope",
+      "region": "global",
+      "concepts": [
+        "concept_fires",
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_profit_yield",
+        "concept_risk_climate",
+        "concept_water"
+      ],
+      "text": "return {\n        \"rainfall_mm\": round(float(annual_rain.mean()), 1),\n        \"rainfall_reference_mm\": round(rain_ref_20yr, 1),\n        \"water_stress\": round(water_stress, 3),\n        \"rainfall_trend_decade_mm\": round(float(mk_res.slope * 10.0), 1),\n        \"trend_confidence\": \"both methods agree\" if agree else \"no clear trend\",\n        \"hot_days\": round(float(hot_days), 1),\n        \"frost_days\": round(float(frost_days), 1),\n        \"extreme_rain_days\": round(float(extreme_rain), 1),\n        \"longest_dry_spell_days\": round(float(longest_dry), 1),\n        \"monthly_rain_mm\": monthly_rain,\n    }\n```\n\n#### Example 2 — Fetch MODIS `MOD13Q1` Spring Peak NDVI Masked to Cropland (`Google Earth Engine`)\n```python\nimport ee\n\ndef fetch_cropland_ndvi_baseline(lat: float, lon: float, buffer_m: int = 15000) -> dict:\n    ee.Initialize()\n    aoi = ee.Geometry.Point([lon, lat]).buffer(buffer_m)"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S27",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "ESA WorldCover 10m cropland mask (class 40 = Cropland)",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan"
+      ],
+      "text": "cropland = ee.ImageCollection(\"ESA/WorldCover/v200\").first().select(\"Map\").eq(40)"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S28",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "Spring peak NDVI (March-May) for 2015-2024; raw MODIS NDVI is scaled by 10000",
+      "region": "global",
+      "concepts": [
+        "concept_fires",
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_profit_yield",
+        "concept_soil"
+      ],
+      "text": "modis = ee.ImageCollection(\"MODIS/061/MOD13Q1\").filterBounds(aoi).select(\"NDVI\")\n    peaks = []\n    for yr in range(2015, 2025):\n        spring_max = (\n            modis.filterDate(f\"{yr}-03-01\", f\"{yr}-05-31\")\n            .max()\n            .multiply(0.0001)\n            .updateMask(cropland)\n        )\n        val = spring_max.reduceRegion(ee.Reducer.mean(), aoi, 250, maxPixels=1e7).get(\"NDVI\").getInfo()\n        if val is not None:\n            peaks.append(float(val))\n\nmean_ndvi = sum(peaks) / len(peaks)\n    yield_baseline = max(0.0, min(1.0, (mean_ndvi - 0.25) / (0.75 - 0.25)))\n    return {\"mean_spring_peak_ndvi\": round(mean_ndvi, 3), \"yield_baseline\": round(yield_baseline, 3)}\n```\n\n#### Example 3 — Fetch ISRIC SoilGrids v2.0 `0–30 cm` with `5:10:15` Weighting & `503` Retry (`Achref`)\n```python\nimport time\nimport requests"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S29",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "Spring peak NDVI (March-May) for 2015-2024; raw MODIS NDVI is scaled by 10000",
+      "region": "global",
+      "concepts": [
+        "concept_fires",
+        "concept_gaps_limits",
+        "concept_score_engine",
+        "concept_soil"
+      ],
+      "text": "def fetch_soilgrids_topsoil(lat: float, lon: float, retries: int = 3) -> dict:\n    url = \"https://rest.isric.org/soilgrids/v2.0/properties/query\"\n    params = [\n        (\"lat\", lat), (\"lon\", lon),\n        (\"property\", \"soc\"), (\"property\", \"phh2o\"),\n        (\"depth\", \"0-5cm\"), (\"depth\", \"5-15cm\"), (\"depth\", \"15-30cm\"),\n        (\"value\", \"mean\"),\n    ]\n    for attempt in range(retries):\n        r = requests.get(url, params=params, timeout=20)\n        if r.status_code == 200:\n            layers = {l[\"name\"]: l[\"depths\"] for l in r.json()[\"properties\"][\"layers\"]}\n            weights = {\"0-5cm\": 5, \"5-15cm\": 10, \"15-30cm\": 15}\n            def weighted_mean(prop: str) -> float:\n                vals = {d[\"label\"]: d[\"values\"][\"mean\"] for d in layers[prop]}"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S30",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "Convert dg/kg -> g/kg (and pH10 -> pH) by dividing by 10",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_profit_yield",
+        "concept_region_setif",
+        "concept_risk_climate",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "return sum(weights[k] * vals[k] for k in weights) / 30.0 / 10.0\n            return {\n                \"soil_organic_carbon_g_per_kg\": round(weighted_mean(\"soc\"), 2),\n                \"ph\": round(weighted_mean(\"phh2o\"), 2),\n                \"source\": \"ISRIC SoilGrids v2.0 live\",\n            }\n        time.sleep(2 ** attempt)\n    raise RuntimeError(\"SoilGrids unavailable; fall back to cached data/processed/{region}/soil.json\")\n```\n\n#### Example 4 — FastAPI Endpoint + Seeded Monte Carlo Stability (`Mehdi` & `Alaa`)\n```python\nimport random\nfrom fastapi import FastAPI\nfrom pydantic import BaseModel\nfrom engine import scoring\n\napp = FastAPI(title=\"Field Shift Rotation API\")\n\nclass RecommendRequest(BaseModel):\n    region: str = \"regionA\"\n    priorities: dict[str, float]  # {\"profit\": 0.4, \"water\": 0.2, \"soil\": 0.2, \"risk\": 0.2}\n    indicators: dict\n    current_rotation: list[str]\n    monte_carlo_runs: int = 500"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S31",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "Convert dg/kg -> g/kg (and pH10 -> pH) by dividing by 10",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_region_punjab",
+        "concept_soil"
+      ],
+      "text": "@app.post(\"/recommend\")\ndef recommend_endpoint(req: RecommendRequest):\n    base = scoring.recommend(req.priorities, req.indicators, req.current_rotation)\n    top1_rot = base[\"strategies\"][1][\"rotation\"]  # Index 0 is \"existing\""
+    },
+    {
+      "chunk_id": "DOC-ML-001#S32",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "Monte Carlo stability: perturb rainfall +/- 15% across 500 seeded runs",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_profit_yield",
+        "concept_score_engine",
+        "concept_water"
+      ],
+      "text": "rng = random.Random(42)\n    wins = 0\n    for _ in range(req.monte_carlo_runs):\n        noisy_ind = dict(req.indicators)\n        noisy_ind[\"rainfall_mm\"] = req.indicators[\"rainfall_mm\"] * rng.uniform(0.85, 1.15)\n        res = scoring.recommend(req.priorities, noisy_ind, req.current_rotation)\n        if res[\"strategies\"][1][\"rotation\"] == top1_rot:\n            wins += 1\n\nbase[\"ranking_stability_pct\"] = round(100.0 * wins / req.monte_carlo_runs, 1)\n    return base\n```\n\n---"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S33",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "Part 5: Backend REST APIs We Must Create (Field Shift API Blueprint)",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan"
+      ],
+      "text": "Right now, [server.py](file:///Users/morsistoredz/NasaSpaceApps/server.py) serves 3 starter routes (`GET /indicators/{region}`, `POST /recommend`, `POST /validate-crop`) using Python's built-in `ThreadingHTTPServer`, while the static web UI handles interactions in-browser. To upgrade **Field Shift** into a full multi-user production backend (for mobile apps, arbitrary GPS coordinates, saved farm plans, and PDF reports), build the following **8 REST APIs** with **FastAPI + Pydantic v2**."
+    },
+    {
+      "chunk_id": "DOC-ML-001#S34",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "5.2 Non-Functional API Requirements (What CS Engineers Must Wire)",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_legume",
+        "concept_profit_yield",
+        "concept_region_setif",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "1. **Schema Validation (`Pydantic v2`):** Reject negative rainfall, `pH < 3.5` or `> 9.5`, rotations with `len != 3`, or coordinates outside Algeria (`lat 18.9–37.2`, `lon -8.7–12.0`) with automatic HTTP `422`.\n2. **CORS Middleware:** Allow requests from `https://field-shift-crop-advisor.netlify.app` and `http://127.0.0.1:*` so the web frontend and local mobile emulators can call FastAPI directly without browser CORS errors.\n3. **Cache-First External Fetches + Stale Fallback:** Round `{lat, lon}` to `0.1°` (~11 km grid) before querying NASA POWER / SoilGrids, cache results for **7–30 days** on disk/Redis, and fall back to cached regional JSON if an external NASA/ISRIC server returns `503`.\n4. **Rate Limiting & Determinism:** Cap `monte_carlo_runs <= 1000` per request so a single client cannot freeze CPU workers, and always seed Monte Carlo (`random.Random(42)`) + tie-break (`legume` Year 1 -> alphabetical) so API responses are **100% reproducible**."
+    },
+    {
+      "chunk_id": "DOC-ML-001#S35",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "5.2 Non-Functional API Requirements (What CS Engineers Must Wire)",
+      "region": "global",
+      "concepts": [],
+      "text": "---"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S36",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "5.3 Copy-Paste FastAPI Production Router (api/main.py)",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_profit_yield",
+        "concept_region_setif",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "```python\nfrom fastapi import FastAPI, HTTPException\nfrom fastapi.middleware.cors import CORSMiddleware\nfrom pydantic import BaseModel, Field\nfrom pathlib import Path\nimport json\n\nfrom engine import scoring\n\napp = FastAPI(title=\"Field Shift Crop Rotation API\", version=\"2.0.0\")\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"https://field-shift-crop-advisor.netlify.app\", \"http://127.0.0.1:8000\"],\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\n\nINDICATORS = json.loads(Path(\"data/regional/all_indicators.json\").read_text(encoding=\"utf-8\"))\n\nclass Priorities(BaseModel):\n    save_water: float = Field(42, ge=0, le=100)\n    protect_soil: float = Field(33, ge=0, le=100)\n    yield_stab: float = Field(25, ge=0, le=100, alias=\"yield\")"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S37",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "5.3 Copy-Paste FastAPI Production Router (api/main.py)",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_profit_yield",
+        "concept_region_setif",
+        "concept_risk_climate",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "class CropSpec(BaseModel):\n    family: str\n    rain_min: float = Field(ge=0, le=4000)\n    rain_max: float = Field(ge=0, le=4000)\n    ph_min: float = Field(6.0, ge=3.5, le=9.5)\n    ph_max: float = Field(8.2, ge=3.5, le=9.5)\n    frost_tolerant: int = Field(1, ge=0, le=1)\n    heat_tolerant: int = Field(1, ge=0, le=1)\n\nclass ValidateCropReq(BaseModel):\n    region: str = \"regionA\"\n    crop: CropSpec\n\nclass ScenarioReq(BaseModel):\n    region: str = \"regionA\"\n    priorities: Priorities\n    current_rotation: list[str] = Field(min_length=3, max_length=3)\n    rainfall_delta_pct: float = Field(-20, ge=-60, le=40)\n\n@app.get(\"/health\")\ndef health():\n    data = scoring.load_data()\n    return {\"status\": \"ok\", \"regions_loaded\": len(INDICATORS), \"crops_loaded\": len(data[\"crops\"])}"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S38",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "5.3 Copy-Paste FastAPI Production Router (api/main.py)",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_profit_yield",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "@app.get(\"/regions\")\ndef list_regions():\n    return [\n        {\"id\": k, \"label\": v[\"label\"], \"rainfall_mm\": v[\"rainfall_mm\"], \"ph\": v[\"ph\"], \"water_stress\": v[\"water_stress\"]}\n        for k, v in INDICATORS.items()\n    ]\n\n@app.get(\"/indicators/{region_id}\")\ndef get_indicators(region_id: str):\n    if region_id not in INDICATORS:\n        raise HTTPException(status_code=404, detail=f\"Unknown region '{region_id}'\")\n    return INDICATORS[region_id]\n\n@app.get(\"/crops\")\ndef list_crops(region: str | None = None):\n    crops = scoring.load_data()[\"crops\"]\n    ind = INDICATORS.get(region) if region else None\n    out = []\n    for name, c in crops.items():\n        row = {\"id\": name, **c}\n        if ind:\n            row[\"compatibility\"] = scoring.check_crop_compatibility(c, ind)\n        out.append(row)\n    return {\"count\": len(out), \"crops\": out}"
+    },
+    {
+      "chunk_id": "DOC-ML-001#S39",
+      "doc_id": "DOC-ML-001",
+      "title": "Agronomy & ML Scoring Guide",
+      "section": "5.3 Copy-Paste FastAPI Production Router (api/main.py)",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_profit_yield",
+        "concept_risk_climate",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "@app.post(\"/validate-crop\")\ndef validate_crop(req: ValidateCropReq):\n    ind = INDICATORS.get(req.region)\n    if not ind:\n        raise HTTPException(status_code=404, detail=f\"Unknown region '{req.region}'\")\n    return {\"region\": req.region, **scoring.check_crop_compatibility(req.crop.model_dump(), ind)}\n\n@app.post(\"/scenario\")\ndef run_scenario(req: ScenarioReq):\n    ind = INDICATORS.get(req.region)\n    if not ind:\n        raise HTTPException(status_code=404, detail=f\"Unknown region '{req.region}'\")\n    tot = max(1.0, req.priorities.save_water + req.priorities.protect_soil + req.priorities.yield_stab)\n    weights = {\n        \"water\": req.priorities.save_water / tot,\n        \"soil\": req.priorities.protect_soil / tot,\n        \"profit\": req.priorities.yield_stab / (2 * tot),\n        \"risk\": req.priorities.yield_stab / (2 * tot),\n    }\n    return scoring.scenario(weights, ind, req.current_rotation, req.rainfall_delta_pct)\n```"
+    },
+    {
+      "chunk_id": "DOC-DATA-001#S1",
+      "doc_id": "DOC-DATA-001",
+      "title": "About the Data — Sources, Methods & Confidence Rules",
+      "section": "About the data — sources, limits, attribution",
+      "region": "global",
+      "concepts": [],
+      "text": "Draft for review (Aniss/Younes). Citation lines below were checked against each provider's current terms on 2026-11-14 (links included); where we could not verify something, it is marked."
+    },
+    {
+      "chunk_id": "DOC-DATA-001#S2",
+      "doc_id": "DOC-DATA-001",
+      "title": "About the Data — Sources, Methods & Confidence Rules",
+      "section": "NASA POWER (daily weather)",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_region_setif",
+        "concept_water"
+      ],
+      "text": "- **What it is**: NASA Langley's \"Prediction Of Worldwide Energy Resources\" — satellite-derived, gridded meteorology; our source for daily rain (PRECTOTCORR), Tmax (T2M_MAX), Tmin (T2M_MIN), 1995–2024.\n- **Resolution**: the underlying MERRA-2/SWCCCC grid is ~0.5° × 0.625° (≈50 km); POWER interpolates to the requested point, which does **not** add real detail. Daily meteorology available from 1981.\n- **Known limits (observed here)**: systematically wetter than ERA5 by 13–43% over 1995–2024 in our three regions; ERA5 values sit inside the ITGC ranges, POWER's Constantine/Tiaret values sit above them. A gridded product, not a station measurement.\n- **Attribution (verified at https://power.larc.nasa.gov/docs/referencing/)**: include both:\n  - *Reference*: \"The data was obtained from National Aeronautics and Space Administration (NASA) Langley Research Center's Prediction Of Worldwide Energy Resources (POWER) project funded through the NASA Earth Science Division.\"\n  - *Data reference*: \"The data was obtained from the POWER Project's Daily 2.x.x version on 2026-11-13.\" (adjust version/date to the actual fetch)\n  - License: CC BY 4.0, no other restrictions (verified via registry.opendata.aws/nasa-power). POWER also requests a notification for published uses (larc-power-project@mail.nasa.gov) — flagged for Aniss if we publish."
+    },
+    {
+      "chunk_id": "DOC-DATA-001#S3",
+      "doc_id": "DOC-DATA-001",
+      "title": "About the Data — Sources, Methods & Confidence Rules",
+      "section": "ISRIC SoilGrids (SOC, pH)",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_soil"
+      ],
+      "text": "- **What it is**: machine-learning global soil property maps from ~230,000 profile observations; our source for soil organic carbon and pH (0–30 cm).\n- **Resolution**: 250 m model estimate with quantified uncertainty (we do not yet pull the uncertainty layers). It is a prediction, not a lab measurement of our plots.\n- **Attribution (verified at https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_04.html)**: license CC BY 4.0; cite as: Poggio, L., de Sousa, L. M., Batjes, N. H., Heuvelink, G. B. M., Kempen, B., Ribeiro, E., and Rossiter, D.: *SoilGrids 2.0: producing soil information for the globe with quantified spatial uncertainty*, SOIL, 7, 217–240, 2021. https://doi.org/10.5194/soil-7-217-2021 (DOI as printed in the FAQ)."
+    },
+    {
+      "chunk_id": "DOC-DATA-001#S4",
+      "doc_id": "DOC-DATA-001",
+      "title": "About the Data — Sources, Methods & Confidence Rules",
+      "section": "MODIS NDVI (MOD13Q1 via ORNL DAAC subsetting)",
+      "region": "global",
+      "concepts": [
+        "concept_fallow",
+        "concept_fires",
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_period_years",
+        "concept_profit_yield"
+      ],
+      "text": "- **What it is**: Terra MODIS 16-day vegetation indices at 250 m; we use NDVI spring peaks (DOY 65–145, 2020–2024) from the ORNL DAAC MODIS subsetting service around each region point.\n- **Known limits (observed here)**: no cropland mask (the 5×5 km patch mixes field crops, roads, fallow), no per-pixel QA filtering in our pipeline, only 5 years, and the yield baseline (0.25–0.75 normalization) is a linear proxy — hence \"low\" confidence.\n- **Attribution (verified via https://lpdaac.usgs.gov/news/lp-daac-releases-modis-version-61-vegetation-indices-data-products/ and earthdata.nasa.gov)**: Didan, K., 2021, MODIS/Terra Vegetation Indices 16-Day L3 Global 250m SIN Grid V061 [dataset], NASA Land Processes DAAC, https://doi.org/10.5067/MODIS/MOD13Q1.061. Accessed 2026-11-13. LP DAAC data has no restrictions on use (EOSDIS Data Use and Citation Guidance). Our access went through the ORNL DAAC subsetting tool — cite the product DOI above and mention the ORNL DAAC service by name."
+    },
+    {
+      "chunk_id": "DOC-DATA-001#S5",
+      "doc_id": "DOC-DATA-001",
+      "title": "About the Data — Sources, Methods & Confidence Rules",
+      "section": "Open-Meteo / ERA5 (cross-check weather)",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_region_punjab"
+      ],
+      "text": "- **What it is**: Open-Meteo's free Historical Weather API serving ECMWF's ERA5 reanalysis; we use daily precipitation, Tmax, Tmin 1995–2024 as an **independent cross-check** of POWER (shown as `crosscheck_value` in every indicator, and as the basis of the confidence labels).\n- **Resolution**: ERA5 is ~25–31 km reanalysis grid; Open-Meteo statistically down-scales to the requested point. Non-commercial use only for the free API tier — our one-off data save qualifies (verified terms at https://open-meteo.com/en/terms).\n- **Attribution (verified at https://open-meteo.com/en/licence)**: license CC BY 4.0. Required form next to displayed data: link \"Weather data by Open-Meteo.com\" (https://open-meteo.com/). Open-Meteo also encourages a citation in research work."
+    },
+    {
+      "chunk_id": "DOC-DATA-001#S6",
+      "doc_id": "DOC-DATA-001",
+      "title": "About the Data — Sources, Methods & Confidence Rules",
+      "section": "Standing attribution lines (ready to paste)",
+      "region": "global",
+      "concepts": [
+        "concept_fires",
+        "concept_gaps_limits",
+        "concept_soil"
+      ],
+      "text": "- \"Weather: NASA POWER (NASA Langley Research Center), and cross-checked against ERA5 via Open-Meteo.com.\"\n- \"Soil: SoilGrids 2.0 © ISRIC, CC BY 4.0 (Poggio et al. 2021).\"\n- \"Vegetation: MODIS/Terra NDVI (MOD13Q1 V061), NASA LP DAAC, DOI 10.5067/MODIS/MOD13Q1.061.\"\n- Each line should carry the access date used at fetch time (2026-11-13 in `data/raw/`)."
+    },
+    {
+      "chunk_id": "DOC-DATA-001#S7",
+      "doc_id": "DOC-DATA-001",
+      "title": "About the Data — Sources, Methods & Confidence Rules",
+      "section": "What we could not verify",
+      "region": "global",
+      "concepts": [],
+      "text": "- The exact POWER \"Daily 2.x.x\" version number of our fetches (the raw responses' header block was not kept in `data/raw/`); fill in the version from the response headers next time `analysis/save_raw.py` runs.\n- Whether thehackathon's final deliverable needs the POWER \"publication notification\" email — Aniss decides."
+    },
+    {
+      "chunk_id": "DOC-GLOSS-001#S1",
+      "doc_id": "DOC-GLOSS-001",
+      "title": "Glossary of Data & Agronomic Terms",
+      "section": "Glossary — data terms in farmer-friendly words",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_region_punjab"
+      ],
+      "text": "Draft for Younes/Aniss to review and shorten as needed. Plain English; a French/Arabic version is a Should."
+    },
+    {
+      "chunk_id": "DOC-GLOSS-001#S2",
+      "doc_id": "DOC-GLOSS-001",
+      "title": "Glossary of Data & Agronomic Terms",
+      "section": "NDVI (Normalized Difference Vegetation Index)",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_profit_yield",
+        "concept_region_punjab",
+        "concept_risk_climate",
+        "concept_score_engine",
+        "concept_soil",
+        "concept_wheat"
+      ],
+      "text": "A greenness score from satellite pictures. Healthy, dense crops reflect more near-infrared light, which raises the score. Bare soil is around 0.1–0.2; a strong wheat canopy reaches 0.6–0.8. We use the spring peak NDVI near each region only as a rough proxy of how the vegetation has been doing — not a yield measurement."
+    },
+    {
+      "chunk_id": "DOC-GLOSS-001#S3",
+      "doc_id": "DOC-GLOSS-001",
+      "title": "Glossary of Data & Agronomic Terms",
+      "section": "Evapotranspiration (ET)",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "The water a field \"breathes out\" — evaporation from the soil plus transpiration through the plants. Hot, dry, windy days push it up; when ET is much higher than rainfall, the crop is living on soil water. (Not yet an indicator in our pipeline — a Should.)"
+    },
+    {
+      "chunk_id": "DOC-GLOSS-001#S4",
+      "doc_id": "DOC-GLOSS-001",
+      "title": "Glossary of Data & Agronomic Terms",
+      "section": "Soil moisture anomaly",
+      "region": "global",
+      "concepts": [
+        "concept_soil",
+        "concept_water"
+      ],
+      "text": "How much wetter or drier the soil is right now compared with its usual level for the same date, on the same spot. A strongly negative anomaly for weeks means the drought is real in the root zone, not just in the rain gauge. (Not yet in the pipeline; SMAP satellite data could give it.)"
+    },
+    {
+      "chunk_id": "DOC-GLOSS-001#S5",
+      "doc_id": "DOC-GLOSS-001",
+      "title": "Glossary of Data & Agronomic Terms",
+      "section": "Frost risk (as we measure it)",
+      "region": "global",
+      "concepts": [
+        "concept_general_plan",
+        "concept_risk_climate",
+        "concept_wheat"
+      ],
+      "text": "Not \"it froze this winter\", but \"how often sub-zero nights fall *after* the crop starts growing\". We count nights below 0 °C between 1 March and 30 April — the window when a frost can kill young wheat ears. The whole-winter count is a different, much larger number; don't mix them."
+    },
+    {
+      "chunk_id": "DOC-GLOSS-001#S6",
+      "doc_id": "DOC-GLOSS-001",
+      "title": "Glossary of Data & Agronomic Terms",
+      "section": "Water stress (as we compute it)",
+      "region": "global",
+      "concepts": [
+        "concept_period_years",
+        "concept_water"
+      ],
+      "text": "How much drier recent years were than the region's own long-term average: `1 − (recent rainfall / 1995–2014 average)`. 0 means recent rainfall matches the old average; 0.2 means recent years were 20% drier. It compares a region with itself, so a measurement bias that affects both periods partially cancels."
+    },
+    {
+      "chunk_id": "DOC-GLOSS-001#S7",
+      "doc_id": "DOC-GLOSS-001",
+      "title": "Glossary of Data & Agronomic Terms",
+      "section": "Trend confidence",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_period_years",
+        "concept_region_punjab",
+        "concept_score_engine",
+        "concept_water"
+      ],
+      "text": "Rainfall changes slowly and noisily, so we run two independent tests (least-squares slope and the rank-based Mann–Kendall test). Only when both agree the decline is real do we label \"both methods agree\" with high confidence. One test alone can be fooled by a few extreme years."
+    },
+    {
+      "chunk_id": "DOC-GLOSS-001#S8",
+      "doc_id": "DOC-GLOSS-001",
+      "title": "Glossary of Data & Agronomic Terms",
+      "section": "250 m soil estimate",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_nitrogen_fertilizer",
+        "concept_region_setif",
+        "concept_soil"
+      ],
+      "text": "The soil numbers (organic carbon, pH) are not from your field. SoilGrids is a computer model that blends thousands of lab-analyzed soil profiles with satellite data and predicts values everywhere on a 250 m grid. Treat it as regional background: good for comparing regions, not for deciding fertilizer on one plot. That's why its confidence is capped at \"medium\"."
+    },
+    {
+      "chunk_id": "DOC-GLOSS-001#S9",
+      "doc_id": "DOC-GLOSS-001",
+      "title": "Glossary of Data & Agronomic Terms",
+      "section": "Reanalysis vs station measurement",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_region_punjab",
+        "concept_water"
+      ],
+      "text": "A weather station measures real rain at one point — accurate there, but rare here. A **reanalysis** (POWER, ERA5) takes millions of observations from satellites and a global weather model and reconstructs a complete, gap-free record on a ~25–50 km grid. Advantages: every point covered, every day since 1981+. Disadvantage: each grid cell is an average over a huge area — a storm that hit one village can be invisible, and mountains are smoothed out. We cross-check two independent reanalyses (NASA POWER vs ERA5) and show their disagreement as a confidence label."
+    },
+    {
+      "chunk_id": "DOC-SENS-001#S1",
+      "doc_id": "DOC-SENS-001",
+      "title": "Climate Window Sensitivity Analysis",
+      "section": "Sensitivity of the headline numbers (auto-generated)",
+      "region": "global",
+      "concepts": [
+        "concept_region_setif"
+      ],
+      "text": "Source: `analysis/sensitivity.py` → `data/processed/sensitivity.json` · 2026-11-14 · all thresholds are the placeholders in `domain/thresholds.json`.\n\nValues are per region (Sétif / Constantine / Tiaret)."
+    },
+    {
+      "chunk_id": "DOC-SENS-001#S2",
+      "doc_id": "DOC-SENS-001",
+      "title": "Climate Window Sensitivity Analysis",
+      "section": "(a) Water stress — recent window (reference 1995–2014)",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_region_setif",
+        "concept_score_engine",
+        "concept_water"
+      ],
+      "text": "| Recent window | Sétif | Constantine | Tiaret |\n|---|---|---|---|\n| 2010–2024 | 0.107 | 0.105 | 0.025 |\n| 2015–2024 (current primary) | 0.163 | 0.167 | 0.140 |\n| 2020–2024 (v1's variant) | 0.203 | 0.276 | 0.328 |\n| ERA5 rainfall instead of POWER (2015–2024) | 0.272 | 0.185 | 0.012 |\n\n**Robust**: every region shows stress > 0 in every variant (recent decades are drier than 1995–2014 by all definitions).\n**Not robust**: the magnitude (Tiaret spans 0.01–0.33!) and the ranking of the three regions (Tiaret last under POWER 2015–2024, last by far under ERA5, and highest under POWER 2020–2024). The window/source choice changes the headline more than anything else — Alaa's decision matters."
+    },
+    {
+      "chunk_id": "DOC-SENS-001#S3",
+      "doc_id": "DOC-SENS-001",
+      "title": "Climate Window Sensitivity Analysis",
+      "section": "(b) Growing season Oct–May vs Nov–Jun",
+      "region": "global",
+      "concepts": [
+        "concept_region_setif",
+        "concept_water"
+      ],
+      "text": "| | Sétif | Constantine | Tiaret |\n|---|---|---|---|\n| Season rain Oct–May / Nov–Jun (mm) | 463.8 / 419.1 | 576.0 / 517.6 | 518.0 / 479.4 |\n| Longest dry spell Oct–May / Nov–Jun (days) | 23.2 / 22.7 | 22.3 / 21.8 | 32.4 / 30.7 |\n\n**Robust**: conclusions (Tiaret has the longest spells; season rain is 10–15% of annual) barely move.\n**Not robust**: exact values shift ~40–60 mm rain / 1–2 spell days. Low stakes."
+    },
+    {
+      "chunk_id": "DOC-SENS-001#S4",
+      "doc_id": "DOC-SENS-001",
+      "title": "Climate Window Sensitivity Analysis",
+      "section": "(c) Hot-day threshold (Apr–Jun, days/yr)",
+      "region": "global",
+      "concepts": [
+        "concept_region_setif",
+        "concept_score_engine"
+      ],
+      "text": "| Threshold | Sétif | Constantine | Tiaret |\n|---|---|---|---|\n| 33 °C | 7.9 | 15.3 | 15.7 |\n| 35 °C (current) | 3.1 | 9.7 | 9.2 |\n| 37 °C | 0.9 | 5.7 | 4.2 |\n\n**Robust**: ranking (Sétif fewest hot days), and the order of magnitude (roughly doubling from 37→33 °C).\n**Not robust**: the exact counts (2.5× between 33 and 37 °C). Younes's threshold choice is a direct multiplier on the UI number."
+    },
+    {
+      "chunk_id": "DOC-SENS-001#S5",
+      "doc_id": "DOC-SENS-001",
+      "title": "Climate Window Sensitivity Analysis",
+      "section": "(d) Frost window Feb–Apr vs Mar–Apr",
+      "region": "global",
+      "concepts": [
+        "concept_cereal",
+        "concept_region_setif",
+        "concept_risk_climate",
+        "concept_score_engine",
+        "concept_water"
+      ],
+      "text": "| Window | Sétif | Constantine | Tiaret |\n|---|---|---|---|\n| Feb–Apr | 14.7 | 2.6 | 4.6 |\n| Mar–Apr (current) | 4.5 | 0.4 | 1.1 |\n\n**Robust**: ranking (Sétif clearly the frostiest) and the qualitative \"Constantine is almost frost-free in spring\".\n**Not robust**: magnitude — Feb roughly triples the count. Only Mar–Apr represents *late* frost hitting grain filling; Feb–Apr is a broader \"cold season\" reading."
+    },
+    {
+      "chunk_id": "DOC-SENS-001#S6",
+      "doc_id": "DOC-SENS-001",
+      "title": "Climate Window Sensitivity Analysis",
+      "section": "(e) POWER vs ERA5 as the rainfall source",
+      "region": "global",
+      "concepts": [
+        "concept_gaps_limits",
+        "concept_region_setif",
+        "concept_score_engine",
+        "concept_water"
+      ],
+      "text": "| | Sétif | Constantine | Tiaret |\n|---|---|---|---|\n| Annual rain 1995–2024 | 574.9 / 506.2 | 684.4 / 491.2 | 575.3 / 401.7 |\n| Trend label | both methods agree / both methods agree | no clear trend / no clear trend | no clear trend / no clear trend |\n| Trend p-values (OLS/MK) | 0.046, 0.009 / 0.004, 0.017 | 0.125, 0.144 / 0.110, 0.101 | 0.509, 0.544 / 0.573, 0.617 |\n\n**Robust**: only Sétif has a statistically significant rainfall decline — in **both** sources, under **both** tests. No region shows a significant increase.\n**Not robust**: absolute rainfall (POWER is 13–43% wetter) and the water-stress ranking (above)."
+    },
+    {
+      "chunk_id": "DOC-GAPS-001#S1",
+      "doc_id": "DOC-GAPS-001",
+      "title": "Scientific Limitations & Scale Disclosures (G1–G12)",
+      "section": "Scientific Disclosures G1 to G12",
+      "region": "global",
+      "concepts": [
+        "concept_fallow",
+        "concept_fires",
+        "concept_gaps_limits",
+        "concept_general_plan",
+        "concept_irrigation",
+        "concept_legume",
+        "concept_nitrogen_fertilizer",
+        "concept_period_years",
+        "concept_profit_yield",
+        "concept_region_kansas",
+        "concept_region_punjab",
+        "concept_region_setif",
+        "concept_rice",
+        "concept_risk_climate",
+        "concept_soil",
+        "concept_water",
+        "concept_wheat"
+      ],
+      "text": "- G1: Soil SOC and pH come from 250 m ISRIC SoilGrids v2.0 modelled cells (0-30 cm), not a laboratory NPK soil test of your single parcel.\n- G2: NASA POWER climate telemetry uses a 0.5° × 0.625° grid (~55 km), which smooths micro-valley rainfall and frost pockets.\n- G3: MODIS MOD13Q1 spring peak NDVI (2020-2024, 5×5 km patch average) mixes cropland with roads and fallow; no cropland mask or pixel QA filter was applied.\n- G4: Legume biological nitrogen fixation (+20 to +32 kg N/ha) is an ICARDA dryland benchmark; actual carryover depends on rhizobia nodulation and grazing management.\n- G5: Gross income uses official OAIC/CCLS campaign prices (DA/q) × regional yield; net profit varies with fuel, seed, and CCLS quality grades (bonifications/réfractions).\n- G6: NASA POWER shows 13-43% higher rainfall than Open-Meteo ERA5 reanalysis across the three regions; cross-check confidence labels reflect this spread.\n- G7: Soil erosion risk cannot be estimated reliably from current inputs (RUSLE factors absent), so no numeric erosion claim is fabricated.\n- G8: Water-stress magnitude depends on the recent comparison window (2015-2024 vs 2020-2024 sensitivity variant) while relative stress stays positive everywhere.\n- G9: Water stress is computed from meteoric rainfall (NASA POWER). In irrigated regions such as the Punjab Plains (India) or irrigated pockets of the US Great Plains, canal and tube-well water mask rainfall deficits while depleting groundwater aquifers.\n- G10: Many South Asian farms grow two crops per year (e.g. Kharif rice followed by Rabi wheat). Our engine models one primary crop per year across a 3-year sequence; multi-season double-cropping is documented as a future improvement.\n- G11: Light regions (Central Kansas, USA and Punjab Plains, India) use public national datasets (USDA NASS, FAOSTAT, ICAR) without local field-trial calibration and are labeled 'Less validated'. NASA POWER grid cells (~50 km) represent flat regional farmland rather than individual parcels.\n- G12: NASA FIRMS (VIIRS 375 m / MODIS 1 km) detects actively burning thermal anomalies (~3 hours latency). It is not a fire forecast or danger index; cloud cover or small fires can be missed, and industrial hotspots can appear."
+    }
+  ]
+}

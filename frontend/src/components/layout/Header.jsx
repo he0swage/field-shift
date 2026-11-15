@@ -1,8 +1,9 @@
 // Top bar: brand · navigation · language · theme · account. Data status lives in the sidebar.
 import { useEffect, useRef, useState } from 'react';
-import { Check, ChevronDown, Globe2, LogOut } from 'lucide-react';
+import { Check, ChevronDown, Globe2, LogOut, UserCheck } from 'lucide-react';
 import { useI18n, LANGS } from '../../i18n/I18nContext';
 import { useNav, JOURNEY } from '../../state/NavContext';
+import { useFarm } from '../../state/FarmContext';
 import { useAuth } from '../../state/AuthContext';
 import ThemeToggle from './ThemeToggle';
 import './layout.css';
@@ -89,6 +90,7 @@ function UserMenu() {
 export default function Header() {
   const { t } = useI18n();
   const { view, go } = useNav();
+  const { state: farmState, set: setFarm } = useFarm();
   const inJourney = JOURNEY.includes(view);
 
   const link = (id, label, current, extra = '') => (
@@ -119,6 +121,16 @@ export default function Header() {
       </nav>
 
       <div className="header-tools">
+        <button
+          type="button"
+          className="tool-btn"
+          style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
+          onClick={() => setFarm({ accountOpen: true })}
+          title="PostgreSQL Farmer Account & Saved Plans"
+        >
+          <UserCheck size={16} aria-hidden="true" />
+          <span>{farmState.farmerUser ? (farmState.farmerUser.farm_name || farmState.farmerUser.full_name) : 'Farmer Account'}</span>
+        </button>
         <LangMenu />
         <ThemeToggle />
         <UserMenu />

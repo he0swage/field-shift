@@ -1,0 +1,27 @@
+{
+  "hot_days": {
+    "en": "34.2 days/yr above 35 °C (95 °F) during May–Aug can stress dryland corn silk pollination; grain sorghum and soybean tolerate midsummer heat pulses better.",
+    "fr": "34,2 jours/an > 35 °C en été (mai-août) stressent la pollinisation du maïs pluvial.",
+    "ar": "34.2 يوماً في السنة فوق 35 درجة مئوية خلال الصيف قد تجهد تلقيح الذرة البعلية."
+  },
+  "frost_days": {
+    "en": "3.8 late freeze nights (< 0 °C / 32 °F) in April can damage winter wheat at jointing/boot stage.",
+    "fr": "3,8 nuits de gel tardif (< 0 °C) en avril peuvent endommager le blé d'hiver au stade montaison.",
+    "ar": "3.8 ليالٍ من الصقيع المتأخر في أبريل قد تضر القمح الشتوي."
+  },
+  "extreme_rain_days": {
+    "en": "6.4 convective thunderstorm days/yr (> 25 mm/day) cause runoff on bare tilled fields; no-till wheat/sorghum stubble improves infiltration.",
+    "fr": "6,4 jours d'orage (> 25 mm/j) provoquent du ruissellement sur sol nu.",
+    "ar": "6.4 أيام من الأمطار الغزيرة تسبب انجراف التربة المكشوفة."
+  },
+  "longest_dry_spell_days": {
+    "en": "24.5-day average summer dry spells highlight why grain sorghum + soybean rotations outperform continuous wheat or dryland corn in dry years.",
+    "fr": "Épisodes secs de 24,5 jours en moyenne durant l'été.",
+    "ar": "فترات جفاف صيفية بمتوسط 24.5 يوماً."
+  },
+  "rainfall_source_disagreement": {
+    "en": "NASA POWER (692 mm) and ERA5-Land (678.5 mm) agree within 2.0% over the flat Central Kansas plains.",
+    "fr": "NASA POWER et ERA5-Land concordent à 2,0 % près sur les plaines du Kansas.",
+    "ar": "تتطابق بيانات NASA POWER و ERA5 بنسبة 2.0% في سهول كانساس."
+  }
+}

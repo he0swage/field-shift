@@ -1,0 +1,153 @@
+{
+  "region": "punjab",
+  "model_type": "SARIMA(1,0,1)(1,1,1,12)",
+  "training_window": "1995-01 to 2024-12 (360 months)",
+  "confidence_status": "experimental_low_confidence",
+  "note": "Experimental seasonal outlook trained on 30-year NASA POWER monthly precipitation. Wide 80% intervals reflect inter-annual rainfall variance; use for scenario awareness, not deterministic scheduling.",
+  "projection": [
+    {
+      "date": "2025-01",
+      "mean_mm": 25.6,
+      "lower_mm": 10.8,
+      "upper_mm": 43.0
+    },
+    {
+      "date": "2025-02",
+      "mean_mm": 27.9,
+      "lower_mm": 11.7,
+      "upper_mm": 46.9
+    },
+    {
+      "date": "2025-03",
+      "mean_mm": 23.5,
+      "lower_mm": 9.9,
+      "upper_mm": 39.5
+    },
+    {
+      "date": "2025-04",
+      "mean_mm": 16.0,
+      "lower_mm": 6.7,
+      "upper_mm": 26.9
+    },
+    {
+      "date": "2025-05",
+      "mean_mm": 22.1,
+      "lower_mm": 9.3,
+      "upper_mm": 37.1
+    },
+    {
+      "date": "2025-06",
+      "mean_mm": 66.3,
+      "lower_mm": 27.8,
+      "upper_mm": 111.4
+    },
+    {
+      "date": "2025-07",
+      "mean_mm": 208.2,
+      "lower_mm": 87.4,
+      "upper_mm": 349.8
+    },
+    {
+      "date": "2025-08",
+      "mean_mm": 182.6,
+      "lower_mm": 76.7,
+      "upper_mm": 306.8
+    },
+    {
+      "date": "2025-09",
+      "mean_mm": 89.6,
+      "lower_mm": 37.6,
+      "upper_mm": 150.5
+    },
+    {
+      "date": "2025-10",
+      "mean_mm": 13.8,
+      "lower_mm": 5.8,
+      "upper_mm": 23.2
+    },
+    {
+      "date": "2025-11",
+      "mean_mm": 6.6,
+      "lower_mm": 2.8,
+      "upper_mm": 11.1
+    },
+    {
+      "date": "2025-12",
+      "mean_mm": 15.4,
+      "lower_mm": 6.5,
+      "upper_mm": 25.9
+    },
+    {
+      "date": "2026-01",
+      "mean_mm": 25.6,
+      "lower_mm": 10.8,
+      "upper_mm": 43.0
+    },
+    {
+      "date": "2026-02",
+      "mean_mm": 27.9,
+      "lower_mm": 11.7,
+      "upper_mm": 46.9
+    },
+    {
+      "date": "2026-03",
+      "mean_mm": 23.5,
+      "lower_mm": 9.9,
+      "upper_mm": 39.5
+    },
+    {
+      "date": "2026-04",
+      "mean_mm": 16.0,
+      "lower_mm": 6.7,
+      "upper_mm": 26.9
+    },
+    {
+      "date": "2026-05",
+      "mean_mm": 22.1,
+      "lower_mm": 9.3,
+      "upper_mm": 37.1
+    },
+    {
+      "date": "2026-06",
+      "mean_mm": 66.3,
+      "lower_mm": 27.8,
+      "upper_mm": 111.4
+    },
+    {
+      "date": "2026-07",
+      "mean_mm": 208.2,
+      "lower_mm": 87.4,
+      "upper_mm": 349.8
+    },
+    {
+      "date": "2026-08",
+      "mean_mm": 182.6,
+      "lower_mm": 76.7,
+      "upper_mm": 306.8
+    },
+    {
+      "date": "2026-09",
+      "mean_mm": 89.6,
+      "lower_mm": 37.6,
+      "upper_mm": 150.5
+    },
+    {
+      "date": "2026-10",
+      "mean_mm": 13.8,
+      "lower_mm": 5.8,
+      "upper_mm": 23.2
+    },
+    {
+      "date": "2026-11",
+      "mean_mm": 6.6,
+      "lower_mm": 2.8,
+      "upper_mm": 11.1
+    },
+    {
+      "date": "2026-12",
+      "mean_mm": 15.4,
+      "lower_mm": 6.5,
+      "upper_mm": 25.9
+    }
+  ]
+}

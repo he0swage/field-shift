@@ -1,0 +1,87 @@
+{
+  "source": "Field Shift Scientific Limitations & Scale Audit (ITGC / NASA POWER / Open-Meteo ERA5 / SoilGrids / MODIS)",
+  "gaps": [
+    {
+      "id": "G1",
+      "applies_to": "all",
+      "text": "Soil SOC and pH come from 250 m ISRIC SoilGrids v2.0 modelled cells (0-30 cm), not a laboratory NPK soil test of your single parcel."
+    },
+    {
+      "id": "G2",
+      "applies_to": "all",
+      "text": "NASA POWER climate telemetry uses a 0.5° × 0.625° grid (~55 km), which smooths micro-valley rainfall and frost pockets."
+    },
+    {
+      "id": "G3",
+      "applies_to": "all",
+      "text": "MODIS MOD13Q1 spring peak NDVI (2020-2024, 5×5 km patch average) mixes cropland with roads and fallow; no cropland mask or pixel QA filter was applied."
+    },
+    {
+      "id": "G4",
+      "applies_to": [
+        "chickpea",
+        "lentil",
+        "faba",
+        "vetch"
+      ],
+      "text": "Legume biological nitrogen fixation (+20 to +32 kg N/ha) is an ICARDA dryland benchmark; actual carryover depends on rhizobia nodulation and grazing management."
+    },
+    {
+      "id": "G5",
+      "applies_to": [
+        "wheat",
+        "soft_wheat",
+        "barley",
+        "oats",
+        "triticale",
+        "chickpea",
+        "lentil",
+        "faba",
+        "vetch",
+        "canola",
+        "safflower",
+        "sunflower"
+      ],
+      "text": "Gross income uses official OAIC/CCLS campaign prices (DA/q) × regional yield; net profit varies with fuel, seed, and CCLS quality grades (bonifications/réfractions)."
+    },
+    {
+      "id": "G6",
+      "applies_to": "all",
+      "text": "NASA POWER shows 13-43% higher rainfall than Open-Meteo ERA5 reanalysis across the three regions; cross-check confidence labels reflect this spread."
+    },
+    {
+      "id": "G7",
+      "applies_to": "all",
+      "text": "Soil erosion risk cannot be estimated reliably from current inputs (RUSLE factors absent), so no numeric erosion claim is fabricated."
+    },
+    {
+      "id": "G8",
+      "applies_to": "all",
+      "text": "Water-stress magnitude depends on the recent comparison window (2015-2024 vs 2020-2024 sensitivity variant) while relative stress stays positive everywhere."
+    },
+    {
+      "id": "G9",
+      "topic": "Irrigation vs Rainfall Water Stress",
+      "text": "Water stress is computed from meteoric rainfall (NASA POWER). In irrigated regions such as the Punjab Plains (India) or irrigated pockets of the US Great Plains, canal and tube-well water mask rainfall deficits while depleting groundwater aquifers.",
+      "applies_to": "all"
+    },
+    {
+      "id": "G10",
+      "topic": "Single Annual Crop Cycle vs Double Cropping",
+      "text": "Many South Asian farms grow two crops per year (e.g. Kharif rice followed by Rabi wheat). Our engine models one primary crop per year across a 3-year sequence; multi-season double-cropping is documented as a future improvement.",
+      "applies_to": "all"
+    },
+    {
+      "id": "G11",
+      "topic": "Light Regions Validation & Coarse Grid",
+      "text": "Light regions (Central Kansas, USA and Punjab Plains, India) use public national datasets (USDA NASS, FAOSTAT, ICAR) without local field-trial calibration and are labeled 'Less validated'. NASA POWER grid cells (~50 km) represent flat regional farmland rather than individual parcels.",
+      "applies_to": "all"
+    },
+    {
+      "id": "G12",
+      "topic": "Fire Watch Satellite Detections",
+      "text": "NASA FIRMS (VIIRS 375 m / MODIS 1 km) detects actively burning thermal anomalies (~3 hours latency). It is not a fire forecast or danger index; cloud cover or small fires can be missed, and industrial hotspots can appear.",
+      "applies_to": "all"
+    }
+  ]
+}

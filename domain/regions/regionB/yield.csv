@@ -1,0 +1,15 @@
+crop,yield_potential,price_local,currency,gross_income_ha,risk_note_local,source
+wheat,31.6,2970,USD,93852,Hard Red Winter Wheat; vulnerable to April freeze at jointing and Hessian fly in continuous wheat.,USDA NASS Kansas 2019-2023 (47 bu/ac)
+corn,78.0,2600,USD,202800,Dryland corn; July pollination heat (>35 °C) and dry spells sharply cut kernel set without rotation moisture.,USDA NASS Kansas 2019-2023 (124 bu/ac)
+soybean,26.9,6800,USD,182920,Fixes nitrogen for following winter wheat or corn; August pod-fill sensitive to late-summer flash drought.,USDA NASS Kansas 2019-2023 (40 bu/ac)
+sorghum,49.0,2750,USD,134750,Grain sorghum (milo) outperforms dryland corn in drought years; watch sugarcane aphid pressure.,USDA NASS Kansas 2019-2023 (78 bu/ac)
+sunflower,16.8,7900,USD,132720,Deep-rooted High Plains broadleaf break crop; scavenges deep subsoil nitrate.,"USDA NASS / K-State Extension (1,500 lb/ac)"
+canola,19.5,7200,USD,140400,Southern Plains winter canola; suppresses feral rye and jointed goatgrass in winter wheat rotations.,K-State Great Plains Canola Trials
+oats,23.0,3800,USD,87400,Spring oat cover/grain crop; low water footprint ahead of winter wheat.,USDA NASS Kansas
+field_pea,22.0,2700,USD,59400,Cool-season legume that fits before sorghum or corn.,Team estimate - verify with national statistics (K-State Extension)
+hairy_vetch,35.0,1350,USD,47250,"Cover crop; value is soil, moisture and nitrogen, income is hay only.",Team estimate - verify with national statistics (K-State Extension)
+alfalfa,40.0,2430,USD,97200,Perennial hay crop; deep roots; treat as a 1-year ley in a 3-year plan.,Team estimate - verify with national statistics (USDA NASS)
+cotton,9.0,20790,USD,187110,Only in warmer southern Kansas; frost can end the season early.,Team estimate - verify with national statistics (USDA NASS)
+proso_millet,18.8,3180,USD,59784,"Short season, tolerant to drought; good after a failed crop.",Team estimate - verify with national statistics (K-State Extension)
+flax,9.4,6350,USD,59690,Niche oilseed; weak against weeds.,Team estimate - verify with national statistics (USDA NASS)
+fallow,0.0,0,USD,0,"Chem-fallow stores 80–120 mm soil moisture in Western/Central KS, but cover or legume outperforms bare fallow.",K-State Dryland Cropping Systems

@@ -1,0 +1,32 @@
+{
+  "id": "rice",
+  "crop": "Paddy Rice",
+  "scientific_name": "Oryza sativa",
+  "family": "cereal",
+  "water_need": 0.9,
+  "soil_effect": -0.32,
+  "nitrogen_fixing": 0,
+  "n_impact_kg_ha": -40,
+  "residue_carbon": 0.68,
+  "drought_tolerance": 0.25,
+  "profit": 0.78,
+  "oaic_ccls_price_dzd_q": 3100,
+  "baseline_yield_q_ha": 65.0,
+  "gross_income_dzd_ha": 201500,
+  "risk_level": 0.42,
+  "soil_depletion_index": 4,
+  "soil_health_delta": -14,
+  "base_npk_kg_ha": 250,
+  "fertilizer_name": "Urea + DAP + Zinc Sulfate",
+  "optimal_rain_min": 550,
+  "optimal_rain_max": 1800,
+  "optimal_ph_min": 5.5,
+  "optimal_ph_max": 8.3,
+  "frost_tolerant": 0,
+  "heat_tolerant": 1,
+  "risk_note": "Puddled flood irrigation depletes groundwater aquifers; heavy straw load often triggers autumn residue burning.",
+  "sources": {
+    "yield": "PAU Ludhiana / DES India 2023 (65 q/ha)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

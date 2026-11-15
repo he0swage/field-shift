@@ -1,0 +1,109 @@
+/* Field Shift — Global & Regional Fire Watch Map (Step 1) */
+:root,
+:root[data-theme="light"] {
+  --sea: #dbeafe;
+  --land: #f8fafc;
+  --coast: #64748b;
+  --dry: #ea580c;
+  --fire-hot: #dc2626;
+}
+:root[data-theme="dark"] {
+  --sea: #082f49;
+  --land: #1e293b;
+  --coast: #475569;
+  --dry: #fb923c;
+  --fire-hot: #f97316;
+}
+
+.map-card { margin-bottom: 22px; }
+.map-toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.map-view-toggle { background: var(--surface-2); border-color: var(--line-strong); }
+.map-view-toggle button { color: var(--ink-soft); }
+.map-view-toggle button.active { background: var(--primary); color: #fff; }
+
+.map-wrap {
+  margin-top: 16px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: var(--sea);
+}
+.map-wrap svg { display: block; }
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 38px;
+  padding: 0 13px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.toggle input { width: 18px; height: 18px; accent-color: var(--primary); }
+
+#regionMap .sea { fill: var(--sea); }
+#regionMap .land { fill: var(--land); stroke: var(--coast); stroke-width: 1.5; stroke-linejoin: round; }
+#regionMap .graticule { stroke: var(--coast); stroke-opacity: 0.25; stroke-dasharray: 4 4; }
+#regionMap .graticule-label { fill: var(--ink-soft); font-size: 11.5px; font-weight: 600; opacity: 0.75; }
+#regionMap .zone { fill: var(--ink-soft); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75; }
+
+#regionMap .radius-25km { fill: rgba(217, 119, 6, 0.06); stroke: var(--fire-hot); stroke-width: 2; stroke-dasharray: 6 4; }
+#regionMap .radius-12km { fill: none; stroke: var(--coast); stroke-width: 1; stroke-dasharray: 3 4; }
+
+#regionMap .marker { cursor: pointer; outline: none; }
+#regionMap .marker .hit { fill: transparent; }
+#regionMap .marker .dot { fill: var(--surface); stroke: var(--primary); stroke-width: 3.5; transition: r 0.15s; }
+#regionMap .marker.on .dot { fill: var(--primary); stroke: var(--surface); stroke-width: 3.5; }
+#regionMap .marker:hover .dot { stroke-width: 5; }
+#regionMap .marker:focus-visible .hit { stroke: var(--focus); stroke-width: 3; }
+
+#regionMap .fire-dot-bg { fill: var(--fire-hot); stroke: #fff; stroke-width: 1.5; }
+#regionMap .fire-dot-txt { fill: #fff; font-size: 10.5px; font-weight: 800; }
+#regionMap .fire-pulse { fill: var(--fire-hot); fill-opacity: 0.25; }
+
+#regionMap .map-name {
+  fill: var(--ink);
+  font-size: 15.5px;
+  font-weight: 800;
+  paint-order: stroke;
+  stroke: var(--land);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+#regionMap .marker.on .map-name { fill: var(--primary); }
+#regionMap .map-detail {
+  fill: var(--ink);
+  font-size: 12.5px;
+  font-weight: 700;
+  paint-order: stroke;
+  stroke: var(--land);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+#regionMap .map-detail.sub { font-weight: 600; fill: var(--ink-soft); }
+
+#regionMap .trend-ring { fill: var(--dry); fill-opacity: 0.16; stroke: var(--dry); stroke-width: 2; pointer-events: none; }
+#regionMap .trend-ring.sig-weak, #regionMap .trend-ring.sig-none { stroke-dasharray: 5 4; }
+
+.map-legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 12px; font-size: 13.5px; color: var(--ink-soft); align-items: center; }
+.map-legend .lg { display: inline-flex; align-items: center; gap: 7px; }
+.lg-dot { width: 14px; height: 14px; border-radius: 50%; border: 3px solid var(--primary); background: var(--surface); }
+.lg-dot.on { background: var(--primary); }
+.lg-fire { width: 14px; height: 14px; border-radius: 50%; background: var(--fire-hot); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--fire-hot); }
+.lg-ring { width: 18px; height: 18px; border-radius: 50%; background: color-mix(in srgb, var(--dry) 18%, transparent); border: 2px solid var(--dry); }
+.map-note { font-size: 12.5px; color: var(--ink-soft); margin-top: 6px; }
+
+/* Region cards: extra facts */
+.region-facts { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid var(--line); display: grid; gap: 5px; font-size: 14px; font-variant-numeric: tabular-nums; }
+.region-facts > div { display: flex; justify-content: space-between; gap: 10px; }
+.region-facts dt { color: var(--ink-soft); }
+.region-facts dd { margin: 0; font-weight: 700; }
+
+@media (max-width: 680px) {
+  #regionMap .map-detail, #regionMap .zone { display: none; }
+  #regionMap .map-name { font-size: 20px; stroke-width: 6px; }
+}

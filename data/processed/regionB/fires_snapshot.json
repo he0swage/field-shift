@@ -1,0 +1,18 @@
+{
+  "region": "regionB",
+  "fetched_at": "2026-11-14T09:30:00Z",
+  "source": "VIIRS_NOAA21_NRT",
+  "radius_km": 25,
+  "days": 2,
+  "count": 0,
+  "nearest_km": null,
+  "detections": [],
+  "dry_conditions": {
+    "consecutive_dry_days": 11,
+    "hot_days_recent": 34,
+    "mean_rh_pct": 52,
+    "wind_m_s": 5.8,
+    "label": "Indicative only"
+  },
+  "notice": "Satellite data, about 3 hours old. Not a forecast. No detection does not mean no fire."
+}

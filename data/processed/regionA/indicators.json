@@ -1,0 +1,130 @@
+{
+  "region": "setif",
+  "code": "setif",
+  "label": "Sétif High Plateaux",
+  "lat": 36.15,
+  "lon": 5.38,
+  "sources": {
+    "climate": "NASA POWER daily 1995-2024 PRECTOTCORR/T2M_MAX/T2M_MIN (offline from data/raw)",
+    "crosscheck": "Open-Meteo ERA5 archive daily 1995-2024 (offline from data/raw)",
+    "soil": "ISRIC SoilGrids v2.0 (offline from data/raw)",
+    "ndvi": "MODIS MOD13Q1 250 m via ORNL DAAC REST (offline from data/raw)"
+  },
+  "thresholds_used": {
+    "file": "domain/thresholds.json",
+    "sha256_16": "358ce410e8e56d5b"
+  },
+  "rainfall_mm": {
+    "value": 509.0,
+    "unit": "mm/yr",
+    "window": "2015-2024",
+    "crosscheck_value": 405.5,
+    "confidence": "medium"
+  },
+  "rainfall_30yr_mean_mm": {
+    "value": 574.9,
+    "unit": "mm/yr",
+    "window": "1995-2024",
+    "crosscheck_value": 506.2,
+    "confidence": "medium"
+  },
+  "water_stress": {
+    "value": 0.1625,
+    "window": "ref 1995-2014 vs 2015-2024",
+    "confidence": "pending Alaa",
+    "note": "pending Alaa (recent-window choice) - see logs/step1_report.md finding c"
+  },
+  "water_stress_5yr": {
+    "value": 0.2029,
+    "window": "ref 1995-2014 vs 2020-2024",
+    "confidence": "sensitivity check only",
+    "note": "v1's 2020-2024 version kept for comparison"
+  },
+  "rainfall_trend": {
+    "window": "1995-2024",
+    "ols_slope_mm_per_decade": -46.7,
+    "ols_p": 0.0459,
+    "sen_slope_mm_per_decade": -44.1,
+    "mk_p": 0.0092,
+    "label": "both methods agree",
+    "confidence": "high",
+    "unit": "mm/decade"
+  },
+  "hot_days": {
+    "value": 3.1,
+    "unit": "days/yr",
+    "window": "grain-filling window months [4, 5, 6], mean 1995-2024",
+    "crosscheck_value": 1.9,
+    "confidence": "low"
+  },
+  "frost_days": {
+    "value": 4.5,
+    "unit": "days/yr",
+    "window": "late-frost window months [3, 4], mean 1995-2024",
+    "crosscheck_value": 3.1,
+    "confidence": "low"
+  },
+  "extreme_rain_days": {
+    "value": 3.6,
+    "unit": "days/yr",
+    "window": "calendar year, mean 1995-2024",
+    "crosscheck_value": null,
+    "confidence": "low"
+  },
+  "longest_dry_spell_days": {
+    "value": 23.5,
+    "unit": "days",
+    "window": "growing season months [10, 11, 12, 1, 2, 3, 4, 5], mean 1995-2024",
+    "crosscheck_value": null,
+    "confidence": "low"
+  },
+  "organic_carbon": {
+    "g_per_kg": 12.52,
+    "class": "medium",
+    "unit": "g/kg, 0-30 cm depth-weighted 5:10:15",
+    "confidence": "medium"
+  },
+  "ph": {
+    "value": 7.77,
+    "unit": "pH (H2O), 0-30 cm depth-weighted 5:10:15",
+    "confidence": "medium"
+  },
+  "ndvi": {
+    "available": true,
+    "source": "MODIS MOD13Q1 250 m via ORNL DAAC REST (offline from data/raw)",
+    "window": "2020-2024",
+    "patch": "5x5 km",
+    "mean_spring_peak_ndvi": 0.432,
+    "spring_peaks_by_year": {
+      "2020": 0.448,
+      "2021": 0.377,
+      "2022": 0.517,
+      "2023": 0.335,
+      "2024": 0.481
+    },
+    "yield_baseline": 0.363,
+    "normalization": "clamp((mean_spring_peak_ndvi - 0.25) / 0.50, 0, 1)",
+    "caveat": "no cropland mask (ESA WorldCover class 40 not applied), no pixel QA filter, 5 years only",
+    "confidence": "low"
+  },
+  "suggested_priorities": {
+    "save_water": 36,
+    "protect_soil": 33,
+    "yield_": 31,
+    "rule": "PRD v3 section 6.2",
+    "basis": {
+      "water_stress_used": 0.1625,
+      "soc_class": "medium"
+    }
+  },
+  "region_id": "regionA",
+  "country": "Algeria",
+  "role": "deep",
+  "farming_system": "rainfed",
+  "default_crops": [
+    "wheat",
+    "barley",
+    "lentil",
+    "chickpea"
+  ]
+}

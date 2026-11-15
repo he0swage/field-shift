@@ -1,0 +1,2433 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R >> >>
+endobj
+5 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R] /Count 6 >>
+endobj
+6 0 obj
+<< /Length 8858 >>
+stream
+q
+0.078 0.325 0.176 rg
+36.00 511.28 769.89 46.00 re f
+Q
+BT /F2 14.5 Tf 1.000 1.000 1.000 rg 1 0 0 1 50.00 538.28 Tm (Field Shift - Data Audit Report) Tj ET
+BT /F1 9.0 Tf 0.820 0.980 0.880 rg 1 0 0 1 50.00 521.28 Tm (What data we have, where it is used, what is missing or inaccurate, suggested crops and fixes) Tj ET
+BT /F2 12.5 Tf 0.078 0.325 0.176 rg 1 0 0 1 36.00 476.78 Tm (1. Verdict in one table) Tj ET
+q
+0.086 0.639 0.290 rg
+36.00 472.78 769.89 1.20 re f
+Q
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 443.58 169.38 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 451.48 Tm (Area) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 443.58 292.56 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 211.38 451.48 Tm (Status) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 443.58 307.96 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 503.93 451.48 Tm (What it means) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 399.98 169.38 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 430.28 Tm (regionA \(Setif, Algeria\) climate) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 419.08 Tm (and soil) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 399.98 292.56 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 430.28 Tm (Real data, with caveats) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 399.98 307.96 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 430.28 Tm (Built from NASA POWER, ERA5 cross-check, SoilGrids and) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 419.08 Tm (MODIS. The raw files are not in the repo, so nobody can) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 407.88 Tm (re-run it.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 356.38 169.38 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 386.68 Tm (regionB \(Kansas\) and regionC) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 375.48 Tm (\(Punjab\) climate, soil, NDVI,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 364.28 Tm (forecast) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 356.38 292.56 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 386.68 Tm (Hand-written estimates) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 356.38 307.96 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 386.68 Tm (Written by scripts/setup_multiregion_domain.py \(yearly rain) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 375.48 Tm (is a constant list, monthly rain is a typed array\). Not) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 364.28 Tm (fetched from NASA POWER or SoilGrids.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 323.98 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 343.08 Tm (Fire Watch snapshots \(all 3) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 331.88 Tm (regions\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 323.98 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 343.08 Tm (Sample data) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 323.98 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 343.08 Tm (All three files carry the same hard-coded fetched_at of) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 331.88 Tm (2026-11-14T09:30:00Z. No live FIRMS call produced them.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 291.58 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 310.68 Tm (Crop yields \(regionA, B, C\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 291.58 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 310.68 Tm (Mostly sourced, one year or one average) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 291.58 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 310.68 Tm (Named sources \(ITGC, USDA NASS, PAU, ICAR\) but typed in by) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 299.48 Tm (hand, no file or link per number.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 259.18 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 278.28 Tm (Crop prices and gross income) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 259.18 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 278.28 Tm (Unit and currency problem) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 259.18 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 278.28 Tm (See section 3. Kansas income looks too high and the currency) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 267.08 Tm (column is misleading.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 226.78 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 245.88 Tm (Crop traits \(crops_base.csv, 19) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 234.68 Tm (crops\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 226.78 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 245.88 Tm (Global defaults) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 226.78 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 245.88 Tm (One value per crop for every region \(water need, N impact,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 234.68 Tm (rain range\). Not adjusted per climate.) Tj ET
+BT /F2 12.5 Tf 0.078 0.325 0.176 rg 1 0 0 1 36.00 194.28 Tm (2. Data we have and where each item is used) Tj ET
+q
+0.086 0.639 0.290 rg
+36.00 190.28 769.89 1.20 re f
+Q
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 161.08 169.38 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 168.98 Tm (Data \(file\)) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 161.08 292.56 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 211.38 168.98 Tm (What it contains) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 161.08 307.96 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 503.93 168.98 Tm (Used in) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 128.68 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 147.78 Tm (domain/regions.csv) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 128.68 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 147.78 Tm (3 regions: id, name, lat, lon, role \(deep or light\),) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 136.58 Tm (farming system, default crops, currency) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 128.68 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 147.78 Tm (build_frontend_data.py, then realDataBundle.json, then) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 136.58 Tm (region cards, header selector, banners) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 85.08 169.38 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 115.38 Tm (domain/crops_base.csv) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 85.08 292.56 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 115.38 Tm (19 crops: family, water need, soil effect, drought) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 104.18 Tm (tolerance, N fixing, profit score, risk, optimal rain and) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 92.98 Tm (pH) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 85.08 307.96 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 115.38 Tm (engine/scoring.py load_region\(\) joins it with each region) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 104.18 Tm (yield file; frontend localEngine.js scoring) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 52.68 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 71.78 Tm (domain/regions/regionX/yield.csv) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 52.68 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 71.78 Tm (Yield \(q/ha\), local price, gross income, local risk note,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 60.58 Tm (source) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 52.68 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 71.78 Tm (load_region\(\); crop chips, Review step, income figures in) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 60.58 Tm (rankings) Tj ET
+BT /F1 8.0 Tf 0.45 0.50 0.56 rg 1 0 0 1 36.00 18.00 Tm (Field Shift - Data Audit Report   |   Page 1 of 6) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 841.89 595.28] /Resources 4 0 R /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 11321 >>
+stream
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 536.08 169.38 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 543.98 Tm (Data \(file\)) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 536.08 292.56 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 211.38 543.98 Tm (What it contains) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 536.08 307.96 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 503.93 543.98 Tm (Used in) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 503.68 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 522.78 Tm (domain/regions/regionX/rules.jso) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 511.58 Tm (n) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 503.68 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 522.78 Tm (Rotation rules: 3 years, no same family twice in a row,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 511.58 Tm (minimum 1 legume, max 1 high-water crop, no repeats) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 503.68 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 522.78 Tm (engine passes_rules; localEngine.js passesRules \(decides) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 511.58 Tm (which rotations are allowed\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 471.28 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 490.38 Tm (domain/regions/regionX/threshold) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 479.18 Tm (s.json) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 471.28 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 490.38 Tm (Hot day, frost night, extreme rain, dry day, SOC) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 479.18 Tm (threshold, reference rainfall) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 471.28 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 490.38 Tm (Water-stress calculation in scoring.py; climate indicators) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 427.68 169.38 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 457.98 Tm (data/processed/regionX/indicator) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 446.78 Tm (s.json) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 427.68 292.56 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 457.98 Tm (Rainfall, 30-year mean, trend, water stress, hot, frost) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 446.78 Tm (and extreme-rain days, longest dry spell, pH, NDVI,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 435.58 Tm (suggested priorities) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 427.68 307.96 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 457.98 Tm (Step 1 region facts, Climate step, scoring, priority presets) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 395.28 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 414.38 Tm (data/processed/regionX/climate_y) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 403.18 Tm (early.json) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 395.28 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 414.38 Tm (Annual rainfall 1995-2024) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 395.28 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 414.38 Tm (Annual line chart \(Climate step\), trend) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 362.88 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 381.98 Tm (data/processed/regionX/climate_m) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 370.78 Tm (onthly.json) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 362.88 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 381.98 Tm (Monthly rainfall averages) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 362.88 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 381.98 Tm (Monthly bar chart) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 330.48 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 349.58 Tm (data/processed/regionX/climate_t) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 338.38 Tm (ext.json) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 330.48 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 349.58 Tm (Plain-language explanations \(EN, FR, AR\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 330.48 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 349.58 Tm (Climate step text cards) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 309.28 169.38 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 317.18 Tm (data/processed/regionX/soil.json) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 309.28 292.56 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 317.18 Tm (SOC, pH, texture, confidence) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 309.28 307.96 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 317.18 Tm (Soil card, soil score in the engine) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 276.88 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 295.98 Tm (data/processed/regionX/forecast.) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 284.78 Tm (json) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 276.88 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 295.98 Tm (SARIMA seasonal outlook \(experimental\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 276.88 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 295.98 Tm (Climate step outlook card) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 244.48 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 263.58 Tm (data/processed/regionX/fires_sna) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 252.38 Tm (pshot.json) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 244.48 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 263.58 Tm (Fire detections within 25 km, dry-conditions block) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 244.48 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 263.58 Tm (Fire Watch card, banner, 25 km map view) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 212.08 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 231.18 Tm (data/processed/regionX/crosschec) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 219.98 Tm (k_openmeteo.json) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 212.08 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 231.18 Tm (Open-Meteo ERA5 comparison \(regionA only\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 212.08 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 231.18 Tm (Not read by server, engine or frontend; its result is) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 219.98 Tm (already baked into indicators.json confidence labels) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 190.88 169.38 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 198.78 Tm (data/inputs/gaps.json) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 190.88 292.56 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 198.78 Tm (12 honest limitations \(G1 to G12\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 190.88 307.96 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 198.78 Tm (About modal, Review step warnings) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 147.28 169.38 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 177.58 Tm (data/inputs/rules.json,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 166.38 Tm (indicators.json, crops.csv,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 155.18 Tm (request.json) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 147.28 292.56 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 177.58 Tm (Original Algeria-only inputs) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 147.28 307.96 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 177.58 Tm (Not read by server.py, engine or frontend \(only scripts use) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 166.38 Tm (it\); engine.py at repo root was not checked) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 114.88 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 133.98 Tm (data/processed/crops/*.json \(19) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 122.78 Tm (files\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 114.88 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 133.98 Tm (Per-crop cards with sources) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 114.88 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 133.98 Tm (Not read by server, engine or frontend; only generated and) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 122.78 Tm (referenced by scripts) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 82.48 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 101.58 Tm (data/processed/sensitivity.json,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 90.38 Tm (regions_summary.json) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 82.48 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 101.58 Tm (Sensitivity test and old region summary) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 82.48 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 101.58 Tm (Not read by server, engine or frontend; only referenced by) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 90.38 Tm (setup and fetch scripts) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 50.08 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 69.18 Tm (frontend/src/data/realDataBundle) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 57.98 Tm (.json) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 50.08 292.56 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 69.18 Tm (Everything above merged into one file) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+497.93 50.08 307.96 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 69.18 Tm (The Netlify site \(it has no server, so it reads only this) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 503.93 57.98 Tm (bundle\)) Tj ET
+BT /F1 8.0 Tf 0.45 0.50 0.56 rg 1 0 0 1 36.00 18.00 Tm (Field Shift - Data Audit Report   |   Page 2 of 6) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 841.89 595.28] /Resources 4 0 R /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 15323 >>
+stream
+BT /F2 12.5 Tf 0.078 0.325 0.176 rg 1 0 0 1 36.00 534.78 Tm (3. What is not accurate) Tj ET
+q
+0.086 0.639 0.290 rg
+36.00 530.78 769.89 1.20 re f
+Q
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 501.58 30.80 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 509.48 Tm (#) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+66.80 501.58 153.98 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 72.80 509.48 Tm (Problem) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 501.58 261.76 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 226.77 509.48 Tm (Evidence) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 501.58 153.98 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 488.54 509.48 Tm (Impact) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+636.51 501.58 169.38 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 642.51 509.48 Tm (Fix) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 446.78 30.80 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 488.28 Tm (A1) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+66.80 446.78 153.98 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 488.28 Tm (Income values are in) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 477.08 Tm (DZD-equivalent but the column) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 465.88 Tm (says USD or INR) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 446.78 261.76 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 488.28 Tm (yield.csv has currency=USD for Kansas; engine keys) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 477.08 Tm (are named gross_income_dzd_ha; format.js converts) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 465.88 Tm (at about 135 DZD per USD; RotationStep label says) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 454.68 Tm ("DA-equiv/q") Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 446.78 153.98 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 488.28 Tm (Users and teammates read the) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 477.08 Tm (wrong currency; hard to audit) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+636.51 446.78 169.38 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 488.28 Tm (Store price in local currency) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 477.08 Tm (and convert in one place, or) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 465.88 Tm (rename the column to dzd_equiv) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 391.98 30.80 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 433.48 Tm (A2) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+66.80 391.98 153.98 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 433.48 Tm (Kansas income looks too high) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 391.98 261.76 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 433.48 Tm (Wheat: 31.6 q/ha x 5200 = 164,320. At 135 DZD/USD) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 422.28 Tm (that is about 1,217 USD/ha, about 493 USD/acre.) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 411.08 Tm (USDA yield of 47 bu/ac at roughly 6 USD/bu \(my) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 399.88 Tm (estimate\) gives about 280 USD/acre) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 391.98 153.98 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 433.48 Tm (Kansas wheat, corn and) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 422.28 Tm (soybean look more profitable) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 411.08 Tm (than they are) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+636.51 391.98 169.38 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 433.48 Tm (Re-enter prices as USD per) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 422.28 Tm (bushel from USDA NASS, convert) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 411.08 Tm (to per hectare) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 359.58 30.80 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 378.68 Tm (A3) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+66.80 359.58 153.98 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 378.68 Tm (Fixed profit tag threshold) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 359.58 261.76 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 378.68 Tm (server.py tags highProfit at gross income >= 130000) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 367.48 Tm (\(a DZD number\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 359.58 153.98 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 378.68 Tm (The tag means different) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 367.48 Tm (things in USD and INR regions) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+636.51 359.58 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 378.68 Tm (Use a threshold per region, or) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 367.48 Tm (compare within the region) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 315.98 30.80 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 346.28 Tm (A4) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+66.80 315.98 153.98 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 346.28 Tm (Reference rainfall disagrees) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 335.08 Tm (with indicators \(regionA\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 315.98 261.76 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 346.28 Tm (thresholds.json 402 mm; indicators 509 mm) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 335.08 Tm (\(2015-2024\); 30-year mean 574.9; ERA5 405.5;) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 323.88 Tm (realDataBundle also shows 607.8 for another entry) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 315.98 153.98 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 346.28 Tm (Water stress can be computed) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 335.08 Tm (against the wrong baseline) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+636.51 315.98 169.38 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 346.28 Tm (Pick one rule \(30-year mean of) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 335.08 Tm (the same source\) and apply it to) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 323.88 Tm (all regions) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 283.58 30.80 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 302.68 Tm (A5) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+66.80 283.58 153.98 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 302.68 Tm (Soil confidence too high for) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 291.48 Tm (B and C) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 283.58 261.76 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 302.68 Tm (soil.json says "high"; the project rule \(G1, PRD\)) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 291.48 Tm (says soil from SoilGrids is at best medium) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 283.58 153.98 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 302.68 Tm (Overstates trust) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+636.51 283.58 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 302.68 Tm (Set to medium, or fetch real) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 291.48 Tm (SoilGrids values) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 239.98 30.80 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 270.28 Tm (A6) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+66.80 239.98 153.98 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 270.28 Tm (B and C indicators carry) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 259.08 Tm (confidence "high" without a) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 247.88 Tm (cross-check) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 239.98 261.76 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 270.28 Tm (No crosscheck_openmeteo.json exists for regionB or) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 259.08 Tm (regionC) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 239.98 153.98 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 270.28 Tm (Confidence is asserted, not) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 259.08 Tm (measured) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+636.51 239.98 169.38 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 270.28 Tm (Run the same POWER vs ERA5 check) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 259.08 Tm (and label from the result) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 207.58 30.80 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 226.68 Tm (A7) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+66.80 207.58 153.98 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 226.68 Tm (regionA hot-day and frost-day) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 215.48 Tm (confidence is low) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 207.58 261.76 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 226.68 Tm (data_quality.md: POWER vs ERA5 differs by 67.9%) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 215.48 Tm (\(hot days\) and 47.8% \(frost days\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 207.58 153.98 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 226.68 Tm (Heat and frost counts are) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 215.48 Tm (weak numbers) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+636.51 207.58 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 226.68 Tm (Show as range, or use a station) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 215.48 Tm (dataset) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 163.98 30.80 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 194.28 Tm (A8) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+66.80 163.98 153.98 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 194.28 Tm (NDVI is weak) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 163.98 261.76 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 194.28 Tm (Source note: no cropland mask, no QA filter, 5) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 183.08 Tm (years, confidence low) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 163.98 153.98 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 194.28 Tm (NDVI-based yield baseline is) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 183.08 Tm (rough) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+636.51 163.98 169.38 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 194.28 Tm (Apply ESA WorldCover cropland) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 183.08 Tm (mask and QA filter, use 10+) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 171.88 Tm (years) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 131.58 30.80 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 150.68 Tm (A9) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+66.80 131.58 153.98 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 150.68 Tm (Kansas hot days per year may) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 139.48 Tm (be too high) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 131.58 261.76 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 150.68 Tm (indicators show 34.2 days above 35 C; not verified) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 139.48 Tm (against a station) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 131.58 153.98 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 150.68 Tm (Heat risk for corn may be) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 139.48 Tm (overstated) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+636.51 131.58 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 150.68 Tm (Verify against NOAA Salina) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 139.48 Tm (station) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 99.18 30.80 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 118.28 Tm (A10) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+66.80 99.18 153.98 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 118.28 Tm (Rainfall is not water stress) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 107.08 Tm (for irrigated land) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 99.18 261.76 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 118.28 Tm (Already disclosed \(G9\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 99.18 153.98 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 118.28 Tm (Punjab water-stress card can) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 107.08 Tm (mislead) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+636.51 99.18 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 118.28 Tm (Keep the banner; add groundwater) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 107.08 Tm (or canal data later) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 66.78 30.80 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 85.88 Tm (A11) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+66.80 66.78 153.98 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 72.80 85.88 Tm (One crop per year only) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 66.78 261.76 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 85.88 Tm (Already disclosed \(G10\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 66.78 153.98 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 85.88 Tm (Punjab rice-wheat double) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 74.68 Tm (cropping is not modelled) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+636.51 66.78 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 85.88 Tm (Keep the disclosure; add seasons) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 642.51 74.68 Tm (as a later feature) Tj ET
+BT /F1 8.0 Tf 0.45 0.50 0.56 rg 1 0 0 1 36.00 18.00 Tm (Field Shift - Data Audit Report   |   Page 3 of 6) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 841.89 595.28] /Resources 4 0 R /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 11238 >>
+stream
+BT /F2 12.5 Tf 0.078 0.325 0.176 rg 1 0 0 1 36.00 534.78 Tm (4. What is missing) Tj ET
+q
+0.086 0.639 0.290 rg
+36.00 530.78 769.89 1.20 re f
+Q
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 501.58 38.49 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 509.48 Tm (#) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+74.49 501.58 269.46 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 80.49 509.48 Tm (Missing item) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+343.96 501.58 323.35 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 349.96 509.48 Tm (Why it matters) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+667.31 501.58 138.58 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 673.31 509.48 Tm (Priority) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 469.18 38.49 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 488.28 Tm (M1) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+74.49 469.18 269.46 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 488.28 Tm (data/raw folder \(POWER, ERA5, SoilGrids, MODIS) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 477.08 Tm (downloads\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+343.96 469.18 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 488.28 Tm (indicators say "offline from data/raw" but the folder is not in) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 477.08 Tm (the repo, so regionA cannot be reproduced) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+667.31 469.18 138.58 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 673.31 488.28 Tm (High) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 447.98 38.49 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 455.88 Tm (M2) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+74.49 447.98 269.46 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 455.88 Tm (Real fetched climate and soil for regionB and regionC) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+343.96 447.98 323.35 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 455.88 Tm (These are the "light" regions; today they are typed values) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+667.31 447.98 138.58 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 673.31 455.88 Tm (High) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 415.58 38.49 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 434.68 Tm (M3) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+74.49 415.58 269.46 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 434.68 Tm (Live or recent FIRMS fire data) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+343.96 415.58 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 434.68 Tm (All fire snapshots are samples with the same timestamp. A) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 423.48 Tm (FIRMS_MAP_KEY and a refresh script are needed) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+667.31 415.58 138.58 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 673.31 434.68 Tm (High) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 383.18 38.49 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 402.28 Tm (M4) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+74.49 383.18 269.46 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 402.28 Tm (Production cost per crop \(seed, fertilizer, labour,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 391.08 Tm (irrigation, diesel\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+343.96 383.18 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 402.28 Tm ("Gross income" is shown, but a farmer needs profit after cost) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+667.31 383.18 138.58 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 673.31 402.28 Tm (High) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 361.98 38.49 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 369.88 Tm (M5) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+74.49 361.98 269.46 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 369.88 Tm (Planting and harvest calendar per crop and region) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+343.96 361.98 323.35 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 369.88 Tm (Needed for frost and heat windows and for sensible rotations) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+667.31 361.98 138.58 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 673.31 369.88 Tm (Medium) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 329.58 38.49 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 348.68 Tm (M6) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+74.49 329.58 269.46 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 348.68 Tm (French and Arabic text for regionA) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+343.96 329.58 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 348.68 Tm (climate_text.json for regionA has empty fr and ar; B and C have) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 337.48 Tm (them) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+667.31 329.58 138.58 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 673.31 348.68 Tm (Medium) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 297.18 38.49 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 316.28 Tm (M7) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+74.49 297.18 269.46 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 316.28 Tm (organic_carbon and sources blocks in B and C) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 305.08 Tm (indicators.json) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+343.96 297.18 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 316.28 Tm (regionA has them; B and C do not, so the structure differs) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+667.31 297.18 138.58 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 673.31 316.28 Tm (Medium) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 275.98 38.49 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 283.88 Tm (M8) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+74.49 275.98 269.46 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 283.88 Tm (Price history and volatility) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+343.96 275.98 323.35 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 283.88 Tm (A single price per crop; no range or trend) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+667.31 275.98 138.58 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 673.31 283.88 Tm (Medium) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 254.78 38.49 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 262.68 Tm (M9) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+74.49 254.78 269.46 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 262.68 Tm (Soil texture, N, P, K and water holding for regionA) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+343.96 254.78 323.35 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 262.68 Tm (Only SOC and pH exist for regionA) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+667.31 254.78 138.58 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 673.31 262.68 Tm (Medium) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 233.58 38.49 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 241.48 Tm (M10) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+74.49 233.58 269.46 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 241.48 Tm (Regional fertilizer and N-fixation values) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+343.96 233.58 323.35 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 241.48 Tm (n_impact_kg_ha is one global number per crop) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+667.31 233.58 138.58 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 673.31 241.48 Tm (Medium) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 201.18 38.49 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 220.28 Tm (M11) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+74.49 201.18 269.46 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 220.28 Tm (Second Algerian point \(Tiaret, Constantine\) in the) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 209.08 Tm (app) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+343.96 201.18 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 220.28 Tm (The data exists in data/processed but regionA is the only one) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 209.08 Tm (wired in) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+667.31 201.18 138.58 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 673.31 220.28 Tm (Low) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 168.78 38.49 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 187.88 Tm (M12) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+74.49 168.78 269.46 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 187.88 Tm (Pending definitions) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+343.96 168.78 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 187.88 Tm (water stress definition \(pending Alaa\), SOC class threshold) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 176.68 Tm (\(pending Younes\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+667.31 168.78 138.58 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 673.31 187.88 Tm (Medium) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 136.38 38.49 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 155.48 Tm (M13) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+74.49 136.38 269.46 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 80.49 155.48 Tm (Clean-up of legacy folders) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+343.96 136.38 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 155.48 Tm (setif, tiaret, constantine, regionX, domain/crops_algeria.csv,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 349.96 144.28 Tm (data/regional duplicate the new structure) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+667.31 136.38 138.58 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 673.31 155.48 Tm (Low) Tj ET
+BT /F2 12.5 Tf 0.078 0.325 0.176 rg 1 0 0 1 36.00 103.88 Tm (5. Suggested extra crops for farmers) Tj ET
+q
+0.086 0.639 0.290 rg
+36.00 99.88 769.89 1.20 re f
+Q
+BT /F1 8.0 Tf 0.45 0.50 0.56 rg 1 0 0 1 36.00 18.00 Tm (Field Shift - Data Audit Report   |   Page 4 of 6) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 841.89 595.28] /Resources 4 0 R /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Length 18444 >>
+stream
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 536.08 107.78 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 543.98 Tm (Region) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 536.08 184.77 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 149.78 543.98 Tm (Crop) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 536.08 130.88 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 334.56 543.98 Tm (Role in rotation) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 536.08 215.57 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 465.44 543.98 Tm (Why it fits) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 536.08 130.88 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 681.01 543.98 Tm (To source) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 503.68 107.78 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 522.78 Tm (regionA Setif) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 503.68 184.77 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 522.78 Tm (Field pea) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 503.68 130.88 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 522.78 Tm (Legume) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 503.68 215.57 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 522.78 Tm (Cool-season, fixes nitrogen, fits cereal) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 511.58 Tm (rotations) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 503.68 130.88 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 522.78 Tm (ITGC yield and price) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 471.28 107.78 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 490.38 Tm (regionA Setif) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 471.28 184.77 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 490.38 Tm (Potato) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 471.28 130.88 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 490.38 Tm (Cash root crop) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 471.28 215.57 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 490.38 Tm (Setif is a known potato area; high income) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 479.18 Tm (but needs water) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 471.28 130.88 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 490.38 Tm (Yield, cost, irrigation) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 479.18 Tm (need) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 438.88 107.78 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 457.98 Tm (regionA Setif) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 438.88 184.77 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 457.98 Tm (Sulla \(Hedysarum\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 438.88 130.88 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 457.98 Tm (Forage legume) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 438.88 215.57 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 457.98 Tm (Mediterranean forage legume, good for) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 446.78 Tm (livestock farms) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 438.88 130.88 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 457.98 Tm (ICARDA data) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 417.68 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 425.58 Tm (regionA Setif) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 417.68 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 425.58 Tm (Lupin) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 417.68 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 425.58 Tm (Legume) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 417.68 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 425.58 Tm (Tolerates poor soil; protein crop) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 417.68 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 425.58 Tm (Local trials) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 396.48 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 404.38 Tm (regionA Setif) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 396.48 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 404.38 Tm (Onion or garlic) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 396.48 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 404.38 Tm (Vegetable) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 396.48 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 404.38 Tm (Common irrigated option on the plateau) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 396.48 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 404.38 Tm (Price, water use) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 375.28 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 383.18 Tm (regionA Setif) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 375.28 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 383.18 Tm (Coriander) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 375.28 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 383.18 Tm (Low-water cash crop) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 375.28 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 383.18 Tm (Short cycle, low input) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 375.28 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 383.18 Tm (Yield and price) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 342.88 107.78 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 361.98 Tm (regionB Kansas) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 342.88 184.77 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 361.98 Tm (Cover crops \(cereal rye, hairy) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 350.78 Tm (vetch, crimson clover\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 342.88 130.88 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 361.98 Tm (Soil cover) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 342.88 215.57 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 361.98 Tm (Hold moisture, add N \(vetch, clover\),) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 350.78 Tm (reduce erosion) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 342.88 130.88 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 361.98 Tm (K-State Extension) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 310.48 107.78 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 329.58 Tm (regionB Kansas) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 310.48 184.77 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 329.58 Tm (Alfalfa) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 310.48 130.88 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 329.58 Tm (Perennial forage) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 310.48 215.57 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 329.58 Tm (Deep roots, strong in dry years; breaks) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 318.38 Tm (the 3-year cycle, needs a rule exception) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 310.48 130.88 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 329.58 Tm (Yield and price) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 289.28 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 297.18 Tm (regionB Kansas) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 289.28 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 297.18 Tm (Cotton \(south\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 289.28 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 297.18 Tm (Cash crop) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 289.28 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 297.18 Tm (Suitable in warmer parts of the state) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 289.28 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 297.18 Tm (USDA NASS) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 268.08 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 275.98 Tm (regionB Kansas) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 268.08 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 275.98 Tm (Proso millet) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 268.08 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 275.98 Tm (Low-water summer crop) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 268.08 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 275.98 Tm (Short season, drought tolerant) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 268.08 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 275.98 Tm (K-State data) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 246.88 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 254.78 Tm (regionB Kansas) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 246.88 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 254.78 Tm (Field pea) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 246.88 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 254.78 Tm (Legume) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 246.88 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 254.78 Tm (Cool-season legume before sorghum) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 246.88 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 254.78 Tm (Yield, price) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 225.68 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 233.58 Tm (regionB Kansas) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 225.68 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 233.58 Tm (Flax) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 225.68 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 233.58 Tm (Oilseed) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 225.68 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 233.58 Tm (Fits the winter wheat region) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 225.68 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 233.58 Tm (USDA NASS) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 204.48 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 212.38 Tm (regionC Punjab) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 204.48 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 212.38 Tm (Pearl millet \(bajra\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 204.48 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 212.38 Tm (Cereal) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 204.48 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 212.38 Tm (Very low water need, strong against heat) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 204.48 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 212.38 Tm (ICAR yield, MSP) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 183.28 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 191.18 Tm (regionC Punjab) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 183.28 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 191.18 Tm (Groundnut) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 183.28 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 191.18 Tm (Legume oilseed) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 183.28 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 191.18 Tm (Fixes N, suited to light soils) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 183.28 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 191.18 Tm (PAU data) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 162.08 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 169.98 Tm (regionC Punjab) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 162.08 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 169.98 Tm (Pigeon pea) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 162.08 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 169.98 Tm (Legume) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 162.08 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 169.98 Tm (Deep roots; long season) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 162.08 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 169.98 Tm (ICAR-IIPR) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 140.88 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 148.78 Tm (regionC Punjab) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 140.88 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 148.78 Tm (Berseem \(clover\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 140.88 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 148.78 Tm (Fodder legume) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 140.88 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 148.78 Tm (Winter forage legume that adds N) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 140.88 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 148.78 Tm (PAU) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 119.68 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 127.58 Tm (regionC Punjab) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 119.68 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 127.58 Tm (Potato) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 119.68 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 127.58 Tm (Cash crop) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 119.68 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 127.58 Tm (Important Punjab winter crop) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 119.68 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 127.58 Tm (PAU, cost) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 98.48 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 106.38 Tm (regionC Punjab) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 98.48 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 106.38 Tm (Cotton) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 98.48 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 106.38 Tm (Cash crop) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 98.48 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 106.38 Tm (Grown in southwest Punjab) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 98.48 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 106.38 Tm (CACP) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 77.28 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 85.18 Tm (regionC Punjab) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 77.28 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 85.18 Tm (Sesame) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 77.28 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 85.18 Tm (Low-water oilseed) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 77.28 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 85.18 Tm (Short summer crop) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 77.28 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 85.18 Tm (ICAR) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 56.08 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 63.98 Tm (regionC Punjab) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 56.08 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 63.98 Tm (Barley) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 56.08 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 63.98 Tm (Cereal) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 56.08 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 63.98 Tm (Uses less water than wheat) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 56.08 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 63.98 Tm (PAU) Tj ET
+BT /F1 8.0 Tf 0.45 0.50 0.56 rg 1 0 0 1 36.00 18.00 Tm (Field Shift - Data Audit Report   |   Page 5 of 6) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 841.89 595.28] /Resources 4 0 R /Contents 14 0 R >>
+endobj
+16 0 obj
+<< /Length 11278 >>
+stream
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 536.08 107.78 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 543.98 Tm (Region) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 536.08 184.77 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 149.78 543.98 Tm (Crop) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 536.08 130.88 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 334.56 543.98 Tm (Role in rotation) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 536.08 215.57 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 465.44 543.98 Tm (Why it fits) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 536.08 130.88 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 681.01 543.98 Tm (To source) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 514.88 107.78 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 522.78 Tm (regionC Punjab) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+143.78 514.88 184.77 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 149.78 522.78 Tm (Direct-seeded rice \(practice\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+328.56 514.88 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 334.56 522.78 Tm (Water saving) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+459.44 514.88 215.57 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 465.44 522.78 Tm (Cuts irrigation versus puddled rice) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+675.01 514.88 130.88 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 681.01 522.78 Tm (PAU trials) Tj ET
+BT /F2 12.5 Tf 0.078 0.325 0.176 rg 1 0 0 1 36.00 482.38 Tm (6. Suggested fixes and additions) Tj ET
+q
+0.086 0.639 0.290 rg
+36.00 478.38 769.89 1.20 re f
+Q
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 449.18 61.59 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 457.08 Tm (Priority) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+97.59 449.18 477.33 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 103.59 457.08 Tm (Action) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+574.92 449.18 138.58 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 580.92 457.08 Tm (Owner \(suggested\)) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+713.50 449.18 92.39 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 719.50 457.08 Tm (Effort) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 427.98 61.59 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 435.88 Tm (1) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+97.59 427.98 477.33 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 103.59 435.88 Tm (Fix the currency and unit problem \(A1, A2, A3\): one price unit, one conversion point) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+574.92 427.98 138.58 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 580.92 435.88 Tm (Alaa and Achref) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+713.50 427.98 92.39 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 719.50 435.88 Tm (2 to 3 h) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 395.58 61.59 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 414.68 Tm (2) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+97.59 395.58 477.33 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 103.59 414.68 Tm (Replace hand-written regionB and regionC climate and soil with real NASA POWER and SoilGrids) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 103.59 403.48 Tm (pulls, and keep the raw files in the repo) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+574.92 395.58 138.58 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 580.92 414.68 Tm (Achref) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+713.50 395.58 92.39 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 719.50 414.68 Tm (2 h per region) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 363.18 61.59 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 382.28 Tm (3) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+97.59 363.18 477.33 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 103.59 382.28 Tm (Set a FIRMS_MAP_KEY and add a script that refreshes fires_snapshot.json; show the real) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 103.59 371.08 Tm (fetched_at) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+574.92 363.18 138.58 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 580.92 382.28 Tm (Achref) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+713.50 363.18 92.39 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 719.50 382.28 Tm (1 h) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 341.98 61.59 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 349.88 Tm (4) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+97.59 341.98 477.33 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 103.59 349.88 Tm (Align reference rainfall rule and the three confidence labels \(A4, A5, A6\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+574.92 341.98 138.58 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 580.92 349.88 Tm (Achref) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+713.50 341.98 92.39 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 719.50 349.88 Tm (1 h) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 320.78 61.59 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 328.68 Tm (5) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+97.59 320.78 477.33 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 103.59 328.68 Tm (Add production cost per crop so the app shows profit, not only gross income) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+574.92 320.78 138.58 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 580.92 328.68 Tm (Alaa) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+713.50 320.78 92.39 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 719.50 328.68 Tm (3 h) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 299.58 61.59 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 307.48 Tm (6) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+97.59 299.58 477.33 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 103.59 307.48 Tm (Add the suggested crops from section 5, 4 to 6 per region, with sourced yields) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+574.92 299.58 138.58 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 580.92 307.48 Tm (Alaa) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+713.50 299.58 92.39 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 719.50 307.48 Tm (2 h per region) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 278.38 61.59 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 286.28 Tm (7) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+97.59 278.38 477.33 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 103.59 286.28 Tm (Add planting calendar and use it for frost and heat windows) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+574.92 278.38 138.58 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 580.92 286.28 Tm (Alaa and Achref) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+713.50 278.38 92.39 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 719.50 286.28 Tm (4 h) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 257.18 61.59 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 265.08 Tm (8) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+97.59 257.18 477.33 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 103.59 265.08 Tm (Fill French and Arabic text for regionA) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+574.92 257.18 138.58 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 580.92 265.08 Tm (Team) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+713.50 257.18 92.39 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 719.50 265.08 Tm (1 h) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 235.98 61.59 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 243.88 Tm (9) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+97.59 235.98 477.33 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 103.59 243.88 Tm (Add a "data last updated" line and a source link on each region card) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+574.92 235.98 138.58 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 580.92 243.88 Tm (Frontend) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+713.50 235.98 92.39 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 719.50 243.88 Tm (1 h) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 214.78 61.59 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 222.68 Tm (10) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+97.59 214.78 477.33 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 103.59 222.68 Tm (Remove legacy folders and duplicate files; keep one structure) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+574.92 214.78 138.58 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 580.92 222.68 Tm (Team) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+713.50 214.78 92.39 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 719.50 222.68 Tm (30 min) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 182.38 61.59 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 201.48 Tm (11) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+97.59 182.38 477.33 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 103.59 201.48 Tm (Add a unit test that checks every yield.csv row: price times yield equals income, and currency) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 103.59 190.28 Tm (matches regions.csv) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+574.92 182.38 138.58 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 580.92 201.48 Tm (Team) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+713.50 182.38 92.39 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 719.50 201.48 Tm (30 min) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 161.18 61.59 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 169.08 Tm (12) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+97.59 161.18 477.33 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 103.59 169.08 Tm (Later: seasons \(two crops per year\), groundwater for Punjab, local soil test upload) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+574.92 161.18 138.58 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 580.92 169.08 Tm (Team) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+713.50 161.18 92.39 21.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 719.50 169.08 Tm (Future) Tj ET
+BT /F1 8.0 Tf 0.45 0.50 0.56 rg 1 0 0 1 36.00 18.00 Tm (Field Shift - Data Audit Report   |   Page 6 of 6) Tj ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 841.89 595.28] /Resources 4 0 R /Contents 16 0 R >>
+endobj
+18 0 obj
+<< /Type /Catalog /Pages 5 0 R >>
+endobj
+xref
+0 19
+0000000000 65535 f 
+0000000015 00000 n 
+0000000112 00000 n 
+0000000214 00000 n 
+0000000309 00000 n 
+0000000372 00000 n 
+0000000463 00000 n 
+0000009372 00000 n 
+0000009482 00000 n 
+0000020855 00000 n 
+0000020965 00000 n 
+0000036341 00000 n 
+0000036453 00000 n 
+0000047744 00000 n 
+0000047856 00000 n 
+0000066353 00000 n 
+0000066465 00000 n 
+0000077796 00000 n 
+0000077908 00000 n 
+trailer
+<< /Size 19 /Root 18 0 R >>
+startxref
+77958
+%%EOF

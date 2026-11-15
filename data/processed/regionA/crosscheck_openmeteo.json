@@ -1,0 +1,31 @@
+{
+  "region": "setif",
+  "generated_at": "2026-11-14T13:28:22Z",
+  "note": "Cross-check only; pipeline v1 (fetch_real_data.py) does not consume this file.",
+  "power": {
+    "source": "NASA POWER daily (PRECTOTCORR/T2M_MAX/T2M_MIN)",
+    "years_count": 30,
+    "rain_30yr_mean_mm": 574.9,
+    "hot_days_mean": 23.7,
+    "frost_days_mean": 34.6,
+    "longest_dry_spell_days_mean": 40.6,
+    "rain_sep_may_mm_mean": 575.7,
+    "hot_days_apr_jun_mean": 3.1
+  },
+  "openmeteo": {
+    "source": "Open-Meteo archive ERA5 daily (precipitation_sum/t2m_max/t2m_min)",
+    "years_count": 30,
+    "days_missing_all_vars": 0,
+    "rain_30yr_mean_mm": 506.2,
+    "hot_days_mean": 15.2,
+    "frost_days_mean": 24.2,
+    "longest_dry_spell_days_mean": 35.2,
+    "rain_sep_may_mm_mean": 509.5,
+    "hot_days_apr_jun_mean": 1.9
+  },
+  "delta_rain_mm": -68.7,
+  "delta_hot_days": -8.5,
+  "delta_frost_days": -10.4,
+  "delta_rain_sep_may_mm": -66.2,
+  "delta_hot_days_apr_jun": -1.2
+}

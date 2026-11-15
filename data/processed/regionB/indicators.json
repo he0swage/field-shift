@@ -1,0 +1,75 @@
+{
+  "region": "kansas",
+  "region_id": "regionB",
+  "label": "Central Kansas Plains, USA",
+  "country": "USA",
+  "role": "light",
+  "farming_system": "rainfed",
+  "default_crops": [
+    "wheat",
+    "corn",
+    "soybean",
+    "sorghum"
+  ],
+  "lat": 38.8,
+  "lon": -97.6,
+  "rainfall_mm": {
+    "value": 692.0,
+    "window": "2015-2024",
+    "crosscheck_value": 678.5,
+    "confidence": "high"
+  },
+  "rainfall_30yr_mean_mm": {
+    "value": 715.1,
+    "window": "1995-2024",
+    "crosscheck_value": 701.4,
+    "confidence": "high"
+  },
+  "rainfall_trend": {
+    "slope_mm_per_decade": -36.4,
+    "ols_p": 0.142,
+    "mk_p": 0.168,
+    "confidence": "medium"
+  },
+  "water_stress": {
+    "value": 0.18,
+    "window": "2015-2024",
+    "confidence": "medium"
+  },
+  "water_stress_5yr": {
+    "value": 0.29,
+    "window": "2020-2024",
+    "confidence": "medium"
+  },
+  "hot_days": {
+    "value": 34.2,
+    "threshold_c": 35.0,
+    "window": "May-Aug",
+    "confidence": "high"
+  },
+  "frost_days": {
+    "value": 3.8,
+    "threshold_c": 0.0,
+    "window": "Apr",
+    "confidence": "high"
+  },
+  "extreme_rain_days": {
+    "value": 6.4,
+    "threshold_mm": 25.0,
+    "confidence": "high"
+  },
+  "longest_dry_spell_days": {
+    "value": 24.5,
+    "confidence": "high"
+  },
+  "ndvi": {
+    "yield_baseline": 0.68,
+    "mean_spring_peak_ndvi": 0.64,
+    "confidence": "medium"
+  },
+  "suggested_priorities": {
+    "save_water": 38,
+    "protect_soil": 30,
+    "yield_": 32
+  }
+}

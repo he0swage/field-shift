@@ -2,11 +2,11 @@
   "region": "regionA",
   "code": "setif",
   "label": "S\u00e9tif High Plateaux (36.15\u00b0N, 5.38\u00b0E)",
-  "fetched_at": "2026-11-14T12:30:22Z",
+  "fetched_at": "2026-11-13T23:42:49Z",
   "sources": {
     "climate": "NASA POWER API (daily 1995-2024, PRECTOTCORR/T2M_MAX/T2M_MIN)",
     "soil": "ISRIC SoilGrids v2.0 live (0-30cm depth-weighted 5:10:15)",
-    "ndvi": "Regional baseline (ORNL MODIS REST unavailable: The read operation timed out)"
+    "ndvi": "ORNL DAAC MODIS MOD13Q1 live (250m spring peak 2020-2024, 5x5km patch)"
   },
   "rainfall_mm": 484.5,
   "rainfall_30yr_mean_mm": 574.9,
@@ -18,16 +18,16 @@
   "frost_risk": 0.86,
   "organic_carbon": {
     "g_per_kg": 12.52,
-    "class": "Moderate (12-15 g/kg)",
+    "class": "Moderate (12-16 g/kg)",
     "deficit_score": 0.165
   },
   "erosion_risk": 0.48,
-  "yield_baseline": 0.44,
-  "mean_spring_peak_ndvi": null,
+  "yield_baseline": 0.363,
+  "mean_spring_peak_ndvi": 0.431,
   "suggested_priorities": {
-    "save_water": 34,
-    "protect_soil": 29,
-    "yield": 37
+    "save_water": 35,
+    "protect_soil": 30,
+    "yield": 35
   },
   "confidence": {
     "indicators": "both methods agree",

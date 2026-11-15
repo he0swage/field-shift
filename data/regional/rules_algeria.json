@@ -1,0 +1,39 @@
+{
+  "_meta": {
+    "region_scope": "Algeria / North Africa Semi-Arid & Sub-Humid Mediterranean Rainfed Systems (Setif, Constantine, Tiaret)",
+    "sources": [
+      "ICARDA WANA Long-Term Cereal-Legume Trials (30-40% synthetic N reduction post-legume; disease & wild-oat break)",
+      "ITGC Algeria Technical Itineraries (Durum Wheat, Barley, Pulses, Rapeseed/Colza, Conservation Agriculture)"
+    ]
+  },
+  "rotation_length": 3,
+  "cyclic": true,
+  "max_occurrences_per_crop": 1,
+  "forbid_consecutive_same_family": true,
+  "forbid_consecutive_heavy_feeders": true,
+  "heavy_feeder_depletion_threshold": 4,
+  "min_legumes": 1,
+  "min_cereals": 1,
+  "max_cereals": 1,
+  "max_high_water_crops": 1,
+  "high_water_need_threshold": 0.65,
+  "require_break_crop_if_cyclic": true,
+  "regional_climate_constraints": {
+    "semi_arid_rain_cutoff_mm": 380,
+    "min_rain_for_faba_mm": 400,
+    "min_rain_for_canola_mm": 380,
+    "min_rain_for_sunflower_mm": 450,
+    "hard_frost_warning_days": 15,
+    "terminal_heat_warning_days_gt35c": 35
+  },
+  "nitrogen_carryover_rule": {
+    "post_legume_npk_multiplier": 0.70,
+    "justification": "ICARDA Mediterranean trials show cereals planted immediately after a food legume (faba bean, chickpea, lentil) achieve optimal yields with 30-40% less synthetic nitrogen fertilizer."
+  },
+  "agronomic_justifications": {
+    "max_occurrences_per_crop_1": "Prevents pathogen spore buildup (Fusarium crown rot in wheat, Ascochyta blight in chickpea, Orobanche broomrape in faba/sunflower).",
+    "forbid_consecutive_same_family": "Puts a broadleaf legume or Brassicaceae/Asteraceae oilseed between grass cereals to suppress wild oats (Avena sterilis) and root nematodes.",
+    "min_legumes_1": "Guarantees biological nitrogen fixation (+20 to +32 kg N/ha) and breaks continuous cereal N mining.",
+    "cyclic_3_family_note": "Because a cyclic 3-year plan wraps Year 3 -> Year 1, forbidding consecutive same-family crops mathematically produces 3-family systems (1 Cereal + 1 Legume + 1 Oilseed Break Crop). On plots below 380 mm rainfall where oilseeds are not grown, farmers instead use a 2-year Cereal <-> Legume alternation."
+  }
+}

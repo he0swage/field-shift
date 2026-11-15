@@ -8,6 +8,7 @@ import { Loading, PageHead, PageNav, RegionStrip, SampleNotice } from '../compon
 import ScenarioControls from '../components/climate/ScenarioControls';
 import IndicatorCard from '../components/climate/IndicatorCard';
 import AnnualLineChart from '../components/charts/AnnualLineChart';
+import FireWatchCard, { FireWatchBanner } from '../components/FireWatchCard';
 import '../components/climate/climate.css';
 
 export const SIG_TONE = { clear: '', weak: '', none: '' };
@@ -27,6 +28,7 @@ export default function ClimateView() {
       {!m ? <Loading>{t('common.loading')}</Loading> : (
         <>
           <SampleNotice data={m.data} />
+          <FireWatchBanner regionId={region.id} />
           <ScenarioControls />
 
           <div className="indicators" aria-live="polite">
@@ -65,6 +67,53 @@ export default function ClimateView() {
               label={t('annual.aria', { region: name, d: signed(m.trend.decade, 1) })}
               labels={{ trend: t('annual.trend'), rain: t('annual.rain') }} />
           </section>
+
+          {/* Problematic #3: Drought Shock Frequency & Historical Anomaly Early Warning */}
+          {m.trend.shockYears?.length > 0 && (
+            <section className="card" aria-labelledby="shock-title" style={{ marginTop: 24, background: 'var(--surface-2)', border: '1px solid var(--line-strong)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
+                <div>
+                  <h3 className="card-title" id="shock-title" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                    ⚠️ Drought Shock Frequency &amp; Historical Anomaly Early Warning
+                  </h3>
+                  <p className="card-sub">
+                    A long-term trend line hides volatility. Below are flagged acute drought shock years (rainfall ≤ <b>{m.trend.shockThreshold} mm/yr</b>).
+                  </p>
+                </div>
+                <span className="badge badge-warn" style={{ fontWeight: 700 }}>
+                  1 drought shock every ~{m.trend.returnPeriodYrs} yrs ({m.trend.shockCount}/30 yrs)
+                </span>
+              </div>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 14 }}>
+                {m.trend.shockYears.map(sy => (
+                  <span
+                    key={sy.year}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 6,
+                      padding: '5px 11px',
+                      borderRadius: 999,
+                      fontSize: '0.84rem',
+                      fontWeight: 700,
+                      background: sy.severity === 'severe' ? 'var(--danger-soft, #fee)' : 'var(--warn-soft, #fff4e5)',
+                      color: sy.severity === 'severe' ? 'var(--danger, #c00)' : 'var(--ink)',
+                      border: `1.5px solid ${sy.severity === 'severe' ? 'var(--danger, #c00)' : '#e6a100'}`,
+                    }}
+                    title={`${sy.year}: ${sy.rain} mm (${sy.deficitPct}% vs 30-yr mean)`}
+                  >
+                    <span>{sy.severity === 'severe' ? '🔴' : '🟠'}</span>
+                    <b>{sy.year}</b>: {sy.rain} mm ({sy.deficitPct}%)
+                  </span>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <div style={{ marginTop: 24 }}>
+            <FireWatchCard regionId={region.id} />
+          </div>
         </>
       )}
 

@@ -1,0 +1,32 @@
+{
+  "id": "cotton",
+  "crop": "Cotton",
+  "scientific_name": "Gossypium hirsutum",
+  "family": "forage_broadleaf",
+  "water_need": 0.62,
+  "soil_effect": -0.18,
+  "nitrogen_fixing": 0,
+  "n_impact_kg_ha": -40,
+  "residue_carbon": 0.65,
+  "drought_tolerance": 0.45,
+  "profit": 0.66,
+  "oaic_ccls_price_dzd_q": 20790,
+  "baseline_yield_q_ha": 9.0,
+  "gross_income_dzd_ha": 187110,
+  "risk_level": 0.5,
+  "soil_depletion_index": 4,
+  "soil_health_delta": -10,
+  "base_npk_kg_ha": 180,
+  "fertilizer_name": "Urea + DAP",
+  "optimal_rain_min": 450,
+  "optimal_rain_max": 900,
+  "optimal_ph_min": 5.8,
+  "optimal_ph_max": 8.0,
+  "frost_tolerant": 0,
+  "heat_tolerant": 1,
+  "risk_note": "Needs a long warm season; bollworm pressure; frost before harvest is a risk.",
+  "sources": {
+    "yield": "Team estimate - verify with national statistics (USDA NASS)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

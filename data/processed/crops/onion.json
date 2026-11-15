@@ -1,0 +1,32 @@
+{
+  "id": "onion",
+  "crop": "Onion / Garlic",
+  "scientific_name": "Allium cepa / A. sativum",
+  "family": "vegetable_root",
+  "water_need": 0.6,
+  "soil_effect": -0.15,
+  "nitrogen_fixing": 0,
+  "n_impact_kg_ha": -30,
+  "residue_carbon": 0.25,
+  "drought_tolerance": 0.3,
+  "profit": 0.68,
+  "oaic_ccls_price_dzd_q": 2200,
+  "baseline_yield_q_ha": 250.0,
+  "gross_income_dzd_ha": 550000,
+  "risk_level": 0.5,
+  "soil_depletion_index": 3,
+  "soil_health_delta": -8,
+  "base_npk_kg_ha": 200,
+  "fertilizer_name": "NPK 15:15:15",
+  "optimal_rain_min": 350,
+  "optimal_rain_max": 700,
+  "optimal_ph_min": 6.0,
+  "optimal_ph_max": 7.8,
+  "frost_tolerant": 1,
+  "heat_tolerant": 0,
+  "risk_note": "Shallow roots need steady irrigation; storage losses and price swings.",
+  "sources": {
+    "yield": "Team estimate - verify with national statistics (MADR)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

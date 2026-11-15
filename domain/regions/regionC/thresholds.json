@@ -1,0 +1,10 @@
+{
+  "region_id": "regionC",
+  "hot_day_c": 38.0,
+  "frost_night_c": 2.0,
+  "extreme_rain_mm": 35.0,
+  "dry_day_mm": 1.0,
+  "soc_threshold_g_per_kg": 12.0,
+  "rainfall_reference_mm": 740.0,
+  "note": "Subtropical Indo-Gangetic irrigated plain (Mar-Jun pre-monsoon heat >38 °C, Jul-Sep monsoon downpours, low alluvial SOC)."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "hairy_vetch",
+  "crop": "Hairy Vetch (Cover Crop)",
+  "scientific_name": "Vicia villosa",
+  "family": "legume",
+  "water_need": 0.36,
+  "soil_effect": 0.45,
+  "nitrogen_fixing": 1,
+  "n_impact_kg_ha": 35,
+  "residue_carbon": 0.55,
+  "drought_tolerance": 0.6,
+  "profit": 0.3,
+  "oaic_ccls_price_dzd_q": 1350,
+  "baseline_yield_q_ha": 35.0,
+  "gross_income_dzd_ha": 47250,
+  "risk_level": 0.15,
+  "soil_depletion_index": 1,
+  "soil_health_delta": 22,
+  "base_npk_kg_ha": 40,
+  "fertilizer_name": "None (self-fixing)",
+  "optimal_rain_min": 350,
+  "optimal_rain_max": 800,
+  "optimal_ph_min": 5.5,
+  "optimal_ph_max": 8.0,
+  "frost_tolerant": 1,
+  "heat_tolerant": 0,
+  "risk_note": "Cover crop for soil, moisture and nitrogen; little direct income (hay or grazing only).",
+  "sources": {
+    "yield": "Team estimate - verify with national statistics (K-State Extension)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

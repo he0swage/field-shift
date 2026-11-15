@@ -1,0 +1,10 @@
+{
+  "region_id": "regionA",
+  "hot_day_c": 35.0,
+  "frost_night_c": 0.0,
+  "extreme_rain_mm": 20.0,
+  "dry_day_mm": 1.0,
+  "soc_threshold_g_per_kg": 15.0,
+  "rainfall_reference_mm": 402.0,
+  "note": "Mediterranean semi-arid high plains (Apr-Jun heat window, Mar-Apr frost window, Oct-May growing season)."
+}

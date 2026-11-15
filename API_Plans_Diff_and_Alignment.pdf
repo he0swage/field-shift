@@ -1,0 +1,1399 @@
+%PDF-1.4
+%����
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R >> >>
+endobj
+5 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R 13 0 R 15 0 R] /Count 5 >>
+endobj
+6 0 obj
+<< /Length 9025 >>
+stream
+q
+0.078 0.325 0.176 rg
+36.00 511.28 769.89 46.00 re f
+Q
+BT /F2 14.5 Tf 1.000 1.000 1.000 rg 1 0 0 1 50.00 538.28 Tm (Field Shift - API Plans Comparison & Team Alignment) Tj ET
+BT /F1 9.0 Tf 0.820 0.980 0.880 rg 1 0 0 1 50.00 521.28 Tm (Diff Between Our App / ML Guide \(Algeria Live Python\) and Teammate's Express/MongoDB Contract) Tj ET
+BT /F2 12.5 Tf 0.078 0.325 0.176 rg 1 0 0 1 36.00 476.78 Tm (0. Executive Verdict) Tj ET
+q
+0.086 0.639 0.290 rg
+36.00 472.78 769.89 1.20 re f
+Q
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 443.58 192.47 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 451.48 Tm (Question) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+228.47 443.58 138.58 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 234.47 451.48 Tm (Answer) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+367.05 443.58 76.99 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 373.05 451.48 Tm (Overlap) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+444.04 443.58 361.85 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 450.04 451.48 Tm (Primary Reason) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 388.78 192.47 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 430.28 Tm (Does teammate's API plan match our) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 419.08 Tm (app & AGRONOMY_AND_ML_GUIDE.md?) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+228.47 388.78 138.58 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 234.47 430.28 Tm (NO - Major Realignment) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 234.47 419.08 Tm (Needed) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+367.05 388.78 76.99 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 373.05 430.28 Tm (~20%) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+444.04 388.78 361.85 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 450.04 430.28 Tm (Teammate spec targets France \(FR-OCC\) with demo / null scores, Express +) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 450.04 419.08 Tm (MongoDB, and toy JS math, whereas our codebase already runs Algeria \(DZ\)) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 450.04 407.88 Tm (live NASA POWER + SoilGrids + MODIS data, 13 OAIC crops, custom crop) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 450.04 396.68 Tm (validation, and Python ML + Monte Carlo scoring.) Tj ET
+BT /F2 12.5 Tf 0.078 0.325 0.176 rg 1 0 0 1 36.00 356.28 Tm (1. Side-by-Side Differences \(Core System & Data\)) Tj ET
+q
+0.086 0.639 0.290 rg
+36.00 352.28 769.89 1.20 re f
+Q
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 311.88 153.98 32.40 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 330.98 Tm (Dimension) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+189.98 311.88 246.36 32.40 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 195.98 330.98 Tm (Our App & ML Guide \(server.py / scoring.py\)) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+436.34 311.88 246.36 32.40 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 442.34 330.98 Tm (Teammate's Contract \(Field Shift - contrat) Tj ET
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 442.34 319.78 Tm (d'API\)) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+682.71 311.88 123.18 32.40 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 688.71 330.98 Tm (Status) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 268.28 153.98 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 298.58 Tm (Country & Regions) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+189.98 268.28 246.36 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 298.58 Tm (Algeria \(DZ\) - 3 live zones: regionA \(S�tif\),) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 287.38 Tm (regionB \(Constantine\), regionC \(Tiaret\) +) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 276.18 Tm (dynamic GPS lookup.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+436.34 268.28 246.36 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 298.58 Tm (France \(FR\) only - FR-OCC \("Occitanie - d�mo"\);) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 287.38 Tm (returns 400 UNSUPPORTED_COUNTRY for non-FR.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+682.71 268.28 123.18 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 688.71 298.58 Tm (Conflict) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 224.68 153.98 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 254.98 Tm (Backend Status & Stack) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+189.98 224.68 246.36 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 254.98 Tm (Starter Python HTTP server already runs \(GET) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 243.78 Tm (/indicators/{id}, POST /recommend, POST) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 232.58 Tm (/validate-crop\) + FastAPI blueprint.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+436.34 224.68 246.36 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 254.98 Tm (States backend is not implemented yet; targets) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 243.78 Tm (Express \(:3000/api/v1\) + MongoDB.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+682.71 224.68 123.18 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 688.71 254.98 Tm (Conflict) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 181.08 153.98 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 211.38 Tm (Data & Validation Mode) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+189.98 181.08 246.36 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 211.38 Tm (Live satellite & agronomic data: NASA POWER) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 200.18 Tm (\(1995-2024\), ISRIC SoilGrids v2.0 \(0-30 cm\),) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 188.98 Tm (ORNL MODIS NDVI, FAO 56, ITGC, OAIC/CCLS.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+436.34 181.08 246.36 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 211.38 Tm (Locked to assessment.mode: "demo", "Scores) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 200.18 Tm (fictifs", soil/climate: null, validationStatus:) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 188.98 Tm (unavailable, sources: [].) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+682.71 181.08 123.18 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 688.71 211.38 Tm (Conflict) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 126.28 153.98 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 167.78 Tm (Crop Catalog \(GET /crops\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+189.98 126.28 246.36 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 167.78 Tm (13 calibrated Algerian crops \(wheat, soft_wheat,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 156.58 Tm (barley, oats, triticale, chickpea, lentil, faba,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 145.38 Tm (vetch, canola, safflower, sunflower, fallow\) +) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 134.18 Tm (DA/q, yields, NPK, rain_opt, ph_opt.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+436.34 126.28 246.36 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 167.78 Tm (Only 2 French demo crops \(ble, lentille\) with) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 156.58 Tm (fake demoScores: {water, soil, yield}. No) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 145.38 Tm (prices, BNF nitrogen, or ETc.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+682.71 126.28 123.18 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 688.71 167.78 Tm (Conflict) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 82.68 153.98 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 112.98 Tm (Custom Crops) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+189.98 82.68 246.36 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 112.98 Tm (Supported via POST /validate-crop \(rainfall, pH,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 101.78 Tm (frost, heat, family gate\) + custom_crops in POST) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 90.58 Tm (/recommend.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+436.34 82.68 246.36 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 112.98 Tm (Not included anywhere in the contract.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+682.71 82.68 123.18 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 688.71 112.98 Tm (Missing) Tj ET
+BT /F1 8.0 Tf 0.45 0.50 0.56 rg 1 0 0 1 36.00 18.00 Tm (Field Shift - API Plans Comparison & Team Alignment   |   Page 1 of 5) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 841.89 595.28] /Resources 4 0 R /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 11163 >>
+stream
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 524.88 153.98 32.40 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 543.98 Tm (Dimension) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+189.98 524.88 246.36 32.40 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 195.98 543.98 Tm (Our App & ML Guide \(server.py / scoring.py\)) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+436.34 524.88 246.36 32.40 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 442.34 543.98 Tm (Teammate's Contract \(Field Shift - contrat) Tj ET
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 442.34 532.78 Tm (d'API\)) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+682.71 524.88 123.18 32.40 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 688.71 543.98 Tm (Status) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 470.08 153.98 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 511.58 Tm (Rotation Rules) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+189.98 470.08 246.36 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 511.58 Tm (Fixed 3-year cyclic rules \(rules_algeria.json:) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 500.38 Tm (min_legumes=1,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 489.18 Tm (forbid_consecutive_same_family=true, max 1 per) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 477.98 Tm (crop\).) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+436.34 470.08 246.36 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 511.58 Tm (Allows 2-4 arbitrary crops \(2-24 permutations\);) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 500.38 Tm (no legume or botanical family rules in MVP.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+682.71 470.08 123.18 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 688.71 511.58 Tm (Conflict) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 426.48 153.98 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 456.78 Tm (Scoring & ML Formula) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+189.98 426.48 246.36 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 456.78 Tm (Stress-adjusted weights \(K=1.5\) + CropSense) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 445.58 Tm (KNN/pairwise transition ML + DharaaAI 3-yr N/NPK) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 434.38 Tm (+ seeded Monte Carlo stability.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+436.34 426.48 246.36 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 456.78 Tm (Toy demo math: average of demoScores + 5 pts per) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 445.58 Tm (family change + 5 pts for legume -> cereal,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 434.38 Tm (clamped 0-100.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+682.71 426.48 123.18 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 688.71 456.78 Tm (Conflict) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 349.28 153.98 77.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 413.18 Tm (Outputs & Economics) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+189.98 349.28 246.36 77.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 413.18 Tm (Returns ml_metrics, trajectory_3yr \(N kg/ha,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 401.98 Tm (soil health %, NPK dose\),) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 390.78 Tm (fertilizer_saved_vs_existing_kg_ha,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 379.58 Tm (gross_income_dzd_ha \(OAIC DA/ha/yr\),) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 368.38 Tm (rotations_to_avoid, ranking_stability_pct, gaps) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 357.18 Tm (\(G1-G5\).) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+436.34 349.28 246.36 77.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 413.18 Tm (Returns flat scores: {water, soil, yield, total}) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 401.98 Tm (+ rank only. No economics, N balance,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 390.78 Tm (fertilizer, uncertainty, or avoid list.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+682.71 349.28 123.18 77.20 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 688.71 413.18 Tm (Missing) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 316.88 153.98 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 335.98 Tm (Weight Handling) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+189.98 316.88 246.36 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 335.98 Tm (Accepts any non-negative priority weights and) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 324.78 Tm (automatically normalizes \(w / sum\).) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+436.34 316.88 246.36 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 335.98 Tm (Strictly enforces water + soil + yield === 100) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 324.78 Tm (integers \(400 VALIDATION_ERROR otherwise\).) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+682.71 316.88 123.18 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 688.71 335.98 Tm (Minor Conflict) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 273.28 153.98 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 303.58 Tm (API Prefix & Error Format) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+189.98 273.28 246.36 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 303.58 Tm (Currently root paths \(/recommend,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 292.38 Tm (/indicators/regionA\) with simple {"error":) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 195.98 281.18 Tm ("..."}.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+436.34 273.28 246.36 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 303.58 Tm (Versioned /api/v1 base prefix + structured) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 292.38 Tm ({error: {code, message, details}} envelope +) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 442.34 281.18 Tm (openapi.yaml.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+682.71 273.28 123.18 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 688.71 303.58 Tm (Teammate Spec Cleaner) Tj ET
+BT /F2 12.5 Tf 0.078 0.325 0.176 rg 1 0 0 1 36.00 240.78 Tm (2. Endpoint-by-Endpoint Route Mapping Matrix) Tj ET
+q
+0.086 0.639 0.290 rg
+36.00 236.78 769.89 1.20 re f
+Q
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 207.58 169.38 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 215.48 Tm (Teammate Route) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 207.58 177.07 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 211.38 215.48 Tm (Our App / ML Guide Route) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+382.45 207.58 100.09 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 388.45 215.48 Tm (Overlap) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 207.58 323.35 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 488.54 215.48 Tm (Alignment Action Required) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 175.18 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 194.28 Tm (GET /health) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 175.18 177.07 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 194.28 Tm (GET /health \(Part 5 FastAPI spec\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+382.45 175.18 100.09 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 388.45 194.28 Tm (Match) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 175.18 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 194.28 Tm (Implement in Python FastAPI returning loaded regions & crops) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 183.08 Tm (counts.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 142.78 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 161.88 Tm (GET /crops?country=FR) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 142.78 177.07 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 161.88 Tm (GET /crops?region=regionA \(Part) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 150.68 Tm (5\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+382.45 142.78 100.09 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 388.45 161.88 Tm (Partial) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 142.78 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 161.88 Tm (Switch country=FR -> country=DZ, remove demoScores, return 13) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 150.68 Tm (real Algerian crops + optional regional compatibility flags.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 99.18 169.38 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 129.48 Tm (POST /rotations/generate) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 99.18 177.07 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 129.48 Tm (POST /recommend \(live in) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 118.28 Tm (server.py\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+382.45 99.18 100.09 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 388.45 129.48 Tm (Major Diff) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 99.18 323.35 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 129.48 Tm (Merge under /api/v1/recommend \(alias /api/v1/rotations/generate\)) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 118.28 Tm (using scoring.recommend\(\) + current_rotation + custom_crops +) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 107.08 Tm (Monte Carlo.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 66.78 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 85.88 Tm (GET /regions?country=FR) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 66.78 177.07 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 85.88 Tm (GET /regions \(Part 5\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+382.45 66.78 100.09 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 388.45 85.88 Tm (Partial) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 66.78 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 85.88 Tm (Switch FR -> DZ, list regionA \(S�tif\), regionB \(Constantine\),) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 74.68 Tm (regionC \(Tiaret\) with live summary stats.) Tj ET
+BT /F1 8.0 Tf 0.45 0.50 0.56 rg 1 0 0 1 36.00 18.00 Tm (Field Shift - API Plans Comparison & Team Alignment   |   Page 2 of 5) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 841.89 595.28] /Resources 4 0 R /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 11551 >>
+stream
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 536.08 169.38 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 543.98 Tm (Teammate Route) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 536.08 177.07 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 211.38 543.98 Tm (Our App / ML Guide Route) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+382.45 536.08 100.09 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 388.45 543.98 Tm (Overlap) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 536.08 323.35 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 488.54 543.98 Tm (Alignment Action Required) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 492.48 169.38 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 522.78 Tm (GET /regions/{code}/context) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 492.48 177.07 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 522.78 Tm (GET /indicators/{id} \(live in) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 511.58 Tm (server.py\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+382.45 492.48 100.09 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 388.45 522.78 Tm (Partial) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 492.48 323.35 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 522.78 Tm (Populate soil \(soc, ph\) and climate \(rainfall_mm, hot_days,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 511.58 Tm (frost_days, monthly_rain_mm, trends\) with live data instead of) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 500.38 Tm (null.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 460.08 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 479.18 Tm (POST /rotations/compare) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 460.08 177.07 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 479.18 Tm (Built inside POST /recommend) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 467.98 Tm (\(strategies[0] vs [1]\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+382.45 460.08 100.09 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 388.45 479.18 Tm (Partial) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 460.08 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 479.18 Tm (Keep as thin alias if React needs it; fix Section 5 typo) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 467.98 Tm (\(habitualCropIds ["ble","ble","orge"] vs ["ble","orge","ble"]\).) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 427.68 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 446.78 Tm (GET /map/regions) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 427.68 177.07 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 446.78 Tm (Map reads all_indicators.json) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 435.58 Tm (directly) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+382.45 427.68 100.09 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 388.45 446.78 Tm (Compatible) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 427.68 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 446.78 Tm (Keep teammate's GeoJSON FeatureCollection endpoint filled with) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 435.58 Tm (live NASA/SoilGrids/MODIS metrics instead of null.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 395.28 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 414.38 Tm (\(None\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 395.28 177.07 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 414.38 Tm (POST /validate-crop \(live in) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 403.18 Tm (server.py\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+382.45 395.28 100.09 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 388.45 414.38 Tm (Missing in) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 388.45 403.18 Tm (Teammate Spec) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 395.28 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 414.38 Tm (Add to teammate's contract - enforces rainfall >=90%, pH �0.3,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 403.18 Tm (frost/heat & family checks for custom crops.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 362.88 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 381.98 Tm (\(None\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 362.88 177.07 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 381.98 Tm (POST /scenario \(Part 5\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+382.45 362.88 100.09 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 388.45 381.98 Tm (Missing in) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 388.45 370.78 Tm (Teammate Spec) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 362.88 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 381.98 Tm (Add to teammate's contract - rainfall/temperature what-if stress) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 370.78 Tm (testing \(scoring.scenario\(\)\).) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 330.48 169.38 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 349.58 Tm (\(None\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+205.38 330.48 177.07 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 211.38 349.58 Tm (POST /parcel/indicators \(Part 5\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+382.45 330.48 100.09 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 388.45 349.58 Tm (Missing in) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 388.45 338.38 Tm (Teammate Spec) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 330.48 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 349.58 Tm (Add to teammate's contract - dynamic {lat, lon}) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 338.38 Tm (NASA/SoilGrids/MODIS lookup \(0.1� cached\).) Tj ET
+BT /F2 12.5 Tf 0.078 0.325 0.176 rg 1 0 0 1 36.00 297.98 Tm (3. Exact Edits to Apply to Teammate's File) Tj ET
+q
+0.086 0.639 0.290 rg
+36.00 293.98 769.89 1.20 re f
+Q
+BT /F2 10.5 Tf 0.078 0.325 0.176 rg 1 0 0 1 36.00 269.48 Tm (3.1 DELETE \(Remove from Teammate's Contract\)) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 240.28 184.77 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 248.18 Tm (Section in Teammate's File) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 240.28 261.76 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 226.77 248.18 Tm (Exact Content to Delete) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 240.28 323.35 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 488.54 248.18 Tm (Reason) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 207.88 184.77 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 226.98 Tm (Intro) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 207.88 261.76 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 226.98 Tm ("Le backend n'est pas encore impl�ment�") Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 207.88 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 226.98 Tm (server.py and scoring.py already implement live scoring and crop) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 215.78 Tm (validation.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 164.28 184.77 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 194.58 Tm (Section 2 \(GET /crops\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 164.28 261.76 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 194.58 Tm (country=FR, "only FR supported", 400) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 183.38 Tm (UNSUPPORTED_COUNTRY for Algeria, and demoScores:) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 172.18 Tm ({water, soil, yield}) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 164.28 323.35 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 194.58 Tm (App targets Algeria \(DZ\) with calibrated FAO/ITGC/OAIC crops,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 183.38 Tm (not French demo scores.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 120.68 184.77 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 150.98 Tm (Section 3 \(POST) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 139.78 Tm (/rotations/generate\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 120.68 261.76 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 150.98 Tm (Toy math \(mean\(demoScores\) + 5 pts per family) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 139.78 Tm (switch\), 2-4 crop range without legume rules,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 128.58 Tm ("Scores fictifs" disclaimer) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 120.68 323.35 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 150.98 Tm (Replaced by rule-filtered 3-year cyclic scoring, ML transition,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 139.78 Tm (3-yr N/NPK simulation, and Monte Carlo stability.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 77.08 184.77 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 107.38 Tm (Sections 4 & 6 \(context, map\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 77.08 261.76 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 107.38 Tm (FR-OCC, "Occitanie", soil: null, climate: null,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 96.18 Tm (validationStatus: "unavailable", geometry: null,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 84.98 Tm (value: null) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 77.08 323.35 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 107.38 Tm (Live NASA POWER, ISRIC SoilGrids, and MODIS NDVI telemetry is) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 96.18 Tm (already collected and verified.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 44.68 184.77 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 63.78 Tm (Section 5 \(POST /rotations/compare\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 44.68 261.76 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 63.78 Tm (Internal typo \("habitualCropIds": ["ble", "ble",) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 52.58 Tm ("orge"] vs "habitual": ["ble", "orge", "ble"]\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 44.68 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 63.78 Tm (Inconsistent request vs response example inside teammate's own) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 52.58 Tm (document.) Tj ET
+BT /F1 8.0 Tf 0.45 0.50 0.56 rg 1 0 0 1 36.00 18.00 Tm (Field Shift - API Plans Comparison & Team Alignment   |   Page 3 of 5) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 841.89 595.28] /Resources 4 0 R /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 7657 >>
+stream
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 536.08 184.77 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 543.98 Tm (Section in Teammate's File) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 536.08 261.76 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 226.77 543.98 Tm (Exact Content to Delete) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 536.08 323.35 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 488.54 543.98 Tm (Reason) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 503.68 184.77 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 522.78 Tm (Cross-cutting \(Express\)) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 503.68 261.76 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 522.78 Tm (Instruction to build native JS scoring logic inside) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 511.58 Tm (Express/MongoDB) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 503.68 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 522.78 Tm (Prevents two diverging scoring engines; Python engine/scoring.py) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 511.58 Tm (must stay the single source of truth.) Tj ET
+BT /F2 10.5 Tf 0.078 0.325 0.176 rg 1 0 0 1 36.00 477.18 Tm (3.2 ADD / UPDATE \(Bring Teammate's Contract Up to Our Level\)) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 447.98 184.77 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 455.88 Tm (Target Endpoint / Section) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 447.98 261.76 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 226.77 455.88 Tm (Additions Required) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 447.98 323.35 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 488.54 455.88 Tm (Exact Fields & Behavior to Document) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 404.38 184.77 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 434.68 Tm (Base & Regions \(GET /regions\)) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 404.38 261.76 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 434.68 Tm (Switch to Algeria \(DZ\) benchmark stations) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 404.38 323.35 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 434.68 Tm (regionA \(setif, 484.5 mm, SOC 12.52, pH 7.77\), regionB) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 423.48 Tm (\(constantine, 524.7 mm, SOC 17.08, pH 7.50\), regionC \(tiaret,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 412.28 Tm (405.8 mm, SOC 12.38, pH 7.57\).) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 338.38 184.77 66.00 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 391.08 Tm (GET /crops?region=...) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 338.38 261.76 66.00 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 391.08 Tm (Full 13 Algerian crop schema) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 338.38 323.35 66.00 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 391.08 Tm (Include wheat, soft_wheat, barley, oats, triticale, chickpea,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 379.88 Tm (lentil, faba, vetch, canola, safflower, sunflower, fallow with) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 368.68 Tm (oaic_ccls_price_dzd_q, gross_income_dzd_ha, n_impact_kg_ha,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 357.48 Tm (base_npk_kg_ha, rain_opt, ph_opt, and regional compatibility) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 346.28 Tm (tag.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 283.58 184.77 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 325.08 Tm (NEW: POST /validate-crop) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 283.58 261.76 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 325.08 Tm (Regional Compatibility Gate) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 283.58 323.35 54.80 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 325.08 Tm (Request: {region, crop: {family, rain_min, rain_max, ph_min,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 313.88 Tm (ph_max, frost_tolerant, heat_tolerant}}. Response: {region,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 302.68 Tm (compatible, status \("compatible" / "marginal" / "blocked"\),) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 291.48 Tm (blockers, warnings}.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 217.58 184.77 66.00 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 270.28 Tm (Upgrade POST /recommend) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 217.58 261.76 66.00 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 270.28 Tm (Real inputs, rules & rich outputs) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 217.58 323.35 66.00 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 270.28 Tm (Accept region, priorities \(auto-normalized\), current_rotation \(3) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 259.08 Tm (crops\), allowed_crops, custom_crops, monte_carlo_runs. Return) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 247.88 Tm (strategies \(ml_metrics, trajectory_3yr,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 236.68 Tm (fertilizer_saved_vs_existing_kg_ha, gross_income_dzd_ha,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 225.48 Tm (explanation.gaps\), ranking_stability_pct, rotations_to_avoid.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 173.98 184.77 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 204.28 Tm (NEW: POST /scenario) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 173.98 261.76 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 204.28 Tm (Climate What-If Stress Test) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 173.98 323.35 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 204.28 Tm (Request: {region, priorities, current_rotation,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 193.08 Tm (rainfall_delta_pct, temp_delta_c}. Response: {baseline,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 181.88 Tm (scenario, ranking_changed}.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 130.38 184.77 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 160.68 Tm (NEW: POST /parcel/indicators) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 130.38 261.76 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 160.68 Tm (Arbitrary GPS Coordinate Lookup) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 130.38 323.35 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 160.68 Tm (Request: {lat, lon} within Algeria bounds. Cached at 0.1�,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 149.48 Tm (queries live NASA POWER + SoilGrids + MODIS with 503 stale cache) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 138.28 Tm (fallback.) Tj ET
+BT /F2 10.5 Tf 0.078 0.325 0.176 rg 1 0 0 1 36.00 103.88 Tm (3.3 KEEP & ADOPT \(From Teammate's Contract Into Our Python Backend\)) Tj ET
+BT /F1 8.0 Tf 0.45 0.50 0.56 rg 1 0 0 1 36.00 18.00 Tm (Field Shift - API Plans Comparison & Team Alignment   |   Page 4 of 5) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 841.89 595.28] /Resources 4 0 R /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Length 9834 >>
+stream
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 536.08 184.77 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 543.98 Tm (Teammate Feature) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 536.08 261.76 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 226.77 543.98 Tm (How We Adopt It in FastAPI) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 536.08 323.35 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 488.54 543.98 Tm (Benefit) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 492.48 184.77 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 522.78 Tm (Versioned /api/v1 Prefix) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 492.48 261.76 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 522.78 Tm (Mount FastAPI router under /api/v1 \(with route) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 511.58 Tm (aliases /rotations/generate &) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 500.38 Tm (/regions/{id}/context\).) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 492.48 323.35 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 522.78 Tm (Prevents breaking UI/mobile integrations during future upgrades.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 460.08 184.77 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 479.18 Tm (Standardized Error Envelope) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 460.08 261.76 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 479.18 Tm (Return {error: {code, message, details}} for 400,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 467.98 Tm (404, 422, 503 responses in FastAPI.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 460.08 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 479.18 Tm (Predictable client-side form error highlighting in React/JS.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 416.48 184.77 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 446.78 Tm (GeoJSON GET /map/regions) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 416.48 261.76 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 446.78 Tm (Implement FeatureCollection response populated with) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 435.58 Tm (live Point coordinates and all_indicators.json) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 424.38 Tm (layers \(rainfall, soil_soc, water_stress\).) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 416.48 323.35 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 446.78 Tm (Clean Leaflet / Mapbox rendering without placeholder nulls.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 384.08 184.77 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 403.18 Tm (openapi.yaml Spec Sync) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 384.08 261.76 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 403.18 Tm (Auto-export OpenAPI JSON/YAML from FastAPI Pydantic) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 391.98 Tm (models \(http://127.0.0.1:8000/openapi.json\).) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+482.54 384.08 323.35 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 403.18 Tm (Teammate's Swagger Editor always matches live Python types) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 488.54 391.98 Tm (automatically.) Tj ET
+BT /F2 12.5 Tf 0.078 0.325 0.176 rg 1 0 0 1 36.00 351.58 Tm (4. Unified Team Action Plan \(Zero Rework\)) Tj ET
+q
+0.086 0.639 0.290 rg
+36.00 347.58 769.89 1.20 re f
+Q
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 318.38 53.89 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 42.00 326.28 Tm (Step) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+89.89 318.38 130.88 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 95.89 326.28 Tm (Owner) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 318.38 338.75 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 226.77 326.28 Tm (Deliverable) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+559.53 318.38 146.28 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 565.53 326.28 Tm (Single Source of Truth) Tj ET
+q
+0.078 0.325 0.176 rg
+0.50 w 0.800 0.840 0.880 RG
+705.80 318.38 100.09 21.20 re B
+Q
+BT /F2 8.3 Tf 1.000 1.000 1.000 rg 1 0 0 1 711.80 326.28 Tm (Priority) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 274.78 53.89 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 305.08 Tm (1) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+89.89 274.78 130.88 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 95.89 305.08 Tm (Alaa & Backend Teammate) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 274.78 338.75 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 305.08 Tm (Pick ONE API entry point: run FastAPI \(/api/v1\) directly OR make) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 293.88 Tm (Express forward scoring/validation/scenario calls to Python over) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 282.68 Tm (HTTP.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+559.53 274.78 146.28 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 565.53 305.08 Tm (scoring.py) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+705.80 274.78 100.09 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 711.80 305.08 Tm (Immediate) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 242.38 53.89 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 261.48 Tm (2) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+89.89 242.38 130.88 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 95.89 261.48 Tm (Teammate) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 242.38 338.75 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 261.48 Tm (Update teammate's API Markdown & openapi.yaml using Tables 3.1) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 250.28 Tm (\(DELETE\) & 3.2 \(ADD/UPDATE\).) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+559.53 242.38 146.28 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 565.53 261.48 Tm (AGRONOMY_AND_ML_GUIDE.md) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+705.80 242.38 100.09 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 711.80 261.48 Tm (Immediate) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 209.98 53.89 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 229.08 Tm (3) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+89.89 209.98 130.88 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 95.89 229.08 Tm (Mehdi / Backend) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 209.98 338.75 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 229.08 Tm (Upgrade starter server.py to the FastAPI + Pydantic v2 blueprint) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 217.88 Tm (with /api/v1 prefix & {error: {code, message, details}} envelope.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+559.53 209.98 146.28 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 565.53 229.08 Tm (Part 5 of ML Guide) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+705.80 209.98 100.09 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 711.80 229.08 Tm (High) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 177.58 53.89 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 196.68 Tm (4) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+89.89 177.58 130.88 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 95.89 196.68 Tm (Achref / Data) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 177.58 338.75 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 196.68 Tm (Add POST /parcel/indicators with 0.1� disk/Redis cache + 503 stale) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 185.48 Tm (fallback for custom Algeria {lat, lon} queries.) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+559.53 177.58 146.28 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 565.53 196.68 Tm (fetch_real_data.py) Tj ET
+q
+0.973 0.980 0.988 rg
+0.50 w 0.800 0.840 0.880 RG
+705.80 177.58 100.09 32.40 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 711.80 196.68 Tm (High) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+36.00 133.98 53.89 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 42.00 164.28 Tm (5) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+89.89 133.98 130.88 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 95.89 164.28 Tm (Younes / QA) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+220.77 133.98 338.75 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 164.28 Tm (Run integration tests across /api/v1/crops, /api/v1/validate-crop,) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 153.08 Tm (/api/v1/recommend, and /api/v1/scenario verifying exported) Tj ET
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 226.77 141.88 Tm (openapi.yaml.) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+559.53 133.98 146.28 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 565.53 164.28 Tm (test_scoring.py) Tj ET
+q
+1.000 1.000 1.000 rg
+0.50 w 0.800 0.840 0.880 RG
+705.80 133.98 100.09 43.60 re B
+Q
+BT /F1 8.3 Tf 0.060 0.090 0.160 rg 1 0 0 1 711.80 164.28 Tm (Before Demo) Tj ET
+BT /F1 8.0 Tf 0.45 0.50 0.56 rg 1 0 0 1 36.00 18.00 Tm (Field Shift - API Plans Comparison & Team Alignment   |   Page 5 of 5) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 5 0 R /MediaBox [0 0 841.89 595.28] /Resources 4 0 R /Contents 14 0 R >>
+endobj
+16 0 obj
+<< /Type /Catalog /Pages 5 0 R >>
+endobj
+xref
+0 17
+0000000000 65535 f 
+0000000015 00000 n 
+0000000112 00000 n 
+0000000214 00000 n 
+0000000309 00000 n 
+0000000372 00000 n 
+0000000456 00000 n 
+0000009532 00000 n 
+0000009642 00000 n 
+0000020857 00000 n 
+0000020967 00000 n 
+0000032571 00000 n 
+0000032683 00000 n 
+0000040392 00000 n 
+0000040504 00000 n 
+0000050390 00000 n 
+0000050502 00000 n 
+trailer
+<< /Size 17 /Root 16 0 R >>
+startxref
+50552
+%%EOF

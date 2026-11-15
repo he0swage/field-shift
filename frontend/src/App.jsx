@@ -21,6 +21,8 @@ import SummaryView from './views/SummaryView';
 import MapView from './views/MapView';
 import CompareView from './views/CompareView';
 import Report from './views/Report';
+import AgronomyAssistant from './components/AgronomyAssistant';
+import FarmerAccountModal from './components/FarmerAccountModal';
 
 const VIEWS = {
   region: RegionView,     // 1.2
@@ -69,6 +71,8 @@ function Shell() {
       )}
       <Footer />
       <Report />
+      <FarmerAccountModal />
+      <AgronomyAssistant floating />
     </>
   );
 }

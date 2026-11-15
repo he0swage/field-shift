@@ -1,0 +1,32 @@
+{
+  "id": "alfalfa",
+  "crop": "Alfalfa (Lucerne)",
+  "scientific_name": "Medicago sativa",
+  "family": "legume",
+  "water_need": 0.62,
+  "soil_effect": 0.35,
+  "nitrogen_fixing": 1,
+  "n_impact_kg_ha": 45,
+  "residue_carbon": 0.6,
+  "drought_tolerance": 0.6,
+  "profit": 0.58,
+  "oaic_ccls_price_dzd_q": 2430,
+  "baseline_yield_q_ha": 40.0,
+  "gross_income_dzd_ha": 97200,
+  "risk_level": 0.3,
+  "soil_depletion_index": 1,
+  "soil_health_delta": 24,
+  "base_npk_kg_ha": 60,
+  "fertilizer_name": "P and K, no N",
+  "optimal_rain_min": 450,
+  "optimal_rain_max": 900,
+  "optimal_ph_min": 6.5,
+  "optimal_ph_max": 8.2,
+  "frost_tolerant": 1,
+  "heat_tolerant": 1,
+  "risk_note": "Perennial: stays 3 to 5 years, so it fills a whole rotation. Use as a 1-year ley or hay crop in the plan.",
+  "sources": {
+    "yield": "Team estimate - verify with national statistics (USDA NASS)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

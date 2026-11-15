@@ -1,0 +1,32 @@
+{
+  "id": "lupin",
+  "crop": "Lupin",
+  "scientific_name": "Lupinus albus / L. angustifolius",
+  "family": "legume",
+  "water_need": 0.4,
+  "soil_effect": 0.4,
+  "nitrogen_fixing": 1,
+  "n_impact_kg_ha": 28,
+  "residue_carbon": 0.48,
+  "drought_tolerance": 0.55,
+  "profit": 0.52,
+  "oaic_ccls_price_dzd_q": 9000,
+  "baseline_yield_q_ha": 12.0,
+  "gross_income_dzd_ha": 108000,
+  "risk_level": 0.35,
+  "soil_depletion_index": 1,
+  "soil_health_delta": 18,
+  "base_npk_kg_ha": 70,
+  "fertilizer_name": "SSP / Starter P",
+  "optimal_rain_min": 350,
+  "optimal_rain_max": 700,
+  "optimal_ph_min": 5.0,
+  "optimal_ph_max": 7.0,
+  "frost_tolerant": 1,
+  "heat_tolerant": 0,
+  "risk_note": "Dislikes high-pH calcareous soils; check pH before sowing.",
+  "sources": {
+    "yield": "Team estimate - verify with national statistics (ITGC)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "region": "kansas",
+  "region_id": "regionB",
+  "source": "NASA POWER AG climatology (PRECTOTCORR, 1995-2024) at 38.80N, 97.60W",
+  "rows": [
+    {
+      "year": 1995,
+      "annual_rain_mm": 768.4
+    },
+    {
+      "year": 1996,
+      "annual_rain_mm": 742.1
+    },
+    {
+      "year": 1997,
+      "annual_rain_mm": 718.5
+    },
+    {
+      "year": 1998,
+      "annual_rain_mm": 795.2
+    },
+    {
+      "year": 1999,
+      "annual_rain_mm": 754.0
+    },
+    {
+      "year": 2000,
+      "annual_rain_mm": 642.8
+    },
+    {
+      "year": 2001,
+      "annual_rain_mm": 736.9
+    },
+    {
+      "year": 2002,
+      "annual_rain_mm": 612.4
+    },
+    {
+      "year": 2003,
+      "annual_rain_mm": 668.1
+    },
+    {
+      "year": 2004,
+      "annual_rain_mm": 782.6
+    },
+    {
+      "year": 2005,
+      "annual_rain_mm": 749.3
+    },
+    {
+      "year": 2006,
+      "annual_rain_mm": 628.7
+    },
+    {
+      "year": 2007,
+      "annual_rain_mm": 845.0
+    },
+    {
+      "year": 2008,
+      "annual_rain_mm": 862.4
+    },
+    {
+      "year": 2009,
+      "annual_rain_mm": 774.2
+    },
+    {
+      "year": 2010,
+      "annual_rain_mm": 758.9
+    },
+    {
+      "year": 2011,
+      "annual_rain_mm": 584.3
+    },
+    {
+      "year": 2012,
+      "annual_rain_mm": 518.6
+    },
+    {
+      "year": 2013,
+      "annual_rain_mm": 694.5
+    },
+    {
+      "year": 2014,
+      "annual_rain_mm": 658.2
+    },
+    {
+      "year": 2015,
+      "annual_rain_mm": 764.1
+    },
+    {
+      "year": 2016,
+      "annual_rain_mm": 792.8
+    },
+    {
+      "year": 2017,
+      "annual_rain_mm": 688.4
+    },
+    {
+      "year": 2018,
+      "annual_rain_mm": 748.0
+    },
+    {
+      "year": 2019,
+      "annual_rain_mm": 856.2
+    },
+    {
+      "year": 2020,
+      "annual_rain_mm": 634.5
+    },
+    {
+      "year": 2021,
+      "annual_rain_mm": 678.9
+    },
+    {
+      "year": 2022,
+      "annual_rain_mm": 542.6
+    },
+    {
+      "year": 2023,
+      "annual_rain_mm": 568.4
+    },
+    {
+      "year": 2024,
+      "annual_rain_mm": 646.1
+    }
+  ]
+}

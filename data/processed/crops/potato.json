@@ -1,0 +1,32 @@
+{
+  "id": "potato",
+  "crop": "Potato",
+  "scientific_name": "Solanum tuberosum",
+  "family": "vegetable_root",
+  "water_need": 0.78,
+  "soil_effect": -0.3,
+  "nitrogen_fixing": 0,
+  "n_impact_kg_ha": -45,
+  "residue_carbon": 0.3,
+  "drought_tolerance": 0.25,
+  "profit": 0.7,
+  "oaic_ccls_price_dzd_q": 2500,
+  "baseline_yield_q_ha": 220.0,
+  "gross_income_dzd_ha": 550000,
+  "risk_level": 0.55,
+  "soil_depletion_index": 5,
+  "soil_health_delta": -14,
+  "base_npk_kg_ha": 260,
+  "fertilizer_name": "NPK 15:15:15 + Potash",
+  "optimal_rain_min": 500,
+  "optimal_rain_max": 900,
+  "optimal_ph_min": 5.2,
+  "optimal_ph_max": 7.5,
+  "frost_tolerant": 0,
+  "heat_tolerant": 0,
+  "risk_note": "High cost and irrigation need; late blight and price swings. Gross income only, production cost is high.",
+  "sources": {
+    "yield": "Team estimate - verify with national statistics (MADR)",
+    "agronomy": "FAO-56 / ICARDA / USDA NASS / ICAR"
+  }
+}
