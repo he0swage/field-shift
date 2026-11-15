@@ -1,42 +1,68 @@
+import { I18nProvider, useT } from './i18n/I18nContext';
 import { FarmProvider } from './state/FarmContext';
 import { NavProvider, useNav } from './state/NavContext';
 import { ToastProvider } from './state/ToastContext';
-import { Header, StepMenu } from './components/Layout';
-import RegionStep from './steps/RegionStep';
-import RotationStep from './steps/RotationStep';
-import PrioritiesStep from './steps/PrioritiesStep';
-import ReviewStep from './steps/ReviewStep';
-import ClimateStep from './steps/ClimateStep';
-import RankingStep from './steps/RankingStep';
+import { AnalysisProvider } from './state/AnalysisContext';
+import Header from './components/layout/Header';
+import Progress from './components/layout/Progress';
+import Footer from './components/layout/Footer';
+import Landing from './views/Landing';
+import RegionView from './views/RegionView';
+import StrategyView from './views/StrategyView';
+import ClimateView from './views/ClimateView';
+import ExtremeView from './views/ExtremeView';
+import MonthlyView from './views/MonthlyView';
+import TopView from './views/TopView';
+import AvoidView from './views/AvoidView';
+import SummaryView from './views/SummaryView';
+import MapView from './views/MapView';
+import CompareView from './views/CompareView';
+import Report from './views/Report';
 
-const STEP_COMPONENTS = {
-  1: RegionStep,
-  2: RotationStep,
-  3: PrioritiesStep,
-  4: ReviewStep,
-  5: ClimateStep,
-  6: RankingStep,
+const VIEWS = {
+  region: RegionView,     // 1.2 (below the 1.1 landing hero)
+  strategy: StrategyView, // 1.3
+  climate: ClimateView,   // 2.1
+  extreme: ExtremeView,   // 2.2
+  monthly: MonthlyView,   // 2.3
+  top: TopView,           // 3.1
+  avoid: AvoidView,       // 3.2
+  summary: SummaryView,   // 4.1
+  map: MapView,           // additional: regional climate map
+  compare: CompareView,   // additional: usual vs rank 1
 };
 
-function CurrentStep() {
-  const { step } = useNav();
-  const Step = STEP_COMPONENTS[step];
-  return <Step />;
+function Shell() {
+  const t = useT();
+  const { view } = useNav();
+  const View = VIEWS[view];
+  return (
+    <>
+      <a className="skip" href="#main">{t('common.skip')}</a>
+      <Header />
+      {view === 'region' && <Landing />}
+      <Progress />
+      <main className="main" id="main" tabIndex={-1}>
+        <div className="wrap view" key={view}><View /></div>
+      </main>
+      <Footer />
+      <Report />
+    </>
+  );
 }
 
 export default function App() {
   return (
-    <FarmProvider>
-      <NavProvider>
+    <I18nProvider>
+      <FarmProvider>
         <ToastProvider>
-          <a className="skip" href="#main">Skip to content</a>
-          <Header />
-          <StepMenu />
-          <main className="main" id="main" tabIndex={-1}>
-            <CurrentStep />
-          </main>
+          <AnalysisProvider>
+            <NavProvider>
+              <Shell />
+            </NavProvider>
+          </AnalysisProvider>
         </ToastProvider>
-      </NavProvider>
-    </FarmProvider>
+      </FarmProvider>
+    </I18nProvider>
   );
 }

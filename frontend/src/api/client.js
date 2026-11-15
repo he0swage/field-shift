@@ -9,6 +9,9 @@ import { SAMPLE_RANKING } from '../data/sampleRanking';
 const API_BASE = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
 const TIMEOUT = Number(import.meta.env.VITE_API_TIMEOUT_MS) || 8000;
 
+/** True when a backend is configured (drives the "LIVE REGIONAL DATA" banner). */
+export const IS_LIVE = Boolean(API_BASE);
+
 async function request(path, options = {}) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), TIMEOUT);

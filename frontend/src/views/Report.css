@@ -1,0 +1,22 @@
+/* Print-only report layout (A4) */
+@media print {
+  @page { size: A4; margin: 16mm 14mm; }
+  .report { color: #111; font-size: 11pt; line-height: 1.45; }
+  .report * { box-shadow: none !important; }
+  .r-head { border-bottom: 3px solid #1d5a40; padding-bottom: 10px; margin-bottom: 16px; }
+  .r-brand { font-weight: 800; color: #1d5a40; font-size: 10pt; letter-spacing: .06em; text-transform: uppercase; }
+  .report h1 { font-size: 22pt; margin: 6px 0 4px; }
+  .report h2 { font-size: 14pt; color: #1d5a40; margin: 18px 0 8px; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
+  .report h3 { font-size: 11.5pt; margin: 12px 0 6px; }
+  .r-sample { margin-top: 6px; padding: 6px 10px; border: 1px dashed #999; font-size: 9.5pt; }
+  .r-table { width: 100%; border-collapse: collapse; font-size: 10pt; }
+  .r-table th, .r-table td { border: 1px solid #ccc; padding: 5px 8px; text-align: start; vertical-align: top; }
+  .r-table th { background: #f3efe6; }
+  .report .data-table { font-size: 10pt; }
+  .report .data-table th, .report .data-table td { padding: 5px 8px; border-bottom: 1px solid #ccc; }
+  .r-key { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
+  .r-key.s1 { background: #1d669a; } .r-key.s2 { background: #c2562b; }
+  .r-break { break-before: page; }
+  .report section, .report table, .report .chart { break-inside: avoid; }
+  .report .chart-tip { display: none; }
+}

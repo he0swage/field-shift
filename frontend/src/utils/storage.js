@@ -1,5 +1,5 @@
 // localStorage wrapper — per-browser convenience only, never throws.
-const PREFIX = 'fieldshift.v3.';
+const PREFIX = 'pcra.v1.';
 
 export const storage = {
   get(key, fallback) {

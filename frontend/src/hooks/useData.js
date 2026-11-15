@@ -1,13 +1,12 @@
-// Data hooks with a module-level cache, so switching steps never refetches.
+// Climate data hooks with a module-level cache, so switching views never refetches.
 import { useEffect, useState } from 'react';
-import { getClimate, getRanking } from '../api/client';
-import { REGIONS } from '../data/regions';
+import { getClimate } from '../api/client';
+import { REGION_IDS } from '../data/regions';
 import { rainTrend } from '../utils/agronomy';
 
-const climateCache = new Map();   // regionId -> Promise
-const rankingCache = new Map();   // JSON(inputs) -> Promise
+const climateCache = new Map(); // regionId -> Promise
 
-function loadClimate(id) {
+export function loadClimate(id) {
   if (!climateCache.has(id)) climateCache.set(id, getClimate(id));
   return climateCache.get(id);
 }
@@ -24,27 +23,17 @@ function useAsync(load, key) {
   return state;
 }
 
-/** Climate series + indicators for one region. */
+/** Climate series + indicators + trend for one region. */
 export function useClimate(regionId) {
-  return useAsync(() => loadClimate(regionId), regionId);
+  return useAsync(() => loadClimate(regionId).then(c => ({ ...c, trend: rainTrend(c.annual) })), regionId);
 }
 
-/** Rain trend for every region (used by the map and the region cards). */
+/** Rain trend for every region (map overlay). */
 export function useRegionTrends() {
-  const ids = Object.keys(REGIONS);
   const { data } = useAsync(
-    () => Promise.all(ids.map(loadClimate)).then(list =>
-      Object.fromEntries(list.map((c, i) => [ids[i], rainTrend(c.annual)]))),
+    () => Promise.all(REGION_IDS.map(loadClimate)).then(list =>
+      Object.fromEntries(list.map((c, i) => [REGION_IDS[i], { ...rainTrend(c.annual), sample: c.sample }]))),
     'all',
   );
   return data || {};
-}
-
-/** Ranked rotations for the farmer's inputs. */
-export function useRanking(inputs) {
-  const key = JSON.stringify(inputs);
-  return useAsync(() => {
-    if (!rankingCache.has(key)) rankingCache.set(key, getRanking(inputs));
-    return rankingCache.get(key);
-  }, key);
 }

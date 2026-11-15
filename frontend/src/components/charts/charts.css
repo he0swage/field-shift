@@ -16,7 +16,7 @@
 .chart .hit.on { fill: var(--ink); fill-opacity: .05; }
 .chart-tip { position: absolute; pointer-events: none; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 14px; box-shadow: var(--shadow); white-space: nowrap; z-index: 5; }
 .chart-tip .muted { color: var(--ink-soft); }
-.sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 8px; vertical-align: -1px; }
+.sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-inline-end: 8px; vertical-align: -1px; }
 .sw.s1 { background: var(--series-1); } .sw.s2 { background: var(--series-2); }
 .sw.trend-sw { height: 0; border-top: 2px dashed var(--ink-soft); border-radius: 0; width: 18px; vertical-align: 4px; }
 .legend-row { display: flex; gap: 22px; flex-wrap: wrap; font-size: 15px; color: var(--ink-soft); margin-top: 8px; }
@@ -25,3 +25,12 @@
 .table-wrap th, .table-wrap td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: right; }
 .table-wrap th:first-child { text-align: left; }
 .table-wrap thead th { color: var(--ink-soft); font-weight: 600; }
+.chart .bar { transition: y .45s var(--ease), height .45s var(--ease); }
+.chart .tick { font-family: var(--font); }
+/* Soil-N chart: recommended (green, circles) vs usual (ochre, diamond) — validated pair */
+.chart .line.n-rec { stroke: #2e7340; stroke-width: 2.5; }
+.chart .dot.n-rec { fill: #2e7340; }
+.chart .dot.n-usual { fill: #b07a1c; stroke: var(--surface); stroke-width: 2; }
+.sw.n-rec-sw { background: #2e7340; border-radius: 50%; }
+.sw.n-usual-sw { background: #b07a1c; transform: rotate(45deg) scale(.85); border-radius: 2px; }
+

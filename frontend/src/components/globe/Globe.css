@@ -1,0 +1,19 @@
+.globe { position: relative; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.globe-stage { width: 100%; display: flex; justify-content: center; }
+.globe canvas { display: block; touch-action: none; cursor: grab; border-radius: 50%; }
+.globe canvas:active { cursor: grabbing; }
+.globe canvas:focus-visible { outline: 3px solid #f3d48f; outline-offset: 6px; }
+.globe-controls { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.globe-controls button { min-height: 44px; min-width: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, .22); background: rgba(255, 255, 255, .08); color: #fff; font-weight: 700; cursor: pointer; }
+.globe-controls button:hover:not(:disabled) { background: rgba(255, 255, 255, .16); }
+.globe-controls button:disabled { opacity: .4; cursor: not-allowed; }
+.globe-speed { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-weight: 600; font-size: 15px; background: rgba(0, 0, 0, .18); border-radius: 14px; padding: 0 4px; }
+.globe-speed button { min-width: 40px; }
+.globe-hint { color: rgba(255, 255, 255, .72); font-size: 14px; text-align: center; }
+
+/* Small locator illustration for region cards */
+.thumb { width: 84px; height: 84px; flex: none; filter: drop-shadow(0 4px 10px rgba(13, 42, 31, .25)); }
+.thumb .t-ocean { fill: #1f5d88; }
+.thumb .t-land { fill: #9cbd7c; stroke: rgba(30, 50, 25, .35); stroke-width: .4; }
+.thumb .t-dot { fill: #d6a23a; stroke: #0d2a1f; stroke-width: 2.5; }
+.thumb .t-ring { fill: none; stroke: #d6a23a; stroke-width: 2; opacity: .7; }

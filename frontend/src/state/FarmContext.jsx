@@ -1,23 +1,22 @@
-// Global farm answers (region, rotation, crops, priorities, scenario), persisted locally.
+// The farmer's answers (region, priorities, usual rotation, crops, scenario), persisted in localStorage
+// so selections survive navigation and reloads.
 import { createContext, useContext, useEffect, useMemo, useReducer } from 'react';
-import { REGIONS } from '../data/regions';
-import { BASE_CROPS } from '../data/crops';
-import { presetFor } from '../utils/priorities';
+import { DEFAULT_REGION, REGIONS } from '../data/regions';
+import { BASE_CROPS, DEFAULT_ALLOWED, DEFAULT_ROTATION } from '../data/crops';
+import { DEFAULT_PRIORITIES } from '../utils/priorities';
 import { storage } from '../utils/storage';
 
-const DEFAULT_ALLOWED = ['durum', 'soft', 'barley', 'chickpea', 'lentil', 'vetch', 'rapeseed', 'safflower'];
-
 function init() {
-  const saved = storage.get('farm', {});
-  const region = REGIONS[saved.region] ? saved.region : 'regionC';
+  const s = storage.get('farm', {});
   return {
-    region,
-    rotation: saved.rotation?.length === 3 ? saved.rotation : ['durum', 'barley', 'durum'],
-    allowed: saved.allowed ?? DEFAULT_ALLOWED,
-    custom: saved.custom ?? [],
-    priorities: saved.priorities ?? presetFor(REGIONS[region]),
-    scenario: saved.scenario ?? { rain: -20, temp: 2 },
-    mapOverlay: saved.mapOverlay ?? true,
+    region: REGIONS[s.region] ? s.region : DEFAULT_REGION,
+    rotation: s.rotation?.length === 3 ? s.rotation : DEFAULT_ROTATION,
+    allowed: s.allowed ?? DEFAULT_ALLOWED,
+    custom: s.custom ?? [],
+    priorities: s.priorities ?? DEFAULT_PRIORITIES,
+    scenario: s.scenario ?? { rain: -20, temp: 2 },
+    analysedKey: s.analysedKey ?? null,
+    mapOverlay: s.mapOverlay ?? true,
   };
 }
 
@@ -45,6 +44,12 @@ function reducer(s, a) {
       return s;
   }
 }
+
+/** The inputs sent to the ranking engine. */
+export const analysisInputs = s => ({
+  region: s.region, rotation: s.rotation, allowed: s.allowed,
+  priorities: s.priorities, scenario: s.scenario, custom: s.custom,
+});
 
 const FarmContext = createContext(null);
 

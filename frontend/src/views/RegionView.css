@@ -1,0 +1,31 @@
+.region-section { scroll-margin-top: 100px; }
+.region-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 28px; align-items: stretch; }
+@media (max-width: 1000px) { .region-layout { grid-template-columns: 1fr; } }
+
+.region-list { display: flex; flex-direction: column; gap: 16px; }
+.region-card {
+  display: flex; gap: 20px; align-items: flex-start; padding: 22px; cursor: pointer;
+  background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius);
+  transition: border-color .2s, box-shadow .2s, transform .2s var(--ease);
+}
+.region-card:hover { border-color: var(--line-strong); transform: translateY(-2px); box-shadow: var(--shadow); }
+.region-card.selected { border-color: var(--forest); background: linear-gradient(135deg, var(--surface) 60%, var(--forest-soft)); box-shadow: 0 0 0 4px rgba(29, 90, 64, .12), var(--shadow); }
+.region-body { flex: 1; min-width: 0; }
+.region-top { display: flex; align-items: center; gap: 10px; justify-content: space-between; flex-wrap: wrap; }
+.region-top h3 { font-size: 22px; }
+.region-country { color: var(--leaf-ink); font-weight: 700; font-size: 15px; margin-top: 2px; }
+.region-facts { display: flex; gap: 8px 28px; flex-wrap: wrap; margin: 12px 0 0; }
+.region-facts dt { font-size: 13px; color: var(--ink-soft); font-weight: 600; }
+.region-facts dd { margin: 0; font-weight: 700; font-size: 16px; }
+.region-facts .est { font-weight: 500; color: var(--ink-soft); font-size: 13px; }
+.region-climate { color: var(--ink-soft); font-size: 15px; margin-top: 10px; }
+@media (max-width: 520px) { .region-card { flex-direction: column; } }
+
+.globe-panel {
+  background: radial-gradient(circle at 50% 40%, #1b4a37 0%, var(--forest-900) 70%);
+  border-radius: 28px; padding: 28px 20px 22px; box-shadow: var(--shadow-lg);
+  display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;
+}
+.globe-panel::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, .5) 1px, transparent 1px); background-size: 46px 46px; opacity: .12; pointer-events: none; }
+.globe-caption { position: relative; color: #fff; text-align: center; margin-top: 12px; font-size: 16px; }
+.globe-caption b { color: #f3d48f; }
