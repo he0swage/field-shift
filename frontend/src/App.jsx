@@ -20,7 +20,8 @@ import CompareView from './views/CompareView';
 import Report from './views/Report';
 
 const VIEWS = {
-  region: RegionView,     // 1.2 (below the 1.1 landing hero)
+  home: Landing,          // 1.1
+  region: RegionView,     // 1.2
   strategy: StrategyView, // 1.3
   climate: ClimateView,   // 2.1
   extreme: ExtremeView,   // 2.2
@@ -40,11 +41,14 @@ function Shell() {
     <>
       <a className="skip" href="#main">{t('common.skip')}</a>
       <Header />
-      {view === 'region' && <Landing />}
       <Progress />
-      <main className="main" id="main" tabIndex={-1}>
-        <div className="wrap view" key={view}><View /></div>
-      </main>
+      {view === 'home' ? (
+        <main id="main" tabIndex={-1} className="view" key="home"><Landing /></main>
+      ) : (
+        <main className="main" id="main" tabIndex={-1}>
+          <div className="wrap view" key={view}><View /></div>
+        </main>
+      )}
       <Footer />
       <Report />
     </>

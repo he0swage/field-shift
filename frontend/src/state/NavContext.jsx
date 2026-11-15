@@ -9,11 +9,11 @@ export const PHASES = [
 ];
 export const JOURNEY = PHASES.flatMap(p => p.steps);
 export const EXTRA_VIEWS = ['map', 'compare'];
-const ALL = [...JOURNEY, ...EXTRA_VIEWS];
+const ALL = ['home', ...JOURNEY, ...EXTRA_VIEWS]; // 'home' = 1.1 landing page
 
 const readHash = () => {
   const v = window.location.hash.replace(/^#\/?/, '');
-  return ALL.includes(v) ? v : 'region';
+  return ALL.includes(v) ? v : 'home';
 };
 
 const NavContext = createContext(null);
@@ -28,7 +28,7 @@ export function NavProvider({ children }) {
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
-  // go('climate') moves focus to the new heading; go('region', { top: true }) shows the landing page instead.
+  // go('climate') moves focus to the new view's heading; { top: true } just scrolls to the top.
   const go = useCallback((v, { top = false } = {}) => {
     focusNext.current = !top;
     if (top) window.scrollTo({ top: 0, behavior: 'smooth' });

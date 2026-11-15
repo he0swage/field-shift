@@ -39,7 +39,7 @@ export default function RegionView() {
   return (
     <section className="region-section" id="region-section" aria-labelledby="region-title">
       <PageHead id="region-title" eyebrow={t('eyebrow.setup', { n: 1 })} title={t('region.title')}
-        sub={t('region.sub')} scrollTo="region-section" />
+        sub={t('region.sub')} />
 
       <div className="region-layout">
         <div className="region-list" role="radiogroup" aria-label={t('region.listLabel')}>
@@ -81,7 +81,7 @@ export default function RegionView() {
         </div>
       </div>
 
-      <PageNav next="strategy" />
+      <PageNav back="home" next="strategy" />
     </section>
   );
 }

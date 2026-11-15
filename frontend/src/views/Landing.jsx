@@ -1,5 +1,6 @@
-// PAGE 1.1 — Landing: value proposition + "Start Your Journey" (smooth scroll to region selection).
+// PAGE 1.1 — Landing: value proposition + "Start Your Journey" (opens the region page).
 import { useT } from '../i18n/I18nContext';
+import { useNav } from '../state/NavContext';
 import './Landing.css';
 
 function HeroArt() {
@@ -63,10 +64,8 @@ function HeroArt() {
 
 export default function Landing() {
   const t = useT();
-  const start = () => {
-    document.getElementById('region-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setTimeout(() => document.getElementById('region-title')?.focus({ preventScroll: true }), 500);
-  };
+  const { go } = useNav();
+  const start = () => go('region');
   return (
     <section className="hero" aria-labelledby="hero-title">
       <div className="wrap hero-grid">
