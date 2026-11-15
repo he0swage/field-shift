@@ -241,7 +241,7 @@ export default function Globe({ regions, selectedId, focusTick, onSelect, labelF
 
 /** Name pill next to a marker, kept inside the canvas. */
 function label(ctx, x, y, text, strong, size) {
-  ctx.font = `${strong ? 700 : 600} 14px Poppins, system-ui, sans-serif`;
+  ctx.font = `${strong ? 700 : 600} 14px 'DM Sans', system-ui, sans-serif`;
   const w = ctx.measureText(text).width + 22, h = 30;
   let lx = x + 16, ly = y - h - 8;
   if (lx + w > size - 6) lx = x - 16 - w;

@@ -9,11 +9,12 @@ export const PHASES = [
 ];
 export const JOURNEY = PHASES.flatMap(p => p.steps);
 export const EXTRA_VIEWS = ['map', 'compare', 'about'];
-const ALL = ['home', ...JOURNEY, ...EXTRA_VIEWS]; // 'home' = 1.1 landing page
+const ALL = [...JOURNEY, ...EXTRA_VIEWS];
 
 const readHash = () => {
   const v = window.location.hash.replace(/^#\/?/, '');
-  return ALL.includes(v) ? v : 'home';
+  if (v === 'home') return 'region'; // the landing page now lives at the top of the Region page
+  return ALL.includes(v) ? v : 'region';
 };
 
 const NavContext = createContext(null);

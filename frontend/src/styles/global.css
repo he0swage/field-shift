@@ -1,20 +1,20 @@
 /* =====================================================================
    Precision Crop Rotation Advisor — design system
-   Olive · cream · sand palette. Poppins (English / French) · Montserrat Arabic (Arabic).
+   Olive · cream · sand palette. Newsreader serif headings + DM Sans body · Montaser Arabic (Arabic).
    Matte surfaces, 1px borders, soft warm shadows, paper grain. Spacing on an 8px grid.
    Every text colour ≥ 4.5:1 on its background. Logical properties → Arabic mirrors.
    ===================================================================== */
 
-/* Arabic font: uses Montserrat Arabic if installed or if its files are in frontend/public/fonts/
-   (MontserratArabic-Regular/Medium/SemiBold/Bold .woff2 or .ttf); otherwise Noto Sans Arabic. */
-@font-face { font-family: 'Montserrat Arabic'; font-weight: 400; font-style: normal; font-display: swap;
-  src: local('Montserrat Arabic Regular'), local('MontserratArabic-Regular'), url('/fonts/MontserratArabic-Regular.woff2') format('woff2'), url('/fonts/MontserratArabic-Regular.ttf') format('truetype'); }
-@font-face { font-family: 'Montserrat Arabic'; font-weight: 500; font-style: normal; font-display: swap;
-  src: local('Montserrat Arabic Medium'), local('MontserratArabic-Medium'), url('/fonts/MontserratArabic-Medium.woff2') format('woff2'), url('/fonts/MontserratArabic-Medium.ttf') format('truetype'); }
-@font-face { font-family: 'Montserrat Arabic'; font-weight: 600; font-style: normal; font-display: swap;
-  src: local('Montserrat Arabic SemiBold'), local('MontserratArabic-SemiBold'), url('/fonts/MontserratArabic-SemiBold.woff2') format('woff2'), url('/fonts/MontserratArabic-SemiBold.ttf') format('truetype'); }
-@font-face { font-family: 'Montserrat Arabic'; font-weight: 700; font-style: normal; font-display: swap;
-  src: local('Montserrat Arabic Bold'), local('MontserratArabic-Bold'), url('/fonts/MontserratArabic-Bold.woff2') format('woff2'), url('/fonts/MontserratArabic-Bold.ttf') format('truetype'); }
+/* Arabic font: 'Montaser Arabic' — uses the installed font, or files in frontend/public/fonts/
+   (MontaserArabic-Regular/Medium/SemiBold/Bold .woff2 or .ttf); otherwise Noto Sans Arabic. */
+@font-face { font-family: 'Montaser Arabic'; font-weight: 400; font-style: normal; font-display: swap;
+  src: local('Montaser Arabic Regular'), local('Montaser Arabic'), local('Montserrat Arabic Regular'), url('/fonts/MontaserArabic-Regular.woff2') format('woff2'), url('/fonts/MontaserArabic-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Montaser Arabic'; font-weight: 500; font-style: normal; font-display: swap;
+  src: local('Montaser Arabic Medium'), local('Montaser Arabic'), local('Montserrat Arabic Medium'), url('/fonts/MontaserArabic-Medium.woff2') format('woff2'), url('/fonts/MontaserArabic-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Montaser Arabic'; font-weight: 600; font-style: normal; font-display: swap;
+  src: local('Montaser Arabic SemiBold'), local('Montaser Arabic'), local('Montserrat Arabic SemiBold'), url('/fonts/MontaserArabic-SemiBold.woff2') format('woff2'), url('/fonts/MontaserArabic-SemiBold.ttf') format('truetype'); }
+@font-face { font-family: 'Montaser Arabic'; font-weight: 700; font-style: normal; font-display: swap;
+  src: local('Montaser Arabic Bold'), local('Montaser Arabic'), local('Montserrat Arabic Bold'), url('/fonts/MontaserArabic-Bold.woff2') format('woff2'), url('/fonts/MontaserArabic-Bold.ttf') format('truetype'); }
 
 :root {
   color-scheme: light;
@@ -26,44 +26,44 @@
   --on-deep: #f6f1e3;
   --on-deep-soft: #cfcab8;
 
-  --ink: #2c3125;
-  --ink-soft: #545047;      /* secondary text, 7:1 */
+  --ink: #3a4132;
+  --ink-soft: #5f5a4b;      /* secondary text, ≥ 6:1 */
   --ink-faint: #67624f;     /* labels, ≥ 5:1 */
   --line: #e2d8c4;
   --line-strong: #cdbb9f;
 
-  --primary: #4f5530;       /* olive action */
-  --primary-hover: #40452a;
-  --primary-soft: #e9ecd8;
-  --on-primary: #ffffff;
-  --leaf: #8fa253;
+  --primary: #595f34;       /* olive action, cream text */
+  --primary-hover: #4a4f2b;
+  --primary-soft: #ebeed9;
+  --on-primary: #f9f5e9;
+  --leaf: #9cad60;
   --sand: #d2ba9f;
-  --accent: #c49a6c;
-  --accent-ink: #7a5630;
-  --accent-soft: #f4e8d6;
+  --accent: #9cad60;         /* accents only (never body text) */
+  --accent-ink: #4f5a2a;     /* accent hue darkened for text, ≥ 7:1 */
+  --accent-soft: #edf0dd;
 
-  --water: #3f6a82;  --water-soft: #e4edf1; --powder: #94b2c4;   /* info / water */
+  --water: #3f6a82;  --water-soft: #e6eef2; --powder: #94b2c4;   /* info / water */
   --good: #44683a;   --good-soft: #e5eedd;
   --warn: #7a5630;   --warn-soft: #f4e8d6;
   --bad: #9c422c;    --bad-soft: #f6e4dd;   --terracotta: #b5523b; /* avoid / worse */
 
   /* field-strip tones (rotation motif) */
-  --strip-legume: #5f7a3a;  --on-strip-legume: #ffffff;
-  --strip-cereal: #c9a46d;  --on-strip-cereal: #2c3125;
-  --strip-oilseed: #8fa253; --on-strip-oilseed: #22261b;
+  --strip-legume: #595f34;  --on-strip-legume: #f9f5e9;
+  --strip-cereal: #d2ba9f;  --on-strip-cereal: #3a4132;
+  --strip-oilseed: #9cad60; --on-strip-oilseed: #2a2f1f;
   --strip-forage: #a9b97a;  --on-strip-forage: #22261b;
   --strip-root: #8a6440;    --on-strip-root: #ffffff;
   --strip-fallow: #d9c7a8;  --on-strip-fallow: #2c3125;
 
   /* the 3 priorities */
-  --prio-water: #3f6f8f; --prio-soil: #8a6440; --prio-yield: #8fa253;
+  --prio-water: #3f6f8f; --prio-soil: #8a6440; --prio-yield: #9cad60;
 
   /* charts: one hue, two shades (baseline light, scenario strong) */
   --chart-strong: #2f6f9a;
   --chart-light: #a9c4d6;
   --series-1: var(--chart-light);
   --series-2: var(--chart-strong);
-  --n-rec: #5f7a3a;
+  --n-rec: #595f34;
   --n-usual: #b5523b;
   --grid: #e7dfcd;
   --sea: #e1e9ec;
@@ -84,8 +84,8 @@
   --fs-body: 16px;
   --fs-small: 14px;
   --fs-label: 12px;
-  --font: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-display: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
 
   /* spacing (8px grid) */
   --s1: 8px; --s2: 16px; --s3: 24px; --s4: 32px; --s5: 40px; --s6: 48px; --s8: 64px; --s10: 80px; --s12: 96px; --s15: 120px;
@@ -137,7 +137,7 @@
   --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 14px 44px -10px rgba(0, 0, 0, .55);
   --shadow-pop: 0 24px 60px -12px rgba(0, 0, 0, .7);
 }
-:root[lang="ar"] { --font: 'Montserrat Arabic', 'Noto Sans Arabic', system-ui, sans-serif; --font-display: 'Montserrat Arabic', 'Noto Sans Arabic', system-ui, sans-serif; }
+:root[lang="ar"] { --font: 'Montaser Arabic', 'Noto Sans Arabic', system-ui, sans-serif; --font-display: 'Montaser Arabic', 'Noto Sans Arabic', system-ui, sans-serif; }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -145,8 +145,8 @@ html, body { margin: 0; }
 body { background: var(--page) var(--grain); color: var(--ink); font: var(--fs-body)/1.6 var(--font); -webkit-font-smoothing: antialiased; }
 :root[data-theme="dark"] body { background-blend-mode: soft-light; }
 h1, h2, h3, h4 { margin: 0; line-height: 1.15; font-weight: 500; }
-h1, h2 { font-family: var(--font-display); letter-spacing: -.02em; font-weight: 600; }
-h3 { font-size: var(--fs-h3); font-family: var(--font-display); font-weight: 600; letter-spacing: -.01em; }
+h1, h2 { font-family: var(--font-display); letter-spacing: -.015em; font-weight: 500; }
+h3 { font-size: var(--fs-h3); font-family: var(--font-display); font-weight: 500; }
 h4 { font-size: var(--fs-body); font-weight: 600; }
 :root[lang="ar"] h1, :root[lang="ar"] h2, :root[lang="ar"] h3 { letter-spacing: 0; font-weight: 600; line-height: 1.35; }
 p { margin: 0; }
@@ -157,7 +157,7 @@ abbr[title] { text-decoration: underline dotted; cursor: help; }
 svg.lucide { flex: none; }
 
 /* ---------- Type helpers ---------- */
-.display { font-family: var(--font-display); font-size: var(--fs-display); line-height: 1.08; letter-spacing: -.03em; font-weight: 600; }
+.display { font-family: var(--font-display); font-size: var(--fs-display); line-height: 1.04; letter-spacing: -.02em; font-weight: 500; }
 .h1 { font-size: var(--fs-h1); }
 .h2 { font-size: var(--fs-h2); }
 .label, .eyebrow { font-size: var(--fs-label); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
@@ -331,6 +331,10 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 .strip.fallow, .strip.other { --strip-bg: var(--strip-fallow); --strip-ink: var(--on-strip-fallow); }
 :root[data-theme="dark"] .strip.legume, :root[data-theme="dark"] .strip.root { --strip-ink: #f6f1e3; }
 :root[data-theme="dark"] .strip.oilseed, :root[data-theme="dark"] .strip.forage { --strip-ink: #16190f; }
+
+/* ---------- Topographic contours (hero areas only) ---------- */
+.contours { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.contours path { fill: none; stroke: var(--line-strong); stroke-width: 1; opacity: .55; }
 
 /* ---------- Print: only the report is printed ---------- */
 .report { display: none; }

@@ -8,7 +8,6 @@ import { useAuth } from '../../state/AuthContext';
 import ThemeToggle from './ThemeToggle';
 import './layout.css';
 
-export const SOURCES = ['NASA POWER 1995–2024', 'ISRIC SoilGrids', 'MODIS NDVI', 'Open-Meteo ERA5', 'OAIC / CCLS prices'];
 
 /** Asks the backend /health every 30 s. */
 export function useApiLive() {
@@ -23,7 +22,7 @@ export function useApiLive() {
   return live;
 }
 
-/** One thin, quiet strip: live/sample status + data sources. */
+/** One thin, quiet strip: live / sample status (the data sources are listed on the About page). */
 export function DataStatus() {
   const { t } = useI18n();
   const live = useApiLive();
@@ -31,7 +30,6 @@ export function DataStatus() {
     <div className={`data-strip${live ? ' live' : ''}`}>
       <div className="wrap data-strip-row">
         <span className="data-status"><span className="status-dot" aria-hidden="true" />{live ? t('banner.liveShort') : t('banner.sampleShort')}</span>
-        <ul className="sources" aria-label={t('banner.sources')}>{SOURCES.map(s => <li key={s}>{s}</li>)}</ul>
       </div>
     </div>
   );
@@ -120,25 +118,28 @@ export default function Header() {
   const { view, go } = useNav();
   const inJourney = JOURNEY.includes(view);
 
-  const link = (id, label, current) => (
+  const link = (id, label, current, extra = '') => (
     <li>
-      <button type="button" className="nav-link" aria-current={current ? 'page' : undefined} onClick={() => go(id)}>
+      <button type="button" className={`nav-link${extra}`} aria-current={current ? 'page' : undefined} onClick={() => go(id)}>
         {label}
       </button>
     </li>
   );
 
   return (
+    <>
+    {/* the bar sits ~3 cm (113 px) below the top of the page, then sticks to the top on scroll */}
+    <div className="topbar-offset" aria-hidden="true" />
     <header className="topbar">
       <div className="topbar-row">
-      <a className="brand" href="#/home" onClick={e => { e.preventDefault(); go('home', { top: true }); }}>
+      <a className="brand" href="#/region" onClick={e => { e.preventDefault(); go('region', { top: true }); }}>
         <Logo />
         <span className="brand-name">Crop Rotation Advisor</span>
       </a>
 
       <nav className="top-nav" aria-label={t('nav.main')}>
         <ul>
-          {link('home', t('nav.journey'), inJourney || view === 'home')}
+          {link('region', t('nav.journey'), inJourney, ' journey')}
           {link('compare', t('nav.compare'), view === 'compare')}
           {link('about', t('nav.about'), view === 'about')}
         </ul>
@@ -151,5 +152,6 @@ export default function Header() {
       </div>
       </div>
     </header>
+    </>
   );
 }

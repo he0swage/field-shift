@@ -3,20 +3,21 @@
 import { AlertTriangle, ChevronDown } from 'lucide-react';
 import { useT } from '../../i18n/I18nContext';
 import { TAGS } from '../../data/sampleRanking';
-import { fmtInt, sameName } from '../../utils/format';
+import { sameName } from '../../utils/format';
 import { useNav } from '../../state/NavContext';
 import FieldStrips from '../FieldStrips';
 import Icon from '../icons';
+import CountUp from '../CountUp';
 import './rotation.css';
 
 function Figures({ r, size = 'lg' }) {
   const t = useT();
   return (
     <dl className={`figures ${size}`}>
-      <div className="stat"><dt className="label">{t('rank.water')}</dt><dd className="value">{r.waterNeed}<small>/100</small></dd></div>
-      <div className="stat"><dt className="label">{t('rank.ndvi')}</dt><dd className="value">{r.ndviStability}<small>/100</small></dd></div>
-      <div className="stat"><dt className="label">{t('rank.fert3')}</dt><dd className="value">{r.fertilizer}<small>kg/ha</small></dd></div>
-      <div className="stat"><dt className="label">{t('rank.income')}</dt><dd className="value">{fmtInt(r.income)}<small>DA/ha</small></dd></div>
+      <div className="stat"><dt className="label">{t('rank.water')}</dt><dd className="value"><CountUp value={r.waterNeed} /><small>/100</small></dd></div>
+      <div className="stat"><dt className="label">{t('rank.ndvi')}</dt><dd className="value"><CountUp value={r.ndviStability} /><small>/100</small></dd></div>
+      <div className="stat"><dt className="label">{t('rank.fert3')}</dt><dd className="value"><CountUp value={r.fertilizer} /><small>kg/ha</small></dd></div>
+      <div className="stat"><dt className="label">{t('rank.income')}</dt><dd className="value"><CountUp value={r.income} /><small>DA/ha</small></dd></div>
     </dl>
   );
 }
@@ -72,7 +73,7 @@ export default function RotationCard({ r, allowedNames = [] }) {
             ))}
           </ul>
         </div>
-        <div className="rot-score"><span className="label">{t('rank.score')}</span><b className="num">{r.scores.final}</b><span className="of">/100</span></div>
+        <div className="rot-score"><span className="label">{t('rank.score')}</span><b className="num"><CountUp value={r.scores.final} /></b><span className="of">/100</span></div>
       </header>
 
       <FieldStrips years={r.years} size="lg" details />

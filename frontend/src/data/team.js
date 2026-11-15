@@ -10,9 +10,10 @@ export const TEAM = [
 ];
 
 export const DATA_SOURCES = [
-  { id: 'power', name: 'NASA POWER', url: 'https://power.larc.nasa.gov/' },
-  { id: 'soilgrids', name: 'ISRIC SoilGrids 2.0', url: 'https://soilgrids.org/' },
-  { id: 'modis', name: 'MODIS NDVI (MOD13Q1)', url: 'https://doi.org/10.5067/MODIS/MOD13Q1.061' },
-  { id: 'era5', name: 'Open-Meteo · ERA5', url: 'https://open-meteo.com/' },
+  { id: 'power', name: 'NASA POWER 1995–2024', url: 'https://power.larc.nasa.gov/' },
+  { id: 'soilgrids', name: 'ISRIC SoilGrids', url: 'https://soilgrids.org/' },
+  { id: 'modis', name: 'MODIS NDVI', url: 'https://doi.org/10.5067/MODIS/MOD13Q1.061' },
+  { id: 'openmeteo', name: 'Open-Meteo', url: 'https://open-meteo.com/' },
+  { id: 'era5', name: 'ERA5', url: 'https://www.ecmwf.int/en/forecasts/dataset/ecmwf-reanalysis-v5' },
   { id: 'prices', name: 'OAIC / CCLS prices', url: null },
 ];

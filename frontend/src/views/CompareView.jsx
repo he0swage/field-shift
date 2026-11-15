@@ -7,6 +7,7 @@ import Icon from '../components/icons';
 import { PageHead, PageNav, SampleNotice } from '../components/ui';
 import { compareRows } from '../components/rotation/CompareTable';
 import FieldStrips from '../components/FieldStrips';
+import CountUp from '../components/CountUp';
 import NitrogenChart from '../components/charts/NitrogenChart';
 import NeedsAnalysis from '../components/NeedsAnalysis';
 import './Results.css';
@@ -65,7 +66,7 @@ export default function CompareView() {
                     <span className="vs-val num">{fmtInt(row.a)}<small>{row.unit}</small></span>
                     <span className="vs-val rec num">{fmtInt(row.b)}<small>{row.unit}</small></span>
                     <span className="vs-diff num" dir="ltr">
-                      {d === 0 ? '±0' : `${d > 0 ? '+' : '−'}${fmtInt(Math.abs(d))}`}
+                      {d === 0 ? '±0' : <>{d > 0 ? '+' : '−'}<CountUp value={Math.abs(d)} /></>}
                       <small>{d === 0 ? t('cmp.same') : row.a === 0 ? (better ? t('cmp.betterWord') : t('cmp.worseWord')) : `${better ? t('cmp.better') : t('cmp.worse')} ${Math.abs(p)}%`}</small>
                     </span>
                   </li>

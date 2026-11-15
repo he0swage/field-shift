@@ -3,6 +3,7 @@ import { useT } from '../../i18n/I18nContext';
 import { ArrowRight } from 'lucide-react';
 import { Delta } from '../ui';
 import Icon from '../icons';
+import CountUp from '../CountUp';
 import './climate.css';
 
 export default function IndicatorCard({ icon, title, base, scen, unit, goal = 'lower', extra, children, tone }) {
@@ -14,7 +15,7 @@ export default function IndicatorCard({ icon, title, base, scen, unit, goal = 'l
         <h3>{title}</h3>
       </header>
       <dl className="ind-values">
-        <div><dt>{t('ind.baseline')}</dt><dd className="num">{base}<small> {unit}</small></dd></div>
+        <div><dt>{t('ind.baseline')}</dt><dd className="num"><CountUp value={base} /><small> {unit}</small></dd></div>
         <div className="ind-arrow" aria-hidden="true"><ArrowRight size={16} className="flip" /></div>
         <div><dt>{t('ind.scenario')}</dt><dd className="num scen-val">{scen}<small> {unit}</small></dd></div>
       </dl>

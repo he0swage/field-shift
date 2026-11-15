@@ -8,7 +8,6 @@ import ThemeToggle from '../components/layout/ThemeToggle';
 import { Alert } from '../components/ui';
 import FieldScene from '../components/FieldScene';
 import Contours from '../components/Contours';
-import './JourneyHome.css';
 import './LoginView.css';
 
 const DEMO = { email: 'demo@fieldshift.app', password: 'fieldshift2026' };
@@ -38,7 +37,7 @@ export default function LoginView() {
   };
   const upd = k => e => { setForm({ ...form, [k]: k === 'remember' ? e.target.checked : e.target.value }); setError(null); };
 
-  const goHome = () => { window.location.hash = '/home'; window.scrollTo(0, 0); };
+  const goHome = () => { window.location.hash = '/region'; window.scrollTo(0, 0); };
 
   const onSubmit = async e => {
     e.preventDefault();
@@ -73,7 +72,6 @@ export default function LoginView() {
           <p>{t('auth.artText')}</p>
         </div>
         <div className="login-art-visual"><FieldScene hint={t('hero.dragHint')} yearLabel={n => t('common.year', { n })} /></div>
-        <p className="login-sources">NASA POWER · ISRIC SoilGrids · MODIS NDVI · OAIC / CCLS</p>
       </aside>
 
       <main className="login-main" id="main">
