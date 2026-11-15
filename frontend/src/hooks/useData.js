@@ -25,14 +25,35 @@ function useAsync(load, key) {
 
 /** Climate series + indicators + trend for one region. */
 export function useClimate(regionId) {
-  return useAsync(() => loadClimate(regionId).then(c => ({ ...c, trend: rainTrend(c.annual) })), regionId);
+  return useAsync(() => loadClimate(regionId).then(c => ({ ...c, trend: trendOf(c) })), regionId);
+}
+
+const SIG_FROM_LABEL = { 'both methods agree': 'clear', 'no clear trend': 'none' };
+
+/** Trend of the yearly series. When the backend sends the team's official trend
+ *  (analysis/build_indicators.py), use it so every page shows the same number. */
+function trendOf(c) {
+  const local = rainTrend(c.annual);
+  const t = c.trend;
+  if (!t || t.mmPerDecade == null) return local;
+  const slope = t.mmPerDecade / 10;
+  const meanYear = c.annual.reduce((s, d) => s + d.year, 0) / c.annual.length;
+  return {
+    ...local,
+    slope,
+    intercept: local.mean - slope * meanYear,
+    decade: t.mmPerDecade,
+    pOls: t.olsP ?? local.pOls,
+    pMk: t.mkP ?? local.pMk,
+    sig: SIG_FROM_LABEL[t.label] ?? local.sig,
+  };
 }
 
 /** Rain trend for every region (map overlay). */
 export function useRegionTrends() {
   const { data } = useAsync(
     () => Promise.all(REGION_IDS.map(loadClimate)).then(list =>
-      Object.fromEntries(list.map((c, i) => [REGION_IDS[i], { ...rainTrend(c.annual), sample: c.sample }]))),
+      Object.fromEntries(list.map((c, i) => [REGION_IDS[i], { ...trendOf(c), sample: c.sample }]))),
     'all',
   );
   return data || {};

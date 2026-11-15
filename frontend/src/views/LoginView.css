@@ -1,0 +1,41 @@
+/* Login: quiet split layout — illustration panel + form */
+.login { min-height: 100vh; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); background: var(--bg); }
+@media (max-width: 960px) { .login { grid-template-columns: 1fr; } .login-art { display: none !important; } }
+
+.login-art { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: var(--s4); padding: var(--s4) clamp(24px, 4vw, 64px); background: var(--surface); border-inline-end: 1px solid var(--line); }
+.login-art > :not(.contours) { position: relative; }
+.login-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); }
+.login-art-copy { margin-top: auto; }
+.login-art-copy h2 { font-size: var(--fs-h1); line-height: 1.1; max-width: 14ch; }
+.login-art-copy p { margin-top: 12px; font-size: 16px; color: var(--ink-soft); max-width: 42ch; }
+.login-art-visual { max-width: 560px; width: 100%; background: var(--raised); border: 1px solid var(--line); border-radius: 20px; padding: var(--s2); box-shadow: var(--shadow); }
+.login-sources { font-size: 12px; color: var(--ink-faint); }
+
+.login-main { position: relative; display: flex; align-items: center; justify-content: center; padding: 88px 24px 40px; }
+.login-tools { position: absolute; top: 16px; inset-inline-end: 20px; display: flex; gap: 6px; }
+.login-card { width: 100%; max-width: 380px; animation: view-in .3s var(--ease) both; }
+.login-card .mobile-only { display: none; margin-bottom: 32px; }
+@media (max-width: 960px) { .login-card .mobile-only { display: inline-flex; } }
+.login-card h1 { font-size: var(--fs-h1); }
+.login-sub { color: var(--ink-soft); margin-top: 6px; font-size: 15px; }
+.login-card .alert { margin-top: 18px; }
+.login-form { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+.pw-wrap { position: relative; }
+.pw-wrap .input { padding-inline-end: 72px; }
+.pw-toggle { position: absolute; inset-inline-end: 4px; top: 50%; transform: translateY(-50%); min-height: 32px; padding: 0 10px; border: 0; border-radius: 4px; background: none; color: var(--ink-soft); font-weight: 500; font-size: 13px; cursor: pointer; }
+.pw-toggle:hover { background: var(--surface-2); color: var(--ink); }
+.login-submit { width: 100%; }
+.login-or { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: var(--ink-faint); font-size: 13px; }
+.login-or::before, .login-or::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+.login-guest { width: 100%; }
+.demo-box { margin-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 12px 14px; border-radius: var(--radius-sm); background: var(--surface-2); font-size: 13px; }
+.demo-box p { color: var(--ink-soft); margin-top: 2px; }
+
+.server-status { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 14px; font-size: 13px; color: var(--ink-soft); }
+.server-status .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line-strong); flex: none; }
+.server-status.online .dot { background: var(--good-line, #8faf78); box-shadow: 0 0 0 4px var(--good-soft); }
+.server-status.online { color: var(--good); }
+.server-status.offline .dot { background: var(--gold); }
+.server-status.offline { color: var(--gold-ink); }
+.server-status.checking .dot { animation: statusBlink 1s infinite; }
+@keyframes statusBlink { 50% { opacity: .2; } }

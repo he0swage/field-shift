@@ -4,7 +4,7 @@ import { useFarm } from '../state/FarmContext';
 import { useAnalysis } from '../state/AnalysisContext';
 import { useClimateModel } from '../hooks/useClimateModel';
 import { fmtCoord } from '../data/regions';
-import { FAMILY_ICON } from '../data/crops';
+import Icon from '../components/icons';
 import { KEYS, PRIO } from '../utils/priorities';
 import { signed } from '../utils/format';
 import { PageHead, PageNav, SampleNotice } from '../components/ui';
@@ -49,7 +49,7 @@ export default function SummaryView() {
         <div className="prio-chips">
           {KEYS.map(k => (
             <span key={k} className="prio-chip" style={{ '--c': PRIO[k].color }}>
-              <span aria-hidden="true">{PRIO[k].icon}</span> {t(`prio.${k}`)} <b>{state.priorities[k]}</b>
+              <span className="prio-dot" style={{ background: PRIO[k].color }} aria-hidden="true" /> {t(`prio.${k}`)} <b>{state.priorities[k]}</b>
             </span>
           ))}
         </div>
@@ -57,7 +57,7 @@ export default function SummaryView() {
 
       <Section n="2" id="s2" title={t('sum.usual')}>
         <ol className="sum-rotation">
-          {usual.map((c, i) => <li key={i}><span>{t('common.year', { n: i + 1 })}</span><b>{FAMILY_ICON[c.family]} {c.name}</b></li>)}
+          {usual.map((c, i) => <li key={i}><span>{t('common.year', { n: i + 1 })}</span><b><Icon name={c.family} size={15} /> {c.name}</b></li>)}
         </ol>
       </Section>
 
@@ -65,14 +65,14 @@ export default function SummaryView() {
         {m && (
           <>
             <dl className="facts-grid">
-              <div><dt>🌧️ {t('scen.rain')}</dt><dd dir="ltr">{signed(scenario.rain)}%</dd></div>
-              <div><dt>🌡️ {t('scen.temp')}</dt><dd dir="ltr">{signed(scenario.temp, 1)} °C</dd></div>
-              <div><dt>📉 {t('ind.rainTrend')}</dt><dd dir="ltr">{signed(m.trend.decade, 1)} mm/{t('unit.decade')}</dd></div>
-              <div><dt>🏜️ {t('ind.dry')}</dt><dd>{m.ind.longestDrySpell} → {m.sc.dry} {t('unit.days')}</dd></div>
-              <div><dt>🔥 {t('ind.hot')}</dt><dd>{m.ind.hotDays} → {m.sc.hot}</dd></div>
-              <div><dt>❄️ {t('ind.frost')}</dt><dd>{m.ind.frostDays} → {m.sc.frost}</dd></div>
-              <div><dt>⛈️ {t('ind.extreme')}</dt><dd>{m.ind.extremeRainDays} → {m.sc.extreme}</dd></div>
-              <div><dt>🌧️ {t('sum.annualRain')}</dt><dd>{m.trend.mean} → {m.sc.rain} mm</dd></div>
+              <div><dt>{t('scen.rain')}</dt><dd dir="ltr">{signed(scenario.rain)}%</dd></div>
+              <div><dt>{t('scen.temp')}</dt><dd dir="ltr">{signed(scenario.temp, 1)} °C</dd></div>
+              <div><dt>{t('ind.rainTrend')}</dt><dd dir="ltr">{signed(m.trend.decade, 1)} mm/{t('unit.decade')}</dd></div>
+              <div><dt>{t('ind.dry')}</dt><dd>{m.ind.longestDrySpell} → {m.sc.dry} {t('unit.days')}</dd></div>
+              <div><dt>{t('ind.hot')}</dt><dd>{m.ind.hotDays} → {m.sc.hot}</dd></div>
+              <div><dt>{t('ind.frost')}</dt><dd>{m.ind.frostDays} → {m.sc.frost}</dd></div>
+              <div><dt>{t('ind.extreme')}</dt><dd>{m.ind.extremeRainDays} → {m.sc.extreme}</dd></div>
+              <div><dt>{t('sum.annualRain')}</dt><dd>{m.trend.mean} → {m.sc.rain} mm</dd></div>
             </dl>
             <div className="card" style={{ marginTop: 16 }}>
               <div className="chart-card-head">
@@ -110,7 +110,7 @@ export default function SummaryView() {
           <h3>{t('sum.pdfTitle')}</h3>
           <p>{t('sum.pdfText')}</p>
         </div>
-        <ExportButton label={t('sum.download')} icon="📄" className="btn btn-gold btn-lg" />
+        <ExportButton label={t('sum.download')} icon="pdf" className="btn btn-primary btn-lg" />
       </div>
 
       <PageNav back="top" backLabel={t('sum.backRecs')} />

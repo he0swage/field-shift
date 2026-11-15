@@ -5,7 +5,8 @@ import { useFarm } from '../state/FarmContext';
 import { useClimateModel } from '../hooks/useClimateModel';
 import { monthlyInsight } from '../utils/insights';
 import { signed } from '../utils/format';
-import { AiBadge, Loading, PageHead, PageNav, RegionStrip, SampleNotice } from '../components/ui';
+import Icon from '../components/icons';
+import { Loading, PageHead, PageNav, RegionStrip, SampleNotice } from '../components/ui';
 import ScenarioControls from '../components/climate/ScenarioControls';
 import MonthlyBarsChart from '../components/charts/MonthlyBarsChart';
 import { SIG_TONE } from './ClimateView';
@@ -66,24 +67,17 @@ export default function MonthlyView() {
               </div>
             )}
 
-            <div className="confidence">
-              <b>{t('monthly.confidence')}</b>
-              <span className={`badge badge-lg ${SIG_TONE[m.trend.sig]}`}>
-                {m.trend.sig === 'clear' ? '✓ ' : ''}{t(`conf.${m.trend.sig}`)}
-              </span>
-              <span className="hint" style={{ margin: 0 }} dir="ltr">
-                Mann–Kendall p = {m.trend.pMk.toFixed(3)} · OLS p = {m.trend.pOls.toFixed(3)}
-              </span>
-            </div>
+            <p className="confidence quiet-note">
+              {t('monthly.confidence')}: {t(`conf.${m.trend.sig}`)} <span dir="ltr">(Mann–Kendall p = {m.trend.pMk.toFixed(3)} · OLS p = {m.trend.pOls.toFixed(3)})</span>
+            </p>
           </section>
 
           <div className="insight-grid">
             <div className="ai-insight">
-              <AiBadge />
               <p aria-live="polite">{monthlyInsight(t, months, m)}</p>
             </div>
             <div className="et-card">
-              <h3><span aria-hidden="true">💨</span> {t('et.title')}</h3>
+              <h3><Icon name="et" /> {t('et.title')}</h3>
               <div className="et-value num" dir="ltr">{m.sc.et > 0 ? '+' : ''}{m.sc.et}%</div>
               <div className="et-meter" aria-hidden="true"><i style={{ width: `${Math.min(100, Math.max(0, m.sc.et) * 5)}%` }} /></div>
               <p className="hint" style={{ margin: 0 }}>{t('et.text')}</p>

@@ -1,56 +1,49 @@
-// About / methodology + collapsible "Developer Information" (API contracts are hidden from farmers).
+// Footer: short about, method, sources, the AI disclosure and collapsible "Developer Information".
+import { Sparkles } from 'lucide-react';
 import { useT } from '../../i18n/I18nContext';
+import { Logo, SOURCES } from './Header';
 import './layout.css';
 
-const CLIMATE_CONTRACT = `GET {VITE_API_BASE}/climate?region=setif&lat=36.15&lon=5.38
-→ { "source": "NASA POWER 1995-2024",
-    "annual":  [{ "year": 1995, "rain": 412 }, …],
-    "monthly": [52, 46, 43, 41, 27, 10, 3, 7, 20, 24, 44, 45],
-    "indicators": { "hotDays": 48, "frostDays": 32,
-                    "extremeRainDays": 5, "longestDrySpell": 58 } }`;
+const CLIMATE_CONTRACT = `GET /api/v1/climate?region=setif
+→ { "source", "annual": [{ "year", "rain" }], "monthly": [12 values],
+    "indicators": { "hotDays", "frostDays", "extremeRainDays", "longestDrySpell" },
+    "trend": { "mmPerDecade", "label", "olsP", "mkP" } }`;
 
-const RANKING_CONTRACT = `POST {VITE_API_BASE}/ranking
-body: { "region": "setif", "rotation": ["durum","barley","durum"],
-        "allowed": ["durum", …], "custom": [],
-        "priorities": { "water": 42, "soil": 33, "yield": 25 },
-        "scenario": { "rain": -20, "temp": 2 } }
-→ same shape as SAMPLE_RANKING in src/data/sampleRanking.js`;
+const RANKING_CONTRACT = `POST /api/v1/ranking
+body: { "region", "rotation": [3 ids], "allowed": [ids], "custom": [],
+        "priorities": { "water", "soil", "yield" }, "scenario": { "rain", "temp" } }
+→ { monteCarlo, usual, rotations[4], avoid[], ignoredCrops, assumptions }
+   (full contract: backend/README.md)`;
 
 export default function Footer() {
   const t = useT();
   return (
-    <footer className="site-footer" id="about">
-      <div className="wrap footer-grid">
-        <section>
-          <div className="brand footer-brand"><span className="brand-mark" aria-hidden="true">🌾</span><span className="brand-name">Precision Crop <span>Rotation Advisor</span></span></div>
-          <p>{t('about.text')}</p>
-        </section>
-        <section>
-          <h2>{t('about.method')}</h2>
-          <ul>
-            <li>{t('about.m1')}</li>
-            <li>{t('about.m2')}</li>
-            <li>{t('about.m3')}</li>
-            <li>{t('about.m4')}</li>
-          </ul>
-        </section>
-        <section>
-          <h2>{t('about.sources')}</h2>
-          <ul>
-            <li>NASA POWER 1995–2024</li>
-            <li>ISRIC SoilGrids</li>
-            <li>MODIS NDVI</li>
-            <li>OAIC / CCLS Prices</li>
-          </ul>
-        </section>
-      </div>
+    <footer className="site-footer">
       <div className="wrap">
+        <div className="footer-grid">
+          <section>
+            <div className="brand"><Logo /><span className="brand-name">Crop Rotation Advisor</span></div>
+            <p className="footer-text">{t('about.text')}</p>
+          </section>
+          <section>
+            <h2>{t('about.method')}</h2>
+            <ul>
+              <li>{t('about.m1')}</li>
+              <li>{t('about.m2')}</li>
+              <li>{t('about.m3')}</li>
+              <li>{t('about.m4')}</li>
+            </ul>
+          </section>
+          <section>
+            <h2>{t('about.sources')}</h2>
+            <ul>{SOURCES.map(s => <li key={s}>{s}</li>)}</ul>
+          </section>
+        </div>
+        <p className="ai-disclosure"><Sparkles size={16} aria-hidden="true" /><span>{t('ai.disclosure')}</span></p>
         <details className="dev-info">
           <summary>{t('dev.title')}</summary>
           <p>{t('dev.text')}</p>
-          <h3>Climate</h3>
           <pre dir="ltr"><code>{CLIMATE_CONTRACT}</code></pre>
-          <h3>Ranking</h3>
           <pre dir="ltr"><code>{RANKING_CONTRACT}</code></pre>
         </details>
         <p className="footer-note">{t('about.note')}</p>

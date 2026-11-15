@@ -1,11 +1,11 @@
-// PAGE 1.2 — Select your agricultural region: region cards (left) + interactive 3D globe (right).
+// PAGE 1.2 — Select your agricultural region: name cards (left) + 3D globe with the selected region's details (right).
 import { useCallback, useRef, useState } from 'react';
+import { Check } from 'lucide-react';
 import { useT } from '../i18n/I18nContext';
 import { useFarm } from '../state/FarmContext';
 import { REGIONS, REGION_IDS, fmtCoord } from '../data/regions';
 import { PageHead, PageNav } from '../components/ui';
 import Globe from '../components/globe/Globe';
-import RegionThumb from '../components/globe/RegionThumb';
 import '../components/globe/Globe.css';
 import './RegionView.css';
 
@@ -39,7 +39,7 @@ export default function RegionView() {
   return (
     <section className="region-section" id="region-section" aria-labelledby="region-title">
       <PageHead id="region-title" eyebrow={t('eyebrow.setup', { n: 1 })} title={t('region.title')}
-        sub={t('region.sub')} scrollTo="region-section" />
+        sub={t('region.sub')} />
 
       <div className="region-layout">
         <div className="region-list" role="radiogroup" aria-label={t('region.listLabel')}>
@@ -50,22 +50,16 @@ export default function RegionView() {
                 className={`region-card${on ? ' selected' : ''}`} role="radio" aria-checked={on}
                 tabIndex={on ? 0 : -1} onClick={() => choose(r.id)} onKeyDown={e => onKey(e, i)}
                 onKeyUp={e => { if (e.key === ' ' || e.key === 'Enter') choose(r.id); }}>
-                <RegionThumb lat={r.lat} lon={r.lon} />
-                <div className="region-body">
-                  <div className="region-top">
+                <div className="rc-top">
+                  <div>
                     <h3>{t(`region.${r.id}.name`)}</h3>
-                    {on && <span className="badge badge-good"><span aria-hidden="true">✓</span> {t('common.selected')}</span>}
+                    <p className="rc-country">{t(`country.${r.countryCode}`)}</p>
                   </div>
-                  <p className="region-country">{t(`country.${r.countryCode}`)}</p>
-                  <dl className="region-facts">
-                    <div><dt>{t('region.coords')}</dt><dd className="num" dir="ltr">{fmtCoord(r.lat, r.lon)}</dd></div>
-                    <div>
-                      <dt>{t('region.rain')}</dt>
-                      <dd className="num">{r.est.includes('rain') ? '≈ ' : ''}{r.rain} mm/{t('unit.yr')}
-                        {r.est.includes('rain') && <span className="est"> · {t('common.estimate')}</span>}</dd>
-                    </div>
-                  </dl>
-                  <p className="region-climate">{t(`region.${r.id}.climate`)}</p>
+                  <span className="rc-check" aria-hidden="true">{on && <Check size={16} strokeWidth={2.5} />}</span>
+                </div>
+                <div className="stat md">
+                  <span className="label">{t('region.rain')}</span>
+                  <span className="value">{r.est.includes('rain') ? '≈' : ''}{r.rain}<small>mm/{t('unit.yr')}</small></span>
                 </div>
               </div>
             );
@@ -74,14 +68,19 @@ export default function RegionView() {
         </div>
 
         <div className="globe-panel">
-          <Globe regions={GLOBE_REGIONS} selectedId={state.region} focusTick={focusTick} onSelect={choose} labelFor={labelFor} />
-          <p className="globe-caption" aria-live="polite">
-            <span aria-hidden="true">📍</span> <b>{t(`region.${selected.id}.name`)}</b>, {t(`country.${selected.countryCode}`)} · <span dir="ltr">{fmtCoord(selected.lat, selected.lon)}</span>
-          </p>
+          <Globe regions={GLOBE_REGIONS} selectedId={state.region} focusTick={focusTick} onSelect={choose} labelFor={labelFor}>
+            <div className="globe-info" aria-live="polite" key={selected.id}>
+              <span className="label">{t(`country.${selected.countryCode}`)}</span>
+              <h3>{t(`region.${selected.id}.name`)}</h3>
+              <p className="gi-coords num" dir="ltr">{fmtCoord(selected.lat, selected.lon)}</p>
+              <p className="gi-climate">{t(`region.${selected.id}.climate`)}</p>
+              {selected.est.includes('rain') && <p className="gi-est">{t('region.estNote')}</p>}
+            </div>
+          </Globe>
         </div>
       </div>
 
-      <PageNav next="strategy" />
+      <PageNav back="home" next="strategy" />
     </section>
   );
 }

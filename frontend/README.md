@@ -58,62 +58,35 @@ frontend/src/
 └── styles/global.css       design tokens (palette, type) + shared components
 ```
 
-## Palette
+## Design
 
-| Token | Hex | Use |
-|---|---|---|
-| `--forest-900` / `--forest` | `#0d2a1f` / `#1d5a40` | brand, header, primary buttons |
-| `--leaf` | `#5c9a5f` | natural-green accents |
-| `--bg` / `--surface` | `#f7f3ea` / `#fffdf8` | warm off-white background and cards |
-| `--earth` | `#7a4b2a` | soil |
-| `--gold` | `#d6a23a` | accents, rank 1 |
-| `--series-1` / `--series-2` | `#1d669a` / `#c2562b` | chart baseline / scenario (colour-blind safe) |
-
-Every text colour meets WCAG AA on its background.
+The interface is minimal and professional: one typeface (Inter), 1px hairlines, small radii, no
+gradients and no emoji.
+- **Icons:** `lucide-react` line icons, mapped in `src/components/icons.jsx`.
+- **Layout:** a top bar (navigation, language, theme, account) and a journey sidebar with the 8 steps and the data status. On small screens the sidebar becomes a compact progress bar.
+- **Tokens:** all in `src/styles/global.css`, light and dark. The team palette is used for meaning only:
+  - olive `#595f34` / `#9cad60` for actions and progress;
+  - accent `#c49a6c` for rank 1 and AI insights;
+  - blue / red chart pair `#3a7fae` / `#b5523b` (colour-blind safe).
+- **Priorities:** moving one slider re-balances the other two in proportion, so the total is always 100 (`setPriority` in `src/utils/priorities.js`).
 
 ## Connecting the API
 
-```bash
-cp .env.example .env.local
-# then set VITE_API_BASE=https://your-backend/api
-```
+The frontend talks to the team backend (`backend/`, Express on port 5001). All calls go through
+`src/api/client.js`, which picks the API address:
 
-While `VITE_API_BASE` is empty, or when a request fails, the app uses the sample data.
-The banner then reads "SAMPLE DATA MODE" instead of "LIVE REGIONAL DATA ACTIVE", and
-each page shows a "Sample data" notice.
+| How the site is opened | API used |
+|---|---|
+| `start.bat` → http://localhost:5001 (the backend serves `frontend/dist`) | same origin `/api/v1` |
+| `npm run dev` → :5173, or `npm run preview` → :4173 | `/api/v1`, forwarded to :5001 by the Vite proxy (`vite.config.js`) |
+| anything else, e.g. Go Live on :5500 | `VITE_API_BASE` from `.env.production` (`http://localhost:5001/api/v1`), allowed by CORS |
+
+- **Banner:** it pings `/health` and reads "LIVE REGIONAL DATA ACTIVE" only when the backend answers.
+- **Login page:** shows "Server online" or "Server offline".
+- **Fallbacks:** without the backend, the pages use the sample data and say why.
+- **Contract:** documented in `backend/README.md`.
 
 Region ids: `kansas` (38.50N, 98.00W), `setif` (36.15N, 5.38E), `punjab` (30.90N, 75.85E).
-Kansas and Punjab rainfall, soil pH and frost values are estimates until the APIs are live.
-
-### Climate
-
-`GET {VITE_API_BASE}/climate?region=setif&lat=36.15&lon=5.38` returns:
-
-```json
-{
-  "source": "NASA POWER 1995-2024",
-  "annual":  [{ "year": 1995, "rain": 412 }],
-  "monthly": [52, 46, 43, 41, 27, 10, 3, 7, 20, 24, 44, 45],
-  "indicators": { "hotDays": 48, "frostDays": 32, "extremeRainDays": 5, "longestDrySpell": 58 }
-}
-```
-
-### Ranking
-
-`POST {VITE_API_BASE}/ranking` with body
-`{ region, rotation[3], allowed[], custom[], priorities { water, soil, yield }, scenario { rain, temp } }`.
-
-It must return the same shape as `SAMPLE_RANKING` in `src/data/sampleRanking.js`:
-
-- `monteCarlo { runs, rank1StaysFirstPct }`
-- `usual { waterNeed, ndviStability, fertilizer, income, soilNEnd }`
-- `rotations[4]`, each with:
-  - `rank`, `crops[3]`, `tags[]`, `scores { final, ml, knn }`
-  - `years[3]`, each `{ crop, family, soilN, health, fertilizer, kg, nCredit?, risks[] }`
-  - `waterNeed`, `ndviStability`, `fertilizer`, `fertilizerSaved`, `income`
-- `avoid[]`, each with:
-  - `crops`, `score`, `level` (`high` or `caution`), `reason`
-  - optional: `climate`, `soil`, `water`, `disease`, `alternative` (rank number)
 
 ## Troubleshooting (Windows)
 

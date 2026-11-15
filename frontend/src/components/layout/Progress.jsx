@@ -1,4 +1,6 @@
-// Journey progress indicator: 4 phases, 8 stages. Active stage is highlighted, completed ones ticked.
+// Stepper: the 4 stages of the journey. Sub-steps appear only inside the active stage.
+// Completed steps get a check; the current step is filled.
+import { Check } from 'lucide-react';
 import { useT } from '../../i18n/I18nContext';
 import { JOURNEY, PHASES, useNav } from '../../state/NavContext';
 import './layout.css';
@@ -6,43 +8,42 @@ import './layout.css';
 export default function Progress() {
   const t = useT();
   const { view, go, index } = useNav();
-  if (index < 0) return null;
-  const pct = ((index + 1) / JOURNEY.length) * 100;
 
   return (
-    <nav className="progress" aria-label={t('progress.label')}>
-      <div className="wrap">
-        <p className="progress-mobile">
-          {t('progress.stage', { n: index + 1, total: JOURNEY.length })} · <b>{t(`step.${view}`)}</b>
-        </p>
-        <ol className="phases">
-          {PHASES.map((ph, pi) => {
-            const active = ph.steps.includes(view);
-            const done = JOURNEY.indexOf(ph.steps.at(-1)) < index;
-            return (
-              <li key={ph.id} className={`phase${active ? ' active' : ''}${done ? ' done' : ''}`}>
-                <span className="phase-name"><span className="phase-num" aria-hidden="true">{done ? '✓' : pi + 1}</span>{t(`phase.${ph.id}`)}</span>
-                <ol className="phase-steps">
+    <nav className="stepper" aria-label={t('progress.label')}>
+      <ol className="wrap stages">
+        {PHASES.map((ph, pi) => {
+          const first = JOURNEY.indexOf(ph.steps[0]);
+          const last = JOURNEY.indexOf(ph.steps.at(-1));
+          const active = index >= first && index <= last;
+          const done = index > last;
+          return (
+            <li key={ph.id} className={`stage${active ? ' active' : ''}${done ? ' done' : ''}`}>
+              <button type="button" className="stage-btn" onClick={() => go(ph.steps[0])} aria-current={active ? 'step' : undefined}>
+                <span className="stage-marker" aria-hidden="true">{done ? <Check size={14} strokeWidth={2.5} /> : pi + 1}</span>
+                <span className="stage-name">{t(`phase.${ph.id}`)}</span>
+                {done && <span className="sr-only"> ({t('progress.done')})</span>}
+              </button>
+              {active && ph.steps.length > 1 && (
+                <ol className="substeps">
                   {ph.steps.map(s => {
                     const i = JOURNEY.indexOf(s);
                     return (
                       <li key={s}>
-                        <button type="button" onClick={() => go(s)} aria-current={s === view ? 'step' : undefined}
-                          className={i < index ? 'done' : ''}>
-                          <span className="step-dot" aria-hidden="true" />
-                          <span className="step-label">{t(`step.${s}`)}</span>
-                          {i < index && <span className="sr-only"> ({t('progress.done')})</span>}
+                        <button type="button" onClick={() => go(s)} aria-current={s === view ? 'page' : undefined}
+                          className={i < index ? 'done' : s === view ? 'current' : ''}>
+                          <span className="sub-dot" aria-hidden="true">{i < index && <Check size={10} strokeWidth={3} />}</span>
+                          {t(`step.${s}`)}
                         </button>
                       </li>
                     );
                   })}
                 </ol>
-              </li>
-            );
-          })}
-        </ol>
-        <div className="progress-meter" aria-hidden="true"><i style={{ width: `${pct}%` }} /></div>
-      </div>
+              )}
+            </li>
+          );
+        })}
+      </ol>
     </nav>
   );
 }

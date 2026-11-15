@@ -94,10 +94,10 @@ export const SAMPLE_RANKING = {
 };
 
 export const TAGS = {
-  restoresN: { icon: '🌱', tone: 'good' },
-  afterHeavyFeeder: { icon: '✅', tone: 'good' },
-  lowWater: { icon: '💧', tone: 'water' },
-  drought: { icon: '☀️', tone: 'water' },
-  highProfit: { icon: '💰', tone: 'ai' },
-  highN: { icon: '⚠️', tone: 'warn' },
+  restoresN: { tone: 'good' },
+  afterHeavyFeeder: { tone: 'good' },
+  lowWater: { tone: 'water' },
+  drought: { tone: 'water' },
+  highProfit: { tone: 'ai' },
+  highN: { tone: 'warn' },
 };

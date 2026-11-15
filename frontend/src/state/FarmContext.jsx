@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useMemo, useReducer } from 'react';
 import { DEFAULT_REGION, REGIONS } from '../data/regions';
 import { BASE_CROPS, DEFAULT_ALLOWED, DEFAULT_ROTATION } from '../data/crops';
-import { DEFAULT_PRIORITIES } from '../utils/priorities';
+import { DEFAULT_PRIORITIES, balance } from '../utils/priorities';
 import { storage } from '../utils/storage';
 
 function init() {
@@ -13,7 +13,9 @@ function init() {
     rotation: s.rotation?.length === 3 ? s.rotation : DEFAULT_ROTATION,
     allowed: s.allowed ?? DEFAULT_ALLOWED,
     custom: s.custom ?? [],
-    priorities: s.priorities ?? DEFAULT_PRIORITIES,
+    priorities: s.priorities ? balance(s.priorities) : DEFAULT_PRIORITIES,
+    prioMain: s.prioMain ?? null,     // step A choice
+    prioSecond: s.prioSecond ?? null, // step B choice
     scenario: s.scenario ?? { rain: -20, temp: 2 },
     analysedKey: s.analysedKey ?? null,
     mapOverlay: s.mapOverlay ?? true,
