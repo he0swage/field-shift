@@ -3,7 +3,7 @@ import { useEffect, useId, useState } from 'react';
 import { checkHealth } from '../api/client';
 import { useT } from '../i18n/I18nContext';
 import { useAuth } from '../state/AuthContext';
-import { LangMenu } from '../components/layout/Header';
+import { LangMenu, Logo } from '../components/layout/Header';
 import ThemeToggle from '../components/layout/ThemeToggle';
 import { Alert } from '../components/ui';
 import { HeroArt } from './Landing';
@@ -62,8 +62,8 @@ export default function LoginView() {
     <div className="login">
       <aside className="login-art" aria-hidden="true">
         <div className="login-brand">
-          <span className="brand-mark">🌾</span>
-          <span className="brand-name">Precision Crop <span>Rotation Advisor</span></span>
+          <Logo />
+          <span className="brand-name">Crop Rotation Advisor</span>
         </div>
         <div className="login-art-copy">
           <h2>{t('hero.title')}</h2>
@@ -81,8 +81,8 @@ export default function LoginView() {
 
         <div className="login-card">
           <div className="login-brand mobile-only">
-            <span className="brand-mark" aria-hidden="true">🌾</span>
-            <span className="brand-name">Precision Crop <span>Rotation Advisor</span></span>
+            <Logo />
+            <span className="brand-name">Crop Rotation Advisor</span>
           </div>
           <h1>{t('auth.title')}</h1>
           <p className="login-sub">{t('auth.sub')}</p>

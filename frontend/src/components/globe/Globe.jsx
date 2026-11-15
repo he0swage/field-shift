@@ -8,6 +8,7 @@ import { geoDistance, geoOrthographic, geoPath } from 'd3-geo';
 import { BORDERS, GRATICULE, LAND, SPHERE } from './world';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { useT } from '../../i18n/I18nContext';
+import { Minus, Pause, Play, Plus, ZoomIn, ZoomOut } from 'lucide-react';
 import './Globe.css';
 
 const BASE_SPEED = 6; // degrees per second at 1×
@@ -213,15 +214,15 @@ export default function Globe({ regions, selectedId, focusTick, onSelect, labelF
       </div>
       <div className="globe-controls" role="toolbar" aria-label={t('globe.controls')}>
         <button type="button" onClick={() => setPlaying(p => !p)} aria-pressed={playing}>
-          <span aria-hidden="true">{playing ? '⏸' : '▶'}</span> {playing ? t('globe.pause') : t('globe.play')}
+          {playing ? <Pause size={14} aria-hidden="true" /> : <Play size={14} aria-hidden="true" />} {playing ? t('globe.pause') : t('globe.play')}
         </button>
         <span className="globe-speed">
-          <button type="button" onClick={() => { setSpeedIdx(i => Math.max(0, i - 1)); setPlaying(true); }} disabled={speedIdx === 0} aria-label={t('globe.slower')}>−</button>
+          <button type="button" onClick={() => { setSpeedIdx(i => Math.max(0, i - 1)); setPlaying(true); }} disabled={speedIdx === 0} aria-label={t('globe.slower')}><Minus size={14} aria-hidden="true" /></button>
           <span aria-live="polite">{t('globe.speed')} {SPEEDS[speedIdx]}×</span>
-          <button type="button" onClick={() => { setSpeedIdx(i => Math.min(SPEEDS.length - 1, i + 1)); setPlaying(true); }} disabled={speedIdx === SPEEDS.length - 1} aria-label={t('globe.faster')}>+</button>
+          <button type="button" onClick={() => { setSpeedIdx(i => Math.min(SPEEDS.length - 1, i + 1)); setPlaying(true); }} disabled={speedIdx === SPEEDS.length - 1} aria-label={t('globe.faster')}><Plus size={14} aria-hidden="true" /></button>
         </span>
-        <button type="button" onClick={() => zoomBy(1.2)} aria-label={t('globe.zoomIn')}>🔍+</button>
-        <button type="button" onClick={() => zoomBy(1 / 1.2)} aria-label={t('globe.zoomOut')}>🔍−</button>
+        <button type="button" onClick={() => zoomBy(1.2)} aria-label={t('globe.zoomIn')}><ZoomIn size={16} aria-hidden="true" /></button>
+        <button type="button" onClick={() => zoomBy(1 / 1.2)} aria-label={t('globe.zoomOut')}><ZoomOut size={16} aria-hidden="true" /></button>
       </div>
       <p className="globe-hint">{t('globe.hint')}</p>
     </div>

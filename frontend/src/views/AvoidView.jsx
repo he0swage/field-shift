@@ -3,16 +3,18 @@ import { useT } from '../i18n/I18nContext';
 import { useFarm } from '../state/FarmContext';
 import { useAnalysis } from '../state/AnalysisContext';
 import { cropFit } from '../utils/agronomy';
+import { AlertTriangle, ArrowRight, Pin, XOctagon } from 'lucide-react';
+import Icon from '../components/icons';
 import { sameName } from '../utils/format';
 import { AiBadge, PageHead, PageNav, RegionStrip, SampleNotice } from '../components/ui';
 import NeedsAnalysis from '../components/NeedsAnalysis';
 import './Results.css';
 
 const ROWS = [
-  { k: 'climate', icon: '🌦️' },
-  { k: 'soil', icon: '⛰️' },
-  { k: 'water', icon: '💧' },
-  { k: 'disease', icon: '🦠' },
+  { k: 'climate', icon: 'climate' },
+  { k: 'soil', icon: 'soilProblem' },
+  { k: 'water', icon: 'water' },
+  { k: 'disease', icon: 'disease' },
 ];
 
 function aiExplain(t, a) {
@@ -25,22 +27,22 @@ export function AvoidCard({ a, isUsual, alt }) {
   return (
     <article className={`avoid-card level-${a.level}`}>
       <header className="avoid-head">
-        <span className="avoid-icon" aria-hidden="true">{a.level === 'high' ? '⛔' : '⚠️'}</span>
+        <span className="avoid-icon" aria-hidden="true">{a.level === 'high' ? <XOctagon size={18} /> : <AlertTriangle size={18} />}</span>
         <div>
           <span className={`badge ${a.level === 'high' ? 'badge-bad' : 'badge-warn'}`}>{t(`avoid.level.${a.level}`)}</span>
           <h3>{a.crops.join(' → ')}</h3>
           {a.score != null && <p className="muted">{t('avoid.score', { score: a.score })}</p>}
         </div>
       </header>
-      {isUsual && <p className="usual-flag">📌 {t('avoid.isUsual')}</p>}
+      {isUsual && <p className="usual-flag"><Pin size={14} aria-hidden="true" /> {t('avoid.isUsual')}</p>}
       <p className="avoid-reason"><b>{t('avoid.reason')}:</b> {a.reason}</p>
       <dl className="avoid-rows">
         {ROWS.filter(r => a[r.k]).map(r => (
-          <div key={r.k}><dt><span aria-hidden="true">{r.icon}</span> {t(`avoid.${r.k}`)}</dt><dd>{a[r.k]}</dd></div>
+          <div key={r.k}><dt><Icon name={r.icon} size={14} /> {t(`avoid.${r.k}`)}</dt><dd>{a[r.k]}</dd></div>
         ))}
       </dl>
       {alt && (
-        <p className="avoid-alt"><span aria-hidden="true">✅</span> <b>{t('avoid.alt')}:</b> {alt}</p>
+        <p className="avoid-alt"><ArrowRight size={14} className="flip" aria-hidden="true" /> <b>{t('avoid.alt')}:</b> {alt}</p>
       )}
       {a.score != null && (
         <div className="avoid-ai"><AiBadge /><p>{aiExplain(t, a)}</p></div>
@@ -62,7 +64,7 @@ export default function AvoidView() {
 
   return (
     <section aria-labelledby="avoid-title">
-      <PageHead id="avoid-title" eyebrow={t('eyebrow.recs', { n: 2 })} title={<><span aria-hidden="true">🚫</span> {t('avoid.title')}</>} sub={t('avoid.sub')}>
+      <PageHead id="avoid-title" eyebrow={t('eyebrow.recs', { n: 2 })} title={t('avoid.title')} sub={t('avoid.sub')}>
         <RegionStrip />
       </PageHead>
 

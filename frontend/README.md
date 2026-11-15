@@ -58,18 +58,17 @@ frontend/src/
 └── styles/global.css       design tokens (palette, type) + shared components
 ```
 
-## Palette
+## Design
 
-| Token | Hex | Use |
-|---|---|---|
-| `--forest-900` / `--forest` | `#0d2a1f` / `#1d5a40` | brand, header, primary buttons |
-| `--leaf` | `#5c9a5f` | natural-green accents |
-| `--bg` / `--surface` | `#f7f3ea` / `#fffdf8` | warm off-white background and cards |
-| `--earth` | `#7a4b2a` | soil |
-| `--gold` | `#d6a23a` | accents, rank 1 |
-| `--series-1` / `--series-2` | `#1d669a` / `#c2562b` | chart baseline / scenario (colour-blind safe) |
-
-Every text colour meets WCAG AA on its background.
+The interface is minimal and professional: one typeface (Inter), 1px hairlines, small radii, no
+gradients and no emoji.
+- **Icons:** `lucide-react` line icons, mapped in `src/components/icons.jsx`.
+- **Layout:** a top bar (navigation, language, theme, account) and a journey sidebar with the 8 steps and the data status. On small screens the sidebar becomes a compact progress bar.
+- **Tokens:** all in `src/styles/global.css`, light and dark. The team palette is used for meaning only:
+  - olive `#595f34` / `#9cad60` for actions and progress;
+  - accent `#c49a6c` for rank 1 and AI insights;
+  - blue / red chart pair `#3a7fae` / `#b5523b` (colour-blind safe).
+- **Priorities:** moving one slider re-balances the other two in proportion, so the total is always 100 (`setPriority` in `src/utils/priorities.js`).
 
 ## Connecting the API
 

@@ -1,5 +1,6 @@
 // PAGE 1.1 — Landing: value proposition + "Start Your Journey" (opens the region page).
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { ArrowRight } from 'lucide-react';
 import { useT } from '../i18n/I18nContext';
 import { useNav } from '../state/NavContext';
 import { useReducedMotion } from '../hooks/useReducedMotion';
@@ -206,8 +207,8 @@ export default function Landing() {
             <p className="hero-cta-title">{t('hero.title')}</p>
             <p className="hero-cta-text">{t('hero.ctaText')}</p>
           </div>
-          <button type="button" className="btn btn-gold btn-lg" onClick={() => go('region')}>
-            {t('hero.cta')} <span className="flip" aria-hidden="true">→</span>
+          <button type="button" className="btn btn-primary btn-lg" onClick={() => go('region')}>
+            {t('hero.cta')} <ArrowRight size={18} className="flip" aria-hidden="true" />
           </button>
         </div>
       </div>

@@ -1,67 +1,49 @@
-// PAGE 1.3 — Define your farming strategy: 3 priorities (left) · usual rotation, allowed crops, custom crop (right).
+// PAGE 1.3 — Define your farming strategy: 3 priorities (always total 100) · usual rotation · allowed crops · custom crop.
 import { useId, useState } from 'react';
+import { Check, Plus, X } from 'lucide-react';
 import { useT } from '../i18n/I18nContext';
 import { useFarm } from '../state/FarmContext';
 import { useToast } from '../state/ToastContext';
-import { FAMILIES, FAMILY_ICON } from '../data/crops';
-import { KEYS, PRIO, balance, total } from '../utils/priorities';
+import { FAMILIES } from '../data/crops';
+import { KEYS, PRIO, setPriority } from '../utils/priorities';
 import { cropFit, cropProblems } from '../utils/agronomy';
 import { Alert, PageHead, PageNav, RegionStrip } from '../components/ui';
+import Icon from '../components/icons';
 import AnalysisRunner from '../components/AnalysisRunner';
 import './StrategyView.css';
 
-/* ---------- Priorities ---------- */
+/* ---------- Priorities: moving one slider re-balances the other two ---------- */
 function Priorities() {
   const t = useT();
   const { state, set } = useFarm();
-  const toast = useToast();
   const p = state.priorities;
-  const sum = total(p);
-  const ok = sum === 100;
-
-  const onBalance = () => {
-    const prev = p;
-    set({ priorities: balance(p) });
-    toast(t('prio.balanced'), () => set({ priorities: prev }));
-  };
 
   return (
     <section className="card" aria-labelledby="prio-title">
       <h3 className="card-title" id="prio-title">{t('prio.title')}</h3>
-      <p className="card-sub">{t('prio.sub')}</p>
+      <p className="card-sub">{t('prio.subAuto')}</p>
+
+      <div className="prio-stack" aria-hidden="true">
+        {KEYS.map(k => <i key={k} style={{ width: `${p[k]}%`, background: PRIO[k].color }} />)}
+      </div>
 
       <div className="prio-list">
         {KEYS.map(k => (
           <div key={k} className="prio">
             <div className="prio-head">
-              <span className="prio-icon" aria-hidden="true">{PRIO[k].icon}</span>
-              <div className="prio-text">
-                <label htmlFor={`prio-${k}`}>{t(`prio.${k}`)}</label>
-                <p id={`prio-${k}-d`}>{t(`prio.${k}.d`)}</p>
-              </div>
-              <output htmlFor={`prio-${k}`} className="prio-value num">{p[k]}</output>
+              <span className="prio-swatch" style={{ background: PRIO[k].color }} aria-hidden="true" />
+              <label htmlFor={`prio-${k}`}>{t(`prio.${k}`)}</label>
+              <output htmlFor={`prio-${k}`} className="prio-value num" aria-live="polite">{p[k]}</output>
             </div>
+            <p className="prio-desc" id={`prio-${k}-d`}>{t(`prio.${k}.d`)}</p>
             <input id={`prio-${k}`} type="range" min="0" max="100" step="1" value={p[k]}
-              aria-describedby={`prio-${k}-d`}
+              aria-describedby={`prio-${k}-d`} aria-valuetext={`${p[k]} / 100`}
               style={{ '--pct': `${p[k]}%`, '--track-fill': PRIO[k].color }}
-              onChange={e => set({ priorities: { ...p, [k]: +e.target.value } })} />
+              onChange={e => set({ priorities: setPriority(p, k, +e.target.value) })} />
           </div>
         ))}
       </div>
-
-      <div className={`prio-total${ok ? ' ok' : ' bad'}`}>
-        <div className="prio-stack" aria-hidden="true">
-          {KEYS.map(k => <i key={k} style={{ width: `${(p[k] / Math.max(100, sum)) * 100}%`, background: PRIO[k].color }} />)}
-        </div>
-        <div className="row">
-          <span className="prio-sum" aria-live="polite">
-            {t('prio.total')}: <b className="num">{sum}</b> / 100 {ok ? '✓' : ''}
-          </span>
-          <span className="spacer" />
-          <button type="button" className="btn btn-secondary btn-sm" onClick={onBalance} disabled={ok}>⚖️ {t('prio.balance')}</button>
-        </div>
-        {!ok && <Alert tone="bad" role="alert">{t('err.total', { n: sum })}</Alert>}
-      </div>
+      <p className="prio-total"><Check size={14} aria-hidden="true" /> {t('prio.totalAuto')}</p>
     </section>
   );
 }
@@ -111,16 +93,19 @@ function AllowedCrops() {
 
   return (
     <section className="card" aria-labelledby="allowed-title">
-      <h3 className="card-title" id="allowed-title">{t('crops.title')}</h3>
+      <div className="row">
+        <h3 className="card-title" id="allowed-title">{t('crops.title')}</h3>
+        <span className="spacer" />
+        <span className="muted num" aria-live="polite" style={{ fontSize: 13 }}>{t('crops.count', { n: state.allowed.length })}</span>
+      </div>
       <p className="card-sub">{t('crops.rule')}</p>
-      <p className="hint" aria-live="polite">{t('crops.count', { n: state.allowed.length })}</p>
 
       {FAMILIES.map(f => {
         const list = crops.filter(c => c.family === f);
         if (!list.length) return null;
         return (
           <fieldset key={f} className="chip-group">
-            <legend><span aria-hidden="true">{FAMILY_ICON[f]}</span> {t(`family.${f}`)}</legend>
+            <legend><Icon name={f} size={14} /> {t(`family.${f}`)}</legend>
             <div className="chips">
               {list.map(c => {
                 const on = state.allowed.includes(c.id);
@@ -128,11 +113,13 @@ function AllowedCrops() {
                   <span key={c.id} className="chip-wrap">
                     <button type="button" className={`chip${on ? ' on' : ''}`} aria-pressed={on}
                       onClick={() => dispatch({ type: 'toggleAllowed', id: c.id })}>
-                      <span className="chip-check" aria-hidden="true">{on ? '✓' : '+'}</span>{c.name}
+                      {on && <Check size={13} strokeWidth={2.5} aria-hidden="true" />}{c.name}
                       {c.custom && <span className="chip-tag">{t('crop.custom')}</span>}
                     </button>
                     {c.custom && (
-                      <button type="button" className="chip-x" onClick={() => remove(c)} aria-label={t('crop.remove', { name: c.name })}>×</button>
+                      <button type="button" className="chip-x" onClick={() => remove(c)} aria-label={t('crop.remove', { name: c.name })}>
+                        <X size={14} aria-hidden="true" />
+                      </button>
                     )}
                   </span>
                 );
@@ -161,7 +148,7 @@ function CustomCrop() {
   const { region, crops, dispatch } = useFarm();
   const [f, setF] = useState(EMPTY);
   const [submitted, setSubmitted] = useState(false);
-  const [result, setResult] = useState(null); // { name, fit }
+  const [result, setResult] = useState(null);
   const upd = k => e => setF({ ...f, [k]: e.target.type === 'checkbox' ? e.target.checked : e.target.value });
 
   const fit = cropFit(region, f);
@@ -189,7 +176,7 @@ function CustomCrop() {
 
   return (
     <details className="custom-crop">
-      <summary><span aria-hidden="true">＋</span> {t('custom.title')}</summary>
+      <summary><Plus size={16} aria-hidden="true" /> {t('custom.title')}</summary>
       <form onSubmit={onSubmit} noValidate>
         <div className="form-grid">
           <div className="field span-2">
@@ -212,10 +199,10 @@ function CustomCrop() {
           {show('ph') && <p className="field-error span-2">{t(errors.ph)}</p>}
           {field('price', t('custom.price'), { type: 'number', inputMode: 'numeric', min: 0, step: 100 })}
           {field('yield', t('custom.yield'), { type: 'number', inputMode: 'decimal', min: 0, step: 1 })}
-          <label className="check"><input type="checkbox" checked={f.frost} onChange={upd('frost')} /> ❄️ {t('custom.frost')}</label>
-          <label className="check"><input type="checkbox" checked={f.heat} onChange={upd('heat')} /> 🔥 {t('custom.heat')}</label>
+          <label className="check"><input type="checkbox" checked={f.frost} onChange={upd('frost')} /> {t('custom.frost')}</label>
+          <label className="check"><input type="checkbox" checked={f.heat} onChange={upd('heat')} /> {t('custom.heat')}</label>
         </div>
-        <button type="submit" className="btn btn-primary">✅ {t('custom.add')}</button>
+        <button type="submit" className="btn btn-secondary">{t('custom.add')}</button>
       </form>
 
       <div aria-live="polite">
@@ -223,7 +210,6 @@ function CustomCrop() {
           <div className="custom-result">
             <Alert tone="good" title={t('custom.added', { name: result.name })}>{t('custom.addedText')}</Alert>
             <Alert tone={result.fit.level === 'ok' ? 'good' : result.fit.level === 'warn' ? 'warn' : 'bad'}
-              icon={result.fit.level === 'ok' ? '🌱' : undefined}
               title={t(`fit.${result.fit.level}`, { region: t(`region.${region.id}.name`) })}>
               {result.fit.issues.length > 0
                 ? <ul>{result.fit.issues.map(i => <li key={i.key}>{t(i.key, i.vars)}</li>)}</ul>
@@ -249,13 +235,10 @@ export default function StrategyView() {
         <div><UsualRotation /><AllowedCrops /></div>
       </div>
 
-      <section className="card analyse-card" aria-labelledby="analyse-title">
-        <div className="analyse-copy">
+      <section className="analyse" aria-labelledby="analyse-title">
+        <div>
           <h3 className="card-title" id="analyse-title">{t('analyse.title')}</h3>
           <p className="card-sub">{t('analyse.text')}</p>
-          <ul className="basis">
-            <li>📍 {t('analyse.b1')}</li><li>🌦️ {t('analyse.b2')}</li><li>⛰️ {t('analyse.b3')}</li><li>🎯 {t('analyse.b4')}</li>
-          </ul>
         </div>
         <AnalysisRunner />
       </section>

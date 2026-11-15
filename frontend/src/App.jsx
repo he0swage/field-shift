@@ -43,15 +43,22 @@ function Shell() {
     <>
       <a className="skip" href="#main">{t('common.skip')}</a>
       <Header />
-      <Progress />
       {view === 'home' ? (
-        <main id="main" tabIndex={-1} className="view" key="home"><Landing /></main>
+        <>
+          <main id="main" tabIndex={-1} className="view" key="home"><Landing /></main>
+          <Footer />
+        </>
       ) : (
-        <main className="main" id="main" tabIndex={-1}>
-          <div className="wrap view" key={view}><View /></div>
-        </main>
+        <div className="app-shell">
+          <Progress />
+          <div className="app-content">
+            <main className="main" id="main" tabIndex={-1}>
+              <div className="wrap view" key={view}><View /></div>
+            </main>
+            <Footer />
+          </div>
+        </div>
       )}
-      <Footer />
       <Report />
     </>
   );

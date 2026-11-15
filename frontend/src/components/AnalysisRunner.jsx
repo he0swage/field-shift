@@ -1,6 +1,7 @@
-// "🔍 Analyse & Rank Rotations" button with its validation, loading and success states.
+// "Analyse & Rank Rotations" button with its validation, loading and success states.
 // Used on the strategy page and in the empty state of the recommendations page.
 import { useEffect, useRef, useState } from 'react';
+import { Check, Search } from 'lucide-react';
 import { useT } from '../i18n/I18nContext';
 import { useFarm } from '../state/FarmContext';
 import { useAnalysis } from '../state/AnalysisContext';
@@ -49,7 +50,7 @@ export default function AnalysisRunner({ showView = true }) {
   return (
     <div className="runner">
       <button type="button" className="btn btn-primary btn-lg" onClick={onRun} disabled={loading} aria-describedby="runner-status">
-        {loading ? <span className="spinner" aria-hidden="true" /> : <span aria-hidden="true">🔍</span>}
+        {loading ? <span className="spinner" aria-hidden="true" /> : <Search size={16} aria-hidden="true" />}
         {loading ? t('run.loading') : ranking && !stale ? t('run.again') : t('run.button')}
       </button>
 
@@ -65,7 +66,7 @@ export default function AnalysisRunner({ showView = true }) {
           <ol className="run-stages">
             {STAGES.map((k, i) => (
               <li key={k} className={i < stage ? 'done' : i === stage ? 'now' : ''}>
-                <span className="run-icon" aria-hidden="true">{i < stage ? '✓' : ''}</span>{t(k)}
+                <span className="run-icon" aria-hidden="true">{i < stage && <Check size={10} strokeWidth={3} />}</span>{t(k)}
               </li>
             ))}
           </ol>

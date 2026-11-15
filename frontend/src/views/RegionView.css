@@ -1,43 +1,30 @@
 .region-section { scroll-margin-top: 100px; }
-.region-layout { display: grid; grid-template-columns: minmax(220px, .55fr) minmax(0, 1.45fr); gap: 28px; align-items: stretch; }
+.region-layout { display: grid; grid-template-columns: minmax(200px, .5fr) minmax(0, 1.5fr); gap: 20px; align-items: stretch; }
 @media (max-width: 900px) { .region-layout { grid-template-columns: 1fr; } }
 
-/* Name-only region cards */
-.region-list { display: flex; flex-direction: column; gap: 14px; }
-.region-card {
-  display: flex; align-items: center; gap: 14px; padding: 20px 22px; cursor: pointer; min-height: 72px;
-  background: var(--surface); border: 2px solid var(--line); border-radius: 18px;
-  transition: border-color .2s, box-shadow .2s, transform .2s var(--ease), background .2s;
-}
-.region-card h3 { font-size: 20px; }
-.region-card:hover { border-color: var(--line-strong); transform: translateY(-2px); box-shadow: var(--shadow); }
-.region-card.selected { border-color: var(--forest); background: var(--forest-soft); box-shadow: 0 0 0 4px rgba(89, 95, 52, .14); }
-.region-radio { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--line-strong); flex: none; background: var(--surface); transition: all .2s; }
-.region-card.selected .region-radio { border: 7px solid var(--forest); }
-@media (max-width: 900px) { .region-list { flex-direction: row; flex-wrap: wrap; } .region-card { flex: 1 1 180px; } }
+/* Region list: name only */
+.region-list { display: flex; flex-direction: column; gap: 6px; }
+.region-card { display: flex; align-items: center; gap: 12px; padding: 14px 16px; cursor: pointer; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); transition: border-color .15s, background-color .15s; }
+.region-card h3 { font-size: 15px; font-weight: 500; }
+.region-card:hover { border-color: var(--line-strong); }
+.region-card.selected { border-color: var(--primary); background: var(--primary-soft); }
+.region-card.selected h3 { font-weight: 600; }
+.region-radio { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--line-strong); flex: none; background: var(--surface); transition: border-width .15s, border-color .15s; }
+.region-card.selected .region-radio { border: 5px solid var(--primary); }
+.region-list .hint { margin-top: 10px; font-size: 13px; }
+@media (max-width: 900px) { .region-list { flex-direction: row; flex-wrap: wrap; } .region-card { flex: 1 1 160px; } }
 
-/* Globe panel + region details overlay */
-.globe-panel {
-  background: radial-gradient(circle at 50% 40%, #4a5132 0%, #3a4132 70%);
-  border-radius: 28px; padding: 28px 20px 22px; box-shadow: var(--shadow-lg);
-  display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; min-height: 560px;
-}
-.globe-panel::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, .5) 1px, transparent 1px); background-size: 46px 46px; opacity: .12; pointer-events: none; }
-.globe-info {
-  position: absolute; top: 20px; inset-inline-start: 20px; z-index: 2; width: 250px;
-  background: var(--surface); color: var(--ink); border-radius: 18px; padding: 18px 20px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, .25); border-inline-start: 5px solid var(--gold);
-  animation: view-in .35s var(--ease);
-}
-.globe-info h3 { font-size: 20px; }
-.gi-country { color: var(--leaf-ink); font-weight: 700; font-size: 15px; }
+/* Globe panel (always dark: it is a view of the Earth) */
+.globe-panel { background: #1b1f17; border-radius: var(--radius); padding: 24px 20px 18px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; min-height: 540px; }
+.globe-info { position: absolute; top: 16px; inset-inline-start: 16px; z-index: 2; width: 240px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; animation: view-in .25s var(--ease); }
+.globe-info h3 { font-size: 15px; }
+.gi-country { color: var(--ink-soft); font-size: 13px; }
 .globe-info dl { margin: 12px 0 0; display: grid; gap: 8px; }
-.globe-info dt { font-size: 12px; color: var(--ink-soft); font-weight: 600; }
-.globe-info dd { margin: 0; font-weight: 700; font-size: 15px; }
-.globe-info .est { font-weight: 500; color: var(--ink-soft); font-size: 12px; }
-.gi-climate { margin-top: 10px; font-size: 14px; color: var(--ink-soft); }
-/* Wide screens: the globe moves aside so the details card never hides it */
-@media (min-width: 1101px) { .globe-panel .globe { padding-inline-start: 230px; } }
+.globe-info dt { font-size: 12px; color: var(--ink-faint); }
+.globe-info dd { margin: 0; font-weight: 500; font-size: 14px; }
+.globe-info .est { font-weight: 400; color: var(--ink-faint); font-size: 12px; }
+.gi-climate { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-soft); }
+@media (min-width: 1101px) { .globe-panel .globe { padding-inline-start: 220px; } }
 @media (max-width: 1100px) {
   .globe-panel { min-height: 0; }
   .globe-info { position: relative; top: 0; inset-inline-start: 0; width: auto; margin-bottom: 14px; order: -1; }

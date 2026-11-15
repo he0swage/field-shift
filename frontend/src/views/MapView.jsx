@@ -10,6 +10,7 @@ import { useWidth } from '../hooks/useWidth';
 import { REGIONS, REGION_IDS, fmtCoord } from '../data/regions';
 import { LAND, BORDERS, GRATICULE } from '../components/globe/world';
 import { signed } from '../utils/format';
+import { ArrowRight, Check, MapPin, X } from 'lucide-react';
 import { PageHead, SampleNotice } from '../components/ui';
 import './MapView.css';
 
@@ -112,7 +113,7 @@ export default function MapView() {
       </div>
       {sel && (
         <div className="m-popup" role="region" aria-live="polite" dir={dir} aria-labelledby="m-pop-title">
-          <button type="button" className="m-close" onClick={() => setOpen(null)} aria-label={t('common.close')}>×</button>
+          <button type="button" className="m-close" onClick={() => setOpen(null)} aria-label={t('common.close')}><X size={16} aria-hidden="true" /></button>
           <h3 id="m-pop-title">{t(`region.${sel.id}.name`)}</h3>
           <p className="muted">{t(`country.${sel.countryCode}`)} · <span dir="ltr">{fmtCoord(sel.lat, sel.lon)}</span></p>
           <dl>
@@ -122,11 +123,11 @@ export default function MapView() {
           <p className="m-interp">{t(`region.${sel.id}.climate`)}</p>
           {state.region === sel.id ? (
             <div className="row">
-              <span className="badge badge-good">✓ {t('map.current')}</span>
-              <button type="button" className="btn btn-primary btn-sm" onClick={() => go('strategy')}>{t('map.continue')} <span className="flip" aria-hidden="true">→</span></button>
+              <span className="badge badge-good"><Check size={13} aria-hidden="true" /> {t('map.current')}</span>
+              <button type="button" className="btn btn-primary btn-sm" onClick={() => go('strategy')}>{t('map.continue')} <ArrowRight size={14} className="flip" aria-hidden="true" /></button>
             </div>
           ) : (
-            <button type="button" className="btn btn-primary" onClick={() => choose(sel.id)}>📍 {t('map.select')}</button>
+            <button type="button" className="btn btn-primary" onClick={() => choose(sel.id)}><MapPin size={16} aria-hidden="true" /> {t('map.select')}</button>
           )}
         </div>
       )}

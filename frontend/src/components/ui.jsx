@@ -1,5 +1,6 @@
 // Small shared building blocks used by every view.
 import { useRef } from 'react';
+import { AlertTriangle, ArrowLeft, ArrowRight, CheckCircle2, Info, MapPin, Sparkles, XCircle, FlaskConical } from 'lucide-react';
 import { useT } from '../i18n/I18nContext';
 import { useFocusHeading, useNav } from '../state/NavContext';
 import { useFarm } from '../state/FarmContext';
@@ -27,13 +28,13 @@ export function PageNav({ back, next, nextLabel, backLabel, children }) {
     <nav className="page-nav" aria-label={t('nav.pager')}>
       {back && (
         <button type="button" className="btn btn-secondary" onClick={() => go(back)}>
-          <span className="flip" aria-hidden="true">←</span> {backLabel || t('common.back')}
+          <ArrowLeft size={16} className="flip" aria-hidden="true" /> {backLabel || t('common.back')}
         </button>
       )}
       {children}
       {next && (
         <button type="button" className="btn btn-primary next" onClick={() => go(next)}>
-          {nextLabel || t('common.next')} <span className="flip" aria-hidden="true">→</span>
+          {nextLabel || t('common.next')} <ArrowRight size={16} className="flip" aria-hidden="true" />
         </button>
       )}
     </nav>
@@ -42,14 +43,15 @@ export function PageNav({ back, next, nextLabel, backLabel, children }) {
 
 export function AiBadge() {
   const t = useT();
-  return <span className="badge badge-ai" title={t('ai.title')}><span aria-hidden="true">✦</span> {t('ai.badge')}</span>;
+  return <span className="badge badge-ai" title={t('ai.title')}><Sparkles aria-hidden="true" /> {t('ai.badge')}</span>;
 }
 
 export function Alert({ tone = 'info', icon, title, children, role }) {
-  const icons = { info: 'ℹ️', good: '✅', warn: '⚠️', bad: '⛔' };
+  const icons = { info: Info, good: CheckCircle2, warn: AlertTriangle, bad: XCircle };
+  const Icon = icons[tone] || Info;
   return (
     <div className={`alert alert-${tone}`} role={role}>
-      <span className="alert-icon" aria-hidden="true">{icon || icons[tone]}</span>
+      <span className="alert-icon" aria-hidden="true"><Icon size={16} /></span>
       <div>{title && <strong>{title} </strong>}{children}</div>
     </div>
   );
@@ -61,7 +63,7 @@ export function SampleNotice({ data }) {
   if (!data?.sample && !data?.fallbackReason) return null;
   return (
     <p className="sample-note">
-      <span aria-hidden="true">🧪</span>
+      <FlaskConical size={14} aria-hidden="true" />
       <span>{data.fallbackReason ? t(`sample.${data.fallbackReason}`) : t('sample.note')}</span>
     </p>
   );
@@ -74,7 +76,7 @@ export function RegionStrip() {
   const { go } = useNav();
   return (
     <div className="region-strip">
-      <span aria-hidden="true">📍</span>
+      <MapPin size={14} aria-hidden="true" />
       <b>{t(`region.${region.id}.name`)}</b>
       <span>{t(`country.${region.countryCode}`)} · {fmtCoord(region.lat, region.lon)}</span>
       <button type="button" className="btn-link" onClick={() => go('region')}>{t('common.change')}</button>

@@ -27,7 +27,7 @@ export default function Report() {
   return (
     <article className="report" aria-hidden="true">
       <header className="r-head">
-        <div className="r-brand">🌾 Precision Crop Rotation Advisor</div>
+        <div className="r-brand">Crop Rotation Advisor</div>
         <h1>{t('report.title')}</h1>
         <p>{name}, {t(`country.${region.countryCode}`)} · {fmtCoord(region.lat, region.lon)} · {date}</p>
         {(ranking?.sample || m?.data.sample) && <p className="r-sample">{t('report.sample')}</p>}
@@ -39,7 +39,7 @@ export default function Report() {
           <tr><th>{t('sum.region')}</th><td>{name} ({t(`country.${region.countryCode}`)})</td></tr>
           <tr><th>{t('region.coords')}</th><td>{fmtCoord(region.lat, region.lon)}</td></tr>
           <tr><th>{t('region.rain')}</th><td>{region.rain} mm/{t('unit.yr')}{region.est.includes('rain') ? ` (${t('common.estimate')})` : ''}</td></tr>
-          {KEYS.map(k => <tr key={k}><th>{PRIO[k].icon} {t(`prio.${k}`)}</th><td>{state.priorities[k]} / 100</td></tr>)}
+          {KEYS.map(k => <tr key={k}><th>{t(`prio.${k}`)}</th><td>{state.priorities[k]} / 100</td></tr>)}
         </tbody></table>
       </section>
 

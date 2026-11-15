@@ -1,9 +1,11 @@
 // Print / "Save as PDF" with a visible export state. The printable report lives in views/Report.jsx.
 import { useEffect, useState } from 'react';
+import { FileDown, Printer } from 'lucide-react';
 import { useT } from '../i18n/I18nContext';
 import { useToast } from '../state/ToastContext';
 
-export default function ExportButton({ label, className = 'btn btn-secondary', icon = '🖨️' }) {
+export default function ExportButton({ label, className = 'btn btn-secondary', icon = 'print' }) {
+  const IconC = icon === 'pdf' ? FileDown : Printer;
   const t = useT();
   const toast = useToast();
   const [busy, setBusy] = useState(false);
@@ -21,7 +23,7 @@ export default function ExportButton({ label, className = 'btn btn-secondary', i
 
   return (
     <button type="button" className={className} onClick={() => setBusy(true)} disabled={busy} aria-live="polite">
-      {busy ? <span className="spinner" aria-hidden="true" /> : <span aria-hidden="true">{icon}</span>}
+      {busy ? <span className="spinner" aria-hidden="true" /> : <IconC size={16} aria-hidden="true" />}
       {busy ? t('export.preparing') : label}
     </button>
   );

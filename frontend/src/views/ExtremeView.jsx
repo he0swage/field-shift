@@ -23,13 +23,13 @@ export default function ExtremeView() {
           <SampleNotice data={m.data} />
           <ScenarioControls compact />
           <div className="indicators" aria-live="polite">
-            <IndicatorCard icon="🔥" tone="heat" title={t('ind.hot')} base={m.ind.hotDays} scen={m.sc.hot} unit={days} goal="lower">
+            <IndicatorCard icon="hot" tone="heat" title={t('ind.hot')} base={m.ind.hotDays} scen={m.sc.hot} unit={days} goal="lower">
               {t('ind.hot.d')}
             </IndicatorCard>
-            <IndicatorCard icon="❄️" tone="cold" title={t('ind.frost')} base={m.ind.frostDays} scen={m.sc.frost} unit={days} goal="lower">
+            <IndicatorCard icon="frost" tone="cold" title={t('ind.frost')} base={m.ind.frostDays} scen={m.sc.frost} unit={days} goal="lower">
               {t('ind.frost.d')}
             </IndicatorCard>
-            <IndicatorCard icon="⛈️" tone="rain" title={t('ind.extreme')} base={m.ind.extremeRainDays} scen={m.sc.extreme} unit={days} goal="lower">
+            <IndicatorCard icon="extreme" tone="rain" title={t('ind.extreme')} base={m.ind.extremeRainDays} scen={m.sc.extreme} unit={days} goal="lower">
               {t('ind.extreme.d')}
             </IndicatorCard>
           </div>

@@ -1,4 +1,5 @@
 // Empty state shown before the farmer runs the analysis (or while it is running).
+import { Sprout } from 'lucide-react';
 import { useT } from '../i18n/I18nContext';
 import { useNav } from '../state/NavContext';
 import AnalysisRunner from './AnalysisRunner';
@@ -9,7 +10,7 @@ export default function NeedsAnalysis() {
   const { go } = useNav();
   return (
     <div className="empty">
-      <div className="empty-icon" aria-hidden="true">🌱</div>
+      <div className="empty-icon" aria-hidden="true"><Sprout size={28} strokeWidth={1.5} /></div>
       <h3>{t('empty.title')}</h3>
       <p>{t('empty.text')}</p>
       <div style={{ maxWidth: 420, margin: '0 auto', textAlign: 'start' }}>

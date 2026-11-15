@@ -1,6 +1,8 @@
 // UI strings. Missing keys fall back to English. {placeholders} are filled by t(key, vars).
 // Crop names, fertilizer names and agronomic risk notes come from the data/API and stay in English for now.
 const en = {
+  'prio.subAuto': 'Move any slider — the other two adjust so the total always stays at 100.', 'prio.totalAuto': 'Total 100 / 100',
+  'banner.liveShort': 'Live regional data', 'banner.sampleShort': 'Sample data',
 
   // auth + theme
   'auth.title': 'Welcome back', 'auth.sub': 'Sign in to plan your next three seasons.',
@@ -238,6 +240,8 @@ const en = {
 };
 
 const fr = {
+  'prio.subAuto': 'Déplacez un curseur : les deux autres s’ajustent pour que le total reste à 100.', 'prio.totalAuto': 'Total 100 / 100',
+  'banner.liveShort': 'Données régionales en direct', 'banner.sampleShort': 'Données d’exemple',
 
   'auth.title': 'Bon retour', 'auth.sub': 'Connectez-vous pour préparer vos trois prochaines saisons.',
   'auth.artText': 'Intelligence climatique, science des sols et rotations classées par IA pour votre ferme.',
@@ -445,6 +449,8 @@ const fr = {
 };
 
 const ar = {
+  'prio.subAuto': 'حرّك أي مؤشر — يتعدّل الآخران ليبقى المجموع 100 دائمًا.', 'prio.totalAuto': 'المجموع 100 / 100',
+  'banner.liveShort': 'بيانات إقليمية مباشرة', 'banner.sampleShort': 'بيانات تجريبية',
 
   'auth.title': 'مرحبًا بعودتك', 'auth.sub': 'سجّل الدخول لتخطيط مواسمك الثلاثة القادمة.',
   'auth.artText': 'ذكاء مناخي وعلوم التربة ودورات زراعية مرتّبة بالذكاء الاصطناعي لمزرعتك.',

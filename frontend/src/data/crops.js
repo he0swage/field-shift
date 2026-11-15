@@ -1,6 +1,5 @@
 // Crop catalogue and families (the 6 families of the custom-crop form).
 export const FAMILIES = ['legume', 'cereal', 'oilseed', 'forage', 'root', 'fallow'];
-export const FAMILY_ICON = { legume: '🥜', cereal: '🌾', oilseed: '🌻', forage: '🌿', root: '🧅', fallow: '🟫' };
 
 export const BASE_CROPS = [
   { id: 'durum', name: 'Durum wheat', family: 'cereal' },

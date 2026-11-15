@@ -5,6 +5,7 @@ import { useFarm } from '../state/FarmContext';
 import { useClimateModel } from '../hooks/useClimateModel';
 import { monthlyInsight } from '../utils/insights';
 import { signed } from '../utils/format';
+import Icon from '../components/icons';
 import { AiBadge, Loading, PageHead, PageNav, RegionStrip, SampleNotice } from '../components/ui';
 import ScenarioControls from '../components/climate/ScenarioControls';
 import MonthlyBarsChart from '../components/charts/MonthlyBarsChart';
@@ -69,7 +70,7 @@ export default function MonthlyView() {
             <div className="confidence">
               <b>{t('monthly.confidence')}</b>
               <span className={`badge badge-lg ${SIG_TONE[m.trend.sig]}`}>
-                {m.trend.sig === 'clear' ? '✓ ' : ''}{t(`conf.${m.trend.sig}`)}
+                {t(`conf.${m.trend.sig}`)}
               </span>
               <span className="hint" style={{ margin: 0 }} dir="ltr">
                 Mann–Kendall p = {m.trend.pMk.toFixed(3)} · OLS p = {m.trend.pOls.toFixed(3)}
@@ -83,7 +84,7 @@ export default function MonthlyView() {
               <p aria-live="polite">{monthlyInsight(t, months, m)}</p>
             </div>
             <div className="et-card">
-              <h3><span aria-hidden="true">💨</span> {t('et.title')}</h3>
+              <h3><Icon name="et" /> {t('et.title')}</h3>
               <div className="et-value num" dir="ltr">{m.sc.et > 0 ? '+' : ''}{m.sc.et}%</div>
               <div className="et-meter" aria-hidden="true"><i style={{ width: `${Math.min(100, Math.max(0, m.sc.et) * 5)}%` }} /></div>
               <p className="hint" style={{ margin: 0 }}>{t('et.text')}</p>

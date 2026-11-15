@@ -30,7 +30,7 @@ export default function ClimateView() {
           <ScenarioControls />
 
           <div className="indicators" aria-live="polite">
-            <IndicatorCard icon="🌧️" tone="rain" title={t('ind.rainTrend')} base={m.trend.mean} scen={m.sc.rain}
+            <IndicatorCard icon="rain" tone="rain" title={t('ind.rainTrend')} base={m.trend.mean} scen={m.sc.rain}
               unit={`mm/${t('unit.yr')}`} goal="higher"
               extra={(
                 <p className="ind-extra">
@@ -40,7 +40,7 @@ export default function ClimateView() {
               )}>
               {t('ind.rainTrend.d')}
             </IndicatorCard>
-            <IndicatorCard icon="🏜️" tone="dry" title={t('ind.dry')} base={m.ind.longestDrySpell} scen={m.sc.dry}
+            <IndicatorCard icon="dry" tone="dry" title={t('ind.dry')} base={m.ind.longestDrySpell} scen={m.sc.dry}
               unit={t('unit.days')} goal="lower">
               {t('ind.dry.d')}
             </IndicatorCard>
