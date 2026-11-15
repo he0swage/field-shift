@@ -1,9 +1,20 @@
 /* =====================================================================
    Precision Crop Rotation Advisor — design system
-   Olive · cream · sand palette. Serif headings (Fraunces) + clean sans body (Inter).
+   Olive · cream · sand palette. Poppins (English / French) · Montserrat Arabic (Arabic).
    Matte surfaces, 1px borders, soft warm shadows, paper grain. Spacing on an 8px grid.
    Every text colour ≥ 4.5:1 on its background. Logical properties → Arabic mirrors.
    ===================================================================== */
+
+/* Arabic font: uses Montserrat Arabic if installed or if its files are in frontend/public/fonts/
+   (MontserratArabic-Regular/Medium/SemiBold/Bold .woff2 or .ttf); otherwise Noto Sans Arabic. */
+@font-face { font-family: 'Montserrat Arabic'; font-weight: 400; font-style: normal; font-display: swap;
+  src: local('Montserrat Arabic Regular'), local('MontserratArabic-Regular'), url('/fonts/MontserratArabic-Regular.woff2') format('woff2'), url('/fonts/MontserratArabic-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Montserrat Arabic'; font-weight: 500; font-style: normal; font-display: swap;
+  src: local('Montserrat Arabic Medium'), local('MontserratArabic-Medium'), url('/fonts/MontserratArabic-Medium.woff2') format('woff2'), url('/fonts/MontserratArabic-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Montserrat Arabic'; font-weight: 600; font-style: normal; font-display: swap;
+  src: local('Montserrat Arabic SemiBold'), local('MontserratArabic-SemiBold'), url('/fonts/MontserratArabic-SemiBold.woff2') format('woff2'), url('/fonts/MontserratArabic-SemiBold.ttf') format('truetype'); }
+@font-face { font-family: 'Montserrat Arabic'; font-weight: 700; font-style: normal; font-display: swap;
+  src: local('Montserrat Arabic Bold'), local('MontserratArabic-Bold'), url('/fonts/MontserratArabic-Bold.woff2') format('woff2'), url('/fonts/MontserratArabic-Bold.ttf') format('truetype'); }
 
 :root {
   color-scheme: light;
@@ -73,8 +84,8 @@
   --fs-body: 16px;
   --fs-small: 14px;
   --fs-label: 12px;
-  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* spacing (8px grid) */
   --s1: 8px; --s2: 16px; --s3: 24px; --s4: 32px; --s5: 40px; --s6: 48px; --s8: 64px; --s10: 80px; --s12: 96px; --s15: 120px;
@@ -126,7 +137,7 @@
   --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 14px 44px -10px rgba(0, 0, 0, .55);
   --shadow-pop: 0 24px 60px -12px rgba(0, 0, 0, .7);
 }
-:root[lang="ar"] { --font: 'Noto Sans Arabic', 'Inter', system-ui, sans-serif; --font-display: 'Noto Sans Arabic', serif; }
+:root[lang="ar"] { --font: 'Montserrat Arabic', 'Noto Sans Arabic', system-ui, sans-serif; --font-display: 'Montserrat Arabic', 'Noto Sans Arabic', system-ui, sans-serif; }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -134,8 +145,8 @@ html, body { margin: 0; }
 body { background: var(--page) var(--grain); color: var(--ink); font: var(--fs-body)/1.6 var(--font); -webkit-font-smoothing: antialiased; }
 :root[data-theme="dark"] body { background-blend-mode: soft-light; }
 h1, h2, h3, h4 { margin: 0; line-height: 1.15; font-weight: 500; }
-h1, h2 { font-family: var(--font-display); letter-spacing: -.015em; }
-h3 { font-size: var(--fs-h3); font-family: var(--font-display); font-weight: 500; }
+h1, h2 { font-family: var(--font-display); letter-spacing: -.02em; font-weight: 600; }
+h3 { font-size: var(--fs-h3); font-family: var(--font-display); font-weight: 600; letter-spacing: -.01em; }
 h4 { font-size: var(--fs-body); font-weight: 600; }
 :root[lang="ar"] h1, :root[lang="ar"] h2, :root[lang="ar"] h3 { letter-spacing: 0; font-weight: 600; line-height: 1.35; }
 p { margin: 0; }
@@ -146,7 +157,7 @@ abbr[title] { text-decoration: underline dotted; cursor: help; }
 svg.lucide { flex: none; }
 
 /* ---------- Type helpers ---------- */
-.display { font-family: var(--font-display); font-size: var(--fs-display); line-height: 1.04; letter-spacing: -.025em; font-weight: 500; }
+.display { font-family: var(--font-display); font-size: var(--fs-display); line-height: 1.08; letter-spacing: -.03em; font-weight: 600; }
 .h1 { font-size: var(--fs-h1); }
 .h2 { font-size: var(--fs-h2); }
 .label, .eyebrow { font-size: var(--fs-label); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
