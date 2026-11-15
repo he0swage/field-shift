@@ -4,6 +4,7 @@
 // 3. "From your field to a three-year plan" — the 4 stages
 import { useCallback, useRef, useState } from 'react';
 import { ArrowDown, Check } from 'lucide-react';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { useT } from '../i18n/I18nContext';
 import { useFarm } from '../state/FarmContext';
 import { useAnalysis } from '../state/AnalysisContext';
@@ -65,17 +66,39 @@ export default function RegionView() {
   const labelFor = useCallback(r => t(`region.${r.id}.name`), [t]);
   const selected = { id: state.region, ...REGIONS[state.region] };
 
+  // Scroll animations: scroll progress + subtle hero parallax
+  const { scrollY, scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 28, restDelta: 0.001 });
+  const heroCopyY = useTransform(scrollY, [0, 400], [0, -22]);
+  const heroCopyOpacity = useTransform(scrollY, [0, 360], [1, 0.75]);
+  const heroPlanY = useTransform(scrollY, [0, 400], [0, -12]);
+
   return (
     <>
+      {/* 1. Reading scroll progress bar along top edge */}
+      {!reduced && <motion.div className="landing-scroll-progress" style={{ scaleX }} aria-hidden="true" />}
+
       <section className="region-hero" aria-labelledby="region-hero-title">
         <Contours />
         <div className="wrap region-hero-grid">
-          <div className="region-hero-copy">
+          <motion.div
+            className="region-hero-copy"
+            style={reduced ? {} : { y: heroCopyY, opacity: heroCopyOpacity }}
+            initial={reduced ? false : { opacity: 0, y: 22 }}
+            animate={reduced ? false : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          >
             <span className="label">{t('eyebrow.setup', { n: 1 })}</span>
             <h1 id="region-hero-title" ref={titleRef} tabIndex={-1} className="display">{t('home.title')}</h1>
             <p className="region-hero-sub">{t('home.sub')}</p>
-          </div>
-          <figure className="plan">
+          </motion.div>
+          <motion.figure
+            className="plan"
+            style={reduced ? {} : { y: heroPlanY }}
+            initial={reduced ? false : { opacity: 0, scale: 0.96, y: 20 }}
+            animate={reduced ? false : { opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+          >
             <figcaption className="plan-caption">
               <span className="label">{t('plan.kicker')}</span>
               <span className="plan-title">{usePlan ? t('plan.recommended') : t('plan.usual')}</span>
@@ -83,7 +106,7 @@ export default function RegionView() {
             <div className="plan-scene">
               <LivingFarmLandscape years={planYears} />
             </div>
-          </figure>
+          </motion.figure>
         </div>
 
         <div className="wrap region-hero-bottom">
@@ -95,21 +118,39 @@ export default function RegionView() {
       </section>
 
       <section ref={sectionRef} id="current-regions" className="wrap current-regions" aria-labelledby="region-title">
-        <header className="page-head">
+        <motion.header
+          className="page-head"
+          initial={reduced ? false : { opacity: 0, y: 26 }}
+          whileInView={reduced ? false : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
           <span className="eyebrow">{t('eyebrow.setup', { n: 1 })}</span>
           <h2 id="region-title" tabIndex={-1}>{t('regionSearch.title')}</h2>
           <p className="sub">{t('region.sub')}</p>
-        </header>
+        </motion.header>
 
         <div className="region-layout">
           <div className="region-list" role="radiogroup" aria-label={t('region.listLabel')}>
             {GLOBE_REGIONS.map((r, i) => {
               const on = r.id === state.region;
               return (
-                <div key={r.id} ref={el => { cardRefs.current[r.id] = el; }}
-                  className={`region-card${on ? ' selected' : ''}`} role="radio" aria-checked={on}
-                  tabIndex={on ? 0 : -1} onClick={() => choose(r.id)} onKeyDown={e => onKey(e, i)}
-                  onKeyUp={e => { if (e.key === ' ' || e.key === 'Enter') choose(r.id); }}>
+                <motion.div
+                  key={r.id}
+                  ref={el => { cardRefs.current[r.id] = el; }}
+                  className={`region-card${on ? ' selected' : ''}`}
+                  role="radio"
+                  aria-checked={on}
+                  tabIndex={on ? 0 : -1}
+                  onClick={() => choose(r.id)}
+                  onKeyDown={e => onKey(e, i)}
+                  onKeyUp={e => { if (e.key === ' ' || e.key === 'Enter') choose(r.id); }}
+                  initial={reduced ? false : { opacity: 0, y: 24, scale: 0.98 }}
+                  whileInView={reduced ? false : { opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={reduced ? undefined : { y: -3, transition: { duration: 0.2 } }}
+                >
                   <div className="rc-top">
                     <div>
                       <h3>{t(`region.${r.id}.name`)}</h3>
@@ -121,13 +162,19 @@ export default function RegionView() {
                     <span className="label">{t('region.rain')}</span>
                     <span className="value">{r.est.includes('rain') ? '≈' : ''}<CountUp value={r.rain} /><small>mm/{t('unit.yr')}</small></span>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
             <p className="hint">{t('region.more')}</p>
           </div>
 
-          <div className="globe-panel">
+          <motion.div
+            className="globe-panel"
+            initial={reduced ? false : { opacity: 0, scale: 0.95, y: 30 }}
+            whileInView={reduced ? false : { opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
             <Globe regions={GLOBE_REGIONS} selectedId={state.region} focusTick={focusTick} onSelect={choose} labelFor={labelFor}>
               <div className="globe-info" aria-live="polite" key={selected.id}>
                 <span className="label">{t(`country.${selected.countryCode}`)}</span>
@@ -137,7 +184,7 @@ export default function RegionView() {
                 {selected.est.includes('rain') && <p className="gi-est">{t('region.estNote')}</p>}
               </div>
             </Globe>
-          </div>
+          </motion.div>
         </div>
 
       </section>

@@ -1,3 +1,16 @@
+/* Top scroll progress indicator */
+.landing-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--leaf) 50%, var(--accent) 100%);
+  transform-origin: 0%;
+  z-index: 200;
+  pointer-events: none;
+}
+
 /* Region hero: title, description, 3-year plan; search bar + half globe at the bottom */
 .region-hero { position: relative; overflow: hidden; display: flex; flex-direction: column; border-bottom: 1px solid var(--line); }
 .region-hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: var(--s8); align-items: center; padding-block: var(--s8) var(--s4); }
