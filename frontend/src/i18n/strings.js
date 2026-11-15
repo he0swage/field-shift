@@ -29,7 +29,7 @@ const en = {
   'hero.p2': 'ISRIC soil science and a 3-year soil nitrogen simulation',
   'hero.p3': 'Hybrid AI (rules + KNN + Random Forest) ranks your best rotations',
   'hero.ctaText': 'Nine short steps. About 5 minutes. Your answers are saved as you go.',
-  'hero.cta': 'Start Your Journey',
+  'hero.cta': 'Start Your Journey', 'hero.dragHint': 'Drag the cloud to water the field',
 
   // region
   'region.title': 'Select Your Agricultural Region',
@@ -238,7 +238,7 @@ const fr = {
   'hero.p2': 'Science des sols ISRIC et simulation de l’azote sur 3 ans',
   'hero.p3': 'Une IA hybride (règles + KNN + Random Forest) classe vos meilleures rotations',
   'hero.ctaText': 'Neuf étapes courtes. Environ 5 minutes. Vos réponses sont enregistrées au fur et à mesure.',
-  'hero.cta': 'Commencer le parcours',
+  'hero.cta': 'Commencer le parcours', 'hero.dragHint': 'Glissez le nuage pour arroser le champ',
   'region.title': 'Choisissez votre région agricole',
   'region.sub': 'Indiquez où se trouve votre ferme. Cliquez sur une carte ou un marqueur du globe : le globe s’envole vers votre région.',
   'region.listLabel': 'Régions proposées', 'region.coords': 'Coordonnées', 'region.rain': 'Pluie annuelle moyenne',
@@ -424,7 +424,7 @@ const ar = {
   'hero.p2': 'علوم التربة من ISRIC ومحاكاة نيتروجين التربة لمدة 3 سنوات',
   'hero.p3': 'ذكاء اصطناعي هجين (قواعد + KNN + Random Forest) يرتّب أفضل دوراتك',
   'hero.ctaText': 'تسع خطوات قصيرة. حوالي 5 دقائق. تُحفظ إجاباتك تلقائيًا.',
-  'hero.cta': 'ابدأ رحلتك',
+  'hero.cta': 'ابدأ رحلتك', 'hero.dragHint': 'اسحب السحابة لسقي الحقل',
   'region.title': 'اختر منطقتك الزراعية',
   'region.sub': 'حدّد موقع مزرعتك. انقر على بطاقة أو على علامة في الكرة الأرضية وستنتقل الكرة إلى منطقتك.',
   'region.listLabel': 'المناطق المقترحة', 'region.coords': 'الإحداثيات', 'region.rain': 'متوسط الأمطار السنوية',
