@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Field Shift · From space to soil</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- La scene fait toujours 1600 x 900 ; script.js la met a l'echelle de la fenetre -->
+  <div class="stage" id="stage">
+
+    <!-- ================= SLIDES 1 a 3 : la sequence de zoom ================= -->
+    <div class="scene" id="scene">
+
+      <!-- Calque 1 : la Terre vue de l'espace -->
+      <div class="layer layer-space" id="layerSpace">
+        <div class="stars"></div>
+        <img class="earth" src="img/earth.webp" alt="Earth seen from space, centred on Africa and the Mediterranean">
+      </div>
+
+      <!-- Calque 2 : la region (nord de l'Algerie) -->
+      <div class="layer layer-region" id="layerRegion">
+        <img src="img/region.jpg" alt="Relief map of northern Algeria">
+        <div class="inner">
+          <svg class="map-lines" viewBox="0 0 1600 900" id="mapSvg" aria-hidden="true"></svg>
+          <div class="place" id="placeSetif"><span class="ring"></span><span class="dot"></span><b>Sétif</b></div>
+          <div class="place" id="placeTiaret"><span class="dot"></span><b>Tiaret</b></div>
+          <div class="place minor" id="placeAlgiers"><span class="dot"></span><b>Algiers</b></div>
+          <div class="sea-label">Mediterranean Sea</div>
+        </div>
+      </div>
+
+      <!-- Calque 3 : les champs vus du ciel -->
+      <div class="layer layer-fields" id="layerFields">
+        <img src="img/fields.jpg" alt="Farm fields seen from above">
+      </div>
+
+      <!-- Textes de la slide 1 -->
+      <div class="hud hud-0">
+        <p class="label light">NASA Space Apps Challenge 2026</p>
+        <h1 class="title">Field<br>Shift</h1>
+        <p class="lead light">From space to soil: NASA data<br>in a farmer's hand.</p>
+        <div class="strips small" aria-hidden="true"><i></i><i></i><i></i></div>
+        <p class="credit">Earth image: NASA Blue Marble</p>
+      </div>
+
+      <!-- Textes de la slide 2 : donnees de la region -->
+      <div class="hud hud-1">
+        <div class="card region-card">
+          <p class="label">Zooming in · <span data-bind="region.area"></span></p>
+          <h2 data-bind="region.name"></h2>
+          <div class="stat-row">
+            <div class="stat">
+              <span class="big warn"><span data-bind="region.rainfallChangePct"></span>%</span>
+              <span class="cap">rainfall in 20 years</span>
+            </div>
+            <svg class="spark" id="spark" viewBox="0 0 220 70" aria-hidden="true"></svg>
+          </div>
+          <div class="stat-row two">
+            <div class="stat">
+              <span class="big"><span data-bind="region.hotDays.0"></span> → <span
+                  data-bind="region.hotDays.1"></span></span>
+              <span class="cap">very hot days per year</span>
+            </div>
+            <div class="stat">
+              <span class="big">pH <span data-bind="region.soil.ph"></span></span>
+              <span class="cap">organic carbon: <span data-bind="region.soil.carbon"></span></span>
+            </div>
+          </div>
+          <div class="soil">
+            <div class="soil-bar" id="soilBar"></div>
+            <div class="soil-legend" id="soilLegend"></div>
+          </div>
+          <p class="source">NASA POWER · ISRIC SoilGrids (250 m) · example values</p>
+        </div>
+      </div>
+
+      <!-- Slide 3 : le telephone du fermier -->
+      <div class="hud hud-2">
+        <div class="card phone-text">
+          <p class="label">Zooming in · one farm</p>
+          <h2>All of it lands on one farmer's phone.</h2>
+          <ul class="ticks">
+            <li><b>My priorities</b>: save water, protect soil, yield</li>
+            <li><b>My crops</b> and how much water each one needs</li>
+            <li><b>What to plant next</b>, ranked and explained</li>
+          </ul>
+          <p class="source">Plain words · large buttons · Arabic, French, English</p>
+        </div>
+
+      </div>
+
+      <!-- Slide 4 : la meme app sur un PC -->
+      <div class="hud hud-3">
+        <div class="card pc-text">
+          <p class="label">Same app · bigger screen</p>
+          <h2>From the phone in the field to the PC in the office.</h2>
+          <ul class="ticks">
+            <li><b>The farmer</b> checks a rotation on the phone</li>
+            <li><b>The advisor</b> opens the full view on a PC</li>
+            <li><b>One printable page</b> to discuss together</li>
+          </ul>
+          <p class="source">One web app · no install · no account</p>
+        </div>
+      </div>
+
+      <!-- L'appareil : telephone dans la main (slide 3) qui devient un PC (slide 4) -->
+      <div class="rig">
+        <svg class="hand back" viewBox="0 0 520 900" aria-hidden="true">
+          <path class="sleeve" d="M150 900 L170 760 Q260 730 372 762 L400 900 Z" />
+          <path class="skin"
+            d="M120 470 Q96 560 150 690 Q170 760 172 790 L372 790 Q380 720 420 660 Q452 600 440 500 L430 380 L120 400 Z" />
+        </svg>
+
+        <div class="laptop-base"></div>
+
+        <div class="device">
+          <div class="notch"></div>
+
+          <!-- ecran du telephone -->
+          <div class="screen">
+            <header class="app-head">
+              <div>
+                <strong>Field Shift</strong>
+                <span>My field · Sétif</span>
+              </div>
+              <div class="strips tiny" aria-hidden="true"><i></i><i></i><i></i></div>
+            </header>
+
+            <section class="p-card prio">
+              <p class="p-label">Your priorities</p>
+              <div class="sliders sm" data-sliders></div>
+            </section>
+
+            <section class="p-card">
+              <p class="p-label">My crops · water need</p>
+              <div id="phoneCrops"></div>
+            </section>
+
+            <section class="p-card best">
+              <p class="p-label">Best rotation for you <b id="phoneScore"></b></p>
+              <div class="rot" id="phoneRot"></div>
+            </section>
+
+            <p class="p-foot">Example values · supports local expertise</p>
+          </div>
+
+          <!-- ecran du PC -->
+          <div class="desk">
+            <header class="d-bar">
+              <strong>Field Shift</strong>
+              <nav><b>Journey</b><span>Compare</span><span>Region map</span><span>About</span></nav>
+              <span class="d-btn">Print summary</span>
+            </header>
+            <div class="d-body">
+              <aside>
+                <section class="p-card">
+                  <p class="p-label">Region</p>
+                  <strong class="d-region" data-bind="region.name"></strong>
+                  <svg class="d-chart" id="deskChart" viewBox="0 0 200 50" aria-hidden="true"></svg>
+                  <p class="d-note">Rainfall <span data-bind="region.rainfallChangePct"></span>% in 20 years</p>
+                </section>
+                <section class="p-card prio">
+                  <p class="p-label">Your priorities</p>
+                  <div class="sliders sm" data-sliders></div>
+                </section>
+              </aside>
+              <main>
+                <p class="p-label">Best rotations for you</p>
+                <div id="deskRanks"></div>
+                <p class="d-note">Example values · this tool supports local expertise, it does not replace it.</p>
+              </main>
+            </div>
+          </div>
+        </div>
+
+        <svg class="hand front" viewBox="0 0 520 900" aria-hidden="true">
+          <g class="skin">
+            <rect x="66" y="430" width="64" height="46" rx="23" />
+            <rect x="58" y="484" width="72" height="48" rx="24" />
+            <rect x="62" y="540" width="68" height="46" rx="23" />
+            <rect x="74" y="594" width="56" height="42" rx="21" />
+            <rect x="410" y="486" width="52" height="172" rx="26" transform="rotate(7 436 572)" />
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ================= SLIDES 5 a 10 : le pitch ================= -->
+
+    <section class="slide" data-slide="4">
+      <p class="label">The problem</p>
+      <h2 class="h-xl">Less rain. More heat. Tired soil.</h2>
+      <div class="cols">
+        <div class="chart-box">
+          <p class="chart-title">Rainfall, mm per year · <span data-bind="region.years.0"></span> to <span
+              data-bind="region.years.1"></span></p>
+          <svg id="rainChart" viewBox="0 0 860 380" role="img"
+            aria-label="Yearly rainfall falling over twenty years"></svg>
+          <p class="source">Source: NASA POWER · example values, to be confirmed</p>
+        </div>
+        <div class="side">
+          <div class="fact"><span class="big warn"><span
+                data-bind="region.rainfallChangePct"></span>%</span><span>rainfall in 20 years</span></div>
+          <div class="fact"><span class="big">×2</span><span>very hot days per year</span></div>
+          <div class="fact"><span class="big">3 of 3</span><span>years of cereal: the same crop, again and again</span>
+          </div>
+          <p class="body soft">The evidence exists in NASA data and SoilGrids, in formats a farmer cannot use.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="5">
+      <p class="label">What Field Shift does</p>
+      <h2 class="h-xl">Three steps, under three minutes.</h2>
+      <div class="steps">
+        <article>
+          <span class="num">1</span>
+          <h3>Set your priorities</h3>
+          <div class="sliders" data-sliders></div>
+          <p>Pick a region and enter the rotation you grow today.</p>
+        </article>
+        <article>
+          <span class="num">2</span>
+          <h3>See what is changing</h3>
+          <svg class="mini" id="miniChart" viewBox="0 0 300 96" aria-hidden="true"></svg>
+          <p>Rain, hot days, frost and dry spells over 20 years, one plain sentence each.</p>
+        </article>
+        <article>
+          <span class="num">3</span>
+          <h3>Compare rotations</h3>
+          <div class="rot big" id="stepRot"></div>
+          <p>Your usual rotation is always scored next to the alternatives.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="6">
+      <p class="label">The result</p>
+      <h2 class="h-xl">Your usual rotation against rank 1.</h2>
+      <div class="compare">
+        <div class="cmp-col" id="cmpUsual"></div>
+        <div class="cmp-bars" id="cmpBars"></div>
+        <div class="cmp-col" id="cmpRank1"></div>
+      </div>
+      <p class="tradeoff"><b>What changes:</b> a legume saves water and rebuilds the soil. <b>Trade-off:</b> yield stays
+        about the same, slightly lower. <span class="soft">Example values.</span></p>
+    </section>
+
+    <section class="slide deep" data-slide="7">
+      <p class="label">Why you can trust it</p>
+      <h2 class="h-xl">Open data, farmer rules, honest limits.</h2>
+      <div class="pillars">
+        <article>
+          <h3>NASA observations</h3>
+          <p>NASA POWER for rain and temperature, ISRIC SoilGrids for soil. Same data for every region.</p>
+        </article>
+        <article>
+          <h3>Agronomist rules</h3>
+          <p>Crop table and rotation rules written and checked by our agronomist, not guessed by a model.</p>
+        </article>
+        <article>
+          <h3>Every result explained</h3>
+          <p>Why, evidence, benefits, information gaps, risks. Five fields on every card.</p>
+        </article>
+        <article>
+          <h3>Uncertainty shown</h3>
+          <p>Confidence badges, two trend tests, and "no clear trend" when the data does not agree.</p>
+        </article>
+      </div>
+      <div class="flow" aria-label="How the data flows">
+        <span>NASA POWER + SoilGrids</span><b>→</b>
+        <span>Climate indicators</span><b>→</b>
+        <span>Agronomist rules</span><b>→</b>
+        <span>Scoring engine</span><b>→</b>
+        <span>Farmer's phone</span>
+      </div>
+    </section>
+
+    <section class="slide demo" data-slide="8">
+      <div class="strips huge" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="label">Live demo</p>
+      <h2 class="h-xxl">Move a slider.<br>The ranking changes.</h2>
+      <p class="lead soft">Region → priorities → climate → ranked rotations → usual vs rank 1</p>
+    </section>
+
+    <section class="slide" data-slide="9">
+      <p class="label">Limits and next steps</p>
+      <h2 class="h-xl">Built to grow region by region.</h2>
+      <div class="cols even">
+        <div>
+          <h3>What it does not do</h3>
+          <ul class="ticks minus">
+            <li>No yield prediction: there is no yield data</li>
+            <li>Soil is a 250 m estimate, not a field test</li>
+            <li>Risks are marked "needs local review"</li>
+          </ul>
+        </div>
+        <div>
+          <h3>How it scales</h3>
+          <ul class="ticks">
+            <li>A new region is one folder of data files</li>
+            <li>A local agronomist validates the crop table</li>
+            <li>English first, then French and Arabic</li>
+          </ul>
+        </div>
+      </div>
+      <p class="closing">This tool supports local expertise, it does not replace it.</p>
+      <p class="team">Alaa · Achref · Younes · Mehdi · Nazim · Aniss</p>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="nav" aria-label="Slides">
+      <div class="dots" id="dots"></div>
+      <span class="count" id="count"></span>
+    </nav>
+  </div>
+
+  <p class="hint" id="hint">→ or click to advance · ← back · F fullscreen</p>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
