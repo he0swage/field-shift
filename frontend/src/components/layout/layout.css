@@ -1,7 +1,7 @@
 /* ---------- Top bar ---------- */
 .topbar { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--page) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-.topbar-offset { height: 56px; }
-@media (max-width: 700px) { .topbar-offset { height: 24px; } }
+.topbar-offset { display: none; }
+
 .topbar-row { height: 82px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--s2); padding: 0 clamp(16px, 3vw, 40px); }
 .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; justify-self: start; }
 .logo { width: 52px; height: 52px; border-radius: 10px; display: grid; place-items: center; background: var(--deep); color: var(--on-deep); flex: none; }

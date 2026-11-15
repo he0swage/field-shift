@@ -1,5 +1,5 @@
 /* 4-stage path */
-.home-path { padding-block: var(--s12); }
+.home-path { padding-block: var(--s8) var(--s4); }
 .home-path .h1 { font-family: var(--font-display); margin-top: var(--s1); max-width: 20ch; }
 .path { list-style: none; padding: 0; margin: var(--s6) 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s3); position: relative; }
 .path::before { content: ''; position: absolute; top: 20px; inset-inline: 20px; height: 1px; background: var(--line-strong); }

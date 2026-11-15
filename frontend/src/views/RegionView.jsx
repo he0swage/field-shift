@@ -1,6 +1,7 @@
-// Region page (start of the journey). Top: title, description, the 3-year plan and an arrow button
-// that scrolls to "Current regions". Then "From your field to a three-year plan" (the 4 stages),
-// then "Current regions" — region cards + the interactive globe.
+// Region page (start of the journey), in this order:
+// 1. title, description, the 3-year plan and an arrow button that scrolls to "Current regions"
+// 2. "Current regions" — region cards + the interactive globe
+// 3. "From your field to a three-year plan" — the 4 stages
 import { useCallback, useRef, useState } from 'react';
 import { ArrowDown, Check } from 'lucide-react';
 import { useT } from '../i18n/I18nContext';
@@ -93,8 +94,6 @@ export default function RegionView() {
         </div>
       </section>
 
-      <JourneyPath onStart={goToRegions} />
-
       <section ref={sectionRef} id="current-regions" className="wrap current-regions" aria-labelledby="region-title">
         <header className="page-head">
           <span className="eyebrow">{t('eyebrow.setup', { n: 1 })}</span>
@@ -141,8 +140,11 @@ export default function RegionView() {
           </div>
         </div>
 
-        <PageNav next="strategy" />
       </section>
+
+      <JourneyPath onStart={goToRegions} />
+
+      <div className="wrap region-pagenav"><PageNav next="strategy" /></div>
     </>
   );
 }
