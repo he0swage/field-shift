@@ -11,6 +11,8 @@ const DEFAULT_ORIGINS = [
   "http://127.0.0.1:4173",
   "http://localhost:5500",
   "http://127.0.0.1:5500",
+  "http://localhost:5001",
+  "http://127.0.0.1:5001",
 ];
 
 const allowedOrigins = (process.env.FRONTEND_ORIGINS || "")

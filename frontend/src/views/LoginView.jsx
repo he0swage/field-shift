@@ -1,5 +1,6 @@
 // Login page (shown before the app). After signing in, the farmer lands on the landing page (#/home).
-import { useId, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
+import { checkHealth } from '../api/client';
 import { useT } from '../i18n/I18nContext';
 import { useAuth } from '../state/AuthContext';
 import { LangMenu } from '../components/layout/Header';
@@ -20,6 +21,14 @@ export default function LoginView() {
   const [touched, setTouched] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
+  const [server, setServer] = useState('checking'); // checking | online | offline
+
+  const ping = () => { setServer('checking'); checkHealth().then(ok => setServer(ok ? 'online' : 'offline')); };
+  useEffect(() => {
+    ping();
+    const id = setInterval(() => checkHealth().then(ok => setServer(ok ? 'online' : 'offline')), 5000);
+    return () => clearInterval(id);
+  }, []);
 
   const errors = {
     email: !form.email.trim() ? 'auth.err.emailRequired' : !EMAIL_RE.test(form.email.trim()) ? 'auth.err.emailInvalid' : null,
@@ -42,6 +51,7 @@ export default function LoginView() {
       await signIn(form.email.trim(), form.password, form.remember);
     } catch (err) {
       setError(err.code || 'OFFLINE');
+      if (!err.code || err.code === 'OFFLINE') setServer('offline');
       setBusy(false);
     }
   };
@@ -76,6 +86,12 @@ export default function LoginView() {
           </div>
           <h1>{t('auth.title')}</h1>
           <p className="login-sub">{t('auth.sub')}</p>
+
+          <div className={`server-status ${server}`} role="status">
+            <span className="dot" aria-hidden="true" />
+            <span>{t(`auth.server.${server}`)}</span>
+            {server === 'offline' && <button type="button" className="btn-link" onClick={ping}>{t('auth.retry')}</button>}
+          </div>
 
           <div aria-live="assertive">
             {error && (

@@ -5,4 +5,11 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   base: './',
+  server: {
+    // npm run dev: /api calls are forwarded to the backend, so there is no CORS to configure
+    proxy: { '/api': { target: 'http://localhost:5001', changeOrigin: true } },
+  },
+  preview: {
+    proxy: { '/api': { target: 'http://localhost:5001', changeOrigin: true } },
+  },
 });

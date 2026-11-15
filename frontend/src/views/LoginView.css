@@ -36,3 +36,12 @@
 .login-guest { width: 100%; }
 .demo-box { margin-top: 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 16px; border-radius: 14px; border: 1px dashed var(--line-strong); background: var(--surface); font-size: 14px; }
 .demo-box p { color: var(--ink-soft); margin-top: 2px; }
+
+.server-status { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 16px; font-size: 14px; color: var(--ink-soft); }
+.server-status .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line-strong); flex: none; }
+.server-status.online .dot { background: var(--good-line, #8faf78); box-shadow: 0 0 0 4px var(--good-soft); }
+.server-status.online { color: var(--good); }
+.server-status.offline .dot { background: var(--bad-line, #b5523b); }
+.server-status.offline { color: var(--bad); }
+.server-status.checking .dot { animation: statusBlink 1s infinite; }
+@keyframes statusBlink { 50% { opacity: .2; } }

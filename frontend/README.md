@@ -73,17 +73,19 @@ Every text colour meets WCAG AA on its background.
 
 ## Connecting the API
 
-The frontend talks to the team backend (`backend/`, Express on port 5001):
+The frontend talks to the team backend (`backend/`, Express on port 5001). All calls go through
+`src/api/client.js`, which picks the API address:
 
-```bash
-cd backend && npm install && npm run dev      # terminal 1 → http://localhost:5001
-cd frontend && npm run dev                    # terminal 2 → http://localhost:5173
-```
+| How the site is opened | API used |
+|---|---|
+| `start.bat` → http://localhost:5001 (the backend serves `frontend/dist`) | same origin `/api/v1` |
+| `npm run dev` → :5173, or `npm run preview` → :4173 | `/api/v1`, forwarded to :5001 by the Vite proxy (`vite.config.js`) |
+| anything else, e.g. Go Live on :5500 | `VITE_API_BASE` from `.env.production` (`http://localhost:5001/api/v1`), allowed by CORS |
 
-- **API URL:** `VITE_API_BASE` is set in `.env.development` (for `npm run dev`) and in `.env.production` (for `npm run build`, Go Live and preview). Both point to `http://localhost:5001/api/v1`. For a deployment, change `.env.production` to the deployed backend URL, and add the frontend URL to `FRONTEND_ORIGINS` in `backend/.env` (CORS).
-- **Banner:** it pings `/health` every 30 s. It reads "LIVE REGIONAL DATA ACTIVE" only when the backend answers; otherwise it reads "SAMPLE DATA MODE".
-- **Fallbacks:** when the backend is not running, or has no data for a region (Kansas and Punjab today), each page uses the sample data and says why.
-- **Contract:** the routes, request bodies and responses are documented in `backend/README.md`. All requests go through `src/api/client.js`.
+- **Banner:** it pings `/health` and reads "LIVE REGIONAL DATA ACTIVE" only when the backend answers.
+- **Login page:** shows "Server online" or "Server offline".
+- **Fallbacks:** without the backend, the pages use the sample data and say why.
+- **Contract:** documented in `backend/README.md`.
 
 Region ids: `kansas` (38.50N, 98.00W), `setif` (36.15N, 5.38E), `punjab` (30.90N, 75.85E).
 

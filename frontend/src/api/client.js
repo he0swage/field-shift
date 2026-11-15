@@ -1,12 +1,16 @@
 // Data access layer — the ONLY place that talks to the backend (backend/src/server.js).
-// VITE_API_BASE is set in frontend/.env.development / .env.production (default http://localhost:5001/api/v1).
+// API address:
+//   - site served by the backend (http://localhost:5001) or by Vite (dev/preview proxy) → same-origin /api/v1
+//   - otherwise (e.g. Go Live on :5500) → VITE_API_BASE from frontend/.env.production
 // When the backend is not running, or has no data for a region, sample data is returned with
 // `sample: true` and a `fallbackReason` so the UI can say so.
 import { REGIONS } from '../data/regions';
 import { SAMPLE_CLIMATE } from '../data/sampleClimate';
 import { SAMPLE_RANKING } from '../data/sampleRanking';
 
-const API_BASE = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
+const ENV_BASE = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
+const SAME_ORIGIN = typeof window !== 'undefined' && ['5001', '5173', '4173'].includes(window.location.port);
+const API_BASE = SAME_ORIGIN ? '/api/v1' : ENV_BASE;
 const TIMEOUT = Number(import.meta.env.VITE_API_TIMEOUT_MS) || 6000;
 
 /** True when a backend URL is configured. Use checkHealth() to know if it actually answers. */
