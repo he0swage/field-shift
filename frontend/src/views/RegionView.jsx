@@ -12,7 +12,7 @@ import { useReducedMotion } from '../hooks/useReducedMotion';
 import { REGIONS, REGION_IDS, fmtCoord } from '../data/regions';
 import { PageNav } from '../components/ui';
 import Contours from '../components/Contours';
-import FieldScene from '../components/FieldScene';
+import LivingFarmLandscape from '../components/LivingFarmLandscape';
 import CountUp from '../components/CountUp';
 import Globe from '../components/globe/Globe';
 import JourneyPath from '../components/JourneyPath';
@@ -81,7 +81,7 @@ export default function RegionView() {
               <span className="plan-title">{usePlan ? t('plan.recommended') : t('plan.usual')}</span>
             </figcaption>
             <div className="plan-scene">
-              <FieldScene hint={t('hero.dragHint')} yearLabel={n => t('common.year', { n })} years={planYears} />
+              <LivingFarmLandscape years={planYears} />
             </div>
           </figure>
         </div>

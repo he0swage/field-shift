@@ -1,0 +1,345 @@
+/* LivingFarmLandscape.css
+ * Subtle, premium animated agricultural landscape for FieldShift hero section.
+ * Preserves the original illustration's composition, colors, and identity while
+ * bringing it to life with drifting clouds, morning sky atmosphere, and wind sway.
+ */
+
+.living-landscape {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1077 / 860;
+  border-radius: 22px;
+  overflow: hidden;
+  background-color: #f9f5e9;
+  box-shadow:
+    0 16px 38px -12px rgba(89, 95, 52, 0.22),
+    0 4px 14px -2px rgba(89, 95, 52, 0.08),
+    inset 0 0 0 1px rgba(89, 95, 52, 0.08);
+  isolation: isolate;
+  user-select: none;
+  contain: layout paint;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.living-landscape:hover {
+  box-shadow:
+    0 22px 48px -14px rgba(89, 95, 52, 0.28),
+    0 6px 18px -2px rgba(89, 95, 52, 0.12),
+    inset 0 0 0 1px rgba(89, 95, 52, 0.12);
+}
+
+/* Base SVG canvas stretching across full aspect ratio */
+.ll-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+/* Morning sky gradient background */
+.ll-sky-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48%;
+  background: linear-gradient(
+    180deg,
+    #94b2c4 0%,
+    #b3cfe0 30%,
+    #d8e8f0 62%,
+    #ebf3f7 84%,
+    #f9f5e9 100%
+  );
+  z-index: 1;
+}
+
+/* Morning atmospheric shimmer: extremely slow breathing light */
+.ll-atmosphere {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: radial-gradient(
+    ellipse 75% 65% at 55% 15%,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 248, 230, 0.18) 50%,
+    rgba(148, 178, 196, 0) 100%
+  );
+  mix-blend-mode: soft-light;
+  animation: llAtmospherePulse 14s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes llAtmospherePulse {
+  0% { opacity: 0.65; transform: scale(1); }
+  50% { opacity: 0.95; transform: scale(1.02); }
+  100% { opacity: 0.65; transform: scale(1); }
+}
+
+/* Sun ray shimmer angled across the morning sky */
+.ll-sunbeam {
+  position: absolute;
+  top: -20%;
+  left: 30%;
+  width: 140%;
+  height: 80%;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 252, 240, 0.08) 35%,
+    rgba(255, 252, 240, 0.18) 42%,
+    transparent 55%
+  );
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: llSunbeamDrift 20s ease-in-out infinite alternate;
+  z-index: 3;
+}
+
+@keyframes llSunbeamDrift {
+  0% { transform: translateX(-4%) translateY(0) rotate(-2deg); opacity: 0.5; }
+  100% { transform: translateX(4%) translateY(-2%) rotate(2deg); opacity: 0.85; }
+}
+
+/* Cloud Container: sits behind the landscape cutout */
+.ll-clouds-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  overflow: hidden;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* Cloud drift tracks */
+.ll-cloud-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  display: flex;
+  will-change: transform;
+}
+
+/* Tier 1: Distant high cirrus/cumulus clouds (slow, soft, high altitude) */
+.ll-cloud-tier-1 {
+  animation: llCloudDrift 68s linear infinite;
+  opacity: 0.78;
+  filter: drop-shadow(0 2px 6px rgba(148, 178, 196, 0.2));
+}
+
+/* Tier 2: Midground cumulus (moderate speed, soft morning fullness) */
+.ll-cloud-tier-2 {
+  animation: llCloudDrift 46s linear infinite;
+  opacity: 0.88;
+  filter: drop-shadow(0 4px 10px rgba(148, 178, 196, 0.25));
+}
+
+/* Tier 3: Near morning clouds (closer, gliding gracefully just above ridges) */
+.ll-cloud-tier-3 {
+  animation: llCloudDrift 34s linear infinite;
+  opacity: 0.94;
+  filter: drop-shadow(0 5px 14px rgba(89, 95, 52, 0.12));
+}
+
+@keyframes llCloudDrift {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0%, 0, 0); }
+}
+
+/* Cloud SVG styling: crisp white morning contours */
+.ll-cloud-shape {
+  fill: #ffffff;
+}
+.ll-cloud-shape-tint {
+  fill: #f4f8fb;
+}
+
+/* Landscape Artwork Layer: 100% preservation of the original farm illustration */
+.ll-landscape-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+  contain: paint;
+}
+
+.ll-landscape-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Wind sway filter container applied to the landscape vegetation */
+.ll-landscape-wind {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: url(#farm-wind-breeze);
+  will-change: filter;
+}
+
+/* Foreground swaying wheat and grass plumes */
+.ll-foreground-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.ll-grass-stalk {
+  transform-origin: bottom center;
+  will-change: transform;
+}
+
+.ll-sway-left {
+  animation: llWindSwayLeft 5.4s ease-in-out infinite alternate;
+}
+
+.ll-sway-right {
+  animation: llWindSwayRight 6.2s ease-in-out infinite alternate;
+}
+
+.ll-sway-mid {
+  animation: llWindSwayMid 4.8s ease-in-out infinite alternate;
+}
+
+@keyframes llWindSwayLeft {
+  0% { transform: rotate(0deg) skewX(0deg); }
+  50% { transform: rotate(1.6deg) skewX(1deg); }
+  100% { transform: rotate(-0.8deg) skewX(-0.5deg); }
+}
+
+@keyframes llWindSwayRight {
+  0% { transform: rotate(0deg) skewX(0deg); }
+  50% { transform: rotate(-1.8deg) skewX(-1.2deg); }
+  100% { transform: rotate(0.9deg) skewX(0.6deg); }
+}
+
+@keyframes llWindSwayMid {
+  0% { transform: rotate(-0.5deg) skewX(-0.3deg); }
+  50% { transform: rotate(1.2deg) skewX(0.8deg); }
+  100% { transform: rotate(-1.1deg) skewX(-0.7deg); }
+}
+
+/* Floating pollen & golden morning chaff drifting on the breeze */
+.ll-particles-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 7;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ll-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fffdf2 30%, rgba(196, 154, 108, 0.45) 80%, transparent 100%);
+  pointer-events: none;
+  opacity: 0;
+  animation: llParticleFloat var(--p-dur, 12s) ease-in-out infinite;
+  animation-delay: var(--p-delay, 0s);
+}
+
+@keyframes llParticleFloat {
+  0% {
+    opacity: 0;
+    transform: translate3d(var(--p-start-x, -20px), var(--p-start-y, 400px), 0) scale(0.6);
+  }
+  15% {
+    opacity: 0.75;
+  }
+  65% {
+    opacity: 0.85;
+  }
+  95% {
+    opacity: 0.15;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--p-end-x, 800px), var(--p-end-y, 340px), 0) scale(1.1);
+  }
+}
+
+/* Crop rotation year pills badge overlay (sleek, subtle) */
+.ll-badge-overlay {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(249, 245, 233, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(89, 95, 52, 0.16);
+  box-shadow: 0 4px 12px rgba(89, 95, 52, 0.1);
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 12px;
+  font-weight: 500;
+  color: #595f34;
+  pointer-events: auto;
+}
+
+.ll-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 12px;
+  background: rgba(156, 173, 96, 0.18);
+  color: #595f34;
+  font-size: 11px;
+}
+
+.ll-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8faf78;
+}
+
+/* Static fallback for prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .ll-atmosphere,
+  .ll-sunbeam,
+  .ll-cloud-tier-1,
+  .ll-cloud-tier-2,
+  .ll-cloud-tier-3,
+  .ll-sway-left,
+  .ll-sway-right,
+  .ll-sway-mid,
+  .ll-particle {
+    animation: none !important;
+  }
+  
+  .ll-landscape-wind {
+    filter: none !important;
+  }
+  
+  .ll-landscape-layer {
+    transform: none !important;
+  }
+}
+

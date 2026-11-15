@@ -3,7 +3,7 @@ import { ArrowRight, Check } from 'lucide-react';
 import { useT } from '../i18n/I18nContext';
 import { JOURNEY, PHASES, useNav } from '../state/NavContext';
 import Contours from '../components/Contours';
-import FieldScene from '../components/FieldScene';
+import LivingFarmLandscape from '../components/LivingFarmLandscape';
 import './JourneyHome.css';
 
 export default function JourneyHome() {
@@ -29,7 +29,7 @@ export default function JourneyHome() {
             </div>
           </div>
           <div className="home-visual">
-            <FieldScene hint={t('hero.dragHint')} yearLabel={n => t('common.year', { n })} />
+            <LivingFarmLandscape />
           </div>
         </div>
       </section>
