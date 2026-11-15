@@ -48,7 +48,20 @@
     "mk_p": 0.0092,
     "label": "both methods agree",
     "confidence": "high",
-    "unit": "mm/decade"
+    "unit": "mm/decade",
+    "theilslopes_slope_per_year": -4.4138,
+    "theilslopes_intercept": 9418.59,
+    "analytical_ci_low_per_year": -7.789,
+    "analytical_ci_high_per_year": -1.4018,
+    "mbb_ci_low_95": -74.1,
+    "mbb_ci_high_95": -11.8,
+    "mbb_ci_low_95_per_year": -7.4065,
+    "mbb_ci_high_95_per_year": -1.1824,
+    "statistically_significant_95": true,
+    "mbb_block_size": 3,
+    "mbb_n_boot": 2000,
+    "mbb_seed": 42,
+    "mbb_note": "detrended moving block bootstrap (overlapping 3-year residual blocks) preserves short-term autocorrelation, so its interval is typically wider than the analytical one when annual rainfall is autocorrelated; per-decade keys, per-year twins with _per_year suffix"
   },
   "hot_days": {
     "value": 3.1,
@@ -116,5 +129,6 @@
       "water_stress_used": 0.1625,
       "soc_class": "medium"
     }
-  }
+  },
+  "run_date": "2026-11-15 mbb-trend"
 }

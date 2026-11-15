@@ -37,6 +37,8 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
+from trends import compute_sens_slope, moving_block_bootstrap_slope
+
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "data" / "raw"
 PROCESSED = ROOT / "data" / "processed"
@@ -171,7 +173,7 @@ def trend_block(years: list[int], values: list[float]) -> dict:
         conf = "medium"
     else:
         conf = "low"
-    return {
+    block = {
         "window": f"{years[0]}-{years[-1]}",
         "ols_slope_mm_per_decade": round(ols_slope, 1),
         "ols_p": round(ols_p, 4),
@@ -181,6 +183,29 @@ def trend_block(years: list[int], values: list[float]) -> dict:
         "confidence": conf,
         "unit": "mm/decade",
     }
+    # Non-parametric extras from analysis/trends.py (Theil-Sen + moving block
+    # bootstrap; deterministic seed; scipy/numpy only, no statsmodels).
+    sens = compute_sens_slope(years, values)
+    mbb = moving_block_bootstrap_slope(years, values)
+    block.update({
+        "theilslopes_slope_per_year": round(sens["slope_per_year"], 4),
+        "theilslopes_intercept": round(sens["intercept"], 2),
+        "analytical_ci_low_per_year": round(sens["ci_low_per_year"], 4),
+        "analytical_ci_high_per_year": round(sens["ci_high_per_year"], 4),
+        "mbb_ci_low_95": round(mbb["mbb_ci_low_95"] * 10.0, 1),
+        "mbb_ci_high_95": round(mbb["mbb_ci_high_95"] * 10.0, 1),
+        "mbb_ci_low_95_per_year": round(mbb["mbb_ci_low_95"], 4),
+        "mbb_ci_high_95_per_year": round(mbb["mbb_ci_high_95"], 4),
+        "statistically_significant_95": mbb["statistically_significant_95"],
+        "mbb_block_size": mbb["block_size"],
+        "mbb_n_boot": mbb["n_boot"],
+        "mbb_seed": mbb["seed"],
+        "mbb_note": "detrended moving block bootstrap (overlapping 3-year residual blocks) "
+                    "preserves short-term autocorrelation, so its interval is typically wider "
+                    "than the analytical one when annual rainfall is autocorrelated; per-decade "
+                    "keys, per-year twins with _per_year suffix",
+    })
+    return block
 
 
 # ----------------------------------------------------------------- water stress & priorities

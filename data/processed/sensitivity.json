@@ -26,7 +26,20 @@
         "mk_p": 0.0168,
         "label": "both methods agree",
         "confidence": "high",
-        "unit": "mm/decade"
+        "unit": "mm/decade",
+        "theilslopes_slope_per_year": -7.43,
+        "theilslopes_intercept": 15439.28,
+        "analytical_ci_low_per_year": -12.5,
+        "analytical_ci_high_per_year": -1.3045,
+        "mbb_ci_low_95": -122.6,
+        "mbb_ci_high_95": -22.8,
+        "mbb_ci_low_95_per_year": -12.2605,
+        "mbb_ci_high_95_per_year": -2.2756,
+        "statistically_significant_95": true,
+        "mbb_block_size": 3,
+        "mbb_n_boot": 2000,
+        "mbb_seed": 42,
+        "mbb_note": "detrended moving block bootstrap (overlapping 3-year residual blocks) preserves short-term autocorrelation, so its interval is typically wider than the analytical one when annual rainfall is autocorrelated; per-decade keys, per-year twins with _per_year suffix"
       },
       "trend_power": {
         "window": "1995-2024",
@@ -36,7 +49,20 @@
         "mk_p": 0.0092,
         "label": "both methods agree",
         "confidence": "high",
-        "unit": "mm/decade"
+        "unit": "mm/decade",
+        "theilslopes_slope_per_year": -4.4138,
+        "theilslopes_intercept": 9418.59,
+        "analytical_ci_low_per_year": -7.789,
+        "analytical_ci_high_per_year": -1.4018,
+        "mbb_ci_low_95": -74.1,
+        "mbb_ci_high_95": -11.8,
+        "mbb_ci_low_95_per_year": -7.4065,
+        "mbb_ci_high_95_per_year": -1.1824,
+        "statistically_significant_95": true,
+        "mbb_block_size": 3,
+        "mbb_n_boot": 2000,
+        "mbb_seed": 42,
+        "mbb_note": "detrended moving block bootstrap (overlapping 3-year residual blocks) preserves short-term autocorrelation, so its interval is typically wider than the analytical one when annual rainfall is autocorrelated; per-decade keys, per-year twins with _per_year suffix"
       }
     },
     "constantine": {
@@ -64,7 +90,20 @@
         "mk_p": 0.1007,
         "label": "no clear trend",
         "confidence": "low",
-        "unit": "mm/decade"
+        "unit": "mm/decade",
+        "theilslopes_slope_per_year": -4.2611,
+        "theilslopes_intercept": 9039.6,
+        "analytical_ci_low_per_year": -9.8222,
+        "analytical_ci_high_per_year": 0.9364,
+        "mbb_ci_low_95": -91.1,
+        "mbb_ci_high_95": 5.6,
+        "mbb_ci_low_95_per_year": -9.1139,
+        "mbb_ci_high_95_per_year": 0.5595,
+        "statistically_significant_95": false,
+        "mbb_block_size": 3,
+        "mbb_n_boot": 2000,
+        "mbb_seed": 42,
+        "mbb_note": "detrended moving block bootstrap (overlapping 3-year residual blocks) preserves short-term autocorrelation, so its interval is typically wider than the analytical one when annual rainfall is autocorrelated; per-decade keys, per-year twins with _per_year suffix"
       },
       "trend_power": {
         "window": "1995-2024",
@@ -74,7 +113,20 @@
         "mk_p": 0.1435,
         "label": "no clear trend",
         "confidence": "low",
-        "unit": "mm/decade"
+        "unit": "mm/decade",
+        "theilslopes_slope_per_year": -4.6438,
+        "theilslopes_intercept": 10020.33,
+        "analytical_ci_low_per_year": -10.8528,
+        "analytical_ci_high_per_year": 1.71,
+        "mbb_ci_low_95": -117.7,
+        "mbb_ci_high_95": 20.5,
+        "mbb_ci_low_95_per_year": -11.7725,
+        "mbb_ci_high_95_per_year": 2.0465,
+        "statistically_significant_95": false,
+        "mbb_block_size": 3,
+        "mbb_n_boot": 2000,
+        "mbb_seed": 42,
+        "mbb_note": "detrended moving block bootstrap (overlapping 3-year residual blocks) preserves short-term autocorrelation, so its interval is typically wider than the analytical one when annual rainfall is autocorrelated; per-decade keys, per-year twins with _per_year suffix"
       }
     },
     "tiaret": {
@@ -102,7 +154,20 @@
         "mk_p": 0.6174,
         "label": "no clear trend",
         "confidence": "low",
-        "unit": "mm/decade"
+        "unit": "mm/decade",
+        "theilslopes_slope_per_year": 1.5643,
+        "theilslopes_intercept": -2753.08,
+        "analytical_ci_low_per_year": -4.4214,
+        "analytical_ci_high_per_year": 5.8,
+        "mbb_ci_low_95": -27.8,
+        "mbb_ci_high_95": 59.3,
+        "mbb_ci_low_95_per_year": -2.7803,
+        "mbb_ci_high_95_per_year": 5.9292,
+        "statistically_significant_95": false,
+        "mbb_block_size": 3,
+        "mbb_n_boot": 2000,
+        "mbb_seed": 42,
+        "mbb_note": "detrended moving block bootstrap (overlapping 3-year residual blocks) preserves short-term autocorrelation, so its interval is typically wider than the analytical one when annual rainfall is autocorrelated; per-decade keys, per-year twins with _per_year suffix"
       },
       "trend_power": {
         "window": "1995-2024",
@@ -112,7 +177,20 @@
         "mk_p": 0.5441,
         "label": "no clear trend",
         "confidence": "low",
-        "unit": "mm/decade"
+        "unit": "mm/decade",
+        "theilslopes_slope_per_year": -1.6812,
+        "theilslopes_intercept": 3977.2,
+        "analytical_ci_low_per_year": -10.6496,
+        "analytical_ci_high_per_year": 4.5721,
+        "mbb_ci_low_95": -95.2,
+        "mbb_ci_high_95": 61.7,
+        "mbb_ci_low_95_per_year": -9.5222,
+        "mbb_ci_high_95_per_year": 6.1702,
+        "statistically_significant_95": false,
+        "mbb_block_size": 3,
+        "mbb_n_boot": 2000,
+        "mbb_seed": 42,
+        "mbb_note": "detrended moving block bootstrap (overlapping 3-year residual blocks) preserves short-term autocorrelation, so its interval is typically wider than the analytical one when annual rainfall is autocorrelated; per-decade keys, per-year twins with _per_year suffix"
       }
     }
   }

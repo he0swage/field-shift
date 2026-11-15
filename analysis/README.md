@@ -14,6 +14,7 @@ indicator files for the engine, API and frontend.
 | `run_all.py` | One-command regeneration: build → sensitivity → independent verify → tests, PASS/FAIL summary. |
 | `verify_independent.py` | Independent re-implementation (plain NumPy, no shared code) of the headline metrics; exits 1 on any mismatch beyond stored-rounding tolerance. |
 | `sensitivity.py` | Regenerates `data/processed/sensitivity.json` (decision-variant table, see `docs/sensitivity.md`). |
+| `trends.py` | Non-parametric trend helpers: Theil-Sen slope (`scipy.stats.theilslopes`, analytical CI) and moving block bootstrap 95% CI for the slope (overlapping 3-year blocks, seed 42, deterministic). scipy/numpy only — no statsmodels. Used by `build_indicators.py` for the `rainfall_trend` block in `indicators.json`. |
 | `forecast_sarima.py` | OPTIONAL experimental SARIMA rainfall forecast (24 months ahead by default, 95% intervals) → `forecast.json`; clearly labeled "model projection, high uncertainty"; core indicators untouched. |
 | `make_charts.py` | PNG charts (rainfall + trend line, monthly bars, hot/frost per year) into `analysis/charts/`. |
 | `tests/` | pytest suite: known-answer tests (dry spells, hot/frost counts, OLS/Mann-Kendall/Sen, SOC-pH conversion, PRD 6.2 priorities), no -999 sentinel in outputs, schema checks against `docs/data_contract.md`, byte-identical rebuild determinism. |
