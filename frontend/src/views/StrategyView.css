@@ -29,7 +29,7 @@
 .chip-wrap { display: inline-flex; align-items: center; }
 .chip { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 2px solid var(--line-strong); background: var(--surface); font-weight: 600; font-size: 15px; cursor: pointer; transition: all .15s; }
 .chip:hover { border-color: var(--forest); }
-.chip.on { background: var(--forest); border-color: var(--forest); color: #fff; }
+.chip.on { background: var(--forest); border-color: var(--forest); color: var(--on-forest); }
 .chip-check { font-weight: 800; width: 14px; text-align: center; }
 .chip-tag { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; background: var(--gold-soft); color: var(--gold-ink); }
 .chip-x { min-width: 36px; min-height: 36px; margin-inline-start: 2px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--surface); cursor: pointer; font-size: 18px; color: var(--bad); }
@@ -45,7 +45,7 @@
 .custom-result { margin-top: 16px; }
 
 /* Analyse */
-.analyse-card { margin-top: 28px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; background: linear-gradient(135deg, var(--surface) 0%, #f1ecd9 100%); border-color: #d8c3ae; }
+.analyse-card { margin-top: 28px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%); border-color: var(--line); }
 @media (max-width: 900px) { .analyse-card { grid-template-columns: 1fr; } }
 .basis { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .basis li { padding: 6px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; font-weight: 600; }
@@ -56,5 +56,5 @@
 .run-stages li.now { color: var(--forest); font-weight: 700; }
 .run-stages li.done { color: var(--good); }
 .run-icon { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; border: 2px solid var(--line-strong); font-size: 12px; flex: none; }
-.run-stages li.done .run-icon { background: var(--good); border-color: var(--good); color: #fff; }
+.run-stages li.done .run-icon { background: var(--good); border-color: var(--good); color: var(--on-forest); }
 .run-stages li.now .run-icon { border-color: var(--forest); animation: spin 1.2s linear infinite; border-top-color: transparent; }

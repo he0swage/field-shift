@@ -53,6 +53,11 @@
   --warn: var(--gold-ink); --warn-soft: #f6ebdc; --warn-line: var(--p-accent);
   --bad: #a3462f;   --bad-soft: #f8e6e0;   --bad-line: var(--p-warning);
 
+  --on-forest: #ffffff;  /* text on primary fills */
+  --n-rec: #7f9a45;      /* soil-N chart: recommended */
+  --n-usual: #b5523b;    /* soil-N chart: usual */
+  --sea: #dde7ec;
+  --land: #efe4d4;
   --series-1: #3a7fae;   /* rainfall baseline (saturated water blue) */
   --series-2: #b5523b;   /* scenario (warning red) */
   --grid: #ece2d2;
@@ -68,6 +73,63 @@
   --ease: cubic-bezier(.2, .7, .2, 1);
   --wrap: 1240px;
 }
+/* ---------- Dark theme (toggle in the nav bar; stored per browser) ----------
+   Same hues as the team palette, re-stepped for a dark background. Every text pair ≥ 4.5:1;
+   chart pairs re-validated against the dark surface. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #1c2018;
+  --bg-2: #22261d;
+  --surface: #262b20;
+  --surface-2: #2e3427;
+  --sand: #5a4d3e;
+  --ink: #f1ecdf;
+  --ink-soft: #b9b3a3;
+  --line: #3d4433;
+  --line-strong: #555d46;
+
+  --forest-900: #14170f;
+  --forest-800: #262b1b;
+  --forest: #a3b46a;
+  --forest-hover: #b3c37a;
+  --forest-soft: #313a24;
+  --on-forest: #1c2018;
+  --leaf: #9cad60;
+  --leaf-ink: #b8c77f;
+  --earth: #c49a6c;
+  --earth-soft: #3a2f22;
+  --gold: #c49a6c;
+  --gold-ink: #e0bf96;
+  --gold-soft: #3a2f22;
+  --water: #9cc0d6;
+  --water-soft: #1f2d35;
+  --good: #a9c98f;  --good-soft: #26331f;
+  --warn: #e0bf96;  --warn-soft: #3a2f22;
+  --bad: #e58b73;   --bad-soft: #3d2420;
+
+  --n-rec: #7a9a36;
+  --n-usual: #c06fb0;
+  --sea: #1d2a31;
+  --land: #3a3a2c;
+  --series-1: #3f8fd0;
+  --series-2: #d0603f;
+  --grid: #343a2c;
+  --focus: #8fb8ff;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35);
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 14px 34px rgba(0, 0, 0, .35);
+  --shadow-lg: 0 28px 70px rgba(0, 0, 0, .5);
+}
+:root[data-theme="dark"] .badge-ai { background: linear-gradient(135deg, #3a2f22, #2e3427); border-color: #5a4a36; }
+:root[data-theme="dark"] .badge-good, :root[data-theme="dark"] .alert-good { border-color: #3f5233; }
+:root[data-theme="dark"] .badge-warn, :root[data-theme="dark"] .alert-warn { border-color: #5a4a36; }
+:root[data-theme="dark"] .badge-bad, :root[data-theme="dark"] .alert-bad { border-color: #5e3329; }
+:root[data-theme="dark"] .badge-water, :root[data-theme="dark"] .alert-info { border-color: #2f4655; }
+:root[data-theme="dark"] .ai-insight { background: linear-gradient(135deg, #2e2a20 0%, #262d20 100%); border-color: #4a4232; }
+:root[data-theme="dark"] .skeleton { background: linear-gradient(90deg, var(--surface-2) 0%, #353b2d 50%, var(--surface-2) 100%); }
+:root[data-theme="dark"] .download-cta { background: linear-gradient(120deg, #14170f, #2e3427); }
+:root[data-theme="dark"] .btn-primary { box-shadow: none; }
+:root[data-theme="dark"] .hero-art, :root[data-theme="dark"] .globe-panel { filter: brightness(.92); }
+
 :root[lang="ar"] {
   --font: 'Noto Sans Arabic', 'Inter', system-ui, sans-serif;
   --font-display: 'Noto Sans Arabic', 'Inter', serif;
@@ -75,6 +137,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body, .card, .region-card, .chip, .input, .select { transition: background-color .25s, border-color .25s, color .25s; }
 html, body { margin: 0; }
 body { background: var(--bg); color: var(--ink); font: 17px/1.6 var(--font); }
 h1, h2, h3, h4 { margin: 0; line-height: 1.2; }
@@ -131,7 +194,7 @@ abbr[title] { text-decoration: underline dotted; cursor: help; }
 }
 .btn:active { transform: translateY(1px); }
 .btn:disabled, .btn[aria-disabled="true"] { opacity: .55; cursor: not-allowed; }
-.btn-primary { background: var(--forest); color: #fff; box-shadow: 0 6px 18px rgba(89, 95, 52, .25); }
+.btn-primary { background: var(--forest); color: var(--on-forest); box-shadow: 0 6px 18px rgba(89, 95, 52, .25); }
 .btn-primary:hover:not(:disabled) { background: var(--forest-hover); }
 .btn-gold { background: var(--gold); color: var(--forest-900); box-shadow: 0 8px 22px rgba(196, 154, 108, .35); }
 .btn-gold:hover { background: #d1ab80; }

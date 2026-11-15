@@ -20,6 +20,7 @@ Copy `.env.example` to `.env`:
 | Variable | Default | Meaning |
 |---|---|---|
 | `PORT` | `5001` | API port |
+| `DEMO_USERS` | `demo@fieldshift.app:fieldshift2026:Demo Farmer` | Login accounts, `email:password:Name`, comma separated |
 | `FRONTEND_ORIGINS` | localhost 5173, 4173, 5500 (and 127.0.0.1) | Frontend URLs allowed by CORS, comma separated. Add the deployed frontend URL here. |
 
 ## CORS
@@ -36,6 +37,9 @@ work. Preflight `OPTIONS` requests are answered and cached for 24 h.
 
 | Method | Route | Used by | Data |
 |---|---|---|---|
+| POST | `/api/v1/auth/login` | login page | `{ email, password }` → `{ token, user }` (401 wrong credentials, 429 after 10 failures in 10 min) |
+| GET | `/api/v1/auth/me` | session check | header `Authorization: Bearer <token>` |
+| POST | `/api/v1/auth/logout` | Log out button | ends the session |
 | GET | `/api/v1/health` | data banner (LIVE / SAMPLE) | — |
 | GET | `/api/v1/climate?region=setif` | climate pages 2.1–2.3, map | `data/regional/all_indicators.json`, `data/processed/<region>/climate_*.json` |
 | POST | `/api/v1/ranking` | Analyse & Rank, top 4, avoid, summary, PDF | `data/processed/crops/*.json` + `utils/rotationScorer.js` |
@@ -79,3 +83,16 @@ The team's processed data covers Sétif, Constantine and Tiaret. The frontend cu
 **Kansas, Sétif and Punjab**:
 - **Sétif:** uses the real data.
 - **Kansas and Punjab:** `/climate` returns 404 and the frontend shows its sample values, with the notice "no processed data for this region yet". Adding `data/processed/kansas/` and `data/processed/punjab/`, plus entries in `data/regional/all_indicators.json`, makes them live without any code change.
+
+## Login (demo)
+
+`src/utils/authStore.js` gives a minimal login for the demo:
+- Accounts are read from `DEMO_USERS` in `.env`.
+- Passwords are compared in constant time.
+- Sessions are random 64-character tokens, kept in memory for 8 hours (they reset when the server restarts).
+- An IP is locked for 10 minutes after 10 failed attempts.
+
+The rotation and climate routes stay public, so the app still works for guests.
+
+Before any public deployment, replace this with a real user table (hashed passwords, e.g. bcrypt)
+and HTTPS.

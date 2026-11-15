@@ -27,7 +27,7 @@ const corsMiddleware = cors({
     return callback(null, false); // browser blocks the response; no error page
   },
   methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Accept"],
+  allowedHeaders: ["Content-Type", "Accept", "Authorization"],
   maxAge: 86400, // cache the preflight for a day
 });
 

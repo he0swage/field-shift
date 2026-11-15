@@ -8,6 +8,7 @@ const climateRouter = require("./Router/RouteClimate");
 const rankingRouter = require("./Router/RouteRanking");
 const cropsRouter = require("./Router/RouteCrops");
 const mapRouter = require("./Router/RouteMap");
+const authRouter = require("./Router/RouteAuth");
 
 const app = express();
 const PORT = Number(process.env.PORT) || 5001;
@@ -17,6 +18,7 @@ app.use(corsMiddleware);
 app.use(express.json({ limit: "100kb" }));
 
 // Routes used by the React frontend
+app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/climate", climateRouter);
 app.use("/api/v1/ranking", rankingRouter);
 app.use("/api/v1/crops", cropsRouter);

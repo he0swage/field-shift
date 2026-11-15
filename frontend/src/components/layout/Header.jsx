@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useI18n, LANGS } from '../../i18n/I18nContext';
 import { useNav, JOURNEY } from '../../state/NavContext';
 import { checkHealth } from '../../api/client';
+import { useAuth } from '../../state/AuthContext';
+import ThemeToggle from './ThemeToggle';
 import './layout.css';
 
 const SOURCES = ['NASA POWER 1995–2024', 'ISRIC SoilGrids', 'MODIS NDVI', 'OAIC / CCLS Prices'];
@@ -39,7 +41,7 @@ export function DataBanner() {
 }
 
 /** Language button: opens a small menu (English / Français / العربية). */
-function LangMenu() {
+export function LangMenu() {
   const { t, lang, setLang } = useI18n();
   const [open, setOpen] = useState(false);
   const wrap = useRef(null);
@@ -88,6 +90,25 @@ function LangMenu() {
   );
 }
 
+/** Signed-in user + log out (guests get a "Sign in" button). */
+function UserMenu() {
+  const { t } = useI18n();
+  const { user, signOut } = useAuth();
+  if (!user) return null;
+  if (user.guest) {
+    return <button type="button" className="user-btn" onClick={signOut}>{t('auth.signIn')}</button>;
+  }
+  const initials = (user.name || user.email).split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  return (
+    <div className="user-menu">
+      <span className="avatar" aria-hidden="true" title={user.email}>{initials}</span>
+      <button type="button" className="user-btn" onClick={signOut} title={user.email}>
+        <span className="sr-only">{user.name} — </span>{t('auth.logout')}
+      </button>
+    </div>
+  );
+}
+
 export default function Header() {
   const { t } = useI18n();
   const { view, go, lastJourney } = useNav();
@@ -122,7 +143,11 @@ export default function Header() {
           </ul>
         </nav>
 
-        <LangMenu />
+        <div className="header-tools">
+          <LangMenu />
+          <ThemeToggle />
+          <UserMenu />
+        </div>
       </div>
       <DataBanner />
     </header>

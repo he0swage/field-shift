@@ -11,7 +11,7 @@ const BARS = [10, 14, 8, 16, 6, 12, 9];
 const GROUND = 'M0 300 C140 250 260 270 380 300 S600 330 640 290';
 const GRASS_LIFE = 6000; // ms: grow, stay, fade
 
-function HeroArt({ hint }) {
+export function HeroArt({ hint }) {
   // Illustrated smart-farm landscape with small looping animations (orbiting satellite, pulsing sun,
   // rainfall bars, self-drawing NDVI / soil-N lines, scanning plot, floating cards).
   // Interactive: drag the cloud — it rains under it and grass grows where the rain lands, then fades.

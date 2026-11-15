@@ -1,6 +1,21 @@
 // UI strings. Missing keys fall back to English. {placeholders} are filled by t(key, vars).
 // Crop names, fertilizer names and agronomic risk notes come from the data/API and stay in English for now.
 const en = {
+
+  // auth + theme
+  'auth.title': 'Welcome back', 'auth.sub': 'Sign in to plan your next three seasons.',
+  'auth.artText': 'Climate intelligence, soil science and AI-ranked crop rotations for your farm.',
+  'auth.email': 'Email', 'auth.password': 'Password', 'auth.remember': 'Keep me signed in',
+  'auth.show': 'Show', 'auth.hide': 'Hide', 'auth.showPassword': 'Show password', 'auth.hidePassword': 'Hide password',
+  'auth.signIn': 'Sign in', 'auth.signingIn': 'Signing in…', 'auth.or': 'or', 'auth.guest': 'Continue without an account',
+  'auth.demoTitle': 'Demo account', 'auth.useDemo': 'Fill in', 'auth.logout': 'Log out',
+  'auth.err.emailRequired': 'Enter your email.', 'auth.err.emailInvalid': 'Enter a valid email, like name@example.com.',
+  'auth.err.passwordRequired': 'Enter your password.',
+  'auth.err.INVALID_CREDENTIALS': 'Wrong email or password. Check both and try again.',
+  'auth.err.TOO_MANY_ATTEMPTS': 'Too many failed attempts. Wait 10 minutes and try again.',
+  'auth.err.VALIDATION_ERROR': 'Enter your email and password.',
+  'auth.err.OFFLINE': 'The server is not reachable (start it with: cd backend && node src/server.js). You can continue without an account.',
+  'theme.dark': 'Dark', 'theme.light': 'Light', 'theme.toDark': 'Switch to dark mode', 'theme.toLight': 'Switch to light mode',
   // common
   'common.back': 'Back', 'common.next': 'Next', 'common.undo': 'Undo', 'common.change': 'Change',
   'common.close': 'Close', 'common.estimate': 'estimate', 'common.loading': 'Loading climate data…',
@@ -222,6 +237,20 @@ const en = {
 };
 
 const fr = {
+
+  'auth.title': 'Bon retour', 'auth.sub': 'Connectez-vous pour préparer vos trois prochaines saisons.',
+  'auth.artText': 'Intelligence climatique, science des sols et rotations classées par IA pour votre ferme.',
+  'auth.email': 'E-mail', 'auth.password': 'Mot de passe', 'auth.remember': 'Rester connecté',
+  'auth.show': 'Afficher', 'auth.hide': 'Masquer', 'auth.showPassword': 'Afficher le mot de passe', 'auth.hidePassword': 'Masquer le mot de passe',
+  'auth.signIn': 'Se connecter', 'auth.signingIn': 'Connexion…', 'auth.or': 'ou', 'auth.guest': 'Continuer sans compte',
+  'auth.demoTitle': 'Compte de démo', 'auth.useDemo': 'Remplir', 'auth.logout': 'Se déconnecter',
+  'auth.err.emailRequired': 'Saisissez votre e-mail.', 'auth.err.emailInvalid': 'Saisissez un e-mail valide, comme nom@exemple.com.',
+  'auth.err.passwordRequired': 'Saisissez votre mot de passe.',
+  'auth.err.INVALID_CREDENTIALS': 'E-mail ou mot de passe incorrect. Vérifiez les deux et réessayez.',
+  'auth.err.TOO_MANY_ATTEMPTS': 'Trop de tentatives échouées. Attendez 10 minutes puis réessayez.',
+  'auth.err.VALIDATION_ERROR': 'Saisissez votre e-mail et votre mot de passe.',
+  'auth.err.OFFLINE': 'Le serveur est injoignable (lancez-le avec : cd backend && node src/server.js). Vous pouvez continuer sans compte.',
+  'theme.dark': 'Sombre', 'theme.light': 'Clair', 'theme.toDark': 'Passer en mode sombre', 'theme.toLight': 'Passer en mode clair',
   'common.back': 'Retour', 'common.next': 'Suivant', 'common.undo': 'Annuler', 'common.change': 'Changer',
   'common.close': 'Fermer', 'common.estimate': 'estimation', 'common.loading': 'Chargement des données climatiques…',
   'common.selected': 'Sélectionnée', 'common.showTable': 'Voir en tableau', 'common.hideTable': 'Masquer le tableau',
@@ -414,6 +443,20 @@ const fr = {
 };
 
 const ar = {
+
+  'auth.title': 'مرحبًا بعودتك', 'auth.sub': 'سجّل الدخول لتخطيط مواسمك الثلاثة القادمة.',
+  'auth.artText': 'ذكاء مناخي وعلوم التربة ودورات زراعية مرتّبة بالذكاء الاصطناعي لمزرعتك.',
+  'auth.email': 'البريد الإلكتروني', 'auth.password': 'كلمة المرور', 'auth.remember': 'إبقائي متصلًا',
+  'auth.show': 'إظهار', 'auth.hide': 'إخفاء', 'auth.showPassword': 'إظهار كلمة المرور', 'auth.hidePassword': 'إخفاء كلمة المرور',
+  'auth.signIn': 'تسجيل الدخول', 'auth.signingIn': 'جارٍ تسجيل الدخول…', 'auth.or': 'أو', 'auth.guest': 'المتابعة بدون حساب',
+  'auth.demoTitle': 'حساب تجريبي', 'auth.useDemo': 'تعبئة', 'auth.logout': 'تسجيل الخروج',
+  'auth.err.emailRequired': 'أدخل بريدك الإلكتروني.', 'auth.err.emailInvalid': 'أدخل بريدًا صحيحًا مثل name@example.com.',
+  'auth.err.passwordRequired': 'أدخل كلمة المرور.',
+  'auth.err.INVALID_CREDENTIALS': 'البريد أو كلمة المرور غير صحيحة. تحقق منهما وأعد المحاولة.',
+  'auth.err.TOO_MANY_ATTEMPTS': 'محاولات فاشلة كثيرة. انتظر 10 دقائق ثم أعد المحاولة.',
+  'auth.err.VALIDATION_ERROR': 'أدخل البريد الإلكتروني وكلمة المرور.',
+  'auth.err.OFFLINE': 'تعذر الوصول إلى الخادم (شغّله بـ: cd backend && node src/server.js). يمكنك المتابعة بدون حساب.',
+  'theme.dark': 'داكن', 'theme.light': 'فاتح', 'theme.toDark': 'التبديل إلى الوضع الداكن', 'theme.toLight': 'التبديل إلى الوضع الفاتح',
   'common.back': 'رجوع', 'common.next': 'التالي', 'common.undo': 'تراجع', 'common.change': 'تغيير',
   'common.close': 'إغلاق', 'common.estimate': 'تقدير', 'common.loading': 'جارٍ تحميل البيانات المناخية…',
   'common.selected': 'محددة', 'common.showTable': 'عرض كجدول', 'common.hideTable': 'إخفاء الجدول',

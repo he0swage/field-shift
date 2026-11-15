@@ -3,6 +3,8 @@ import { FarmProvider } from './state/FarmContext';
 import { NavProvider, useNav } from './state/NavContext';
 import { ToastProvider } from './state/ToastContext';
 import { AnalysisProvider } from './state/AnalysisContext';
+import { AuthProvider, useAuth } from './state/AuthContext';
+import LoginView from './views/LoginView';
 import Header from './components/layout/Header';
 import Progress from './components/layout/Progress';
 import Footer from './components/layout/Footer';
@@ -55,18 +57,29 @@ function Shell() {
   );
 }
 
+/** Login first; once signed in (or as a guest) the app opens on the landing page. */
+function Gate() {
+  const { user } = useAuth();
+  if (!user) return <LoginView />;
+  return (
+    <FarmProvider>
+      <ToastProvider>
+        <AnalysisProvider>
+          <NavProvider>
+            <Shell />
+          </NavProvider>
+        </AnalysisProvider>
+      </ToastProvider>
+    </FarmProvider>
+  );
+}
+
 export default function App() {
   return (
     <I18nProvider>
-      <FarmProvider>
-        <ToastProvider>
-          <AnalysisProvider>
-            <NavProvider>
-              <Shell />
-            </NavProvider>
-          </AnalysisProvider>
-        </ToastProvider>
-      </FarmProvider>
+      <AuthProvider>
+        <Gate />
+      </AuthProvider>
     </I18nProvider>
   );
 }

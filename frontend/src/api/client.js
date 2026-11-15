@@ -75,3 +75,34 @@ export async function getRanking(inputs) {
     return { ...SAMPLE_RANKING, fallbackReason: err instanceof ApiError ? 'error' : 'offline' };
   }
 }
+
+/* ---------------- Auth (POST /auth/login, GET /auth/me, POST /auth/logout) ---------------- */
+
+/** → { token, user: { email, name } }. Throws Error with .code: INVALID_CREDENTIALS | TOO_MANY_ATTEMPTS | OFFLINE */
+export async function login(email, password) {
+  if (!API_BASE) { const e = new Error('No API configured'); e.code = 'OFFLINE'; throw e; }
+  try {
+    return await request('/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
+  } catch (err) {
+    if (!(err instanceof ApiError)) err.code = 'OFFLINE';
+    throw err;
+  }
+}
+
+/** → user, null when the session is invalid, undefined when the backend can't be reached. */
+export async function me(token) {
+  try {
+    const r = await request('/auth/me', { headers: { Authorization: `Bearer ${token}` } });
+    return r.user;
+  } catch (err) {
+    return err instanceof ApiError && err.status === 401 ? null : undefined;
+  }
+}
+
+export async function logout(token) {
+  try { await request('/auth/logout', { method: 'POST', headers: { Authorization: `Bearer ${token}` } }); } catch { /* already gone */ }
+}
