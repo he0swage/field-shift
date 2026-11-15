@@ -38,7 +38,7 @@ export default function ScenarioControls({ compact = false }) {
             <output htmlFor="scen-rain" className="scen-value num" dir="ltr">{signed(s.rain)}%</output>
           </div>
           <input id="scen-rain" type="range" min={RAIN.min} max={RAIN.max} step={RAIN.step} value={s.rain}
-            aria-valuetext={`${signed(s.rain)} %`} style={{ '--pct': pctOf(s.rain, RAIN), '--track-fill': 'var(--series-1)' }}
+            aria-valuetext={`${signed(s.rain)} %`} style={{ '--pct': pctOf(s.rain, RAIN), '--track-fill': 'var(--chart-strong)' }}
             onChange={e => update({ rain: +e.target.value })} />
           <div className="scen-scale num" dir="ltr"><span>−50%</span><span>0</span><span>+30%</span></div>
         </div>
@@ -48,7 +48,7 @@ export default function ScenarioControls({ compact = false }) {
             <output htmlFor="scen-temp" className="scen-value num" dir="ltr">{signed(s.temp, 1)} °C</output>
           </div>
           <input id="scen-temp" type="range" min={TEMP.min} max={TEMP.max} step={TEMP.step} value={s.temp}
-            aria-valuetext={`${signed(s.temp, 1)} °C`} style={{ '--pct': pctOf(s.temp, TEMP), '--track-fill': 'var(--series-2)' }}
+            aria-valuetext={`${signed(s.temp, 1)} °C`} style={{ '--pct': pctOf(s.temp, TEMP), '--track-fill': 'var(--terracotta)' }}
             onChange={e => update({ temp: +e.target.value })} />
           <div className="scen-scale num" dir="ltr"><span>−1 °C</span><span>0</span><span>+5 °C</span></div>
         </div>

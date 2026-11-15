@@ -8,7 +8,7 @@ import { geoDistance, geoOrthographic, geoPath } from 'd3-geo';
 import { BORDERS, GRATICULE, LAND, SPHERE } from './world';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { useT } from '../../i18n/I18nContext';
-import { Minus, Pause, Play, Plus, ZoomIn, ZoomOut } from 'lucide-react';
+import { Pause, Play } from 'lucide-react';
 import './Globe.css';
 
 const BASE_SPEED = 6; // degrees per second at 1×
@@ -17,14 +17,16 @@ const ZOOM_MIN = 0.8, ZOOM_MAX = 2.8, FOCUS_ZOOM = 1.9;
 const ease = k => (k < 0.5 ? 4 * k * k * k : 1 - (-2 * k + 2) ** 3 / 2);
 const clampLat = v => Math.max(-75, Math.min(75, v));
 
-export default function Globe({ regions, selectedId, focusTick, onSelect, labelFor }) {
+export default function Globe({ regions, selectedId, focusTick, onSelect, labelFor, children }) {
   const t = useT();
   const reduced = useReducedMotion();
   const wrapRef = useRef(null);
   const canvasRef = useRef(null);
+  const popupRef = useRef(null);   // details card attached to the marker
+  const lineRef = useRef(null);    // thin leader line from the card to the marker
   const [size, setSize] = useState(520);
   const [playing, setPlaying] = useState(!reduced);
-  const [speedIdx, setSpeedIdx] = useState(1);
+  const speedIdx = 1;
   const [hovered, setHovered] = useState(null);
   const onSelectRef = useRef(onSelect);
   onSelectRef.current = onSelect;
@@ -79,48 +81,63 @@ export default function Globe({ regions, selectedId, focusTick, onSelect, labelF
 
       // atmosphere glow
       const glow = ctx.createRadialGradient(c, c, R * 0.95, c, c, R * 1.16);
-      glow.addColorStop(0, 'rgba(148, 178, 196, .45)');
-      glow.addColorStop(1, 'rgba(148, 178, 196, 0)');
+      glow.addColorStop(0, 'rgba(196, 210, 214, .35)');
+      glow.addColorStop(1, 'rgba(196, 210, 214, 0)');
       ctx.fillStyle = glow;
       ctx.beginPath(); ctx.arc(c, c, R * 1.16, 0, 2 * Math.PI); ctx.fill();
 
       // ocean
       const ocean = ctx.createRadialGradient(c - R * 0.35, c - R * 0.4, R * 0.1, c, c, R);
-      ocean.addColorStop(0, '#8fb0c4'); ocean.addColorStop(0.6, '#5e8aa3'); ocean.addColorStop(1, '#2f5468');
+      ocean.addColorStop(0, '#c3d3da'); ocean.addColorStop(0.6, '#94b2c4'); ocean.addColorStop(1, '#6f8d9e');
       ctx.beginPath(); path(SPHERE); ctx.fillStyle = ocean; ctx.fill();
 
       // graticule
-      ctx.beginPath(); path(GRATICULE); ctx.strokeStyle = 'rgba(255,255,255,.09)'; ctx.lineWidth = 0.7; ctx.stroke();
+      ctx.beginPath(); path(GRATICULE); ctx.strokeStyle = 'rgba(255,255,255,.18)'; ctx.lineWidth = 0.6; ctx.stroke();
 
       // land + borders
       const land = ctx.createLinearGradient(c - R, c - R, c + R, c + R);
-      land.addColorStop(0, '#c5cf96'); land.addColorStop(0.5, '#9cad60'); land.addColorStop(1, '#c49a6c');
+      land.addColorStop(0, '#e2d7bd'); land.addColorStop(0.5, '#d2c39f'); land.addColorStop(1, '#bfae88');
       ctx.beginPath(); path(LAND); ctx.fillStyle = land; ctx.fill();
-      ctx.beginPath(); path(BORDERS); ctx.strokeStyle = 'rgba(40, 60, 30, .35)'; ctx.lineWidth = 0.6; ctx.stroke();
+      ctx.beginPath(); path(BORDERS); ctx.strokeStyle = 'rgba(120, 100, 70, .35)'; ctx.lineWidth = 0.5; ctx.stroke();
 
       // 3D shading: highlight top-left, shadow on the rim
       const shade = ctx.createRadialGradient(c - R * 0.4, c - R * 0.45, R * 0.05, c, c, R);
-      shade.addColorStop(0, 'rgba(255,255,255,.22)');
-      shade.addColorStop(0.55, 'rgba(255,255,255,0)');
-      shade.addColorStop(1, 'rgba(0,10,20,.42)');
+      shade.addColorStop(0, 'rgba(255,255,255,.25)');
+      shade.addColorStop(0.6, 'rgba(255,255,255,0)');
+      shade.addColorStop(1, 'rgba(40,35,20,.28)');
       ctx.beginPath(); path(SPHERE); ctx.fillStyle = shade; ctx.fill();
 
       // markers
       const centre = [-st.rot[0], -st.rot[1]];
       const pulse = (Math.sin(now / 380) + 1) / 2;
+      let selXY = null;
       regions.forEach(r => {
         if (geoDistance([r.lon, r.lat], centre) > Math.PI / 2 - 0.05) return; // far side
+        if (r.id === st.selectedId) selXY = proj([r.lon, r.lat]);
         const [x, y] = proj([r.lon, r.lat]);
         const sel = r.id === st.selectedId, hov = r.id === st.hovered;
         if (sel) {
           ctx.beginPath(); ctx.arc(x, y, 14 + pulse * 14, 0, 2 * Math.PI);
-          ctx.fillStyle = `rgba(196, 154, 108, ${0.35 - pulse * 0.3})`; ctx.fill();
+          ctx.fillStyle = `rgba(79, 85, 48, ${0.4 - pulse * 0.35})`; ctx.fill();
         }
         ctx.beginPath(); ctx.arc(x, y, sel ? 9 : hov ? 8 : 6, 0, 2 * Math.PI);
-        ctx.fillStyle = sel ? '#c49a6c' : '#fffcf3'; ctx.fill();
-        ctx.lineWidth = 3; ctx.strokeStyle = sel ? '#3a4132' : '#595f34'; ctx.stroke();
-        if (sel || hov) label(ctx, x, y, st.labels[r.id], sel, size);
+        ctx.fillStyle = sel ? '#4f5530' : '#fffdf7'; ctx.fill();
+        ctx.lineWidth = sel ? 3 : 2.5; ctx.strokeStyle = sel ? '#fffdf7' : '#4f5530'; ctx.stroke();
+        if (hov && !sel) label(ctx, x, y, st.labels[r.id], false, size);
       });
+
+      // leader line: details card → selected marker
+      const line = lineRef.current, pop = popupRef.current;
+      if (line && pop) {
+        if (selXY) {
+          const ox = canvas.offsetLeft, oy = canvas.offsetTop;
+          const ax = pop.offsetLeft + pop.offsetWidth, ay = pop.offsetTop + pop.offsetHeight - 24;
+          const rtl = getComputedStyle(pop).direction === 'rtl';
+          line.setAttribute('x1', rtl ? pop.offsetLeft : ax); line.setAttribute('y1', ay);
+          line.setAttribute('x2', ox + selXY[0]); line.setAttribute('y2', oy + selXY[1]);
+          line.style.display = '';
+        } else line.style.display = 'none';
+      }
     };
 
     const frame = now => {
@@ -211,18 +228,11 @@ export default function Globe({ regions, selectedId, focusTick, onSelect, labelF
       <div className="globe-stage" ref={wrapRef}>
         <canvas ref={canvasRef} style={{ width: size, height: size }} tabIndex={0} onKeyDown={onKey}
           role="img" aria-label={t('globe.aria', { region: selected ? labelFor(selected) : '' })} />
-      </div>
-      <div className="globe-controls" role="toolbar" aria-label={t('globe.controls')}>
-        <button type="button" onClick={() => setPlaying(p => !p)} aria-pressed={playing}>
+        {children && <div className="globe-popup" ref={popupRef}>{children}</div>}
+        <svg className="globe-lines" aria-hidden="true"><line ref={lineRef} /></svg>
+        <button type="button" className="globe-pause" onClick={() => setPlaying(p => !p)} aria-pressed={!playing}>
           {playing ? <Pause size={14} aria-hidden="true" /> : <Play size={14} aria-hidden="true" />} {playing ? t('globe.pause') : t('globe.play')}
         </button>
-        <span className="globe-speed">
-          <button type="button" onClick={() => { setSpeedIdx(i => Math.max(0, i - 1)); setPlaying(true); }} disabled={speedIdx === 0} aria-label={t('globe.slower')}><Minus size={14} aria-hidden="true" /></button>
-          <span aria-live="polite">{t('globe.speed')} {SPEEDS[speedIdx]}×</span>
-          <button type="button" onClick={() => { setSpeedIdx(i => Math.min(SPEEDS.length - 1, i + 1)); setPlaying(true); }} disabled={speedIdx === SPEEDS.length - 1} aria-label={t('globe.faster')}><Plus size={14} aria-hidden="true" /></button>
-        </span>
-        <button type="button" onClick={() => zoomBy(1.2)} aria-label={t('globe.zoomIn')}><ZoomIn size={16} aria-hidden="true" /></button>
-        <button type="button" onClick={() => zoomBy(1 / 1.2)} aria-label={t('globe.zoomOut')}><ZoomOut size={16} aria-hidden="true" /></button>
       </div>
       <p className="globe-hint">{t('globe.hint')}</p>
     </div>

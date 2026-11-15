@@ -1,14 +1,16 @@
 import { I18nProvider, useT } from './i18n/I18nContext';
 import { FarmProvider } from './state/FarmContext';
-import { NavProvider, useNav } from './state/NavContext';
+import { JOURNEY, NavProvider, useNav } from './state/NavContext';
 import { ToastProvider } from './state/ToastContext';
 import { AnalysisProvider } from './state/AnalysisContext';
 import { AuthProvider, useAuth } from './state/AuthContext';
 import LoginView from './views/LoginView';
-import Header from './components/layout/Header';
+import { useEffect } from 'react';
+import Header, { DataStatus } from './components/layout/Header';
 import Progress from './components/layout/Progress';
 import Footer from './components/layout/Footer';
-import Landing from './views/Landing';
+import JourneyHome from './views/JourneyHome';
+import AboutView from './views/AboutView';
 import RegionView from './views/RegionView';
 import StrategyView from './views/StrategyView';
 import ClimateView from './views/ClimateView';
@@ -22,7 +24,7 @@ import CompareView from './views/CompareView';
 import Report from './views/Report';
 
 const VIEWS = {
-  home: Landing,          // 1.1
+  home: JourneyHome,      // Journey hub (title, start, 4-stage path)
   region: RegionView,     // 1.2
   strategy: StrategyView, // 1.3
   climate: ClimateView,   // 2.1
@@ -33,32 +35,42 @@ const VIEWS = {
   summary: SummaryView,   // 4.1
   map: MapView,           // additional: regional climate map
   compare: CompareView,   // additional: usual vs rank 1
+  about: AboutView,       // data & resources, team, AI disclosure
 };
+
+/** Fade sections up as they scroll into view (elements with class "reveal"). */
+function useReveal(key) {
+  useEffect(() => {
+    const els = [...document.querySelectorAll('.reveal:not(.in)')];
+    if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return undefined; }
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => io.observe(el));
+    return () => io.disconnect();
+  });
+}
 
 function Shell() {
   const t = useT();
   const { view } = useNav();
   const View = VIEWS[view];
+  useReveal(view);
+  const journey = view === 'home' || JOURNEY.includes(view);
   return (
     <>
       <a className="skip" href="#main">{t('common.skip')}</a>
       <Header />
+      <DataStatus />
+      {journey && <Progress />}
       {view === 'home' ? (
-        <>
-          <main id="main" tabIndex={-1} className="view" key="home"><Landing /></main>
-          <Footer />
-        </>
+        <main id="main" tabIndex={-1} className="view" key="home"><View /></main>
       ) : (
-        <div className="app-shell">
-          <Progress />
-          <div className="app-content">
-            <main className="main" id="main" tabIndex={-1}>
-              <div className="wrap view" key={view}><View /></div>
-            </main>
-            <Footer />
-          </div>
-        </div>
+        <main className="main" id="main" tabIndex={-1}>
+          <div className="wrap view" key={view}><View /></div>
+        </main>
       )}
+      <Footer />
       <Report />
     </>
   );

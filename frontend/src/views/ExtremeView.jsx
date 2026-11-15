@@ -2,9 +2,10 @@
 import { useT } from '../i18n/I18nContext';
 import { useClimateModel } from '../hooks/useClimateModel';
 import { extremeInsight } from '../utils/insights';
-import { AiBadge, Loading, PageHead, PageNav, RegionStrip, SampleNotice } from '../components/ui';
+import { Loading, PageHead, PageNav, RegionStrip, SampleNotice } from '../components/ui';
 import ScenarioControls from '../components/climate/ScenarioControls';
 import IndicatorCard from '../components/climate/IndicatorCard';
+import ExtremeBars from '../components/charts/ExtremeBars';
 import '../components/climate/climate.css';
 
 export default function ExtremeView() {
@@ -33,8 +34,21 @@ export default function ExtremeView() {
               {t('ind.extreme.d')}
             </IndicatorCard>
           </div>
+          <section className="card chart-card" aria-labelledby="ext-chart">
+            <div className="chart-card-head">
+              <h3 className="card-title" id="ext-chart">{t('extreme.chart')}</h3>
+              <div className="legend-row">
+                <span><i className="sw s1" />{t('monthly.base')}</span>
+                <span><i className="sw s2" />{t('monthly.scenario')}</span>
+              </div>
+            </div>
+            <ExtremeBars labels={{ aria: t('extreme.chart') }} rows={[
+              { id: 'hot', label: t('ind.hot'), base: m.ind.hotDays, scen: m.sc.hot },
+              { id: 'frost', label: t('ind.frost'), base: m.ind.frostDays, scen: m.sc.frost },
+              { id: 'extreme', label: t('ind.extreme'), base: m.ind.extremeRainDays, scen: m.sc.extreme },
+            ]} />
+          </section>
           <div className="ai-insight" style={{ marginTop: 24 }}>
-            <AiBadge />
             <p aria-live="polite">{extremeInsight(t, m)}</p>
           </div>
         </>

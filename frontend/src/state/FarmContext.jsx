@@ -14,6 +14,8 @@ function init() {
     allowed: s.allowed ?? DEFAULT_ALLOWED,
     custom: s.custom ?? [],
     priorities: s.priorities ? balance(s.priorities) : DEFAULT_PRIORITIES,
+    prioMain: s.prioMain ?? null,     // step A choice
+    prioSecond: s.prioSecond ?? null, // step B choice
     scenario: s.scenario ?? { rain: -20, temp: 2 },
     analysedKey: s.analysedKey ?? null,
     mapOverlay: s.mapOverlay ?? true,

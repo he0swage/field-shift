@@ -1,12 +1,17 @@
-.globe { position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px; }
-.globe-stage { width: 100%; display: flex; justify-content: center; }
+.globe { position: relative; width: 100%; }
+.globe-stage { position: relative; width: 100%; display: flex; justify-content: center; }
 .globe canvas { display: block; touch-action: none; cursor: grab; border-radius: 50%; }
 .globe canvas:active { cursor: grabbing; }
-.globe canvas:focus-visible { outline: 2px solid #e6cba6; outline-offset: 6px; }
-.globe-controls { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
-.globe-controls button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 34px; min-width: 34px; padding: 0 10px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, .14); background: rgba(255, 255, 255, .04); color: rgba(255, 255, 255, .9); font-size: 13px; font-weight: 500; cursor: pointer; }
-.globe-controls button:hover:not(:disabled) { background: rgba(255, 255, 255, .1); }
-.globe-controls button:disabled { opacity: .35; cursor: not-allowed; }
-.globe-speed { display: inline-flex; align-items: center; gap: 4px; color: rgba(255, 255, 255, .8); font-size: 13px; }
-.globe-speed button { padding: 0; }
-.globe-hint { color: rgba(255, 255, 255, .55); font-size: 12px; text-align: center; }
+.globe canvas:focus-visible { outline: 2px solid var(--focus); outline-offset: 6px; }
+.globe-popup { position: absolute; top: 0; inset-inline-start: 0; z-index: 2; }
+.globe-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 1; }
+.globe-lines line { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 3 3; opacity: .55; }
+.globe-pause { position: absolute; bottom: 0; inset-inline-end: 0; z-index: 2; display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--raised); color: var(--ink); font-size: var(--fs-small); font-weight: 600; cursor: pointer; box-shadow: var(--shadow); }
+.globe-pause:hover { border-color: var(--line-strong); }
+.globe-hint { display: none; }
+@media (max-width: 700px) {
+  .globe-popup { position: relative; margin-bottom: var(--s2); }
+  .globe-stage { flex-direction: column; align-items: center; }
+  .globe-lines { display: none; }
+  .globe-pause { position: static; margin-top: var(--s2); }
+}

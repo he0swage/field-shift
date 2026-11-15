@@ -78,7 +78,7 @@ export function RegionStrip() {
     <div className="region-strip">
       <MapPin size={14} aria-hidden="true" />
       <b>{t(`region.${region.id}.name`)}</b>
-      <span>{t(`country.${region.countryCode}`)} · {fmtCoord(region.lat, region.lon)}</span>
+      <span>{t(`country.${region.countryCode}`)} · <span dir="ltr">{fmtCoord(region.lat, region.lon)}</span></span>
       <button type="button" className="btn-link" onClick={() => go('region')}>{t('common.change')}</button>
     </div>
   );

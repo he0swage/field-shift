@@ -4,13 +4,13 @@ import { useFarm } from '../state/FarmContext';
 import { useClimateModel } from '../hooks/useClimateModel';
 import { climateInsight } from '../utils/insights';
 import { signed } from '../utils/format';
-import { AiBadge, Loading, PageHead, PageNav, RegionStrip, SampleNotice } from '../components/ui';
+import { Loading, PageHead, PageNav, RegionStrip, SampleNotice } from '../components/ui';
 import ScenarioControls from '../components/climate/ScenarioControls';
 import IndicatorCard from '../components/climate/IndicatorCard';
 import AnnualLineChart from '../components/charts/AnnualLineChart';
 import '../components/climate/climate.css';
 
-export const SIG_TONE = { clear: 'badge-good', weak: 'badge-warn', none: '' };
+export const SIG_TONE = { clear: '', weak: '', none: '' };
 
 export default function ClimateView() {
   const t = useT();
@@ -35,7 +35,7 @@ export default function ClimateView() {
               extra={(
                 <p className="ind-extra">
                   {t('ind.trend19952024')}: <b dir="ltr">{signed(m.trend.decade, 1)} mm/{t('unit.decade')}</b>{' '}
-                  <span className={`badge ${SIG_TONE[m.trend.sig]}`}>{t(`sig.${m.trend.sig}`)}</span>
+                  <span className="quiet-note">· {t(`sig.${m.trend.sig}`)}</span>
                 </p>
               )}>
               {t('ind.rainTrend.d')}
@@ -47,7 +47,6 @@ export default function ClimateView() {
           </div>
 
           <div className="ai-insight" style={{ marginTop: 24 }}>
-            <AiBadge />
             <p aria-live="polite">{climateInsight(t, name, m, scenario)}</p>
           </div>
 
@@ -58,7 +57,7 @@ export default function ClimateView() {
                 <p className="card-sub">{t('annual.sub')}</p>
               </div>
               <div className="legend-row">
-                <span><i className="sw s1" />{t('annual.rain')}</span>
+                <span><i className="sw line-sw" />{t('annual.rain')}</span>
                 <span><i className="sw trend-sw" />{t('annual.trend')}</span>
               </div>
             </div>

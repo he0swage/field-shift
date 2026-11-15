@@ -1,0 +1,22 @@
+.field-scene { display: block; width: 100%; height: auto; direction: ltr; }
+.fs-sun { fill: var(--accent); opacity: .35; }
+.fs-strip.legume { fill: var(--strip-legume); }
+.fs-strip.cereal { fill: var(--strip-cereal); }
+.fs-strip.oilseed { fill: var(--strip-oilseed); }
+.fs-label { font: 600 12px/1 var(--font); letter-spacing: .12em; text-transform: uppercase; }
+.fs-label.legume { fill: var(--on-strip-legume); }
+.fs-label.cereal { fill: var(--on-strip-cereal); }
+.fs-label.oilseed { fill: var(--on-strip-oilseed); }
+.fs-grass { fill: none; stroke: var(--deep); stroke-width: 2.6; stroke-linecap: round; transform-box: fill-box; transform-origin: bottom; animation: fs-grow 6s ease-out forwards; }
+:root[data-theme="dark"] .fs-grass { stroke: #c9e09a; }
+.fs-grass path:nth-child(2) { stroke: var(--primary); }
+@keyframes fs-grow { 0% { transform: scaleY(0); opacity: 1; } 12% { transform: scaleY(1.1); } 18% { transform: scaleY(1); } 75% { opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+.fs-cloud { cursor: grab; touch-action: none; fill: var(--raised); stroke: var(--line-strong); stroke-width: 1; filter: drop-shadow(0 6px 10px rgba(74, 58, 30, .15)); animation: fs-bob 3.2s ease-in-out infinite; }
+.fs-cloud.dragging { cursor: grabbing; animation: none; fill: var(--water-soft); }
+@keyframes fs-bob { 50% { transform: translateY(-4px); } }
+.fs-drop { stroke: var(--powder); animation: fs-rain .6s linear infinite; }
+@keyframes fs-rain { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(var(--fall)); opacity: 0; } }
+.fs-hint { pointer-events: none; animation: fs-blink 2.4s ease-in-out infinite; }
+.fs-hint rect { fill: var(--deep); }
+.fs-hint text { fill: var(--on-deep); font: 600 12px/1 var(--font); }
+@keyframes fs-blink { 50% { opacity: .55; } }

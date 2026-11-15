@@ -6,7 +6,9 @@ import { useAuth } from '../state/AuthContext';
 import { LangMenu, Logo } from '../components/layout/Header';
 import ThemeToggle from '../components/layout/ThemeToggle';
 import { Alert } from '../components/ui';
-import { HeroArt } from './Landing';
+import FieldScene from '../components/FieldScene';
+import Contours from '../components/Contours';
+import './JourneyHome.css';
 import './LoginView.css';
 
 const DEMO = { email: 'demo@fieldshift.app', password: 'fieldshift2026' };
@@ -61,6 +63,7 @@ export default function LoginView() {
   return (
     <div className="login">
       <aside className="login-art" aria-hidden="true">
+        <Contours />
         <div className="login-brand">
           <Logo />
           <span className="brand-name">Crop Rotation Advisor</span>
@@ -69,7 +72,7 @@ export default function LoginView() {
           <h2>{t('hero.title')}</h2>
           <p>{t('auth.artText')}</p>
         </div>
-        <div className="login-art-visual"><HeroArt hint={t('hero.dragHint')} /></div>
+        <div className="login-art-visual"><FieldScene hint={t('hero.dragHint')} yearLabel={n => t('common.year', { n })} /></div>
         <p className="login-sources">NASA POWER · ISRIC SoilGrids · MODIS NDVI · OAIC / CCLS</p>
       </aside>
 

@@ -5,45 +5,82 @@ import { useT } from '../i18n/I18nContext';
 import { useFarm } from '../state/FarmContext';
 import { useToast } from '../state/ToastContext';
 import { FAMILIES } from '../data/crops';
-import { KEYS, PRIO, setPriority } from '../utils/priorities';
+import { KEYS, PRIO, order, setMain, setSecond } from '../utils/priorities';
 import { cropFit, cropProblems } from '../utils/agronomy';
 import { Alert, PageHead, PageNav, RegionStrip } from '../components/ui';
 import Icon from '../components/icons';
 import AnalysisRunner from '../components/AnalysisRunner';
 import './StrategyView.css';
 
-/* ---------- Priorities: moving one slider re-balances the other two ---------- */
+/* ---------- Priorities: two steps, always 100 ---------- */
 function Priorities() {
   const t = useT();
   const { state, set } = useFarm();
   const p = state.priorities;
+  const { main, second, third } = order(p, state.prioMain, state.prioSecond);
+  const rest = 100 - p[main];
+
+  const pickMain = k => set({ prioMain: k, prioSecond: null, priorities: setMain(p, k, Math.max(p[k], 40)) });
+  const pickSecond = k => set({ prioSecond: k, priorities: setSecond(p, main, k, p[k]) });
 
   return (
-    <section className="card" aria-labelledby="prio-title">
+    <section className="card prio-card" aria-labelledby="prio-title">
       <h3 className="card-title" id="prio-title">{t('prio.title')}</h3>
-      <p className="card-sub">{t('prio.subAuto')}</p>
+      <p className="card-sub">{t('prio.subSteps')}</p>
 
-      <div className="prio-stack" aria-hidden="true">
-        {KEYS.map(k => <i key={k} style={{ width: `${p[k]}%`, background: PRIO[k].color }} />)}
-      </div>
-
-      <div className="prio-list">
-        {KEYS.map(k => (
-          <div key={k} className="prio">
-            <div className="prio-head">
-              <span className="prio-swatch" style={{ background: PRIO[k].color }} aria-hidden="true" />
-              <label htmlFor={`prio-${k}`}>{t(`prio.${k}`)}</label>
-              <output htmlFor={`prio-${k}`} className="prio-value num" aria-live="polite">{p[k]}</output>
-            </div>
-            <p className="prio-desc" id={`prio-${k}-d`}>{t(`prio.${k}.d`)}</p>
-            <input id={`prio-${k}`} type="range" min="0" max="100" step="1" value={p[k]}
-              aria-describedby={`prio-${k}-d`} aria-valuetext={`${p[k]} / 100`}
-              style={{ '--pct': `${p[k]}%`, '--track-fill': PRIO[k].color }}
-              onChange={e => set({ priorities: setPriority(p, k, +e.target.value) })} />
-          </div>
+      {/* live stacked bar */}
+      <div className="prio-bar" role="img" aria-label={KEYS.map(k => `${t(`prio.${k}`)} ${p[k]}`).join(', ')}>
+        {KEYS.map(k => p[k] > 0 && (
+          <span key={k} className={`seg ${k}`} style={{ flexGrow: p[k] }}><b className="num">{p[k]}</b></span>
         ))}
       </div>
-      <p className="prio-total"><Check size={14} aria-hidden="true" /> {t('prio.totalAuto')}</p>
+      <ul className="prio-legend">
+        {KEYS.map(k => (
+          <li key={k}><span className={`swatch ${k}`} aria-hidden="true" /><span className="stat md"><span className="label">{t(`prio.${k}`)}</span><span className="value">{p[k]}</span></span></li>
+        ))}
+      </ul>
+
+      {/* Step A */}
+      <fieldset className="prio-step">
+        <legend><span className="step-no">A</span>{t('prio.stepA')}</legend>
+        <div className="seg-control" role="radiogroup" aria-label={t('prio.stepA')}>
+          {KEYS.map(k => (
+            <button key={k} type="button" role="radio" aria-checked={k === main} className={k === main ? 'on' : ''} onClick={() => pickMain(k)}>
+              <Icon name={k} size={18} /> {t(`prio.${k}`)}
+            </button>
+          ))}
+        </div>
+        <div className="prio-slider">
+          <label htmlFor="prio-main">{t('prio.howMuch', { name: t(`prio.${main}`) })}</label>
+          <output htmlFor="prio-main" className="big num">{p[main]}</output>
+          <input id="prio-main" type="range" min="34" max="100" step="1" value={p[main]}
+            style={{ '--pct': `${((p[main] - 34) / 66) * 100}%`, '--track-fill': PRIO[main].color }}
+            onChange={e => set({ prioMain: main, prioSecond: null, priorities: setMain(p, main, +e.target.value) })} />
+          <p className="hint">{t('prio.stepAHint', { n: Math.floor(rest / 2) })}</p>
+        </div>
+      </fieldset>
+
+      {/* Step B */}
+      {rest > 0 && (
+        <fieldset className="prio-step">
+          <legend><span className="step-no">B</span>{t('prio.stepB')}</legend>
+          <div className="seg-control two" role="radiogroup" aria-label={t('prio.stepB')}>
+            {KEYS.filter(k => k !== main).map(k => (
+              <button key={k} type="button" role="radio" aria-checked={k === second} className={k === second ? 'on' : ''} onClick={() => pickSecond(k)}>
+                <Icon name={k} size={18} /> {t(`prio.${k}`)}
+              </button>
+            ))}
+          </div>
+          <div className="prio-slider">
+            <label htmlFor="prio-second">{t('prio.howMuch', { name: t(`prio.${second}`) })}</label>
+            <output htmlFor="prio-second" className="big num">{p[second]}</output>
+            <input id="prio-second" type="range" min="0" max={Math.min(rest, p[main])} step="1" value={p[second]}
+              style={{ '--pct': `${(p[second] / Math.max(1, Math.min(rest, p[main]))) * 100}%`, '--track-fill': PRIO[second].color }}
+              onChange={e => set({ prioSecond: second, priorities: setSecond(p, main, second, +e.target.value) })} />
+            <p className="hint">{t('prio.stepBHint', { name: t(`prio.${third}`), n: p[third] })}</p>
+          </div>
+        </fieldset>
+      )}
     </section>
   );
 }
@@ -230,7 +267,7 @@ export default function StrategyView() {
         <RegionStrip />
       </PageHead>
 
-      <div className="two-col">
+      <div className="strategy-grid">
         <div><Priorities /></div>
         <div><UsualRotation /><AllowedCrops /></div>
       </div>

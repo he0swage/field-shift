@@ -8,7 +8,7 @@ import { useAuth } from '../../state/AuthContext';
 import ThemeToggle from './ThemeToggle';
 import './layout.css';
 
-export const SOURCES = ['NASA POWER 1995–2024', 'ISRIC SoilGrids', 'MODIS NDVI', 'OAIC / CCLS prices'];
+export const SOURCES = ['NASA POWER 1995–2024', 'ISRIC SoilGrids', 'MODIS NDVI', 'Open-Meteo ERA5', 'OAIC / CCLS prices'];
 
 /** Asks the backend /health every 30 s. */
 export function useApiLive() {
@@ -23,19 +23,16 @@ export function useApiLive() {
   return live;
 }
 
-/** Live / sample status with the data sources (sidebar footer). */
+/** One thin, quiet strip: live/sample status + data sources. */
 export function DataStatus() {
   const { t } = useI18n();
   const live = useApiLive();
   return (
-    <div className={`data-status-box${live ? ' live' : ''}`}>
-      <div className="data-status">
-        <span className="status-dot" aria-hidden="true" />
-        {live ? t('banner.liveShort') : t('banner.sampleShort')}
+    <div className={`data-strip${live ? ' live' : ''}`}>
+      <div className="wrap data-strip-row">
+        <span className="data-status"><span className="status-dot" aria-hidden="true" />{live ? t('banner.liveShort') : t('banner.sampleShort')}</span>
+        <ul className="sources" aria-label={t('banner.sources')}>{SOURCES.map(s => <li key={s}>{s}</li>)}</ul>
       </div>
-      <ul className="sources" aria-label={t('banner.sources')}>
-        {SOURCES.map(s => <li key={s}>{s}</li>)}
-      </ul>
     </div>
   );
 }
@@ -120,7 +117,7 @@ function UserMenu() {
 
 export default function Header() {
   const { t } = useI18n();
-  const { view, go, lastJourney } = useNav();
+  const { view, go } = useNav();
   const inJourney = JOURNEY.includes(view);
 
   const link = (id, label, current) => (
@@ -133,6 +130,7 @@ export default function Header() {
 
   return (
     <header className="topbar">
+      <div className="topbar-row">
       <a className="brand" href="#/home" onClick={e => { e.preventDefault(); go('home', { top: true }); }}>
         <Logo />
         <span className="brand-name">Crop Rotation Advisor</span>
@@ -140,14 +138,9 @@ export default function Header() {
 
       <nav className="top-nav" aria-label={t('nav.main')}>
         <ul>
-          {link(lastJourney, t('nav.journey'), inJourney)}
-          {link('map', t('nav.map'), view === 'map')}
+          {link('home', t('nav.journey'), inJourney || view === 'home')}
           {link('compare', t('nav.compare'), view === 'compare')}
-          <li>
-            <button type="button" className="nav-link" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
-              {t('nav.about')}
-            </button>
-          </li>
+          {link('about', t('nav.about'), view === 'about')}
         </ul>
       </nav>
 
@@ -155,6 +148,7 @@ export default function Header() {
         <LangMenu />
         <ThemeToggle />
         <UserMenu />
+      </div>
       </div>
     </header>
   );

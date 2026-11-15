@@ -8,7 +8,7 @@ export const PHASES = [
   { id: 'results', steps: ['summary'] },
 ];
 export const JOURNEY = PHASES.flatMap(p => p.steps);
-export const EXTRA_VIEWS = ['map', 'compare'];
+export const EXTRA_VIEWS = ['map', 'compare', 'about'];
 const ALL = ['home', ...JOURNEY, ...EXTRA_VIEWS]; // 'home' = 1.1 landing page
 
 const readHash = () => {

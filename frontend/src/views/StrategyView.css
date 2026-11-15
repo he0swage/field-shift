@@ -1,19 +1,38 @@
+/* Layout: big priorities card + smaller supporting cards */
+.strategy-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s3); align-items: start; }
+@media (max-width: 1000px) { .strategy-grid { grid-template-columns: 1fr; } }
+
 /* Priorities */
-.prio-stack { display: flex; height: 6px; border-radius: 99px; overflow: hidden; gap: 2px; margin-top: 20px; background: var(--line); }
-.prio-stack i { display: block; transition: width .2s var(--ease); }
-.prio-list { display: grid; gap: 22px; margin-top: 22px; }
-.prio-head { display: flex; align-items: center; gap: 10px; }
-.prio-swatch { width: 8px; height: 8px; border-radius: 2px; flex: none; }
-.prio-head label { font-weight: 600; font-size: 15px; }
-.prio-value { margin-inline-start: auto; font-size: 20px; font-weight: 600; min-width: 40px; text-align: end; letter-spacing: -.02em; }
-.prio-desc { color: var(--ink-soft); font-size: 13px; margin: 2px 0 6px 18px; }
-[dir="rtl"] .prio-desc { margin: 2px 18px 6px 0; }
-.prio-total { display: flex; align-items: center; gap: 6px; margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13px; color: var(--good); }
+.prio-card { padding: var(--s5); }
+.prio-bar { display: flex; height: 64px; border-radius: 12px; overflow: hidden; gap: 3px; margin-top: var(--s4); }
+.prio-bar .seg { display: flex; align-items: center; padding-inline: var(--s2); min-width: 0; transition: flex-grow .35s var(--ease); }
+.prio-bar .seg b { font-family: var(--font-display); font-size: 28px; font-weight: 500; color: #fff; }
+.prio-bar .seg.water { background: var(--prio-water); }
+.prio-bar .seg.soil { background: var(--prio-soil); }
+.prio-bar .seg.yield { background: var(--prio-yield); }
+.prio-bar .seg.yield b { color: #22261b; }
+.prio-legend { list-style: none; padding: 0; margin: var(--s3) 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s2); }
+.prio-legend li { display: flex; gap: 10px; align-items: flex-start; }
+.swatch { width: 10px; height: 10px; border-radius: 3px; margin-top: 4px; flex: none; }
+.swatch.water { background: var(--prio-water); } .swatch.soil { background: var(--prio-soil); } .swatch.yield { background: var(--prio-yield); }
+.prio-step { border: 0; padding: var(--s4) 0 0; margin: var(--s4) 0 0; border-top: 1px solid var(--line); }
+.prio-step legend { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-size: var(--fs-h3); padding: 0; margin-bottom: var(--s2); }
+.step-no { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--deep); color: var(--on-deep); font-family: var(--font); font-size: 13px; font-weight: 600; }
+.seg-control { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s1); }
+.seg-control.two { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 560px) { .seg-control { grid-template-columns: 1fr; } }
+.seg-control button { display: flex; align-items: center; justify-content: center; gap: var(--s1); min-height: 52px; padding: 0 var(--s2); border-radius: var(--radius-sm); border: 1px solid var(--line-strong); background: var(--raised); font-size: 15px; font-weight: 600; cursor: pointer; transition: background-color .15s, color .15s, border-color .15s; }
+.seg-control button:hover { border-color: var(--ink-faint); }
+.seg-control button.on { background: var(--deep); color: var(--on-deep); border-color: var(--deep); }
+.prio-slider { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 4px var(--s2); margin-top: var(--s3); }
+.prio-slider label { font-size: 15px; color: var(--ink-soft); }
+.prio-slider .big { font-family: var(--font-display); font-size: 48px; line-height: 1; }
+.prio-slider input, .prio-slider .hint { grid-column: 1 / -1; }
 
 /* Usual rotation */
 .rot-years { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; }
 .rot-years li { display: grid; grid-template-columns: 64px 1fr; align-items: center; gap: 12px; }
-.rot-years label { font-size: 13px; color: var(--ink-soft); font-weight: 500; }
+.rot-years label { font-size: var(--fs-small); color: var(--ink-soft); font-weight: 600; }
 
 /* Allowed crops */
 .chip-group { border: 0; padding: 0; margin: 18px 0 0; }

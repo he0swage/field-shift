@@ -2,10 +2,11 @@
 import { useT } from '../i18n/I18nContext';
 import { useFarm } from '../state/FarmContext';
 import { useAnalysis } from '../state/AnalysisContext';
-import { fmtInt } from '../utils/format';
+import { fmtInt, pct } from '../utils/format';
 import Icon from '../components/icons';
 import { PageHead, PageNav, SampleNotice } from '../components/ui';
-import CompareTable from '../components/rotation/CompareTable';
+import { compareRows } from '../components/rotation/CompareTable';
+import FieldStrips from '../components/FieldStrips';
 import NitrogenChart from '../components/charts/NitrogenChart';
 import NeedsAnalysis from '../components/NeedsAnalysis';
 import './Results.css';
@@ -43,37 +44,37 @@ export default function CompareView() {
         <>
           <SampleNotice data={ranking} />
           <div className="vs-grid">
-            <article className="vs-card usual">
-              <h3>{t('cmp.usualTitle')}</h3>
-              <ol className="vs-crops">{usual.map((c, i) => <li key={i}><span>{t('common.year', { n: i + 1 })}</span><Icon name={c.family} size={15} /> {c.name}</li>)}</ol>
-              <dl className="vs-facts">
-                <div><dt>{t('cmp.water')}</dt><dd>{ranking.usual?.waterNeed ?? '—'}/100</dd></div>
-                <div><dt>{t('cmp.soilN')}</dt><dd>{ranking.usual?.soilNEnd ?? '—'} kg/ha</dd></div>
-                <div><dt>{t('cmp.fert')}</dt><dd>{ranking.usual?.fertilizer ?? '—'} kg/ha</dd></div>
-                <div><dt>{t('cmp.stability')}</dt><dd>{ranking.usual?.ndviStability ?? '—'}/100</dd></div>
-                <div><dt>{t('cmp.income')}</dt><dd>{ranking.usual ? fmtInt(ranking.usual.income) : '—'} DA/ha</dd></div>
-              </dl>
-            </article>
-            <div className="vs-badge" aria-hidden="true">vs</div>
-            <article className="vs-card rec">
-              <h3>{t('cmp.recTitle')}</h3>
-              <ol className="vs-crops">{ranking.rotations[0].years.map((y, i) => <li key={i}><span>{t('common.year', { n: i + 1 })}</span><Icon name={y.family} size={15} /> {y.crop}</li>)}</ol>
-              <dl className="vs-facts">
-                <div><dt>{t('cmp.water')}</dt><dd>{ranking.rotations[0].waterNeed}/100</dd></div>
-                <div><dt>{t('cmp.soilN')}</dt><dd>{ranking.rotations[0].years.at(-1).soilN} kg/ha</dd></div>
-                <div><dt>{t('cmp.fert')}</dt><dd>{ranking.rotations[0].fertilizer} kg/ha</dd></div>
-                <div><dt>{t('cmp.stability')}</dt><dd>{ranking.rotations[0].ndviStability}/100</dd></div>
-                <div><dt>{t('cmp.income')}</dt><dd>{fmtInt(ranking.rotations[0].income)} DA/ha</dd></div>
-              </dl>
-            </article>
+            <div className="vs-col">
+              <span className="label">{t('cmp.usualTitle')}</span>
+              <FieldStrips years={usual.map(c => ({ crop: c.name, family: c.family }))} size="sm" />
+            </div>
+            <div className="vs-col rec">
+              <span className="label">{t('cmp.recTitle')}</span>
+              <FieldStrips years={ranking.rotations[0].years} size="sm" />
+            </div>
           </div>
 
-          <section className="card" style={{ marginTop: 24 }} aria-labelledby="cmp-table-title">
-            <h3 className="card-title" id="cmp-table-title">{t('cmp.tableTitle')}</h3>
-            <CompareTable ranking={ranking} usualName={usual.map(c => c.name).join(' → ')} />
-            {ranking.sample && <p className="hint">{t('cmp.sampleNote')}</p>}
-          </section>
-          <div style={{ marginTop: 24 }}><NitrogenCard ranking={ranking} /></div>
+          {!ranking.usual ? <p className="hint">{t('cmp.noUsual')}</p> : (
+            <ol className="vs-rows">
+              {compareRows(ranking).map(row => {
+                const d = row.b - row.a, better = row.goal === 'lower' ? d < 0 : d > 0, p = pct(row.a, row.b);
+                const tone = d === 0 ? 'same' : better ? 'better' : 'worse';
+                return (
+                  <li key={row.id} className={`vs-row ${tone}`}>
+                    <span className="vs-metric"><Icon name={row.icon} size={18} /> {t(`cmp.${row.id}`)}</span>
+                    <span className="vs-val num">{fmtInt(row.a)}<small>{row.unit}</small></span>
+                    <span className="vs-val rec num">{fmtInt(row.b)}<small>{row.unit}</small></span>
+                    <span className="vs-diff num" dir="ltr">
+                      {d === 0 ? '±0' : `${d > 0 ? '+' : '−'}${fmtInt(Math.abs(d))}`}
+                      <small>{d === 0 ? t('cmp.same') : row.a === 0 ? (better ? t('cmp.betterWord') : t('cmp.worseWord')) : `${better ? t('cmp.better') : t('cmp.worse')} ${Math.abs(p)}%`}</small>
+                    </span>
+                  </li>
+                );
+              })}
+            </ol>
+          )}
+          {ranking.sample && <p className="hint">{t('cmp.sampleNote')}</p>}
+          <div className="section"><NitrogenCard ranking={ranking} /></div>
         </>
       )}
       <PageNav back="top" backLabel={t('cmp.backRecs')} />

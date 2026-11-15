@@ -6,7 +6,7 @@ import { useClimateModel } from '../hooks/useClimateModel';
 import { monthlyInsight } from '../utils/insights';
 import { signed } from '../utils/format';
 import Icon from '../components/icons';
-import { AiBadge, Loading, PageHead, PageNav, RegionStrip, SampleNotice } from '../components/ui';
+import { Loading, PageHead, PageNav, RegionStrip, SampleNotice } from '../components/ui';
 import ScenarioControls from '../components/climate/ScenarioControls';
 import MonthlyBarsChart from '../components/charts/MonthlyBarsChart';
 import { SIG_TONE } from './ClimateView';
@@ -67,20 +67,13 @@ export default function MonthlyView() {
               </div>
             )}
 
-            <div className="confidence">
-              <b>{t('monthly.confidence')}</b>
-              <span className={`badge badge-lg ${SIG_TONE[m.trend.sig]}`}>
-                {t(`conf.${m.trend.sig}`)}
-              </span>
-              <span className="hint" style={{ margin: 0 }} dir="ltr">
-                Mann–Kendall p = {m.trend.pMk.toFixed(3)} · OLS p = {m.trend.pOls.toFixed(3)}
-              </span>
-            </div>
+            <p className="confidence quiet-note">
+              {t('monthly.confidence')}: {t(`conf.${m.trend.sig}`)} <span dir="ltr">(Mann–Kendall p = {m.trend.pMk.toFixed(3)} · OLS p = {m.trend.pOls.toFixed(3)})</span>
+            </p>
           </section>
 
           <div className="insight-grid">
             <div className="ai-insight">
-              <AiBadge />
               <p aria-live="polite">{monthlyInsight(t, months, m)}</p>
             </div>
             <div className="et-card">
