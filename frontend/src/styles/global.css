@@ -76,6 +76,17 @@
   --leaf-ink: var(--primary); --gold: var(--accent); --gold-ink: var(--accent-ink); --gold-soft: var(--accent-soft);
   --earth: #8a6440; --accent-light: #e6cba6; --good-line: #8faf78; --bad-line: #b5523b; --warn-line: #c49a6c;
 
+  /* Semantic aliases that components already reference but were never defined (UX audit P0).
+     Pointing them at the existing tested palette keeps every pair ≥ 4.5:1. */
+  --danger: var(--bad); --danger-soft: var(--bad-soft);
+  --ok: var(--good); --ok-soft: var(--good-soft);
+  --primary-strong: var(--primary-hover);
+  --surface-3: #ebe2cf; --surface-sunken: var(--surface);
+  --soil: #77532f; --soil-soft: #f1e7da;
+  --wheat: var(--warn); --wheat-soft: var(--warn-soft);
+  --shadow-sm: 0 1px 2px rgba(74, 58, 30, .08), 0 4px 14px -4px rgba(74, 58, 30, .14);
+  --font-body: var(--font);
+
   /* type scale */
   --fs-display: clamp(40px, 5.2vw, 64px);
   --fs-h1: clamp(32px, 3.4vw, 40px);
@@ -136,6 +147,9 @@
   --focus: #9fc2ff;
   --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 14px 44px -10px rgba(0, 0, 0, .55);
   --shadow-pop: 0 24px 60px -12px rgba(0, 0, 0, .7);
+  --surface-3: #262c1d;
+  --soil: #d6b48a; --soil-soft: #2f261b;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35), 0 4px 14px -4px rgba(0, 0, 0, .5);
 }
 :root[lang="ar"] { --font: 'Montaser Arabic', 'Noto Sans Arabic', system-ui, sans-serif; --font-display: 'Montaser Arabic', 'Noto Sans Arabic', system-ui, sans-serif; }
 
@@ -267,7 +281,9 @@ svg.lucide { flex: none; }
 .field label, .field .label-text { font-weight: 600; font-size: var(--fs-small); }
 .input, .select { min-height: 48px; padding: 0 14px; border-radius: var(--radius-sm); border: 1px solid var(--line-strong); background: var(--raised); font-size: var(--fs-body); width: 100%; transition: border-color .15s, box-shadow .15s; }
 .input:hover, .select:hover { border-color: var(--ink-faint); }
-.input:focus, .select:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 4px var(--primary-soft); }
+.input:focus, .select:focus { border-color: var(--primary); outline: 2px solid transparent; box-shadow: 0 0 0 4px var(--primary-soft); }
+.input:focus-visible, .select:focus-visible { outline-color: var(--focus); }
+@media (forced-colors: active) { .input:focus, .select:focus { outline-color: Highlight; } }
 .input[aria-invalid="true"] { border-color: var(--bad); }
 .field-error { color: var(--bad); font-size: var(--fs-small); }
 .check { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; cursor: pointer; font-size: 15px; }
@@ -303,7 +319,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 @keyframes pulse { 50% { opacity: .5; } }
 
 /* ---------- Toast ---------- */
-.toast { position: fixed; bottom: var(--s3); inset-inline-start: 50%; transform: translateX(-50%); z-index: 90; display: flex; gap: var(--s2); align-items: center; background: var(--deep); color: var(--on-deep); padding: 12px 16px 12px 20px; border-radius: var(--radius-sm); box-shadow: var(--shadow-pop); font-size: 15px; max-width: calc(100vw - 32px); }
+.toast { position: fixed; bottom: var(--s3); inset-inline-start: 50%; transform: translateX(-50%); z-index: 1000; display: flex; gap: var(--s2); align-items: center; background: var(--deep); color: var(--on-deep); padding: 12px 16px 12px 20px; border-radius: var(--radius-sm); box-shadow: var(--shadow-pop); font-size: 15px; max-width: calc(100vw - 32px); }
 [dir="rtl"] .toast { transform: translateX(50%); }
 .toast.hidden { display: none; }
 .toast button { background: none; border: 0; color: inherit; font-weight: 600; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
@@ -322,7 +338,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 .strip .strip-credit { align-self: flex-start; font-size: var(--fs-label); font-weight: 600; padding: 2px 8px; border-radius: 99px; background: rgba(255, 255, 255, .22); }
 .strips.sm .strip { min-height: 64px; padding: 10px 12px; }
 .strips.sm .strip-crop { font-size: 16px; }
-.strips.sm .strip-year { font-size: 11px; }
+.strips.sm .strip-year { font-size: 12px; }
 .strip.legume { --strip-bg: var(--strip-legume); --strip-ink: var(--on-strip-legume); }
 .strip.cereal { --strip-bg: var(--strip-cereal); --strip-ink: var(--on-strip-cereal); }
 .strip.oilseed { --strip-bg: var(--strip-oilseed); --strip-ink: var(--on-strip-oilseed); }
@@ -357,7 +373,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 /* === FieldShift Agronomy Advisor (Grounded AI Chatbot) === */
 .rag-dock-bar {
   position: fixed;
-  right: 24px;
+  inset-inline-end: 24px;
   bottom: 24px;
   z-index: 900;
 }
@@ -375,7 +391,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   box-shadow: 0 10px 28px -4px rgba(44, 49, 37, 0.35);
   cursor: pointer;
   transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
-  text-align: left;
+  text-align: start;
 }
 .rag-fab:hover {
   transform: translateY(-2px);
@@ -400,18 +416,18 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   font-weight: 700;
 }
 .rag-fab-text small {
-  font-size: 0.74rem;
+  font-size: 0.8125rem;
   opacity: 0.92;
   font-weight: 500;
 }
 .rag-fab-arrow {
-  margin-left: 4px;
+  margin-inline-start: 4px;
   opacity: 0.85;
 }
 
 .rag-floating-drawer {
   position: fixed;
-  right: 24px;
+  inset-inline-end: 24px;
   bottom: 24px;
   width: min(530px, calc(100vw - 32px));
   height: min(720px, calc(100vh - 48px));
@@ -496,7 +512,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   border-radius: 999px;
   background: var(--ok-soft);
   color: var(--ok);
-  font-size: 0.72rem;
+  font-size: 0.8125rem;
   font-weight: 700;
 }
 .rag-status-dot {
@@ -508,7 +524,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 }
 .rag-sub {
   margin: 2px 0 0;
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   color: var(--ink-soft);
   font-weight: 500;
   white-space: nowrap;
@@ -536,7 +552,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   min-height: 28px;
   border-radius: 6px;
   font-weight: 700;
-  font-size: 0.76rem;
+  font-size: 0.8125rem;
   cursor: pointer;
   color: var(--ink);
   transition: all 0.15s ease;
@@ -578,7 +594,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   padding: 7px 18px;
   background: var(--surface-3);
   border-bottom: 1px solid var(--line);
-  font-size: 0.78rem;
+  font-size: 0.8125rem;
   color: var(--ink-soft);
 }
 .rag-context-item {
@@ -680,7 +696,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   gap: 5px;
   padding: 3px 9px;
   border-radius: 999px;
-  font-size: 0.72rem;
+  font-size: 0.8125rem;
   font-weight: 700;
 }
 .rag-status-pill.grounded {
@@ -697,7 +713,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   color: var(--warn);
 }
 .rag-tts-btn {
-  font-size: 0.74rem;
+  font-size: 0.8125rem;
   padding: 3px 8px;
   min-height: 26px;
 }
@@ -771,7 +787,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   border-radius: 12px;
 }
 .rag-section-kicker {
-  font-size: 0.74rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   color: var(--ink-soft);
@@ -788,7 +804,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   gap: 5px;
   padding: 3px 9px;
   border-radius: 8px;
-  font-size: 0.78rem;
+  font-size: 0.8125rem;
   background: var(--surface);
   border: 1px solid var(--line);
   color: var(--ink);
@@ -821,7 +837,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  font-size: 0.78rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--ink-soft);
   list-style: none;
@@ -842,7 +858,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   gap: 8px;
   padding-top: 8px;
   border-top: 1px solid var(--line);
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
 }
 .rag-source-item {
   padding: 6px 8px;
@@ -852,7 +868,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 }
 .rag-source-excerpt {
   margin: 4px 0 0;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   color: var(--ink-soft);
   line-height: 1.4;
 }
@@ -873,7 +889,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   background: transparent;
   cursor: pointer;
   padding: 4px 0;
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: var(--ink);
 }
@@ -912,7 +928,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   padding: 6px 14px;
   background: var(--primary-soft);
   color: var(--primary-strong);
-  font-size: 0.78rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   border-top: 1px solid var(--line);
 }
@@ -995,23 +1011,21 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   text-align: center;
   padding: 4px 10px 8px;
   background: var(--surface);
-  font-size: 0.68rem;
+  font-size: 0.8125rem;
   color: var(--ink-soft);
-  opacity: 0.8;
 }
 
 @media (max-width: 640px) {
   .rag-floating-drawer {
-    right: 0;
-    left: 0;
+    inset-inline: 0;
     bottom: 0;
-    width: 100vw;
-    height: 88vh;
+    width: 100%;
+    height: 88dvh;
     border-radius: 20px 20px 0 0;
     border-bottom: none;
   }
   .rag-dock-bar {
-    right: 14px;
+    inset-inline-end: 14px;
     bottom: 14px;
   }
 }
@@ -1024,7 +1038,8 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
+  min-height: 44px;
+  padding: 6px 14px;
   border-radius: 999px;
   border: 1.5px solid var(--primary);
   background: var(--primary-soft);
@@ -1044,7 +1059,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 }
 .account-db-badge {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   padding: 2px 8px;
   border-radius: 999px;
@@ -1060,7 +1075,8 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
   padding-bottom: 8px;
 }
 .account-tab {
-  padding: 7px 14px;
+  min-height: 44px;
+  padding: 7px 16px;
   border-radius: 8px;
   border: 1px solid var(--line-strong);
   background: var(--surface-2);
@@ -1108,7 +1124,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 }
 .account-field input,
 .account-field select {
-  min-height: 40px;
+  min-height: 44px;
   padding: 7px 10px;
   border-radius: 8px;
   border: 1.5px solid var(--line-strong);
@@ -1167,10 +1183,10 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 }
 .account-score-pill {
   display: inline-block;
-  margin-left: 6px;
+  margin-inline-start: 6px;
   padding: 1px 7px;
   border-radius: 999px;
-  font-size: 0.74rem;
+  font-size: 0.8125rem;
   background: var(--primary-soft);
   color: var(--primary-strong);
 }

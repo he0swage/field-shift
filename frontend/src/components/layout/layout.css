@@ -31,7 +31,11 @@
 .avatar { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-ink); font-weight: 600; font-size: 13px; }
 @media (max-width: 900px) {
   .topbar-row { grid-template-columns: 1fr auto; height: auto; padding-block: 10px; row-gap: 6px; }
-  .top-nav { grid-column: 1 / -1; order: 3; overflow-x: auto; }
+  .top-nav { grid-column: 1 / -1; order: 3; overflow-x: auto; scrollbar-width: none; -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); }
+  [dir="rtl"] .top-nav { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 28px), transparent); }
+  .top-nav::-webkit-scrollbar { display: none; }
+  .nav-link { font-size: 17px; padding: 10px 14px; }
+  .nav-link.journey { font-size: 19px; padding: 8px 18px; }
 }
 @media (max-width: 480px) { .brand-name { font-size: 22px; } .avatar { display: none; } }
 

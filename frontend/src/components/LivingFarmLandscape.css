@@ -283,7 +283,9 @@
 .ll-badge-overlay {
   position: absolute;
   bottom: 14px;
-  right: 14px;
+  inset-inline-end: 14px;
+  max-width: calc(100% - 28px);
+  flex-wrap: wrap;
   z-index: 10;
   display: flex;
   align-items: center;
@@ -296,10 +298,10 @@
   border: 1px solid rgba(89, 95, 52, 0.16);
   box-shadow: 0 4px 12px rgba(89, 95, 52, 0.1);
   font-family: var(--font-body, system-ui, sans-serif);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  color: #595f34;
-  pointer-events: auto;
+  color: var(--primary);
+  pointer-events: none;
 }
 
 .ll-badge-pill {
@@ -309,8 +311,8 @@
   padding: 2px 7px;
   border-radius: 12px;
   background: rgba(156, 173, 96, 0.18);
-  color: #595f34;
-  font-size: 11px;
+  color: var(--primary);
+  font-size: 12px;
 }
 
 .ll-badge-dot {

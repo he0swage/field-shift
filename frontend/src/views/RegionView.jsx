@@ -70,7 +70,6 @@ export default function RegionView() {
   const { scrollY, scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 28, restDelta: 0.001 });
   const heroCopyY = useTransform(scrollY, [0, 400], [0, -22]);
-  const heroCopyOpacity = useTransform(scrollY, [0, 360], [1, 0.75]);
   const heroPlanY = useTransform(scrollY, [0, 400], [0, -12]);
 
   return (
@@ -83,7 +82,7 @@ export default function RegionView() {
         <div className="wrap region-hero-grid">
           <motion.div
             className="region-hero-copy"
-            style={reduced ? {} : { y: heroCopyY, opacity: heroCopyOpacity }}
+            style={reduced ? {} : { y: heroCopyY }}
             initial={reduced ? false : { opacity: 0, y: 22 }}
             animate={reduced ? false : { opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}

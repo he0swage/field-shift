@@ -10,6 +10,7 @@
 
 import { useCallback, useRef, useState } from 'react';
 import { useReducedMotion } from '../hooks/useReducedMotion';
+import { useT } from '../i18n/I18nContext';
 import './LivingFarmLandscape.css';
 
 const W = 1077;
@@ -101,6 +102,7 @@ const PARTICLES = [
 
 export default function LivingFarmLandscape({ years = [], className = '' }) {
   const reducedMotion = useReducedMotion();
+  const t = useT();
   const containerRef = useRef(null);
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
 
@@ -124,7 +126,7 @@ export default function LivingFarmLandscape({ years = [], className = '' }) {
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       role="img"
-      aria-label="Living animated landscape of rolling farm fields, hills, and drifting morning clouds"
+      aria-label={t('hero.landscape')}
     >
       {/* 1. Morning Sky Background Gradient */}
       <div className="ll-sky-bg" />
@@ -232,7 +234,8 @@ export default function LivingFarmLandscape({ years = [], className = '' }) {
               // Graceful fallback to base illustration if cutout is unavailable
               e.currentTarget.src = `${import.meta.env.BASE_URL}farm-landscape.jpg`;
             }}
-            alt="Farm landscape with green and golden terraces and houses"
+            alt=""
+            aria-hidden="true"
             className="ll-landscape-img"
             loading="eager"
             decoding="async"
@@ -267,11 +270,11 @@ export default function LivingFarmLandscape({ years = [], className = '' }) {
 
       {/* 7. Subtle Crop Rotation Year Indicators (if years passed) */}
       {years && years.length > 0 && (
-        <div className="ll-badge-overlay" aria-label="Rotation plan years">
+        <div className="ll-badge-overlay" role="group" aria-label={t('hero.planYears')}>
           <span className="ll-badge-dot" />
           {years.map((y, i) => (
             <span key={i} className="ll-badge-pill">
-              Y{i + 1}: {y.crop || y.name || y.family}
+              {t('common.year', { n: i + 1 })}: {y.crop || y.name || y.family}
             </span>
           ))}
         </div>

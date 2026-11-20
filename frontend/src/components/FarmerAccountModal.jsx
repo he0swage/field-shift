@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useFarm } from '../state/FarmContext';
 import { useToast } from '../state/ToastContext';
 import { REGIONS } from '../data/regions';
@@ -48,6 +48,20 @@ export default function FarmerAccountModal() {
       }
     }
   }, [state.accountOpen]);
+
+  // Dialog a11y: Esc closes, focus moves into the dialog and returns to the opener afterwards.
+  const cardRef = useRef(null);
+  useEffect(() => {
+    if (!state.accountOpen) return undefined;
+    const opener = document.activeElement;
+    cardRef.current?.focus();
+    const onKey = (e) => { if (e.key === 'Escape') dispatch({ type: 'set', patch: { accountOpen: false } }); };
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      if (opener instanceof HTMLElement) opener.focus();
+    };
+  }, [state.accountOpen, dispatch]);
 
   if (!state.accountOpen) return null;
 
@@ -186,12 +200,20 @@ export default function FarmerAccountModal() {
     ids.map((id) => BASE_CROPS[id]?.name || id).join(' → ');
 
   return (
-    <div className="modal-backdrop" onClick={close} role="dialog" aria-modal="true" aria-label="Farmer Account">
-      <div className="modal-card account-modal-card" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-backdrop" onClick={close} role="presentation">
+      <div
+        ref={cardRef}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="account-modal-title"
+        className="modal-card account-modal-card"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="modal-head">
           <div>
             <span className="account-db-badge">🐘 PostgreSQL Farmer Accounts</span>
-            <h2 style={{ margin: '4px 0 0' }}>
+            <h2 id="account-modal-title" style={{ margin: '4px 0 0' }}>
               {state.farmerUser ? `👨‍🌾 ${state.farmerUser.full_name}` : '👨‍🌾 Farmer Account & Saved Rotations'}
             </h2>
           </div>
